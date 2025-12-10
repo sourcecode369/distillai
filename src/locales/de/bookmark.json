@@ -1,0 +1,59 @@
+{
+  "dropdown": {
+    "title": "Lesezeichen",
+    "empty": {
+      "title": "Noch keine Lesezeichen",
+      "description": "Speichere Themen, um schnell darauf zuzugreifen"
+    },
+    "viewAll": "Alle Lesezeichen anzeigen",
+    "viewAllCount": "Alle {{count}} Lesezeichen anzeigen",
+    "time": {
+      "recently": "Kürzlich",
+      "justNow": "Gerade eben",
+      "minutesAgo": "vor {{count}} Min.",
+      "hoursAgo": "vor {{count}} Std.",
+      "daysAgo": "vor {{count}} Tagen"
+    }
+  },
+  "page": {
+    "title": "Lesezeichen",
+    "subtitle": {
+      "count": "{{count}} gespeichertes Thema",
+      "countPlural": "{{count}} gespeicherte Themen"
+    },
+    "searchPlaceholder": "Lesezeichen suchen...",
+    "filterByTag": "Nach Tag filtern:",
+    "all": "Alle",
+    "empty": {
+      "title": "Noch keine Lesezeichen",
+      "description": "Beginne, Themen zu markieren, die du später lesen möchtest. Deine gespeicherten Elemente erscheinen hier."
+    },
+    "emptySearch": {
+      "title": "Keine Lesezeichen gefunden",
+      "description": "Versuche, deine Suche oder deinen Filter anzupassen, um zu finden, wonach du suchst."
+    },
+    "removeBookmark": "Lesezeichen entfernen",
+    "time": {
+      "recently": "Kürzlich",
+      "justNow": "Gerade eben",
+      "minutesAgo": "vor {{count}} Min.",
+      "hoursAgo": "vor {{count}} Std.",
+      "daysAgo": "vor {{count}} Tagen"
+    },
+    "toast": {
+      "removed": "Lesezeichen entfernt",
+      "categoryNotFound": "Kategorie nicht gefunden",
+      "topicNotFound": "Thema nicht gefunden",
+      "loadFailed": "Lesezeichen konnte nicht geladen werden"
+    }
+  },
+  "button": {
+    "add": "Lesezeichen hinzufügen",
+    "remove": "Lesezeichen entfernen",
+    "toast": {
+      "added": "Lesezeichen hinzugefügt",
+      "removed": "Lesezeichen entfernt"
+    }
+  }
+}
+

@@ -1,0 +1,91 @@
+{
+  "dropdown": {
+    "title": "Suche",
+    "placeholder": "Handbücher, Kapitel oder Konzepte suchen...",
+    "suggestions": "Vorschläge",
+    "recentSearches": "Letzte Suchen",
+    "clear": "Löschen",
+    "loading": "Letzte Suchen werden geladen...",
+    "empty": {
+      "title": "Keine letzten Suchen",
+      "description": "Beginne zu tippen, um zu suchen"
+    },
+    "viewAll": "Alle Suchen anzeigen",
+    "viewAllCount": "Alle {{count}} Suchen anzeigen",
+    "time": {
+      "justNow": "Gerade eben",
+      "minutesAgo": "vor {{count}} Min.",
+      "hoursAgo": "vor {{count}} Std.",
+      "daysAgo": "vor {{count}} Tagen"
+    }
+  },
+  "page": {
+    "title": "Suchverlauf",
+    "subtitle": {
+      "count": "{{count}} gespeicherte Suche",
+      "countPlural": "{{count}} gespeicherte Suchen"
+    },
+    "clearAll": "Alle löschen",
+    "signInRequired": "Anmeldung erforderlich",
+    "signInMessage": "Bitte melde dich an, um deinen Suchverlauf anzuzeigen",
+    "goBack": "Zurück",
+    "loading": "Suchverlauf wird geladen...",
+    "empty": {
+      "title": "Noch kein Suchverlauf",
+      "description": "Deine letzten Suchen erscheinen hier. Beginne zu suchen, um deinen Verlauf aufzubauen."
+    },
+    "removeSearch": "Suche entfernen",
+    "time": {
+      "justNow": "Gerade eben",
+      "minutesAgo": "vor {{count}} Min.",
+      "hoursAgo": "vor {{count}} Std.",
+      "daysAgo": "vor {{count}} Tagen"
+    },
+    "toast": {
+      "cleared": "Suchverlauf gelöscht",
+      "removed": "Suche entfernt",
+      "errorClear": "Suchverlauf konnte nicht gelöscht werden",
+      "errorRemove": "Suche konnte nicht entfernt werden"
+    }
+  },
+  "results": {
+    "title": "Suchergebnisse",
+    "back": "Zurück",
+    "searchingFor": "Suche nach \"{{query}}\"",
+    "enterQuery": "Suchanfrage eingeben",
+    "filter": "Filter",
+    "filterButtons": {
+      "all": "Alle",
+      "handbooks": "Handbücher",
+      "topics": "Themen",
+      "quizzes": "Quiz"
+    },
+    "sort": "Sortieren",
+    "sortOptions": {
+      "relevance": "Relevanz",
+      "lastUpdated": "Zuletzt aktualisiert"
+    },
+    "clearFilters": "Filter löschen",
+    "foundResults": "{{count}} Ergebnis gefunden",
+    "foundResultsPlural": "{{count}} Ergebnisse gefunden",
+    "inHandbooks": " in Handbüchern",
+    "inTopics": " in Themen",
+    "inQuizzes": " in Quiz",
+    "typeLabels": {
+      "topic": "Thema",
+      "handbook": "Handbuch",
+      "quiz": "Quiz"
+    },
+    "sections": {
+      "handbooks": "Handbücher",
+      "topics": "Themen",
+      "quizzes": "Quiz"
+    },
+    "questions": "Fragen"
+  },
+  "errors": {
+    "searchFailed": "Suche konnte nicht durchgeführt werden. Bitte versuche es erneut.",
+    "retry": "Wiederholen"
+  }
+}
+

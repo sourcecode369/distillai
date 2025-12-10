@@ -1,0 +1,70 @@
+{
+  "bell": {
+    "title": "Notifications",
+    "ariaLabel": "Notifications",
+    "ariaLabelUnread": "Notifications, {{count}} unread"
+  },
+  "dropdown": {
+    "title": "Notifications",
+    "ariaLabel": "Notifications",
+    "markAllRead": "Mark all read",
+    "loading": "Loading notifications...",
+    "viewAll": "View all notifications",
+    "viewAllCount": "View all {{count}} notifications",
+    "time": {
+      "justNow": "Just now",
+      "minutesAgo": "{{count}}m ago",
+      "hoursAgo": "{{count}}h ago",
+      "daysAgo": "{{count}}d ago"
+    }
+  },
+  "page": {
+    "title": "Notifications",
+    "subtitle": {
+      "unread": "unread",
+      "total": "total",
+      "count": "{{count}} notification",
+      "countPlural": "{{count}} notifications"
+    },
+    "markAllRead": "Mark all as read",
+    "signInRequired": "Sign in Required",
+    "signInMessage": "Please sign in to view your notifications",
+    "goBack": "Go back",
+    "filters": {
+      "all": "All",
+      "unread": "Unread",
+      "read": "Read"
+    },
+    "loading": "Loading notifications...",
+    "empty": {
+      "all": {
+        "title": "No notifications yet",
+        "description": "You'll see notifications here when admins send updates and announcements"
+      },
+      "unread": {
+        "title": "All caught up!",
+        "description": "You've read all your notifications. Great job staying on top of things!"
+      },
+      "read": {
+        "title": "No read notifications",
+        "description": "Try switching to a different filter to see more notifications"
+      }
+    },
+    "markAsRead": "Mark as read",
+    "markRead": "Mark read",
+    "new": "New",
+    "toast": {
+      "markedAsRead": "Notification marked as read",
+      "markAllRead": "All notifications marked as read",
+      "errorMarkAsRead": "Failed to mark notification as read",
+      "errorMarkAllRead": "Failed to mark all notifications as read"
+    },
+    "time": {
+      "justNow": "Just now",
+      "minutesAgo": "{{count}}m ago",
+      "hoursAgo": "{{count}}h ago",
+      "daysAgo": "{{count}}d ago"
+    }
+  }
+}
+

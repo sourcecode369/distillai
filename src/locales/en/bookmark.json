@@ -1,0 +1,59 @@
+{
+  "dropdown": {
+    "title": "Bookmarks",
+    "empty": {
+      "title": "No bookmarks yet",
+      "description": "Save topics to access them quickly"
+    },
+    "viewAll": "View all bookmarks",
+    "viewAllCount": "View all {{count}} bookmarks",
+    "time": {
+      "recently": "Recently",
+      "justNow": "Just now",
+      "minutesAgo": "{{count}}m ago",
+      "hoursAgo": "{{count}}h ago",
+      "daysAgo": "{{count}}d ago"
+    }
+  },
+  "page": {
+    "title": "Bookmarks",
+    "subtitle": {
+      "count": "{{count}} saved topic",
+      "countPlural": "{{count}} saved topics"
+    },
+    "searchPlaceholder": "Search bookmarks...",
+    "filterByTag": "Filter by tag:",
+    "all": "All",
+    "empty": {
+      "title": "No bookmarks yet",
+      "description": "Start bookmarking topics you want to read later. Your saved items will appear here."
+    },
+    "emptySearch": {
+      "title": "No bookmarks found",
+      "description": "Try adjusting your search or filter to find what you're looking for."
+    },
+    "removeBookmark": "Remove bookmark",
+    "time": {
+      "recently": "Recently",
+      "justNow": "Just now",
+      "minutesAgo": "{{count}}m ago",
+      "hoursAgo": "{{count}}h ago",
+      "daysAgo": "{{count}}d ago"
+    },
+    "toast": {
+      "removed": "Bookmark removed",
+      "categoryNotFound": "Category not found",
+      "topicNotFound": "Topic not found",
+      "loadFailed": "Failed to load bookmark"
+    }
+  },
+  "button": {
+    "add": "Add bookmark",
+    "remove": "Remove bookmark",
+    "toast": {
+      "added": "Bookmark added",
+      "removed": "Bookmark removed"
+    }
+  }
+}
+

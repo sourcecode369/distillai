@@ -1,0 +1,237 @@
+{
+  "nav": {
+    "handbooks": "Manuali"
+  },
+  "homePage": {
+    "title": "Manuali di IA",
+    "subtitle": "Guide complete su concetti, tecniche e applicazioni dell'intelligenza artificiale. Ogni manuale fornisce apprendimento strutturato dai fondamenti agli argomenti avanzati con spiegazioni chiare ed esempi pratici.",
+    "searchResults": {
+      "found_one": "Trovato {{count}} risultato",
+      "found_other": "Trovati {{count}} risultati",
+      "for": "per \"{{query}}\""
+    },
+    "chapters": "Capitoli",
+    "exploreHandbook": "Esplora Manuale",
+    "timeUnits": {
+      "hours": "h",
+      "minutes": "min"
+    }
+  },
+  "categoryPage": {
+    "searchResults": {
+      "found_one": "Trovato {{count}} risultato",
+      "found_other": "Trovati {{count}} risultati",
+      "for": "per \"{{query}}\""
+    },
+    "completed": "Completato"
+  },
+  "sections": {
+    "core-ai-fields": {
+      "title": "Campi Fondamentali dell'IA",
+      "subtitle": "Concetti e metodologie fondamentali dell'IA che formano le basi dell'intelligenza artificiale, dall'apprendimento automatico di base ai modelli generativi avanzati."
+    },
+    "ai-for-specific-data-types": {
+      "title": "IA per Tipi di Dati Specifici",
+      "subtitle": "Tecniche e architetture specializzate di IA progettate per elaborare diversi tipi di dati, inclusi testo, immagini, audio, video e informazioni strutturate."
+    },
+    "autonomous-systems": {
+      "title": "Sistemi Autonomi",
+      "subtitle": "Sistemi alimentati dall'IA che possono operare in modo indipendente, prendere decisioni e agire in ambienti del mondo reale senza intervento umano costante."
+    },
+    "optimization-and-operationalization": {
+      "title": "Ottimizzazione e Operazionalizzazione",
+      "subtitle": "Strumenti, tecniche e best practice per distribuire, gestire e ottimizzare efficacemente i sistemi di IA negli ambienti di produzione."
+    },
+    "advanced-algorithmic-approaches": {
+      "title": "Approcci Algoritmici Avanzati",
+      "subtitle": "Algoritmi e metodi computazionali all'avanguardia che spingono i limiti di ciò che i sistemi di IA possono raggiungere, dal calcolo evolutivo all'apprendimento adversarial."
+    },
+    "trustworthy-and-ethical-ai": {
+      "title": "IA Affidabile ed Etica",
+      "subtitle": "Garantire che i sistemi di IA siano trasparenti, equi, sicuri e allineati con principi etici proteggendo la privacy degli utenti e i diritti sui dati."
+    },
+    "ai-in-specific-domains": {
+      "title": "IA in Domini Specifici",
+      "subtitle": "Applicazioni reali dell'IA in varie industrie e domini, mostrando come l'intelligenza artificiale trasforma diversi settori."
+    }
+  },
+  "categories": {
+    "generative-ai": {
+      "title": "IA Generativa",
+      "description": "Creare nuovi contenuti con l'IA: generazione di testo, immagini, audio e video."
+    },
+    "llms": {
+      "title": "Grandi Modelli Linguistici",
+      "description": "Architetture, strategie di addestramento e fine-tuning per LLM moderni."
+    },
+    "ml": {
+      "title": "Apprendimento Automatico",
+      "description": "Algoritmi fondamentali, apprendimento supervisionato e non supervisionato, e tecniche di valutazione dei modelli."
+    },
+    "agentic-ai": {
+      "title": "IA Agente",
+      "description": "Agenti IA che possono ragionare, pianificare e agire autonomamente per raggiungere obiettivi."
+    },
+    "dl": {
+      "title": "Apprendimento Profondo",
+      "description": "Reti neurali, retropropagazione e architetture avanzate per applicazioni di deep learning."
+    },
+    "rl": {
+      "title": "Apprendimento per Rinforzo",
+      "description": "Agenti, ambienti, ricompense e ottimizzazione delle politiche."
+    },
+    "self-supervised": {
+      "title": "Apprendimento Auto-supervisionato",
+      "description": "Apprendere rappresentazioni da dati non etichettati attraverso compiti di pretesto e apprendimento contrastivo."
+    },
+    "representation-learning": {
+      "title": "Apprendimento di Rappresentazioni",
+      "description": "Apprendere rappresentazioni utili dei dati che catturano la struttura e i pattern sottostanti."
+    },
+    "prompt-engineering": {
+      "title": "Ingegneria dei Prompt",
+      "description": "Padroneggiare l'arte di creare prompt e contesti efficaci per guidare il comportamento dell'IA."
+    },
+    "nlp": {
+      "title": "Elaborazione del Linguaggio Naturale",
+      "description": "Tecniche per elaborare e analizzare dati linguistici umani con l'apprendimento automatico."
+    },
+    "cv": {
+      "title": "Visione Artificiale",
+      "description": "Dalle CNN ai Vision Transformers e Stable Diffusion."
+    },
+    "audio-ai": {
+      "title": "IA Audio",
+      "description": "Elaborazione e generazione di audio con IA: riconoscimento vocale, sintesi e generazione musicale."
+    },
+    "multimodal-ai": {
+      "title": "IA Multimodale",
+      "description": "Integrazione ed elaborazione di più tipi di dati (testo, immagine, audio) nei sistemi di IA."
+    },
+    "dl-documents": {
+      "title": "Apprendimento Profondo per Documenti",
+      "description": "Tecniche di IA per elaborare, comprendere ed estrarre informazioni dai documenti."
+    },
+    "gnn": {
+      "title": "Reti Neurali a Grafo",
+      "description": "Reti neurali progettate per lavorare con dati strutturati a grafo e informazioni relazionali."
+    },
+    "knowledge-graphs": {
+      "title": "Grafici della Conoscenza",
+      "description": "Rappresentazioni strutturate della conoscenza utilizzando entità, relazioni e reti semantiche."
+    },
+    "tabular-dl": {
+      "title": "Apprendimento Profondo Tabellare",
+      "description": "Approcci di apprendimento profondo per dati tabellari strutturati e database relazionali."
+    },
+    "time-series": {
+      "title": "Previsione delle Serie Temporali",
+      "description": "Prevedere valori futuri in dati sequenziali utilizzando l'apprendimento profondo e metodi statistici."
+    },
+    "video-ai": {
+      "title": "Video",
+      "description": "IA per comprensione, generazione e analisi video: riconoscimento delle azioni, generazione video e modellazione temporale."
+    },
+    "ai-art": {
+      "title": "IA per Arte ed Estetica",
+      "description": "Creare arte, musica e contenuti creativi utilizzando l'intelligenza artificiale."
+    },
+    "edge-ai": {
+      "title": "IA per Edge e IoT",
+      "description": "Distribuzione di modelli di IA su dispositivi edge e sistemi Internet delle Cose."
+    },
+    "ai-finance": {
+      "title": "IA in Finanza",
+      "description": "Applicazioni dell'IA nei servizi finanziari e nel trading algoritmico."
+    },
+    "ai-gaming": {
+      "title": "IA per i Videogiochi",
+      "description": "Tecniche di IA per lo sviluppo di giochi: NPC, generazione procedurale e IA di gioco."
+    },
+    "ai-healthcare": {
+      "title": "IA in Sanità",
+      "description": "Trasformare l'assistenza sanitaria con diagnosi e pianificazione del trattamento alimentate dall'IA."
+    },
+    "ai-cybersecurity": {
+      "title": "IA nella Cybersicurezza",
+      "description": "Utilizzare l'IA per il rilevamento delle minacce, l'analisi della sicurezza e la difesa informatica."
+    },
+    "robotics-ai": {
+      "title": "Robotica e IA",
+      "description": "Combinare l'IA con la robotica per navigazione autonoma, manipolazione e processo decisionale."
+    },
+    "self-driving-cars": {
+      "title": "Auto a Guida Autonoma",
+      "description": "Tecnologia di veicoli autonomi: percezione, pianificazione e sistemi di controllo."
+    },
+    "flying-cars": {
+      "title": "Auto Volanti",
+      "description": "Sistemi di IA per veicoli aerei autonomi e mobilità aerea urbana."
+    },
+    "sensor-fusion": {
+      "title": "Fusione di Sensori",
+      "description": "Combinare dati da più sensori per migliorare la percezione e il processo decisionale nei sistemi autonomi."
+    },
+    "recommender-systems": {
+      "title": "Sistemi di Raccomandazione",
+      "description": "Sistemi alimentati dall'IA per raccomandazioni personalizzate e scoperta di contenuti."
+    },
+    "mlops": {
+      "title": "MLOps",
+      "description": "Migliori pratiche per distribuire e mantenere modelli di apprendimento automatico in produzione."
+    },
+    "automl": {
+      "title": "AutoML",
+      "description": "Apprendimento automatico automatizzato: selezione del modello, ottimizzazione degli iperparametri e ricerca dell'architettura."
+    },
+    "efficient-ai": {
+      "title": "IA Efficiente e Ottimizzazione",
+      "description": "Tecniche per rendere i modelli di IA più veloci, più piccoli e più efficienti dal punto di vista energetico."
+    },
+    "gpu-programming": {
+      "title": "Programmazione GPU",
+      "description": "Programmazione di GPU per carichi di lavoro IA: CUDA, ottimizzazione e calcolo parallelo."
+    },
+    "genetic-algorithms": {
+      "title": "Algoritmi Genetici",
+      "description": "Calcolo evolutivo utilizzando operatori genetici per problemi di ottimizzazione e ricerca."
+    },
+    "evolutionary-algorithms": {
+      "title": "Algoritmi Evolutivi",
+      "description": "Algoritmi di ottimizzazione basati sulla popolazione ispirati all'evoluzione biologica."
+    },
+    "information-retrieval": {
+      "title": "Recupero delle Informazioni",
+      "description": "Sistemi di ricerca, algoritmi di ranking e metodi di recupero per trovare informazioni rilevanti."
+    },
+    "adversarial-ml": {
+      "title": "Apprendimento Automatico Adversarial",
+      "description": "Comprendere e difendersi dagli attacchi adversarial sui modelli di apprendimento automatico."
+    },
+    "bayesian-ml": {
+      "title": "Apprendimento Automatico Bayesiano",
+      "description": "Approcci probabilistici all'apprendimento automatico con quantificazione dell'incertezza."
+    },
+    "continual-learning": {
+      "title": "Apprendimento Continuo",
+      "description": "Apprendere continuamente da nuovi dati senza dimenticare le conoscenze precedentemente apprese."
+    },
+    "federated-learning": {
+      "title": "Apprendimento Federato",
+      "description": "Addestrare modelli su dispositivi decentralizzati mantenendo i dati localizzati."
+    },
+    "xai": {
+      "title": "IA Spiegabile (XAI)",
+      "description": "Metodi per rendere le decisioni dell'IA trasparenti e interpretabili per gli esseri umani."
+    },
+    "ai-ethics": {
+      "title": "Etica ed Equità dell'IA",
+      "description": "Garantire che i sistemi di IA siano equi, imparziali e allineati con principi etici."
+    },
+    "machine-unlearning": {
+      "title": "Disapprendimento Automatico",
+      "description": "Tecniche per rimuovere dati o conoscenze specifiche dai modelli addestrati."
+    }
+  }
+}
+

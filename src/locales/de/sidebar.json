@@ -1,0 +1,128 @@
+{
+  "appName": "XBuildsAI",
+  "appNameShort": "XBuilds",
+  "appNameSuffix": "AI",
+  "toggleMobileMenu": "Mobiles Menü umschalten",
+  "goToHome": "Zu RoBuildsAI gehen",
+  "weeklyReport": {
+    "title": "Wöchentlicher Bericht",
+    "ariaLabel": "Wöchentlicher Bericht"
+  },
+  "roadmaps": {
+    "title": "Roadmaps",
+    "comingSoon": "Bald",
+    "ariaLabel": "Roadmaps (Demnächst)",
+    "submenu": {
+      "ariaLabel": "Roadmaps-Untermenü",
+      "aiCareer": "KI-Karriere-Roadmap",
+      "mlCareer": "ML-Karriere-Roadmap",
+      "dataScienceCareer": "Data-Science-Karriere-Roadmap"
+    }
+  },
+  "ecosystem": {
+    "title": "Ökosystem",
+    "comingSoon": "Bald",
+    "ariaLabel": "Ökosystem (Demnächst)",
+    "submenu": {
+      "ariaLabel": "Ökosystem-Untermenü",
+      "tools": "Tools",
+      "benchmarks": "Benchmarks",
+      "models": "Modelle",
+      "guides": "Anleitungen"
+    }
+  },
+  "resources": {
+    "title": "Ressourcen",
+    "comingSoon": "Bald",
+    "ariaLabel": "Ressourcen (Demnächst)",
+    "submenu": {
+      "ariaLabel": "Ressourcen-Untermenü",
+      "books": "Bücher",
+      "courses": "Kurse",
+      "tutorials": "Tutorials",
+      "blog": "Blog",
+      "interviewPrep": "Vorstellungsgespräch-Vorbereitung",
+      "cheatsheets": "Spickzettel"
+    }
+  },
+  "opportunities": {
+    "title": "Möglichkeiten",
+    "comingSoon": "Bald",
+    "ariaLabel": "Möglichkeiten (Demnächst)",
+    "submenu": {
+      "ariaLabel": "Möglichkeiten-Untermenü",
+      "conferences": "Konferenzen",
+      "scholarships": "Stipendien",
+      "competitions": "Wettbewerbe",
+      "techEvents": "Tech-Events",
+      "hackathons": "Hackathons",
+      "internships": "Praktika"
+    }
+  },
+  "playground": {
+    "title": "KI-Playground",
+    "comingSoon": "Bald",
+    "ariaLabel": "KI-Playground (Demnächst)",
+    "submenu": {
+      "ariaLabel": "Playground-Untermenü",
+      "notebook": "Interaktive Notebooks",
+      "codeEditor": "Code-Editor",
+      "models": "Modelle Testen",
+      "datasets": "Datensätze"
+    }
+  },
+  "news": {
+    "title": "Nachrichten & Forschung",
+    "comingSoon": "Bald",
+    "ariaLabel": "Nachrichten & Forschung (Demnächst)",
+    "submenu": {
+      "ariaLabel": "Nachrichten-Untermenü",
+      "daily": "Täglicher Digest",
+      "papers": "Forschungsarbeiten",
+      "trending": "Im Trend",
+      "newsletter": "Newsletter"
+    }
+  },
+  "certifications": {
+    "title": "Zertifizierungen",
+    "comingSoon": "Bald",
+    "ariaLabel": "Zertifizierungen (Demnächst)",
+    "submenu": {
+      "ariaLabel": "Zertifizierungen-Untermenü",
+      "paths": "Zertifizierungswege",
+      "exams": "Prüfung Ablegen",
+      "myCerts": "Meine Zertifikate",
+      "verify": "Zertifikat Verifizieren"
+    }
+  },
+  "community": {
+    "title": "Community",
+    "comingSoon": "Bald",
+    "ariaLabel": "Community (Demnächst)",
+    "submenu": {
+      "ariaLabel": "Community-Untermenü",
+      "projects": "Projekt-Showcase",
+      "mentorship": "Mentoring",
+      "studyGroups": "Lerngruppen",
+      "discussions": "Diskussionen"
+    }
+  },
+  "bookmarks": {
+    "sectionTitle": "Lesezeichen",
+    "removeBookmark": "Lesezeichen entfernen",
+    "viewTopic": "{{title}} ansehen"
+  },
+  "history": {
+    "sectionTitle": "Kürzlich"
+  },
+  "profile": {
+    "menu": {
+      "ariaLabel": "Benutzerprofil-Menü",
+      "myProfile": "Mein Profil",
+      "ariaLabelMyProfile": "Mein Profil"
+    },
+    "signIn": {
+      "ariaLabel": "Bei deinem Konto anmelden"
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "dropdown": {
+    "title": "Pesquisar",
+    "placeholder": "Pesquisar manuais, capítulos ou conceitos...",
+    "suggestions": "Sugestões",
+    "recentSearches": "Pesquisas recentes",
+    "clear": "Limpar",
+    "loading": "Carregando pesquisas recentes...",
+    "empty": {
+      "title": "Nenhuma pesquisa recente",
+      "description": "Comece a digitar para pesquisar"
+    },
+    "viewAll": "Ver todas as pesquisas",
+    "viewAllCount": "Ver as {{count}} pesquisas",
+    "time": {
+      "justNow": "Agora mesmo",
+      "minutesAgo": "há {{count}} min",
+      "hoursAgo": "há {{count}} h",
+      "daysAgo": "há {{count}} dias"
+    }
+  },
+  "page": {
+    "title": "Histórico de pesquisa",
+    "subtitle": {
+      "count": "{{count}} pesquisa salva",
+      "countPlural": "{{count}} pesquisas salvas"
+    },
+    "clearAll": "Limpar tudo",
+    "signInRequired": "Login necessário",
+    "signInMessage": "Por favor, faça login para ver seu histórico de pesquisa",
+    "goBack": "Voltar",
+    "loading": "Carregando histórico de pesquisa...",
+    "empty": {
+      "title": "Ainda não há histórico de pesquisa",
+      "description": "Suas pesquisas recentes aparecerão aqui. Comece a pesquisar para construir seu histórico."
+    },
+    "removeSearch": "Remover pesquisa",
+    "time": {
+      "justNow": "Agora mesmo",
+      "minutesAgo": "há {{count}} min",
+      "hoursAgo": "há {{count}} h",
+      "daysAgo": "há {{count}} dias"
+    },
+    "toast": {
+      "cleared": "Histórico de pesquisa limpo",
+      "removed": "Pesquisa removida",
+      "errorClear": "Falha ao limpar histórico de pesquisa",
+      "errorRemove": "Falha ao remover pesquisa"
+    }
+  },
+  "results": {
+    "title": "Resultados da Pesquisa",
+    "back": "Voltar",
+    "searchingFor": "Pesquisando por \"{{query}}\"",
+    "enterQuery": "Digite uma consulta de pesquisa",
+    "filter": "Filtrar",
+    "filterButtons": {
+      "all": "Todos",
+      "handbooks": "Manuais",
+      "topics": "Tópicos",
+      "quizzes": "Questionários"
+    },
+    "sort": "Ordenar",
+    "sortOptions": {
+      "relevance": "Relevância",
+      "lastUpdated": "Última atualização"
+    },
+    "clearFilters": "Limpar Filtros",
+    "foundResults": "Encontrado {{count}} resultado",
+    "foundResultsPlural": "Encontrados {{count}} resultados",
+    "inHandbooks": " em Manuais",
+    "inTopics": " em Tópicos",
+    "inQuizzes": " em Questionários",
+    "typeLabels": {
+      "topic": "Tópico",
+      "handbook": "Manual",
+      "quiz": "Questionário"
+    },
+    "sections": {
+      "handbooks": "Manuais",
+      "topics": "Tópicos",
+      "quizzes": "Questionários"
+    },
+    "questions": "perguntas"
+  },
+  "errors": {
+    "searchFailed": "Falha ao realizar a pesquisa. Por favor, tente novamente.",
+    "retry": "Tentar novamente"
+  }
+}

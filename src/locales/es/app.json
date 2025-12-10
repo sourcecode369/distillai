@@ -1,0 +1,408 @@
+{
+  "bookmarks": {
+    "title": "Mis favoritos",
+    "subtitle": "Tus temas y handbooks guardados",
+    "empty": {
+      "title": "Todavía no tienes favoritos",
+      "description": "Guarda tus temas y handbooks favoritos para acceder a ellos rápidamente más tarde. Empieza a explorar y marca el contenido que te interese.",
+      "action": "Explorar Handbooks"
+    },
+    "remove": "Quitar de favoritos",
+    "viewAll": "Ver todos los favoritos"
+  },
+  "history": {
+    "title": "Historial de lectura",
+    "subtitle": "Temas que has visto recientemente",
+    "empty": {
+      "title": "Sin historial de lectura",
+      "description": "Tu historial de lectura aparecerá aquí a medida que explores temas y handbooks. Empieza a aprender para construir tu historial.",
+      "action": "Empezar a aprender"
+    },
+    "clear": "Borrar historial",
+    "recent": "Recientes"
+  },
+  "progress": {
+    "title": "Mi progreso",
+    "subtitle": "Sigue tu ruta de aprendizaje y logros",
+    "completed": "Completado",
+    "inProgress": "En progreso",
+    "notStarted": "No iniciado",
+    "topicsCompleted": "Temas completados",
+    "categoriesExplored": "Categorías exploradas",
+    "quizzesPassed": "Cuestionarios aprobados",
+    "timeSpent": "Tiempo dedicado",
+    "notAvailable": "N/D",
+    "unknown": {
+      "topic": "Tema desconocido",
+      "category": "Categoría desconocida"
+    },
+    "empty": {
+      "signInRequired": "Inicio de sesión requerido",
+      "description": "Por favor inicia sesión para ver tu progreso de aprendizaje. Crea una cuenta para rastrear tu progreso, hacer cuestionarios y desbloquear logros.",
+      "title": "Sin progreso todavía",
+      "action": "Empezar a aprender"
+    },
+    "learningProgress": {
+      "title": "Progreso de aprendizaje",
+      "handbookCompletion": "Finalización del manual",
+      "topicsCompleted": "{{completed}} de {{total}} temas completados"
+    },
+    "stats": {
+      "topicsCompleted": "Temas completados",
+      "quizzesTaken": "Cuestionarios realizados",
+      "readingHistory": "Historial de lectura",
+      "outOf": "de {{total}} en total",
+      "totalAttempts": "intentos totales",
+      "recentItems": "elementos recientes"
+    },
+    "readingHistory": {
+      "title": "Historial de lectura reciente"
+    },
+    "quizHistory": {
+      "title": "Historial de cuestionarios",
+      "empty": {
+        "title": "Sin historial de cuestionarios",
+        "description": "Aún no has realizado ningún cuestionario. ¡Empieza a aprender y pon a prueba tus conocimientos!"
+      }
+    },
+    "achievements": {
+      "title": "Logros y certificados",
+      "empty": "¡Sigue aprendiendo para desbloquear logros!",
+      "handbookCompleted": {
+        "title": "Manual completado",
+        "description": "¡Has completado todos los temas del manual!"
+      },
+      "topics10": {
+        "title": "10 temas completados",
+        "description": "¡Has completado 10 temas!"
+      },
+      "topics25": {
+        "title": "25 temas completados",
+        "description": "¡Has completado 25 temas!"
+      },
+      "topics50": {
+        "title": "50 temas completados",
+        "description": "¡Has completado 50 temas!"
+      },
+      "quizzes5": {
+        "title": "Entusiasta de cuestionarios",
+        "description": "¡Has realizado 5 cuestionarios!"
+      },
+      "quizzes10": {
+        "title": "Maestro de cuestionarios",
+        "description": "¡Has realizado 10 cuestionarios!"
+      }
+    }
+  },
+  "search": {
+    "title": "Buscar",
+    "placeholder": "Buscar temas, categorías...",
+    "noResults": {
+      "title": "No se encontraron resultados",
+      "description": "No pudimos encontrar nada que coincida con \"{{query}}\". Prueba con otras palabras clave o explora nuestras categorías.",
+      "clear": "Borrar búsqueda"
+    },
+    "startTyping": {
+      "title": "Empieza a escribir para buscar",
+      "description": "Empieza a escribir para buscar temas, categorías o contenido."
+    },
+    "recentSearches": "Búsquedas recientes",
+    "clearRecent": "Borrar búsquedas recientes",
+    "viewAll": "Ver todos los resultados"
+  },
+  "quiz": {
+    "title": "Cuestionario",
+    "start": "Empezar cuestionario",
+    "restart": "Reiniciar cuestionario",
+    "submit": "Enviar respuestas",
+    "next": "Siguiente pregunta",
+    "previous": "Pregunta anterior",
+    "question": "Pregunta {{current}} de {{total}}",
+    "correct": "¡Correcto!",
+    "incorrect": "Incorrecto",
+    "score": "Tu puntuación",
+    "passed": "¡Has aprobado!",
+    "failed": "No has aprobado",
+    "retry": "Reintentar cuestionario",
+    "backToTopic": "Volver al tema",
+    "results": {
+      "title": "Resultados del cuestionario",
+      "correctAnswers": "Respuestas correctas",
+      "totalQuestions": "Número total de preguntas",
+      "percentage": "Puntuación",
+      "timeSpent": "Tiempo dedicado"
+    }
+  },
+  "completionDialog": {
+    "reachedEnd": "¡Has llegado al final!",
+    "markComplete": "¿Marcar {{title}} como completado?",
+    "signInRequired": "Por favor, inicia sesión para marcar temas como completados",
+    "markedComplete": "¡Marcado como completado!",
+    "marking": "Marcando...",
+    "yesMarkComplete": "Sí, marcar como completado",
+    "no": "No",
+    "dismissAriaLabel": "Cerrar diálogo de finalización",
+    "markCompleteAriaLabel": "Marcar tema como completado",
+    "markingAriaLabel": "Marcando como completado",
+    "dismiss": "Cerrar",
+    "topicMarkedComplete": "¡Tema marcado como completado! ✓",
+    "failedToUpdate": "Error al actualizar. Por favor, inténtalo de nuevo."
+  },
+  "topic": {
+    "readTime": "{{time}} min de lectura",
+    "difficulty": "Dificultad",
+    "beginner": "Principiante",
+    "intermediate": "Intermedio",
+    "advanced": "Avanzado",
+    "prerequisites": "Requisitos previos",
+    "learningObjectives": "Objetivos de aprendizaje",
+    "relatedTopics": "Temas relacionados",
+    "takeQuiz": "Hacer cuestionario",
+    "markAsComplete": "Marcar como completado",
+    "markedAsComplete": "Marcado como completado",
+    "bookmark": "Añadir a favoritos",
+    "bookmarked": "Añadido a favoritos",
+    "share": "Compartir",
+    "completed": "Completado"
+  },
+  "notifications": {
+    "title": "Notificaciones",
+    "subtitle": "Mantente al día con tu actividad de aprendizaje",
+    "empty": {
+      "title": "Sin notificaciones",
+      "description": "Verás aquí notificaciones sobre tu progreso, nuevo contenido y actualizaciones."
+    },
+    "markAsRead": "Marcar como leída",
+    "markAllAsRead": "Marcar todo como leído",
+    "delete": "Eliminar",
+    "new": "Nueva"
+  },
+  "profile": {
+    "title": "Mi perfil",
+    "subtitle": "Gestiona la información de tu cuenta y preferencias",
+    "actions": {
+      "edit": "Editar perfil",
+      "saveChanges": "Guardar cambios"
+    },
+    "empty": {
+      "signInRequired": "Inicio de sesión requerido",
+      "description": "Por favor inicia sesión para ver y gestionar tu perfil. Crea una cuenta para guardar tu progreso, marcar temas y personalizar tu experiencia de aprendizaje."
+    },
+    "completion": {
+      "complete": "¡Perfil completo!",
+      "percentage": "Perfil {{percentage}}% completo",
+      "and": "y",
+      "hint": "Añade {{items}} para completar tu perfil.",
+      "missing": {
+        "fullName": "nombre completo",
+        "avatar": "avatar",
+        "bio": "biografía",
+        "socialLinks": "enlaces sociales",
+        "preferences": "preferencias"
+      }
+    },
+    "sections": {
+      "personalInfo": "Información personal",
+      "avatar": "Avatar",
+      "socialLinks": "Enlaces sociales",
+      "preferences": "Preferencias",
+      "accountDetails": "Detalles de la cuenta",
+      "accountSecurity": "Cuenta y seguridad"
+    },
+    "fields": {
+      "fullName": "Nombre completo",
+      "email": "Dirección de correo electrónico",
+      "bio": "Sobre ti",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter/X"
+    },
+    "placeholders": {
+      "fullName": "Ingresa tu nombre completo",
+      "bio": "Cuéntanos un poco sobre ti (opcional)",
+      "github": "https://github.com/usuario",
+      "linkedin": "https://linkedin.com/in/usuario",
+      "twitter": "https://twitter.com/usuario",
+      "newEmail": "Ingresa nueva dirección de correo",
+      "newPassword": "Ingresa nueva contraseña (mín. 6 caracteres)",
+      "confirmPassword": "Confirma nueva contraseña",
+      "deleteConfirm": "ELIMINAR"
+    },
+    "labels": {
+      "memberSince": "Miembro desde",
+      "lastUpdated": "Última actualización",
+      "accountCreated": "Cuenta creada",
+      "verified": "Verificado",
+      "notSet": "No establecido",
+      "never": "Nunca",
+      "noBio": "Aún no se ha añadido biografía",
+      "usingDefaultAvatar": "Usando avatar de iniciales por defecto",
+      "emailCannotChange": "El correo electrónico no se puede cambiar",
+      "changeAvatar": "Cambiar avatar",
+      "changeAvatarButton": "Cambiar avatar",
+      "avatarDescription": "Sube una imagen, elige entre avatares predefinidos o ingresa una URL. Déjalo vacío para usar iniciales."
+    },
+    "preferences": {
+      "newsletter": {
+        "title": "Boletín semanal de IA",
+        "description": "Recibe actualizaciones semanales sobre tendencias e información de IA"
+      },
+      "handbookAlerts": {
+        "title": "Alertas de nuevos manuales",
+        "description": "Notifícame cuando se publiquen nuevos manuales"
+      },
+      "productUpdates": {
+        "title": "Actualizaciones del producto",
+        "description": "Mantente informado sobre nuevas funciones y mejoras"
+      }
+    },
+    "security": {
+      "changeEmail": {
+        "title": "Cambiar dirección de correo electrónico",
+        "updateButton": "Actualizar correo",
+        "enterNew": "Por favor ingresa una nueva dirección de correo electrónico",
+        "invalid": "Por favor ingresa una dirección de correo electrónico válida",
+        "mustBeDifferent": "El nuevo correo debe ser diferente del correo actual",
+        "changeFailed": "Error al cambiar el correo. Por favor intenta de nuevo.",
+        "changeRequestSent": "Solicitud de cambio de correo enviada. Por favor revisa tu nuevo correo para confirmar.",
+        "currentEmailNote": "Correo actual: {{email}}. Recibirás un correo de confirmación en la nueva dirección."
+      },
+      "changePassword": {
+        "title": "Cambiar contraseña",
+        "updateButton": "Actualizar contraseña",
+        "fillAll": "Por favor completa todos los campos de contraseña",
+        "minLength": "La contraseña debe tener al menos 6 caracteres",
+        "mismatch": "Las contraseñas no coinciden",
+        "changeFailed": "Error al cambiar la contraseña. Por favor intenta de nuevo.",
+        "changeSuccess": "Contraseña cambiada exitosamente. Serás desconectado por seguridad."
+      },
+      "delete": {
+        "title": "Eliminar cuenta",
+        "description": "Elimina permanentemente tu cuenta y todos los datos asociados. Esta acción no se puede deshacer.",
+        "button": "Eliminar cuenta",
+        "modalTitle": "Eliminar cuenta",
+        "modalDescription": "Esta acción eliminará permanentemente tu cuenta y todos los datos asociados, incluyendo:",
+        "modalItems": {
+          "profile": "Tu información de perfil",
+          "bookmarks": "Todos los favoritos",
+          "progress": "Tu progreso de aprendizaje",
+          "notifications": "Todas las notificaciones"
+        },
+        "cannotUndo": "Esta acción no se puede deshacer.",
+        "typeDelete": "Escribe <span class=\"font-mono bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded\">ELIMINAR</span> para confirmar:",
+        "typeDeleteConfirm": "Por favor escribe ELIMINAR para confirmar",
+        "success": "Cuenta eliminada exitosamente",
+        "failed": "Error al eliminar la cuenta. Por favor intenta de nuevo o contacta al soporte.",
+        "deleting": "Eliminando...",
+        "deleteButton": "Eliminar cuenta"
+      }
+    },
+    "validation": {
+      "fullNameMaxLength": "El nombre completo debe tener menos de 100 caracteres",
+      "bioMaxLength": "La biografía debe tener menos de 200 caracteres",
+      "invalidUrl": "Por favor ingresa una URL válida"
+    },
+    "errors": {
+      "loadFailed": "Error al cargar el perfil",
+      "updateFailed": "Error al actualizar el perfil",
+      "fixErrors": "Por favor corrige los errores en el formulario antes de guardar tus cambios.",
+      "validationError": "Error de validación"
+    },
+    "success": {
+      "title": "Éxito",
+      "updated": "Perfil actualizado exitosamente"
+    }
+  },
+  "emptyStates": {
+    "topics": {
+      "title": "No hay temas en {{category}}",
+      "description": "Esta categoría aún no tiene temas. Vuelve más tarde o explora otras categorías.",
+      "action": "Explorar categorías"
+    },
+    "categories": {
+      "title": "No hay categorías disponibles",
+      "description": "Las categorías aparecerán aquí cuando se añadan a la plataforma.",
+      "action": "Actualizar"
+    }
+  },
+  "hero": {
+    "title": "Domina la Inteligencia Artificial",
+    "subtitle": "Guías completas sobre conceptos, técnicas y aplicaciones de inteligencia artificial. Aprende IA, ML y Ciencia de Datos.",
+    "cta": "Explorar Handbooks",
+    "secondaryCta": "Más información"
+  },
+  "features": {
+    "title": "Todo lo que necesitas para dominar la IA",
+    "subtitle": "Rutas de aprendizaje estructuradas para ingenieros e investigadores",
+    "handbooks": {
+      "title": "AI Handbooks",
+      "description": "Guías completas que cubren IA, ML y Ciencia de Datos desde los fundamentos hasta temas avanzados.",
+      "action": "Explorar Handbooks",
+      "stats": "50+ temas"
+    },
+    "roadmaps": {
+      "title": "Rutas profesionales",
+      "description": "Rutas paso a paso para ingenieros de IA, investigadores de ML y científicos de datos.",
+      "action": "Próximamente",
+      "stats": "3 rutas"
+    },
+    "ecosystem": {
+      "title": "Herramientas del ecosistema",
+      "description": "Descubre herramientas, frameworks, benchmarks y modelos esenciales para crear aplicaciones de IA.",
+      "action": "Próximamente",
+      "stats": "100+ herramientas"
+    },
+    "resources": {
+      "title": "Recursos de aprendizaje",
+      "description": "Libros, cursos, tutoriales y material de preparación para entrevistas cuidadosamente seleccionados para acelerar tu aprendizaje.",
+      "action": "Próximamente",
+      "stats": "500+ recursos"
+    },
+    "opportunities": {
+      "title": "Oportunidades profesionales",
+      "description": "Encuentra congresos, becas, competiciones, hackatones y prácticas en IA y ML.",
+      "action": "Próximamente",
+      "stats": "100+ oportunidades"
+    },
+    "community": {
+      "title": "Comunidad",
+      "description": "Únete a una comunidad vibrante de entusiastas de la IA, comparte conocimiento y colabora en proyectos.",
+      "action": "Unirse a la comunidad",
+      "stats": "10K+ miembros"
+    }
+  },
+  "benefits": {
+    "title": "¿Por qué elegir AI Handbooks?",
+    "subtitle": "Todo lo que necesitas para tener éxito en IA",
+    "structured": {
+      "title": "Aprendizaje estructurado",
+      "description": "Sigue rutas seleccionadas desde los fundamentos hasta temas avanzados, diseñadas por expertos de la industria."
+    },
+    "comprehensive": {
+      "title": "Contenido completo",
+      "description": "Accede a guías en profundidad, tutoriales y recursos que cubren todos los aspectos de IA, ML y Ciencia de Datos."
+    },
+    "practical": {
+      "title": "Enfoque práctico",
+      "description": "Aprende a través de ejemplos prácticos, fragmentos de código y aplicaciones reales."
+    },
+    "upToDate": {
+      "title": "Siempre actualizado",
+      "description": "El contenido se actualiza periódicamente para reflejar los últimos avances en IA y ML."
+    },
+    "community": {
+      "title": "Comunidad activa",
+      "description": "Únete a debates, haz preguntas y colabora con otros estudiantes y expertos."
+    },
+    "free": {
+      "title": "Gratis y abierto",
+      "description": "Todo el contenido es gratuito y open source, disponible para todos."
+    }
+  },
+  "cta": {
+    "title": "¿Listo para empezar a aprender?",
+    "subtitle": "Únete a miles de estudiantes que dominan IA, ML y Ciencia de Datos.",
+    "button": "Empezar gratis",
+    "secondaryButton": "Explorar Handbooks"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "dropdown": {
+    "title": "Search",
+    "placeholder": "Search handbooks, chapters, or concepts...",
+    "suggestions": "Suggestions",
+    "recentSearches": "Recent Searches",
+    "clear": "Clear",
+    "loading": "Loading recent searches...",
+    "empty": {
+      "title": "No recent searches",
+      "description": "Start typing to search"
+    },
+    "viewAll": "View all searches",
+    "viewAllCount": "View all {{count}} searches",
+    "time": {
+      "justNow": "Just now",
+      "minutesAgo": "{{count}}m ago",
+      "hoursAgo": "{{count}}h ago",
+      "daysAgo": "{{count}}d ago"
+    }
+  },
+  "page": {
+    "title": "Search History",
+    "subtitle": {
+      "count": "{{count}} saved search",
+      "countPlural": "{{count}} saved searches"
+    },
+    "clearAll": "Clear all",
+    "signInRequired": "Sign in Required",
+    "signInMessage": "Please sign in to view your search history",
+    "goBack": "Go back",
+    "loading": "Loading search history...",
+    "empty": {
+      "title": "No search history yet",
+      "description": "Your recent searches will appear here. Start searching to build your history."
+    },
+    "removeSearch": "Remove search",
+    "time": {
+      "justNow": "Just now",
+      "minutesAgo": "{{count}}m ago",
+      "hoursAgo": "{{count}}h ago",
+      "daysAgo": "{{count}}d ago"
+    },
+    "toast": {
+      "cleared": "Search history cleared",
+      "removed": "Search removed",
+      "errorClear": "Failed to clear search history",
+      "errorRemove": "Failed to remove search"
+    }
+  },
+  "results": {
+    "title": "Search Results",
+    "back": "Back",
+    "searchingFor": "Searching for \"{{query}}\"",
+    "enterQuery": "Enter a search query",
+    "filter": "Filter",
+    "filterButtons": {
+      "all": "All",
+      "handbooks": "Handbooks",
+      "topics": "Topics",
+      "quizzes": "Quizzes"
+    },
+    "sort": "Sort",
+    "sortOptions": {
+      "relevance": "Relevance",
+      "lastUpdated": "Last Updated"
+    },
+    "clearFilters": "Clear Filters",
+    "foundResults": "Found {{count}} result",
+    "foundResultsPlural": "Found {{count}} results",
+    "inHandbooks": " in Handbooks",
+    "inTopics": " in Topics",
+    "inQuizzes": " in Quizzes",
+    "typeLabels": {
+      "topic": "Topic",
+      "handbook": "Handbook",
+      "quiz": "Quiz"
+    },
+    "sections": {
+      "handbooks": "Handbooks",
+      "topics": "Topics",
+      "quizzes": "Quizzes"
+    },
+    "questions": "questions"
+  },
+  "errors": {
+    "searchFailed": "Failed to perform search. Please try again.",
+    "retry": "Retry"
+  }
+}

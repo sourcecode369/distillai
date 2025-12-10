@@ -1,0 +1,70 @@
+{
+  "bell": {
+    "title": "Notificaciones",
+    "ariaLabel": "Notificaciones",
+    "ariaLabelUnread": "Notificaciones, {{count}} sin leer"
+  },
+  "dropdown": {
+    "title": "Notificaciones",
+    "ariaLabel": "Notificaciones",
+    "markAllRead": "Marcar todas como leídas",
+    "loading": "Cargando notificaciones...",
+    "viewAll": "Ver todas las notificaciones",
+    "viewAllCount": "Ver las {{count}} notificaciones",
+    "time": {
+      "justNow": "Ahora mismo",
+      "minutesAgo": "hace {{count}} min.",
+      "hoursAgo": "hace {{count}} h",
+      "daysAgo": "hace {{count}} días"
+    }
+  },
+  "page": {
+    "title": "Notificaciones",
+    "subtitle": {
+      "unread": "sin leer",
+      "total": "en total",
+      "count": "{{count}} notificación",
+      "countPlural": "{{count}} notificaciones"
+    },
+    "markAllRead": "Marcar todas como leídas",
+    "signInRequired": "Inicio de sesión requerido",
+    "signInMessage": "Por favor, inicia sesión para ver tus notificaciones",
+    "goBack": "Volver",
+    "filters": {
+      "all": "Todas",
+      "unread": "Sin leer",
+      "read": "Leídas"
+    },
+    "loading": "Cargando notificaciones...",
+    "empty": {
+      "all": {
+        "title": "Aún no hay notificaciones",
+        "description": "Verás notificaciones aquí cuando los administradores envíen actualizaciones y anuncios"
+      },
+      "unread": {
+        "title": "¡Todo al día!",
+        "description": "Has leído todas tus notificaciones. ¡Buen trabajo manteniéndote al día!"
+      },
+      "read": {
+        "title": "No hay notificaciones leídas",
+        "description": "Intenta cambiar a un filtro diferente para ver más notificaciones"
+      }
+    },
+    "markAsRead": "Marcar como leída",
+    "markRead": "Marcar como leída",
+    "new": "Nueva",
+    "toast": {
+      "markedAsRead": "Notificación marcada como leída",
+      "markAllRead": "Todas las notificaciones marcadas como leídas",
+      "errorMarkAsRead": "Error al marcar la notificación como leída",
+      "errorMarkAllRead": "Error al marcar todas las notificaciones como leídas"
+    },
+    "time": {
+      "justNow": "Ahora mismo",
+      "minutesAgo": "hace {{count}} min.",
+      "hoursAgo": "hace {{count}} h",
+      "daysAgo": "hace {{count}} días"
+    }
+  }
+}
+

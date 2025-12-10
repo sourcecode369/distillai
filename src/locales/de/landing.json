@@ -1,0 +1,101 @@
+{
+  "hero": {
+    "title": "Meistern Sie",
+    "titleHighlight": "Künstliche Intelligenz",
+    "subtitle": "Von den Grundlagen bis zum Fortgeschrittenen",
+    "description": "Umfassende Leitfäden zu Konzepten, Techniken und Anwendungen der künstlichen Intelligenz. Lernen Sie KI, ML und Data Science.",
+    "descriptionSecondary": "Lernen Sie in Ihrem eigenen Tempo mit strukturierten Inhalten, die für alle Fähigkeitsstufen konzipiert sind.",
+    "badge": "Ihre vollständige KI-Lernplattform",
+    "cta": "Handbücher erkunden",
+    "secondaryCta": "Mehr erfahren",
+    "rotatingWords": {
+      "ai": "Künstliche Intelligenz",
+      "ml": "Maschinelles Lernen",
+      "dataScience": "Datenwissenschaft",
+      "neuralNetworks": "Neuronale Netze"
+    }
+  },
+  "features": {
+    "sectionLabel": "Plattform-Funktionen",
+    "comingSoon": "Bald",
+    "title": "Alles, was Sie brauchen, um KI zu meistern",
+    "subtitle": "Strukturierte Lernpfade für Ingenieure und Forscher",
+    "handbooks": {
+      "title": "KI-Handbücher",
+      "description": "Umfassende Leitfäden zu KI, ML und Data Science von den Grundlagen bis zu fortgeschrittenen Themen.",
+      "action": "Handbücher erkunden",
+      "stats": "50+ Themen"
+    },
+    "roadmaps": {
+      "title": "Karriere-Roadmaps",
+      "description": "Schritt-für-Schritt-Karrierewege für KI-Ingenieure, ML-Forscher und Data Scientists.",
+      "action": "Demnächst verfügbar",
+      "stats": "3 Roadmaps"
+    },
+    "ecosystem": {
+      "title": "Ökosystem-Tools",
+      "description": "Entdecken Sie wichtige KI-Tools, Frameworks, Benchmarks und Modelle zum Erstellen von KI-Anwendungen.",
+      "action": "Demnächst verfügbar",
+      "stats": "100+ Tools"
+    },
+    "resources": {
+      "title": "Lernressourcen",
+      "description": "Kuratierte Bücher, Kurse, Tutorials und Interviewvorbereitungsmaterialien zur Beschleunigung Ihres Lernens.",
+      "action": "Demnächst verfügbar",
+      "stats": "500+ Ressourcen"
+    },
+    "opportunities": {
+      "title": "Karrieremöglichkeiten",
+      "description": "Finden Sie Konferenzen, Stipendien, Wettbewerbe, Hackathons und Praktika in KI und ML.",
+      "action": "Demnächst verfügbar",
+      "stats": "100+ Möglichkeiten"
+    },
+    "community": {
+      "title": "Community",
+      "description": "Treten Sie einer lebendigen Community von KI-Enthusiasten bei, teilen Sie Wissen und arbeiten Sie an Projekten zusammen.",
+      "action": "Community beitreten",
+      "stats": "10K+ Mitglieder"
+    }
+  },
+  "benefits": {
+    "sectionLabel": "Warum uns wählen",
+    "title": "Warum AI Handbooks wählen?",
+    "subtitle": "Alles, was Sie brauchen, um in KI erfolgreich zu sein",
+    "structured": {
+      "title": "Strukturiertes Lernen",
+      "description": "Folgen Sie kuratierten Wegen von den Grundlagen bis zu fortgeschrittenen Themen, entwickelt von Branchenexperten."
+    },
+    "comprehensive": {
+      "title": "Umfassender Inhalt",
+      "description": "Zugriff auf detaillierte Leitfäden, Tutorials und Ressourcen, die alle Aspekte von KI, ML und Data Science abdecken."
+    },
+    "practical": {
+      "title": "Praktischer Fokus",
+      "description": "Lernen Sie durch praktische Beispiele, Code-Snippets und reale Anwendungen."
+    },
+    "upToDate": {
+      "title": "Immer auf dem neuesten Stand",
+      "description": "Der Inhalt wird regelmäßig aktualisiert, um die neuesten Entwicklungen in KI und ML widerzuspiegeln."
+    },
+    "community": {
+      "title": "Aktive Community",
+      "description": "Nehmen Sie an Diskussionen teil, stellen Sie Fragen und arbeiten Sie mit anderen Lernenden und Experten zusammen."
+    },
+    "free": {
+      "title": "Kostenlos & Open Source",
+      "description": "Alle Inhalte sind kostenlos und Open Source, für jeden verfügbar."
+    }
+  },
+  "cta": {
+    "title": "Bereit zum Lernen?",
+    "subtitle": "Schließen Sie sich Tausenden von Lernenden an, die KI, ML und Data Science meistern.",
+    "button": "Kostenlos starten",
+    "secondaryButton": "Handbücher erkunden"
+  },
+  "stats": {
+    "topics": "Themen",
+    "roadmaps": "Roadmaps",
+    "resources": "Ressourcen",
+    "tools": "Tools"
+  }
+}

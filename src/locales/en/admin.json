@@ -1,0 +1,478 @@
+{
+  "title": "Admin Dashboard",
+  "subtitle": "Manage content, users, analytics, and platform settings",
+  "tabs": {
+    "analytics": "Analytics",
+    "users": "Users",
+    "content": "Content",
+    "notifications": "Notifications",
+    "activity": "Activity",
+    "settings": "Settings"
+  },
+  "header": {
+    "title": "Admin Dashboard",
+    "subtitle": "Manage content, users, analytics, and platform settings",
+    "refresh": "Refresh",
+    "refreshTooltip": "Refresh all data",
+    "switchToLightMode": "Switch to light mode",
+    "switchToDarkMode": "Switch to dark mode",
+    "notifications": "Notifications",
+    "loggedInAs": "Logged in as"
+  },
+  "analytics": {
+    "title": "Analytics Dashboard",
+    "subtitle": "Comprehensive insights into platform usage and engagement",
+    "loading": "Loading analytics...",
+    "noData": "No analytics data available",
+    "timeframe": {
+      "label": "Timeframe",
+      "selectPlaceholder": "Select timeframe",
+      "last7Days": "Last 7 Days",
+      "last30Days": "Last 30 Days",
+      "last90Days": "Last 90 Days",
+      "lastYear": "Last Year"
+    },
+    "sections": {
+      "keyPerformanceIndicators": "Key Performance Indicators",
+      "engagementMetrics": "Engagement Metrics",
+      "engagementLearning": "Engagement & Learning Analytics",
+      "quizProgress": "Quiz & Progress Insights"
+    },
+    "metrics": {
+      "totalUsers": "Total Users",
+      "activeUsers": "Active Users",
+      "totalTopics": "Total Topics",
+      "completedTopics": "Completed Topics",
+      "totalQuizzes": "Total Quizzes",
+      "passedQuizzes": "Passed Quizzes",
+      "averageScore": "Average Score",
+      "totalBookmarks": "Total Bookmarks",
+      "readingSessions": "Reading Sessions",
+      "quizAttempts": "Quiz Attempts",
+      "quizPassRate": "Quiz Pass Rate",
+      "thisWeek": "this week",
+      "new": "new"
+    },
+    "charts": {
+      "userGrowth": "User Growth",
+      "topicViews": "Topic Views",
+      "quizPerformance": "Quiz Performance",
+      "categoryDistribution": "Category Distribution",
+      "engagementOverTime": "Engagement Over Time",
+      "dailyActiveUsers": "Daily Active Users",
+      "activityByHour": "Activity by Hour",
+      "topicViewsCompletions": "Topic Views & Completions by Category",
+      "topViewedTopics": "Top 5 Most Viewed Topics",
+      "quizPerformanceByTopic": "Quiz Performance by Topic",
+      "scoreDistribution": "Score Distribution",
+      "completionFunnel": "Completion Funnel",
+      "mostCompletedTopics": "Most Completed Topics",
+      "lastDays": "Last {{days}} days",
+      "peakUsageTimes": "Peak usage times",
+      "categoryPerformance": "Category performance overview",
+      "mostPopularContent": "Most popular content",
+      "topAttempts": "Top 10 topics by attempts",
+      "quizScoreRanges": "Quiz score ranges",
+      "userProgression": "User progression metrics",
+      "topCompletionRates": "Top completion rates",
+      "views": "views",
+      "completions": "completions",
+      "completion": "completion",
+      "conversion": "conversion",
+      "noTopicViews": "No topic views data available",
+      "noQuizData": "No quiz data available",
+      "noCompletionData": "No completion data available",
+      "topic": "Topic",
+      "attempts": "Attempts",
+      "avgScore": "Avg Score",
+      "passRate": "Pass Rate",
+      "readTopics": "Read Topics",
+      "attemptedQuiz": "Attempted Quiz",
+      "passedQuiz": "Passed Quiz"
+    },
+    "insights": {
+      "title": "Quiz & Progress Insights",
+      "mostPopularTopics": "Most Popular Topics",
+      "mostCompletedTopics": "Most Completed Topics",
+      "averageCompletionRate": "Average Completion Rate"
+    }
+  },
+  "users": {
+    "title": "User Management",
+    "subtitle": "Manage all platform users and permissions",
+    "export": "Export",
+    "search": {
+      "placeholder": "Search users by name or email",
+      "noResults": "No users found"
+    },
+    "filters": {
+      "all": "All Users",
+      "admin": "Admins",
+      "regular": "Regular Users"
+    },
+    "sort": {
+      "newest": "Newest First",
+      "oldest": "Oldest First",
+      "name": "Sort by Name"
+    },
+    "table": {
+      "user": "User",
+      "email": "Email",
+      "role": "Role",
+      "joined": "Joined",
+      "lastActive": "Last Active",
+      "actions": "Actions",
+      "noName": "No name",
+      "adminBadge": "Admin"
+    },
+    "actions": {
+      "viewDetails": "View Details",
+      "makeAdmin": "Make Admin",
+      "removeAdmin": "Remove Admin",
+      "deleteUser": "Delete User",
+      "sendNotification": "Send Notification"
+    },
+    "modals": {
+      "userDetails": {
+        "title": "User Details",
+        "stats": "User Statistics",
+        "topicsCompleted": "Topics Completed",
+        "quizzesPassed": "Quizzes Passed",
+        "bookmarks": "Bookmarks",
+        "readingTime": "Reading Time",
+        "readingHistory": "Reading History",
+        "totalProgress": "Total Progress",
+        "averageScore": "Average Score",
+        "joined": "Joined",
+        "lastUpdated": "Last Updated",
+        "noData": "—"
+      },
+      "makeAdmin": {
+        "title": "Make Admin",
+        "message": "Are you sure you want to make {{name}} an admin?",
+        "confirm": "Make Admin",
+        "cancel": "Cancel"
+      },
+      "removeAdmin": {
+        "title": "Remove Admin",
+        "message": "Are you sure you want to remove admin privileges from {{name}}?",
+        "confirm": "Remove Admin",
+        "cancel": "Cancel"
+      },
+      "deleteUser": {
+        "title": "Delete User",
+        "message": "Are you sure you want to delete {{name}}? This action cannot be undone and will permanently remove all associated data.",
+        "confirm": "Delete User",
+        "cancel": "Cancel"
+      }
+    },
+    "empty": {
+      "title": "No users yet",
+      "description": "No users have registered on the platform yet."
+    }
+  },
+  "content": {
+    "title": "Content Management",
+    "subtitle": "Manage all topics and categories",
+    "loading": "Loading topics...",
+    "search": {
+      "placeholder": "Search topics...",
+      "label": "Search topics"
+    },
+    "toolbar": {
+      "addTopic": "Add Topic",
+      "importSectionsCategories": "Import Sections & Categories",
+      "importingData": "Importing Data...",
+      "importStaticTopics": "Import Static Topics",
+      "importWeeklyReports": "Import Weekly Reports",
+      "importingWeeklyReports": "Importing Weekly Reports...",
+      "importingProgress": "Importing... ({{current}}/{{total}})",
+      "importSectionsTooltip": "Import sections and categories from code files to database (must be done first)",
+      "importTopicsTooltip": "Import all static topics from code files to database",
+      "importWeeklyReportsTooltip": "Import weekly reports from static JSON file to database",
+      "importSectionsFirst": "Import sections and categories first"
+    },
+    "categories": {
+      "title": "Categories",
+      "add": "Add Category",
+      "edit": "Edit Category",
+      "delete": "Delete Category"
+    },
+    "topics": {
+      "title": "Topics",
+      "add": "Add Topic",
+      "edit": "Edit Topic",
+      "delete": "Delete Topic",
+      "import": "Import Topics",
+      "importing": "Importing topics...",
+      "importProgress": "Importing {{current}} of {{total}}",
+      "imported": "Imported {{count}} topics successfully"
+    },
+    "table": {
+      "topic": "Topic",
+      "category": "Category",
+      "difficulty": "Difficulty",
+      "readTime": "Read Time",
+      "tags": "Tags",
+      "actions": "Actions"
+    },
+    "filters": {
+      "allCategories": "All Categories",
+      "allDifficulties": "All Difficulties",
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    },
+    "modals": {
+      "deleteTopic": {
+        "title": "Delete Topic",
+        "message": "Are you sure you want to delete \"{{title}}\"? This action cannot be undone and will permanently remove the topic from the database.",
+        "confirm": "Delete",
+        "cancel": "Cancel"
+      },
+      "topicForm": {
+        "title": "Topic",
+        "addTitle": "Add New Topic",
+        "editTitle": "Edit Topic",
+        "createDescription": "Create a new topic for your handbook",
+        "topicIdLabel": "Topic ID:",
+        "basicInfo": "Basic Info",
+        "meta": "Meta",
+        "content": "Content",
+        "titleLabel": "Title",
+        "descriptionLabel": "Description",
+        "categoryLabel": "Category",
+        "difficultyLabel": "Difficulty",
+        "readTimeLabel": "Read Time",
+        "tagsLabel": "Tags",
+        "categoryRequired": "Category is required",
+        "titleRequired": "Title is required",
+        "descriptionRequired": "Description is required",
+        "selectCategory": "Select a category",
+        "titlePlaceholder": "Enter topic title",
+        "descriptionPlaceholder": "Enter topic description",
+        "readTimePlaceholder": "e.g., 5 min read",
+        "readTimeHelp": "Enter minutes (shown to learners)",
+        "addTag": "Add",
+        "addTagPlaceholder": "Add a tag",
+        "pressEnterToAdd": "Press Enter to add a tag",
+        "contentSummary": "Content Summary",
+        "noContentYet": "No content yet. Add sections, images, code, and more.",
+        "editContent": "Edit Content",
+        "hideEditor": "Hide Editor",
+        "contentEditor": "Content Editor",
+        "cancel": "Cancel",
+        "createTopic": "Create Topic",
+        "updateTopic": "Update Topic",
+        "saving": "Saving...",
+        "saved": "Saved!",
+        "save": "Save Topic",
+        "errors": {
+          "titleRequired": "Title is required",
+          "categoryRequired": "Category is required",
+          "difficultyRequired": "Difficulty is required",
+          "descriptionRequired": "Description is required",
+          "fixErrors": "Please fix the errors before saving."
+        },
+        "success": {
+          "created": "Topic created successfully! ✓",
+          "updated": "Topic updated successfully! ✓"
+        }
+      }
+    },
+    "empty": {
+      "title": "No topics available",
+      "description": "Start by creating your first topic or importing existing content."
+    }
+  },
+  "notifications": {
+    "title": "Send Notifications",
+    "subtitle": "Send in-app notifications to users",
+    "form": {
+      "title": "Notification Details",
+      "subtitle": "Create and send a notification to your users",
+      "titleLabel": "Title",
+      "titlePlaceholder": "Enter notification title",
+      "titleMaxLength": "{{length}}/100 characters",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Enter notification message",
+      "messageMaxLength": "{{length}}/500 characters",
+      "sendToLabel": "Send To",
+      "allUsers": "All Users",
+      "specificUsers": "Specific Users",
+      "noUsersAvailable": "No users available",
+      "usersSelected": "{{count}} user selected",
+      "usersSelectedPlural": "{{count}} users selected",
+      "send": "Send Notification",
+      "sending": "Sending...",
+      "validation": {
+        "fillBoth": "Please fill in both title and body",
+        "selectAtLeastOne": "Please select at least one user",
+        "notAuthenticated": "User not authenticated"
+      },
+      "success": {
+        "sentToAll": "Notification sent to {{count}} user(s)",
+        "sentToSpecific": "Notification sent to {{count}} user(s)"
+      },
+      "error": {
+        "partialSent": "Partially sent: {{count}} notifications created, but some failed",
+        "failed": "Failed to send notification: {{message}}",
+        "failedGeneric": "Failed to send notification"
+      }
+    },
+    "types": {
+      "info": "Information",
+      "success": "Success",
+      "warning": "Warning",
+      "error": "Error"
+    }
+  },
+  "activity": {
+    "title": "Activity Logs",
+    "subtitle": "View all platform activity and user actions",
+    "export": "Export",
+    "empty": {
+      "title": "No activity logs available",
+      "description": "Activity logs will appear here as users interact with the platform."
+    },
+    "filters": {
+      "all": "All Activity",
+      "userActions": "User Actions",
+      "systemEvents": "System Events"
+    },
+    "table": {
+      "timestamp": "Timestamp",
+      "user": "User",
+      "action": "Action",
+      "details": "Details"
+    },
+    "types": {
+      "bookmark": "Bookmark",
+      "reading": "Reading",
+      "progress": "Progress",
+      "activity": "Activity"
+    },
+    "actions": {
+      "bookmarked": "bookmarked",
+      "read": "read",
+      "completed": "completed",
+      "updatedProgress": "updated progress on"
+    },
+    "unknownUser": "Unknown user",
+    "content": "content",
+    "complete": "complete",
+    "score": "Score"
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Configure platform settings and preferences",
+    "sections": {
+      "general": "General Settings",
+      "security": "Security Settings",
+      "platformInfo": "Platform Information",
+      "dataExport": "Data Export"
+    },
+    "general": {
+      "title": "General Settings",
+      "siteName": "Site Name",
+      "siteDescription": "Site Description",
+      "emailNotifications": "Email Notifications",
+      "emailNotificationsDesc": "Receive email updates about platform activity",
+      "autoSave": "Auto-save Changes",
+      "autoSaveDesc": "Automatically save content changes"
+    },
+    "security": {
+      "title": "Security Settings",
+      "enableRegistration": "Enable User Registration",
+      "requireEmailVerification": "Require Email Verification",
+      "sessionTimeout": "Session Timeout",
+      "sessionTimeoutDesc": "Automatically log out users after inactivity",
+      "passwordRequirements": "Password Requirements",
+      "passwordRequirementsDesc": "Minimum requirements for user passwords",
+      "minCharacters": "Minimum 8 characters",
+      "uppercaseLetter": "At least one uppercase letter",
+      "numberRequired": "At least one number",
+      "timeout15": "15 minutes",
+      "timeout30": "30 minutes",
+      "timeout60": "1 hour",
+      "timeout120": "2 hours"
+    },
+    "platformInfo": {
+      "platformVersion": "Platform Version",
+      "lastUpdated": "Last Updated",
+      "databaseStatus": "Database Status",
+      "apiStatus": "API Status",
+      "connected": "Connected",
+      "operational": "Operational"
+    },
+    "dataExport": {
+      "exportUsers": "Export Users",
+      "exportAnalytics": "Export Analytics",
+      "exportActivity": "Export Activity"
+    },
+    "save": "Save Settings",
+    "saving": "Saving...",
+    "saved": "Settings saved successfully"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "refresh": "Refresh",
+    "export": "Export",
+    "import": "Import",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "actions": "Actions",
+    "noData": "No data available",
+    "savedToDatabase": "Saved to database · Changes sync across all devices and users.",
+    "dismissBanner": "Dismiss banner",
+    "close": "Close",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "create": "Create",
+    "update": "Update",
+    "admin": "Admin",
+    "noName": "No name"
+  },
+  "errors": {
+    "accessDenied": "Access denied. Admin privileges required.",
+    "loginRequired": "Please log in to access the admin dashboard.",
+    "loadError": "Unable to load data. Please refresh the page or try again later.",
+    "updateFailed": "Unable to update user status. Please check your permissions and try again.",
+    "deleteFailed": "Unable to delete user. This action requires service role permissions. Please contact your administrator.",
+    "saveFailed": "Failed to save. Please try again.",
+    "deleteTopicFailed": "Failed to delete topic. Please try again.",
+    "unexpectedError": "An unexpected error occurred. Please try again.",
+    "invalidIdentifier": "Cannot delete topic: missing identifier"
+  },
+  "success": {
+    "userPromoted": "User promoted to admin successfully.",
+    "userRemoved": "User removed from admin successfully.",
+    "userDeleted": "User has been deleted successfully. All associated data has been removed.",
+    "topicDeleted": "Topic deleted successfully! ✓",
+    "statusUpdated": "Status Updated",
+    "dataRefreshed": "All data has been refreshed successfully.",
+    "refreshed": "Refreshed"
+  },
+  "confirmations": {
+    "deleteTopic": {
+      "title": "Delete Topic",
+      "message": "Are you sure you want to delete \"{{title}}\"? This action cannot be undone and will permanently remove the topic from the database."
+    },
+    "deleteUser": {
+      "title": "Delete User",
+      "message": "Are you sure you want to delete {{email}}? This action cannot be undone and will permanently remove all associated data."
+    },
+    "importData": {
+      "message": "This will import all sections and categories from your code files into the database. Items that already exist will be skipped. This must be done before importing topics. Continue?"
+    },
+    "importTopics": {
+      "message": "This will import all static topics from your code files into the database. Topics that already exist will be skipped. Continue?"
+    }
+  }
+}

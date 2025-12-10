@@ -1,0 +1,335 @@
+{
+  "bookmarks": {
+    "title": "Meus Favoritos",
+    "subtitle": "Seus tópicos e manuais salvos",
+    "empty": {
+      "title": "Ainda não há favoritos",
+      "description": "Salve seus tópicos e manuais favoritos para acessá-los rapidamente depois. Comece a explorar e marcar conteúdo que te interessa.",
+      "action": "Explorar Manuais"
+    },
+    "remove": "Remover favorito",
+    "viewAll": "Ver Todos os Favoritos"
+  },
+  "history": {
+    "title": "Histórico de Leitura",
+    "subtitle": "Tópicos que você visualizou recentemente",
+    "empty": {
+      "title": "Nenhum histórico de leitura",
+      "description": "Seu histórico de leitura aparecerá aqui conforme você explora tópicos e manuais. Comece a aprender para construir seu histórico.",
+      "action": "Começar a Aprender"
+    },
+    "clear": "Limpar Histórico",
+    "recent": "Recente"
+  },
+  "progress": {
+    "title": "Meu Progresso",
+    "subtitle": "Acompanhe sua jornada de aprendizado e conquistas",
+    "completed": "Completado",
+    "inProgress": "Em Progresso",
+    "notStarted": "Não Iniciado",
+    "topicsCompleted": "Tópicos Completados",
+    "categoriesExplored": "Categorias Exploradas",
+    "quizzesPassed": "Quiz Aprovados",
+    "timeSpent": "Tempo Gasto",
+    "notAvailable": "N/A",
+    "unknown": {
+      "topic": "Tópico Desconhecido",
+      "category": "Categoria Desconhecida"
+    },
+    "empty": {
+      "signInRequired": "Login Necessário",
+      "description": "Por favor, faça login para ver seu progresso de aprendizado. Crie uma conta para acompanhar seu progresso, fazer quiz e desbloquear conquistas.",
+      "title": "Ainda não há progresso",
+      "action": "Começar a Aprender"
+    },
+    "learningProgress": {
+      "title": "Progresso de Aprendizado",
+      "handbookCompletion": "Conclusão do Manual",
+      "topicsCompleted": "{{completed}} de {{total}} tópicos completados"
+    },
+    "stats": {
+      "topicsCompleted": "Tópicos Completados",
+      "quizzesTaken": "Quiz Realizados",
+      "readingHistory": "Histórico de Leitura",
+      "outOf": "de {{total}} no total",
+      "totalAttempts": "tentativas totais",
+      "recentItems": "itens recentes"
+    },
+    "readingHistory": {
+      "title": "Histórico de Leitura Recente"
+    },
+    "quizHistory": {
+      "title": "Histórico de Quiz",
+      "empty": {
+        "title": "Nenhum Histórico de Quiz",
+        "description": "Você ainda não fez nenhum quiz. Comece a aprender e teste seu conhecimento!"
+      }
+    },
+    "achievements": {
+      "title": "Conquistas e Certificados",
+      "empty": "Continue aprendendo para desbloquear conquistas!",
+      "handbookCompleted": {
+        "title": "Manual Completado",
+        "description": "Você completou todos os tópicos do manual!"
+      },
+      "topics10": {
+        "title": "10 Tópicos Completados",
+        "description": "Você completou 10 tópicos!"
+      },
+      "topics25": {
+        "title": "25 Tópicos Completados",
+        "description": "Você completou 25 tópicos!"
+      },
+      "topics50": {
+        "title": "50 Tópicos Completados",
+        "description": "Você completou 50 tópicos!"
+      },
+      "quizzes5": {
+        "title": "Entusiasta de Quiz",
+        "description": "Você fez 5 quiz!"
+      },
+      "quizzes10": {
+        "title": "Mestre de Quiz",
+        "description": "Você fez 10 quiz!"
+      }
+    }
+  },
+  "search": {
+    "title": "Pesquisar",
+    "placeholder": "Pesquisar tópicos, categorias...",
+    "noResults": {
+      "title": "Nenhum resultado encontrado",
+      "description": "Não conseguimos encontrar nada correspondente a \"{{query}}\". Tente palavras-chave diferentes ou navegue pelas nossas categorias.",
+      "clear": "Limpar pesquisa"
+    },
+    "startTyping": {
+      "title": "Comece a digitar para pesquisar",
+      "description": "Comece a digitar para pesquisar tópicos, categorias ou conteúdo."
+    },
+    "recentSearches": "Pesquisas Recentes",
+    "clearRecent": "Limpar Pesquisas Recentes",
+    "viewAll": "Ver Todos os Resultados"
+  },
+  "quiz": {
+    "title": "Quiz",
+    "start": "Iniciar Quiz",
+    "restart": "Reiniciar Quiz",
+    "submit": "Enviar Respostas",
+    "next": "Próxima Pergunta",
+    "previous": "Pergunta Anterior",
+    "question": "Pergunta {{current}} de {{total}}",
+    "correct": "Correto!",
+    "incorrect": "Incorreto",
+    "score": "Sua Pontuação",
+    "passed": "Você passou!",
+    "failed": "Você não passou",
+    "retry": "Tentar Novamente",
+    "backToTopic": "Voltar ao Tópico",
+    "results": {
+      "title": "Resultados do Quiz",
+      "correctAnswers": "Respostas Corretas",
+      "totalQuestions": "Total de Perguntas",
+      "percentage": "Pontuação",
+      "timeSpent": "Tempo Gasto"
+    }
+  },
+  "topic": {
+    "readTime": "{{time}} min de leitura",
+    "difficulty": "Dificuldade",
+    "beginner": "Iniciante",
+    "intermediate": "Intermediário",
+    "advanced": "Avançado",
+    "prerequisites": "Pré-requisitos",
+    "learningObjectives": "Objetivos de Aprendizado",
+    "relatedTopics": "Tópicos Relacionados",
+    "takeQuiz": "Fazer Quiz",
+    "markAsComplete": "Marcar como Completo",
+    "markedAsComplete": "Marcado como Completo",
+    "bookmark": "Favorito",
+    "bookmarked": "Favoritado",
+    "share": "Compartilhar",
+    "completed": "Completado",
+    "completionDialogOld": {
+      "title": "Parabéns!",
+      "message": "Você completou {{topic}}!",
+      "continue": "Continuar Aprendendo",
+      "takeQuiz": "Fazer Quiz"
+    }
+  },
+  "completionDialog": {
+    "reachedEnd": "Você chegou ao final!",
+    "markComplete": "Marcar {{title}} como concluído?",
+    "signInRequired": "Por favor, faça login para marcar tópicos como concluídos",
+    "markedComplete": "Marcado como concluído!",
+    "marking": "Marcando...",
+    "yesMarkComplete": "Sim, marcar como concluído",
+    "no": "Não",
+    "dismissAriaLabel": "Fechar diálogo de conclusão",
+    "markCompleteAriaLabel": "Marcar tópico como concluído",
+    "markingAriaLabel": "Marcando como concluído",
+    "dismiss": "Fechar",
+    "topicMarkedComplete": "Tópico marcado como concluído! ✓",
+    "failedToUpdate": "Falha ao atualizar. Por favor, tente novamente."
+  },
+  "notifications": {
+    "title": "Notificações",
+    "subtitle": "Mantenha-se atualizado com sua atividade de aprendizado",
+    "empty": {
+      "title": "Nenhuma notificação",
+      "description": "Você verá notificações sobre seu progresso de aprendizado, novo conteúdo e atualizações aqui."
+    },
+    "markAsRead": "Marcar como Lida",
+    "markAllAsRead": "Marcar Todas como Lidas",
+    "delete": "Excluir",
+    "new": "Nova"
+  },
+  "profile": {
+    "title": "Meu Perfil",
+    "subtitle": "Gerencie suas informações de conta e preferências",
+    "actions": {
+      "edit": "Editar Perfil",
+      "saveChanges": "Salvar Alterações"
+    },
+    "empty": {
+      "signInRequired": "Login Necessário",
+      "description": "Por favor, faça login para visualizar e gerenciar seu perfil. Crie uma conta para salvar seu progresso, marcar tópicos e personalizar sua experiência de aprendizado."
+    },
+    "completion": {
+      "complete": "Perfil completo!",
+      "percentage": "Perfil {{percentage}}% completo",
+      "and": "e",
+      "hint": "Adicione {{items}} para completar seu perfil.",
+      "missing": {
+        "fullName": "nome completo",
+        "avatar": "avatar",
+        "bio": "biografia",
+        "socialLinks": "links sociais",
+        "preferences": "preferências"
+      }
+    },
+    "sections": {
+      "personalInfo": "Informações Pessoais",
+      "avatar": "Avatar",
+      "socialLinks": "Links Sociais",
+      "preferences": "Preferências",
+      "accountDetails": "Detalhes da Conta",
+      "accountSecurity": "Conta e Segurança"
+    },
+    "fields": {
+      "fullName": "Nome Completo",
+      "email": "Endereço de Email",
+      "bio": "Sobre Você",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter/X"
+    },
+    "placeholders": {
+      "fullName": "Digite seu nome completo",
+      "bio": "Conte-nos um pouco sobre você (opcional)",
+      "github": "https://github.com/username",
+      "linkedin": "https://linkedin.com/in/username",
+      "twitter": "https://twitter.com/username",
+      "newEmail": "Digite o novo endereço de email",
+      "newPassword": "Digite a nova senha (mín. 6 caracteres)",
+      "confirmPassword": "Confirme a nova senha",
+      "deleteConfirm": "EXCLUIR"
+    },
+    "labels": {
+      "memberSince": "Membro desde",
+      "lastUpdated": "Última Atualização",
+      "accountCreated": "Conta Criada",
+      "verified": "Verificado",
+      "notSet": "Não definido",
+      "never": "Nunca",
+      "noBio": "Nenhuma biografia adicionada ainda",
+      "usingDefaultAvatar": "Usando avatar padrão com iniciais",
+      "emailCannotChange": "O email não pode ser alterado",
+      "changeAvatar": "Alterar avatar",
+      "changeAvatarButton": "Alterar Avatar",
+      "avatarDescription": "Envie uma imagem, escolha entre avatares predefinidos ou insira uma URL. Deixe vazio para usar iniciais."
+    },
+    "preferences": {
+      "newsletter": {
+        "title": "Boletim Semanal de IA",
+        "description": "Receba atualizações semanais sobre tendências e insights de IA"
+      },
+      "handbookAlerts": {
+        "title": "Alertas de Novos Manuais",
+        "description": "Notifique-me quando novos manuais forem publicados"
+      },
+      "productUpdates": {
+        "title": "Atualizações do Produto",
+        "description": "Mantenha-se informado sobre novos recursos e melhorias"
+      }
+    },
+    "security": {
+      "changeEmail": {
+        "title": "Alterar Endereço de Email",
+        "updateButton": "Atualizar Email",
+        "enterNew": "Por favor, digite um novo endereço de email",
+        "invalid": "Por favor, digite um endereço de email válido",
+        "mustBeDifferent": "O novo email deve ser diferente do email atual",
+        "changeFailed": "Falha ao alterar email. Por favor, tente novamente.",
+        "changeRequestSent": "Solicitação de alteração de email enviada. Por favor, verifique seu novo email para confirmação.",
+        "currentEmailNote": "Email atual: {{email}}. Você receberá um email de confirmação no novo endereço."
+      },
+      "changePassword": {
+        "title": "Alterar Senha",
+        "updateButton": "Atualizar Senha",
+        "fillAll": "Por favor, preencha todos os campos de senha",
+        "minLength": "A senha deve ter pelo menos 6 caracteres",
+        "mismatch": "As senhas não coincidem",
+        "changeFailed": "Falha ao alterar senha. Por favor, tente novamente.",
+        "changeSuccess": "Senha alterada com sucesso. Você será desconectado por segurança."
+      },
+      "delete": {
+        "title": "Excluir Conta",
+        "description": "Excluir permanentemente sua conta e todos os dados associados. Esta ação não pode ser desfeita.",
+        "button": "Excluir Conta",
+        "modalTitle": "Excluir Conta",
+        "modalDescription": "Esta ação excluirá permanentemente sua conta e todos os dados associados, incluindo:",
+        "modalItems": {
+          "profile": "Suas informações de perfil",
+          "bookmarks": "Todos os favoritos",
+          "progress": "Seu progresso de aprendizado",
+          "notifications": "Todas as notificações"
+        },
+        "cannotUndo": "Esta ação não pode ser desfeita.",
+        "typeDelete": "Digite <span class=\"font-mono bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded\">EXCLUIR</span> para confirmar:",
+        "typeDeleteConfirm": "Por favor, digite EXCLUIR para confirmar",
+        "success": "Conta excluída com sucesso",
+        "failed": "Falha ao excluir conta. Por favor, tente novamente ou entre em contato com o suporte.",
+        "deleting": "Excluindo...",
+        "deleteButton": "Excluir Conta"
+      }
+    },
+    "validation": {
+      "fullNameMaxLength": "O nome completo deve ter menos de 100 caracteres",
+      "bioMaxLength": "A biografia deve ter menos de 200 caracteres",
+      "invalidUrl": "Por favor, digite uma URL válida"
+    },
+    "errors": {
+      "loadFailed": "Falha ao carregar perfil",
+      "updateFailed": "Falha ao atualizar perfil",
+      "fixErrors": "Por favor, corrija os erros no formulário antes de salvar suas alterações.",
+      "validationError": "Erro de Validação"
+    },
+    "success": {
+      "title": "Sucesso",
+      "updated": "Perfil atualizado com sucesso"
+    }
+  },
+  "emptyStates": {
+    "topics": {
+      "title": "Nenhum tópico em {{category}}",
+      "description": "Esta categoria ainda não tem tópicos. Volte mais tarde ou explore outras categorias.",
+      "action": "Navegar por Categorias"
+    },
+    "categories": {
+      "title": "Nenhuma categoria disponível",
+      "description": "As categorias aparecerão aqui assim que forem adicionadas à plataforma.",
+      "action": "Atualizar"
+    }
+  }
+}
+

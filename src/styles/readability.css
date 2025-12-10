@@ -1,0 +1,168 @@
+/* Enhanced Readability Improvements */
+
+/* Improved readability for long text */
+.text-readable {
+  max-width: 75ch;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+  word-spacing: 0.05em;
+}
+
+/* Enhanced paragraph spacing */
+.text-readable p,
+.prose p {
+  margin-bottom: 1.5em;
+  margin-top: 0;
+}
+
+/* Better paragraph first line */
+.text-readable p:first-of-type {
+  margin-top: 0;
+}
+
+/* Improved heading spacing */
+.prose h2,
+.prose h3 {
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+/* Better list readability */
+.prose ul,
+.prose ol {
+  margin: 1.5em 0;
+  padding-left: 1.75em;
+}
+
+.prose li {
+  margin: 0.75em 0;
+  line-height: 1.75;
+}
+
+/* Reading line guide (optional, can be toggled) */
+.reading-line-guide {
+  position: relative;
+}
+
+.reading-line-guide::before {
+  content: "";
+  position: absolute;
+  left: -2rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(99, 102, 241, 0.2) 10%,
+    rgba(99, 102, 241, 0.2) 90%,
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.reading-line-guide:hover::before {
+  opacity: 1;
+}
+
+/* Better code block readability */
+pre code {
+  line-height: 1.7 !important;
+  letter-spacing: 0.01em;
+  tab-size: 2;
+}
+
+/* Improved table readability */
+table {
+  font-size: 0.95em;
+}
+
+table td {
+  line-height: 1.6;
+  padding: 0.875rem 1.5rem;
+}
+
+/* Better contrast for body text */
+.text-body {
+  color: #374151;
+}
+
+.dark .text-body {
+  color: #e2e8f0;
+}
+
+/* Improved focus reading mode */
+.reading-focus {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Better spacing between sections */
+.section-spacing {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+/* Improved quote/callout readability */
+blockquote,
+.callout-content {
+  line-height: 1.75;
+  font-size: 1.05em;
+}
+
+/* Better link readability */
+.prose a {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(99, 102, 241, 0.4);
+  transition: text-decoration-color 0.2s;
+}
+
+.prose a:hover {
+  text-decoration-color: rgba(99, 102, 241, 0.8);
+}
+
+/* Improved equation readability */
+.math-equation {
+  font-size: 1.1em;
+  line-height: 1.8;
+}
+
+/* Better image caption readability */
+figcaption {
+  font-size: 0.9em;
+  line-height: 1.6;
+  margin-top: 0.75rem;
+}
+
+/* Enhanced list markers */
+.prose ul li::marker {
+  color: #6366f1;
+  font-weight: 600;
+}
+
+.prose ol li::marker {
+  color: #6366f1;
+  font-weight: 600;
+}
+
+/* Better spacing for nested content */
+.prose > * + * {
+  margin-top: 1.25em;
+}
+
+/* Improved code inline readability */
+code:not(pre code) {
+  background: rgba(99, 102, 241, 0.1);
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.dark code:not(pre code) {
+  background: rgba(99, 102, 241, 0.2);
+}
+

@@ -1,0 +1,43 @@
+/* Print Styles */
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .topic-content {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .glass,
+  .card,
+  button,
+  nav,
+  header,
+  aside {
+    display: none !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid;
+    color: #1e293b !important;
+  }
+
+  p,
+  li {
+    page-break-inside: avoid;
+  }
+}
+
+

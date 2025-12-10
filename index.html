@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Comprehensive guides to artificial intelligence concepts, techniques, and applications."
+    />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <title>XBuildsAI - Learn AI, ML & Data Science</title>
+    <script>
+      // Set dark mode before page load to prevent flash
+      (function () {
+        const saved = localStorage.getItem("darkMode");
+        const isDark = saved !== null ? JSON.parse(saved) : true; // Default to dark
+        if (isDark) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

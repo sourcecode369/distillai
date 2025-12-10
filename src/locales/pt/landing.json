@@ -1,0 +1,101 @@
+{
+  "hero": {
+    "title": "Domine a",
+    "titleHighlight": "Inteligência Artificial",
+    "subtitle": "Do Básico ao Avançado",
+    "description": "Guias completos sobre conceitos, técnicas e aplicações de inteligência artificial. Aprenda IA, ML e Ciência de Dados.",
+    "descriptionSecondary": "Aprenda no seu próprio ritmo com conteúdo estruturado projetado para todos os níveis de habilidade.",
+    "badge": "Sua plataforma completa de aprendizado de IA",
+    "cta": "Explorar Manuais",
+    "secondaryCta": "Saber mais",
+    "rotatingWords": {
+      "ai": "Inteligência Artificial",
+      "ml": "Machine Learning",
+      "dataScience": "Ciência de Dados",
+      "neuralNetworks": "Redes Neurais"
+    }
+  },
+  "features": {
+    "sectionLabel": "Recursos da Plataforma",
+    "comingSoon": "Em breve",
+    "title": "Tudo que você precisa para dominar IA",
+    "subtitle": "Caminhos de aprendizado estruturados projetados para engenheiros e pesquisadores",
+    "handbooks": {
+      "title": "Manuais de IA",
+      "description": "Guias completos cobrindo IA, ML e Ciência de Dados desde fundamentos até tópicos avançados.",
+      "action": "Explorar Manuais",
+      "stats": "50+ Tópicos"
+    },
+    "roadmaps": {
+      "title": "Roteiros de Carreira",
+      "description": "Caminhos de carreira passo a passo para engenheiros de IA, pesquisadores de ML e cientistas de dados.",
+      "action": "Em breve",
+      "stats": "3 Roteiros"
+    },
+    "ecosystem": {
+      "title": "Ferramentas do Ecossistema",
+      "description": "Descubra ferramentas essenciais de IA, frameworks, benchmarks e modelos para construir aplicações de IA.",
+      "action": "Em breve",
+      "stats": "100+ Ferramentas"
+    },
+    "resources": {
+      "title": "Recursos de Aprendizado",
+      "description": "Livros, cursos, tutoriais e materiais de preparação para entrevistas cuidadosamente selecionados para acelerar seu aprendizado.",
+      "action": "Em breve",
+      "stats": "500+ Recursos"
+    },
+    "opportunities": {
+      "title": "Oportunidades de Carreira",
+      "description": "Encontre conferências, bolsas de estudo, competições, hackathons e estágios em IA e ML.",
+      "action": "Em breve",
+      "stats": "100+ Oportunidades"
+    },
+    "community": {
+      "title": "Comunidade",
+      "description": "Junte-se a uma comunidade vibrante de entusiastas de IA, compartilhe conhecimento e colabore em projetos.",
+      "action": "Juntar-se à Comunidade",
+      "stats": "10K+ Membros"
+    }
+  },
+  "benefits": {
+    "sectionLabel": "Por que nos escolher",
+    "title": "Por que escolher AI Handbooks?",
+    "subtitle": "Tudo que você precisa para ter sucesso em IA",
+    "structured": {
+      "title": "Aprendizado Estruturado",
+      "description": "Siga caminhos curados desde fundamentos até tópicos avançados, projetados por especialistas da indústria."
+    },
+    "comprehensive": {
+      "title": "Conteúdo Abrangente",
+      "description": "Acesse guias detalhados, tutoriais e recursos cobrindo todos os aspectos de IA, ML e Ciência de Dados."
+    },
+    "practical": {
+      "title": "Foco Prático",
+      "description": "Aprenda através de exemplos práticos, trechos de código e aplicações do mundo real."
+    },
+    "upToDate": {
+      "title": "Sempre Atualizado",
+      "description": "O conteúdo é atualizado regularmente para refletir os últimos desenvolvimentos em IA e ML."
+    },
+    "community": {
+      "title": "Comunidade Ativa",
+      "description": "Participe de discussões, faça perguntas e colabore com outros alunos e especialistas."
+    },
+    "free": {
+      "title": "Gratuito e Aberto",
+      "description": "Todo o conteúdo é gratuito e de código aberto, disponível para todos."
+    }
+  },
+  "cta": {
+    "title": "Pronto para começar a aprender?",
+    "subtitle": "Junte-se a milhares de alunos que dominam IA, ML e Ciência de Dados.",
+    "button": "Começar Grátis",
+    "secondaryButton": "Explorar Manuais"
+  },
+  "stats": {
+    "topics": "Tópicos",
+    "roadmaps": "Roteiros",
+    "resources": "Recursos",
+    "tools": "Ferramentas"
+  }
+}

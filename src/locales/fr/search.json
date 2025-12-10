@@ -1,0 +1,91 @@
+{
+  "dropdown": {
+    "title": "Rechercher",
+    "placeholder": "Rechercher des manuels, chapitres ou concepts...",
+    "suggestions": "Suggestions",
+    "recentSearches": "Recherches récentes",
+    "clear": "Effacer",
+    "loading": "Chargement des recherches récentes...",
+    "empty": {
+      "title": "Aucune recherche récente",
+      "description": "Commencez à taper pour rechercher"
+    },
+    "viewAll": "Voir toutes les recherches",
+    "viewAllCount": "Voir les {{count}} recherches",
+    "time": {
+      "justNow": "À l'instant",
+      "minutesAgo": "il y a {{count}} min",
+      "hoursAgo": "il y a {{count}} h",
+      "daysAgo": "il y a {{count}} jours"
+    }
+  },
+  "page": {
+    "title": "Historique de recherche",
+    "subtitle": {
+      "count": "{{count}} recherche enregistrée",
+      "countPlural": "{{count}} recherches enregistrées"
+    },
+    "clearAll": "Tout effacer",
+    "signInRequired": "Connexion requise",
+    "signInMessage": "Veuillez vous connecter pour voir votre historique de recherche",
+    "goBack": "Retour",
+    "loading": "Chargement de l'historique de recherche...",
+    "empty": {
+      "title": "Aucun historique de recherche pour le moment",
+      "description": "Vos recherches récentes apparaîtront ici. Commencez à rechercher pour créer votre historique."
+    },
+    "removeSearch": "Supprimer la recherche",
+    "time": {
+      "justNow": "À l'instant",
+      "minutesAgo": "il y a {{count}} min",
+      "hoursAgo": "il y a {{count}} h",
+      "daysAgo": "il y a {{count}} jours"
+    },
+    "toast": {
+      "cleared": "Historique de recherche effacé",
+      "removed": "Recherche supprimée",
+      "errorClear": "Échec de l'effacement de l'historique de recherche",
+      "errorRemove": "Échec de la suppression de la recherche"
+    }
+  },
+  "results": {
+    "title": "Résultats de Recherche",
+    "back": "Retour",
+    "searchingFor": "Recherche de \"{{query}}\"",
+    "enterQuery": "Entrez une requête de recherche",
+    "filter": "Filtrer",
+    "filterButtons": {
+      "all": "Tout",
+      "handbooks": "Manuels",
+      "topics": "Sujets",
+      "quizzes": "Quiz"
+    },
+    "sort": "Trier",
+    "sortOptions": {
+      "relevance": "Pertinence",
+      "lastUpdated": "Dernière mise à jour"
+    },
+    "clearFilters": "Effacer les Filtres",
+    "foundResults": "{{count}} résultat trouvé",
+    "foundResultsPlural": "{{count}} résultats trouvés",
+    "inHandbooks": " dans les Manuels",
+    "inTopics": " dans les Sujets",
+    "inQuizzes": " dans les Quiz",
+    "typeLabels": {
+      "topic": "Sujet",
+      "handbook": "Manuel",
+      "quiz": "Quiz"
+    },
+    "sections": {
+      "handbooks": "Manuels",
+      "topics": "Sujets",
+      "quizzes": "Quiz"
+    },
+    "questions": "questions"
+  },
+  "errors": {
+    "searchFailed": "Échec de la recherche. Veuillez réessayer.",
+    "retry": "Réessayer"
+  }
+}
+

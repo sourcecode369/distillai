@@ -1,0 +1,91 @@
+{
+  "dropdown": {
+    "title": "Cerca",
+    "placeholder": "Cerca manuali, capitoli o concetti...",
+    "suggestions": "Suggerimenti",
+    "recentSearches": "Ricerche recenti",
+    "clear": "Cancella",
+    "loading": "Caricamento ricerche recenti...",
+    "empty": {
+      "title": "Nessuna ricerca recente",
+      "description": "Inizia a digitare per cercare"
+    },
+    "viewAll": "Vedi tutte le ricerche",
+    "viewAllCount": "Vedi le {{count}} ricerche",
+    "time": {
+      "justNow": "Proprio ora",
+      "minutesAgo": "{{count}} min fa",
+      "hoursAgo": "{{count}} h fa",
+      "daysAgo": "{{count}} giorni fa"
+    }
+  },
+  "page": {
+    "title": "Cronologia ricerche",
+    "subtitle": {
+      "count": "{{count}} ricerca salvata",
+      "countPlural": "{{count}} ricerche salvate"
+    },
+    "clearAll": "Cancella tutto",
+    "signInRequired": "Accesso richiesto",
+    "signInMessage": "Accedi per visualizzare la tua cronologia ricerche",
+    "goBack": "Indietro",
+    "loading": "Caricamento cronologia ricerche...",
+    "empty": {
+      "title": "Nessuna cronologia ricerche ancora",
+      "description": "Le tue ricerche recenti appariranno qui. Inizia a cercare per costruire la tua cronologia."
+    },
+    "removeSearch": "Rimuovi ricerca",
+    "time": {
+      "justNow": "Proprio ora",
+      "minutesAgo": "{{count}} min fa",
+      "hoursAgo": "{{count}} h fa",
+      "daysAgo": "{{count}} giorni fa"
+    },
+    "toast": {
+      "cleared": "Cronologia ricerche cancellata",
+      "removed": "Ricerca rimossa",
+      "errorClear": "Impossibile cancellare la cronologia ricerche",
+      "errorRemove": "Impossibile rimuovere la ricerca"
+    }
+  },
+  "results": {
+    "title": "Risultati della Ricerca",
+    "back": "Indietro",
+    "searchingFor": "Cercando \"{{query}}\"",
+    "enterQuery": "Inserisci una query di ricerca",
+    "filter": "Filtra",
+    "filterButtons": {
+      "all": "Tutto",
+      "handbooks": "Manuali",
+      "topics": "Argomenti",
+      "quizzes": "Quiz"
+    },
+    "sort": "Ordina",
+    "sortOptions": {
+      "relevance": "Rilevanza",
+      "lastUpdated": "Ultimo aggiornamento"
+    },
+    "clearFilters": "Cancella Filtri",
+    "foundResults": "Trovato {{count}} risultato",
+    "foundResultsPlural": "Trovati {{count}} risultati",
+    "inHandbooks": " nei Manuali",
+    "inTopics": " negli Argomenti",
+    "inQuizzes": " nei Quiz",
+    "typeLabels": {
+      "topic": "Argomento",
+      "handbook": "Manuale",
+      "quiz": "Quiz"
+    },
+    "sections": {
+      "handbooks": "Manuali",
+      "topics": "Argomenti",
+      "quizzes": "Quiz"
+    },
+    "questions": "domande"
+  },
+  "errors": {
+    "searchFailed": "Errore durante la ricerca. Riprova.",
+    "retry": "Riprova"
+  }
+}
+

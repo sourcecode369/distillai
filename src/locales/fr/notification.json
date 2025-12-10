@@ -1,0 +1,70 @@
+{
+  "bell": {
+    "title": "Notifications",
+    "ariaLabel": "Notifications",
+    "ariaLabelUnread": "Notifications, {{count}} non lues"
+  },
+  "dropdown": {
+    "title": "Notifications",
+    "ariaLabel": "Notifications",
+    "markAllRead": "Tout marquer comme lu",
+    "loading": "Chargement des notifications...",
+    "viewAll": "Voir toutes les notifications",
+    "viewAllCount": "Voir les {{count}} notifications",
+    "time": {
+      "justNow": "À l'instant",
+      "minutesAgo": "il y a {{count}} min",
+      "hoursAgo": "il y a {{count}} h",
+      "daysAgo": "il y a {{count}} jours"
+    }
+  },
+  "page": {
+    "title": "Notifications",
+    "subtitle": {
+      "unread": "non lues",
+      "total": "au total",
+      "count": "{{count}} notification",
+      "countPlural": "{{count}} notifications"
+    },
+    "markAllRead": "Tout marquer comme lu",
+    "signInRequired": "Connexion requise",
+    "signInMessage": "Veuillez vous connecter pour voir vos notifications",
+    "goBack": "Retour",
+    "filters": {
+      "all": "Toutes",
+      "unread": "Non lues",
+      "read": "Lues"
+    },
+    "loading": "Chargement des notifications...",
+    "empty": {
+      "all": {
+        "title": "Aucune notification pour le moment",
+        "description": "Vous verrez des notifications ici lorsque les administrateurs enverront des mises à jour et des annonces"
+      },
+      "unread": {
+        "title": "Tout est à jour !",
+        "description": "Vous avez lu toutes vos notifications. Excellent travail pour rester à jour !"
+      },
+      "read": {
+        "title": "Aucune notification lue",
+        "description": "Essayez de changer de filtre pour voir plus de notifications"
+      }
+    },
+    "markAsRead": "Marquer comme lu",
+    "markRead": "Marquer comme lu",
+    "new": "Nouveau",
+    "toast": {
+      "markedAsRead": "Notification marquée comme lue",
+      "markAllRead": "Toutes les notifications marquées comme lues",
+      "errorMarkAsRead": "Échec du marquage de la notification comme lue",
+      "errorMarkAllRead": "Échec du marquage de toutes les notifications comme lues"
+    },
+    "time": {
+      "justNow": "À l'instant",
+      "minutesAgo": "il y a {{count}} min",
+      "hoursAgo": "il y a {{count}} h",
+      "daysAgo": "il y a {{count}} jours"
+    }
+  }
+}
+

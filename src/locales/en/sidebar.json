@@ -1,0 +1,128 @@
+{
+  "appName": "XBuildsAI",
+  "appNameShort": "XBuilds",
+  "appNameSuffix": "AI",
+  "toggleMobileMenu": "Toggle mobile menu",
+  "goToHome": "Go to Handbooks",
+  "weeklyReport": {
+    "title": "AI Weekly",
+    "ariaLabel": "AI Weekly"
+  },
+  "roadmaps": {
+    "title": "Roadmaps",
+    "comingSoon": "Soon",
+    "ariaLabel": "Roadmaps (Coming soon)",
+    "submenu": {
+      "ariaLabel": "Roadmaps submenu",
+      "aiCareer": "AI Career Roadmap",
+      "mlCareer": "ML Career Roadmap",
+      "dataScienceCareer": "Data Science Career Roadmap"
+    }
+  },
+  "ecosystem": {
+    "title": "Ecosystem",
+    "comingSoon": "Soon",
+    "ariaLabel": "Ecosystem (Coming soon)",
+    "submenu": {
+      "ariaLabel": "Ecosystem submenu",
+      "tools": "AI Tools Directory",
+      "benchmarks": "Model Benchmarks",
+      "models": "Model Marketplace",
+      "datasets": "Dataset Hub",
+      "mlops": "MLOps Dashboard",
+      "promptLibrary": "Prompt Library"
+    }
+  },
+  "resources": {
+    "title": "Resources",
+    "comingSoon": "Soon",
+    "ariaLabel": "Resources (Coming soon)",
+    "submenu": {
+      "ariaLabel": "Resources submenu",
+      "books": "AI Books",
+      "courses": "Online Courses",
+      "tutorials": "Tutorials",
+      "blog": "Tech Blog",
+      "news": "Daily AI News",
+      "papers": "Research Papers",
+      "podcasts": "Podcasts & Videos",
+      "interviewPrep": "Interview Prep",
+      "cheatsheets": "Cheatsheets"
+    }
+  },
+  "opportunities": {
+    "title": "Opportunities",
+    "comingSoon": "Soon",
+    "ariaLabel": "Opportunities (Coming soon)",
+    "submenu": {
+      "ariaLabel": "Opportunities submenu",
+      "jobs": "AI Jobs Board",
+      "internships": "Internships",
+      "conferences": "Conferences",
+      "scholarships": "Scholarships",
+      "competitions": "Competitions",
+      "hackathons": "Hackathons",
+      "consulting": "Consulting Marketplace",
+      "careerServices": "Career Services"
+    }
+  },
+  "learning": {
+    "title": "Learning",
+    "comingSoon": "Soon",
+    "ariaLabel": "Learning (Coming soon)",
+    "submenu": {
+      "ariaLabel": "Learning submenu",
+      "playground": "AI Playground",
+      "notebooks": "Interactive Notebooks",
+      "codeEditor": "Code Editor",
+      "tryModels": "Try AI Models",
+      "workshops": "Live Workshops",
+      "certifications": "Certifications",
+      "exams": "Practice Exams"
+    }
+  },
+  "community": {
+    "title": "Community",
+    "comingSoon": "Soon",
+    "ariaLabel": "Community (Coming soon)",
+    "submenu": {
+      "ariaLabel": "Community submenu",
+      "projects": "Project Showcase",
+      "mentorship": "Find a Mentor",
+      "studyGroups": "Study Groups",
+      "discussions": "Discussions",
+      "collaboration": "Research Collaboration",
+      "events": "Community Events"
+    }
+  },
+  "ethics": {
+    "title": "AI Ethics & Safety",
+    "comingSoon": "Soon",
+    "ariaLabel": "AI Ethics & Safety (Coming soon)",
+    "submenu": {
+      "ariaLabel": "Ethics submenu",
+      "guidelines": "Ethical Guidelines",
+      "biasDetection": "Bias Detection Tools",
+      "privacy": "Privacy Frameworks",
+      "compliance": "Regulatory Compliance"
+    }
+  },
+  "bookmarks": {
+    "sectionTitle": "Bookmarks",
+    "removeBookmark": "Remove bookmark",
+    "viewTopic": "View {{title}}"
+  },
+  "history": {
+    "sectionTitle": "Recent"
+  },
+  "profile": {
+    "menu": {
+      "ariaLabel": "User profile menu",
+      "myProfile": "My Profile",
+      "ariaLabelMyProfile": "My Profile"
+    },
+    "signIn": {
+      "ariaLabel": "Sign in to your account"
+    }
+  }
+}

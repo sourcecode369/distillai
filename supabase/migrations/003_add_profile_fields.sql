@@ -1,0 +1,13 @@
+-- Add new profile fields
+ALTER TABLE user_profiles
+ADD COLUMN IF NOT EXISTS bio TEXT,
+ADD COLUMN IF NOT EXISTS github_url TEXT,
+ADD COLUMN IF NOT EXISTS linkedin_url TEXT,
+ADD COLUMN IF NOT EXISTS twitter_url TEXT,
+ADD COLUMN IF NOT EXISTS newsletter_enabled BOOLEAN DEFAULT FALSE,
+ADD COLUMN IF NOT EXISTS handbook_alerts_enabled BOOLEAN DEFAULT FALSE,
+ADD COLUMN IF NOT EXISTS product_updates_enabled BOOLEAN DEFAULT FALSE;
+
+
+
+

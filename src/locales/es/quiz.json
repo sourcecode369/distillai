@@ -1,0 +1,41 @@
+{
+  "empty": {
+    "title": "Aún no hay cuestionario disponible para este tema.",
+    "backButton": "Volver al tema"
+  },
+  "header": {
+    "title": "Cuestionario: {{title}}",
+    "subtitle": "Pon a prueba tu comprensión con {{count}} preguntas"
+  },
+  "navigation": {
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "submit": "Enviar",
+    "backToTopic": "Volver al tema"
+  },
+  "validation": {
+    "answerAll": "Por favor, responde todas las preguntas antes de enviar."
+  },
+  "results": {
+    "title": "Resultados del Cuestionario",
+    "saving": "Guardando resultado...",
+    "savedSuccess": "¡Resultado del cuestionario guardado exitosamente! ✓",
+    "saveFailed": "¡Cuestionario completado! No se pudo guardar el resultado.",
+    "scoreOutOf": "{{score}} de {{total}} correctas",
+    "reviewTitle": "Revisa tus Respuestas",
+    "questionLabel": "Pregunta {{number}}",
+    "correct": "Correcto",
+    "incorrect": "Incorrecto",
+    "yourAnswer": "Tu Respuesta",
+    "correctAnswer": "Respuesta Correcta",
+    "explanation": "Explicación:",
+    "retakeQuiz": "Reintentar Cuestionario",
+    "backToTopic": "Volver al tema"
+  },
+  "scoreMessages": {
+    "perfect": "¡Perfecto! ¡Trabajo excepcional! 🎉",
+    "excellent": "¡Excelente! ¡Buen trabajo! 👏",
+    "good": "¡Buen esfuerzo! ¡Sigue practicando! 💪",
+    "keepLearning": "¡Sigue aprendiendo! Revisa el material e inténtalo de nuevo! 📚"
+  }
+}

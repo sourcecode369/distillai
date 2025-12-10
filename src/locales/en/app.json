@@ -1,0 +1,352 @@
+{
+  "bookmarks": {
+    "title": "My Bookmarks",
+    "subtitle": "Your saved topics and handbooks",
+    "empty": {
+      "title": "No bookmarks yet",
+      "description": "Save your favorite topics and handbooks to access them quickly later. Start exploring and bookmark content that interests you.",
+      "action": "Explore Handbooks"
+    },
+    "remove": "Remove bookmark",
+    "viewAll": "View All Bookmarks"
+  },
+  "history": {
+    "title": "Reading History",
+    "subtitle": "Topics you've recently viewed",
+    "empty": {
+      "title": "No reading history",
+      "description": "Your reading history will appear here as you explore topics and handbooks. Start learning to build your history.",
+      "action": "Start Learning"
+    },
+    "clear": "Clear History",
+    "recent": "Recent"
+  },
+  "progress": {
+    "title": "My Progress",
+    "subtitle": "Track your learning journey and achievements",
+    "completed": "Completed",
+    "inProgress": "In Progress",
+    "notStarted": "Not Started",
+    "topicsCompleted": "Topics Completed",
+    "categoriesExplored": "Categories Explored",
+    "quizzesPassed": "Quizzes Passed",
+    "timeSpent": "Time Spent",
+    "notAvailable": "N/A",
+    "unknown": {
+      "topic": "Unknown Topic",
+      "category": "Unknown Category"
+    },
+    "empty": {
+      "signInRequired": "Sign In Required",
+      "description": "Please sign in to view your learning progress. Create an account to track your progress, take quizzes, and unlock achievements.",
+      "title": "No progress yet",
+      "action": "Start Learning"
+    },
+    "learningProgress": {
+      "title": "Learning Progress",
+      "handbookCompletion": "Handbook Completion",
+      "topicsCompleted": "{{completed}} of {{total}} topics completed"
+    },
+    "stats": {
+      "topicsCompleted": "Topics Completed",
+      "quizzesTaken": "Quizzes Taken",
+      "readingHistory": "Reading History",
+      "outOf": "out of {{total}} total",
+      "totalAttempts": "total attempts",
+      "recentItems": "recent items"
+    },
+    "readingHistory": {
+      "title": "Recent Reading History"
+    },
+    "quizHistory": {
+      "title": "Quiz History",
+      "empty": {
+        "title": "No Quiz History",
+        "description": "You haven't taken any quizzes yet. Start learning and test your knowledge!"
+      }
+    },
+    "achievements": {
+      "title": "Achievements & Certificates",
+      "empty": "Keep learning to unlock achievements!",
+      "handbookCompleted": {
+        "title": "Handbook Completed",
+        "description": "You've completed all topics in the handbook!"
+      },
+      "topics10": {
+        "title": "10 Topics Completed",
+        "description": "You've completed 10 topics!"
+      },
+      "topics25": {
+        "title": "25 Topics Completed",
+        "description": "You've completed 25 topics!"
+      },
+      "topics50": {
+        "title": "50 Topics Completed",
+        "description": "You've completed 50 topics!"
+      },
+      "quizzes5": {
+        "title": "Quiz Enthusiast",
+        "description": "You've taken 5 quizzes!"
+      },
+      "quizzes10": {
+        "title": "Quiz Master",
+        "description": "You've taken 10 quizzes!"
+      }
+    }
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search topics, categories...",
+    "noResults": {
+      "title": "No results found",
+      "description": "We couldn't find anything matching \"{{query}}\". Try different keywords or browse our categories.",
+      "clear": "Clear search"
+    },
+    "startTyping": {
+      "title": "Start typing to search",
+      "description": "Start typing to search for topics, categories, or content."
+    },
+    "recentSearches": "Recent Searches",
+    "clearRecent": "Clear Recent Searches",
+    "viewAll": "View All Results"
+  },
+  "quiz": {
+    "title": "Quiz",
+    "start": "Start Quiz",
+    "restart": "Restart Quiz",
+    "submit": "Submit Answers",
+    "next": "Next Question",
+    "previous": "Previous Question",
+    "question": "Question {{current}} of {{total}}",
+    "correct": "Correct!",
+    "incorrect": "Incorrect",
+    "score": "Your Score",
+    "passed": "You passed!",
+    "failed": "You didn't pass",
+    "retry": "Retry Quiz",
+    "backToTopic": "Back to Topic",
+    "results": {
+      "title": "Quiz Results",
+      "correctAnswers": "Correct Answers",
+      "totalQuestions": "Total Questions",
+      "percentage": "Score",
+      "timeSpent": "Time Spent"
+    }
+  },
+  "completionDialog": {
+    "reachedEnd": "You've reached the end!",
+    "markComplete": "Mark {{title}} as complete?",
+    "signInRequired": "Please sign in to mark topics as complete",
+    "markedComplete": "Marked as complete!",
+    "marking": "Marking...",
+    "yesMarkComplete": "Yes, mark complete",
+    "no": "No",
+    "dismissAriaLabel": "Dismiss completion dialog",
+    "markCompleteAriaLabel": "Mark topic as complete",
+    "markingAriaLabel": "Marking as complete",
+    "dismiss": "Dismiss",
+    "topicMarkedComplete": "Topic marked as complete! ✓",
+    "failedToUpdate": "Failed to update. Please try again."
+  },
+  "topic": {
+    "readTime": "{{time}} min read",
+    "difficulty": "Difficulty",
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced",
+    "prerequisites": "Prerequisites",
+    "learningObjectives": "Learning Objectives",
+    "relatedTopics": "Related Topics",
+    "takeQuiz": "Take Quiz",
+    "markAsComplete": "Mark as Complete",
+    "markedAsComplete": "Marked as Complete",
+    "bookmark": "Bookmark",
+    "bookmarked": "Bookmarked",
+    "share": "Share",
+    "completed": "Completed",
+    "completionDialogOld": {
+      "title": "Congratulations!",
+      "message": "You've completed {{topic}}!",
+      "continue": "Continue Learning",
+      "takeQuiz": "Take Quiz"
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "subtitle": "Stay updated with your learning activity",
+    "empty": {
+      "title": "No notifications",
+      "description": "You'll see notifications about your learning progress, new content, and updates here."
+    },
+    "markAsRead": "Mark as Read",
+    "markAllAsRead": "Mark All as Read",
+    "delete": "Delete",
+    "new": "New"
+  },
+  "profile": {
+    "title": "My Profile",
+    "subtitle": "Manage your account information and preferences",
+    "actions": {
+      "edit": "Edit Profile",
+      "saveChanges": "Save Changes"
+    },
+    "empty": {
+      "signInRequired": "Sign In Required",
+      "description": "Please sign in to view and manage your profile. Create an account to save your progress, bookmark topics, and personalize your learning experience."
+    },
+    "completion": {
+      "complete": "Profile complete!",
+      "percentage": "Profile {{percentage}}% complete",
+      "and": "and",
+      "hint": "Add {{items}} to complete your profile.",
+      "missing": {
+        "fullName": "full name",
+        "avatar": "avatar",
+        "bio": "bio",
+        "socialLinks": "social links",
+        "preferences": "preferences"
+      }
+    },
+    "sections": {
+      "personalInfo": "Personal Information",
+      "avatar": "Avatar",
+      "socialLinks": "Social Links",
+      "preferences": "Preferences",
+      "accountDetails": "Account Details",
+      "accountSecurity": "Account & Security"
+    },
+    "fields": {
+      "fullName": "Full Name",
+      "email": "Email Address",
+      "bio": "About You",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter/X"
+    },
+    "placeholders": {
+      "fullName": "Enter your full name",
+      "bio": "Tell us a bit about yourself (optional)",
+      "github": "https://github.com/username",
+      "linkedin": "https://linkedin.com/in/username",
+      "twitter": "https://twitter.com/username",
+      "newEmail": "Enter new email address",
+      "newPassword": "Enter new password (min. 6 characters)",
+      "confirmPassword": "Confirm new password",
+      "deleteConfirm": "DELETE"
+    },
+    "labels": {
+      "memberSince": "Member Since",
+      "lastUpdated": "Last Updated",
+      "accountCreated": "Account Created",
+      "verified": "Verified",
+      "notSet": "Not set",
+      "never": "Never",
+      "noBio": "No bio added yet",
+      "usingDefaultAvatar": "Using default initials avatar",
+      "emailCannotChange": "Email cannot be changed",
+      "changeAvatar": "Change avatar",
+      "changeAvatarButton": "Change Avatar",
+      "avatarDescription": "Upload an image, choose from predefined avatars, or enter a URL. Leave empty to use initials."
+    },
+    "preferences": {
+      "newsletter": {
+        "title": "Weekly AI Newsletter",
+        "description": "Get weekly updates about AI trends and insights"
+      },
+      "handbookAlerts": {
+        "title": "New Handbook Alerts",
+        "description": "Notify me when new handbooks are published"
+      },
+      "productUpdates": {
+        "title": "Product Updates",
+        "description": "Stay informed about new features and improvements"
+      }
+    },
+    "security": {
+      "changeEmail": {
+        "title": "Change Email Address",
+        "updateButton": "Update Email",
+        "enterNew": "Please enter a new email address",
+        "invalid": "Please enter a valid email address",
+        "mustBeDifferent": "New email must be different from current email",
+        "changeFailed": "Failed to change email. Please try again.",
+        "changeRequestSent": "Email change request sent. Please check your new email for confirmation.",
+        "currentEmailNote": "Current email: {{email}}. You'll receive a confirmation email at the new address."
+      },
+      "changePassword": {
+        "title": "Change Password",
+        "updateButton": "Update Password",
+        "fillAll": "Please fill in all password fields",
+        "minLength": "Password must be at least 6 characters long",
+        "mismatch": "Passwords do not match",
+        "changeFailed": "Failed to change password. Please try again.",
+        "changeSuccess": "Password changed successfully. You will be signed out for security."
+      },
+      "delete": {
+        "title": "Delete Account",
+        "description": "Permanently delete your account and all associated data. This action cannot be undone.",
+        "button": "Delete Account",
+        "modalTitle": "Delete Account",
+        "modalDescription": "This action will permanently delete your account and all associated data including:",
+        "modalItems": {
+          "profile": "Your profile information",
+          "bookmarks": "All bookmarks",
+          "progress": "Your learning progress",
+          "notifications": "All notifications"
+        },
+        "cannotUndo": "This action cannot be undone.",
+        "typeDelete": "Type <span class=\"font-mono bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded\">DELETE</span> to confirm:",
+        "typeDeleteConfirm": "Please type DELETE to confirm",
+        "success": "Account deleted successfully",
+        "failed": "Failed to delete account. Please try again or contact support.",
+        "deleting": "Deleting...",
+        "deleteButton": "Delete Account"
+      }
+    },
+    "validation": {
+      "fullNameMaxLength": "Full name must be less than 100 characters",
+      "bioMaxLength": "Bio must be less than 200 characters",
+      "invalidUrl": "Please enter a valid URL"
+    },
+    "errors": {
+      "loadFailed": "Failed to load profile",
+      "updateFailed": "Failed to update profile",
+      "fixErrors": "Please fix the errors in the form before saving your changes.",
+      "validationError": "Validation Error"
+    },
+    "success": {
+      "title": "Success",
+      "updated": "Profile updated successfully"
+    }
+  },
+  "emptyStates": {
+    "topics": {
+      "title": "No topics in {{category}}",
+      "description": "This category doesn't have any topics yet. Check back later or explore other categories.",
+      "action": "Browse Categories"
+    },
+    "categories": {
+      "title": "No categories available",
+      "description": "Categories will appear here once they're added to the platform.",
+      "action": "Refresh"
+    }
+  },
+  "weeklyReport": {
+    "title": "AI Weekly",
+    "subtitle": "Stay updated with the latest AI research, industry news, and technological developments. Each report provides a curated summary of key events, breakthroughs, and trends to keep you at the forefront of the field.",
+    "readMore": "Read More",
+    "close": "Close",
+    "empty": {
+      "title": "No AI Weekly Available",
+      "description": "Check back soon for the latest research highlights and developments."
+    },
+    "errors": {
+      "loadFailed": "Failed to load weekly reports",
+      "loadFailedDescription": "Unable to load weekly reports. Please try again."
+    }
+  },
+  "buttons": {
+    "cancel": "Cancel",
+    "back": "Back"
+  }
+}

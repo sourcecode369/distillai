@@ -1,0 +1,237 @@
+{
+  "nav": {
+    "handbooks": "Handbücher"
+  },
+  "homePage": {
+    "title": "KI-Handbücher",
+    "subtitle": "Umfassende Leitfäden zu Konzepten, Techniken und Anwendungen der künstlichen Intelligenz. Jedes Handbuch bietet strukturiertes Lernen von Grundlagen bis zu fortgeschrittenen Themen mit klaren Erklärungen und praktischen Beispielen.",
+    "searchResults": {
+      "found_one": "{{count}} Ergebnis gefunden",
+      "found_other": "{{count}} Ergebnisse gefunden",
+      "for": "für \"{{query}}\""
+    },
+    "chapters": "Kapitel",
+    "exploreHandbook": "Handbuch erkunden",
+    "timeUnits": {
+      "hours": "Std.",
+      "minutes": "Min."
+    }
+  },
+  "categoryPage": {
+    "searchResults": {
+      "found_one": "{{count}} Ergebnis gefunden",
+      "found_other": "{{count}} Ergebnisse gefunden",
+      "for": "für \"{{query}}\""
+    },
+    "completed": "Abgeschlossen"
+  },
+  "sections": {
+    "core-ai-fields": {
+      "title": "Kernbereiche der KI",
+      "subtitle": "Grundlegende KI-Konzepte und Methoden, die das Fundament der künstlichen Intelligenz bilden, von grundlegendem maschinellem Lernen bis zu fortgeschrittenen generativen Modellen."
+    },
+    "ai-for-specific-data-types": {
+      "title": "KI für spezifische Datentypen",
+      "subtitle": "Spezialisierte KI-Techniken und Architekturen für die Verarbeitung verschiedener Datentypen, einschließlich Text, Bilder, Audio, Video und strukturierte Informationen."
+    },
+    "autonomous-systems": {
+      "title": "Autonome Systeme",
+      "subtitle": "KI-gestützte Systeme, die unabhängig arbeiten können, Entscheidungen treffen und in realen Umgebungen handeln, ohne ständige menschliche Intervention."
+    },
+    "optimization-and-operationalization": {
+      "title": "Optimierung und Operationalisierung",
+      "subtitle": "Tools, Techniken und Best Practices für die effiziente Bereitstellung, Verwaltung und Optimierung von KI-Systemen in Produktionsumgebungen."
+    },
+    "advanced-algorithmic-approaches": {
+      "title": "Fortgeschrittene algorithmische Ansätze",
+      "subtitle": "Innovative Algorithmen und Berechnungsmethoden, die die Grenzen dessen erweitern, was KI-Systeme erreichen können, von evolutionärer Berechnung bis zu adversariellem Lernen."
+    },
+    "trustworthy-and-ethical-ai": {
+      "title": "Vertrauenswürdige und ethische KI",
+      "subtitle": "Sicherstellung, dass KI-Systeme transparent, fair, sicher und mit ethischen Prinzipien ausgerichtet sind, während Benutzerdatenschutz und Datenrechte geschützt werden."
+    },
+    "ai-in-specific-domains": {
+      "title": "KI in spezifischen Bereichen",
+      "subtitle": "Reale Anwendungen der KI in verschiedenen Branchen und Bereichen, die zeigen, wie künstliche Intelligenz verschiedene Sektoren transformiert."
+    }
+  },
+  "categories": {
+    "generative-ai": {
+      "title": "Generative KI",
+      "description": "Erstellen neuer Inhalte mit KI: Text-, Bild-, Audio- und Videogenerierung."
+    },
+    "llms": {
+      "title": "Große Sprachmodelle",
+      "description": "Architekturen, Trainingsstrategien und Feinabstimmung für moderne LLMs."
+    },
+    "ml": {
+      "title": "Maschinelles Lernen",
+      "description": "Grundlegende Algorithmen, überwachtes und unüberwachtes Lernen sowie Modellbewertungstechniken."
+    },
+    "agentic-ai": {
+      "title": "Agentische KI",
+      "description": "KI-Agenten, die autonom denken, planen und handeln können, um Ziele zu erreichen."
+    },
+    "dl": {
+      "title": "Tiefes Lernen",
+      "description": "Neuronale Netze, Backpropagation und fortgeschrittene Architekturen für Deep-Learning-Anwendungen."
+    },
+    "rl": {
+      "title": "Bestärkendes Lernen",
+      "description": "Agenten, Umgebungen, Belohnungen und Politikoptimierung."
+    },
+    "self-supervised": {
+      "title": "Selbstüberwachtes Lernen",
+      "description": "Lernen von Repräsentationen aus unmarkierten Daten durch Vorwandaufgaben und kontrastives Lernen."
+    },
+    "representation-learning": {
+      "title": "Repräsentationslernen",
+      "description": "Lernen nützlicher Repräsentationen von Daten, die zugrunde liegende Struktur und Muster erfassen."
+    },
+    "prompt-engineering": {
+      "title": "Prompt-Engineering",
+      "description": "Beherrschung der Kunst, effektive Prompts und Kontexte zu erstellen, um KI-Verhalten zu steuern."
+    },
+    "nlp": {
+      "title": "Natürliche Sprachverarbeitung",
+      "description": "Techniken zur Verarbeitung und Analyse von menschlichen Sprachdaten mit maschinellem Lernen."
+    },
+    "cv": {
+      "title": "Computersehen",
+      "description": "Von CNNs bis Vision Transformers und Stable Diffusion."
+    },
+    "audio-ai": {
+      "title": "Audio-KI",
+      "description": "Verarbeitung und Generierung von Audio mit KI: Spracherkennung, Synthese und Musikgenerierung."
+    },
+    "multimodal-ai": {
+      "title": "Multimodale KI",
+      "description": "Integration und Verarbeitung mehrerer Datentypen (Text, Bild, Audio) in KI-Systemen."
+    },
+    "dl-documents": {
+      "title": "Deep Learning für Dokumente",
+      "description": "KI-Techniken zur Verarbeitung, zum Verstehen und zur Extraktion von Informationen aus Dokumenten."
+    },
+    "gnn": {
+      "title": "Graph-Neuronale Netze",
+      "description": "Neuronale Netze, die für graphstrukturierte Daten und relationale Informationen entwickelt wurden."
+    },
+    "knowledge-graphs": {
+      "title": "Wissensgraphen",
+      "description": "Strukturierte Darstellungen von Wissen unter Verwendung von Entitäten, Beziehungen und semantischen Netzwerken."
+    },
+    "tabular-dl": {
+      "title": "Tabellarisches Deep Learning",
+      "description": "Deep-Learning-Ansätze für strukturierte Tabellendaten und relationale Datenbanken."
+    },
+    "time-series": {
+      "title": "Zeitreihenprognose",
+      "description": "Vorhersage zukünftiger Werte in sequenziellen Daten mit Deep Learning und statistischen Methoden."
+    },
+    "video-ai": {
+      "title": "Video",
+      "description": "KI für Videoverständnis, -generierung und -analyse: Aktionserkennung, Videogenerierung und zeitliche Modellierung."
+    },
+    "ai-art": {
+      "title": "KI für Kunst und Ästhetik",
+      "description": "Erstellen von Kunst, Musik und kreativen Inhalten mit künstlicher Intelligenz."
+    },
+    "edge-ai": {
+      "title": "KI für Edge und IoT",
+      "description": "Bereitstellung von KI-Modellen auf Edge-Geräten und Internet-of-Things-Systemen."
+    },
+    "ai-finance": {
+      "title": "KI im Finanzwesen",
+      "description": "Anwendungen der KI in Finanzdienstleistungen und algorithmischem Handel."
+    },
+    "ai-gaming": {
+      "title": "KI für Spiele",
+      "description": "KI-Techniken für die Spieleentwicklung: NPCs, prozedurale Generierung und Spiel-KI."
+    },
+    "ai-healthcare": {
+      "title": "KI im Gesundheitswesen",
+      "description": "Transformation des Gesundheitswesens mit KI-gestützter Diagnostik und Behandlungsplanung."
+    },
+    "ai-cybersecurity": {
+      "title": "KI in der Cybersicherheit",
+      "description": "Verwendung von KI für Bedrohungserkennung, Sicherheitsanalyse und Cyberabwehr."
+    },
+    "robotics-ai": {
+      "title": "Robotik und KI",
+      "description": "Kombination von KI mit Robotik für autonome Navigation, Manipulation und Entscheidungsfindung."
+    },
+    "self-driving-cars": {
+      "title": "Autonome Fahrzeuge",
+      "description": "Autonome Fahrzeugtechnologie: Wahrnehmung, Planung und Steuerungssysteme."
+    },
+    "flying-cars": {
+      "title": "Flugautos",
+      "description": "KI-Systeme für autonome Luftfahrzeuge und urbane Luftmobilität."
+    },
+    "sensor-fusion": {
+      "title": "Sensorfusion",
+      "description": "Kombination von Daten mehrerer Sensoren zur Verbesserung der Wahrnehmung und Entscheidungsfindung in autonomen Systemen."
+    },
+    "recommender-systems": {
+      "title": "Empfehlungssysteme",
+      "description": "KI-gestützte Systeme für personalisierte Empfehlungen und Content-Entdeckung."
+    },
+    "mlops": {
+      "title": "MLOps",
+      "description": "Best Practices für die Bereitstellung und Wartung von Machine-Learning-Modellen in der Produktion."
+    },
+    "automl": {
+      "title": "AutoML",
+      "description": "Automatisiertes maschinelles Lernen: Modellauswahl, Hyperparameter-Tuning und Architektursuche."
+    },
+    "efficient-ai": {
+      "title": "Effiziente KI und Optimierung",
+      "description": "Techniken zur Verbesserung der Geschwindigkeit, Verkleinerung und Energieeffizienz von KI-Modellen."
+    },
+    "gpu-programming": {
+      "title": "GPU-Programmierung",
+      "description": "Programmierung von GPUs für KI-Workloads: CUDA, Optimierung und paralleles Computing."
+    },
+    "genetic-algorithms": {
+      "title": "Genetische Algorithmen",
+      "description": "Evolutionäre Berechnung mit genetischen Operatoren für Optimierungs- und Suchprobleme."
+    },
+    "evolutionary-algorithms": {
+      "title": "Evolutionäre Algorithmen",
+      "description": "Populationsbasierte Optimierungsalgorithmen, inspiriert von der biologischen Evolution."
+    },
+    "information-retrieval": {
+      "title": "Informationsrückgewinnung",
+      "description": "Suchsysteme, Ranking-Algorithmen und Retrieval-Methoden zur Suche nach relevanten Informationen."
+    },
+    "adversarial-ml": {
+      "title": "Adversarielles Maschinelles Lernen",
+      "description": "Verstehen und Verteidigen gegen adversarielle Angriffe auf Machine-Learning-Modelle."
+    },
+    "bayesian-ml": {
+      "title": "Bayessches Maschinelles Lernen",
+      "description": "Probabilistische Ansätze zum maschinellen Lernen mit Unsicherheitsquantifizierung."
+    },
+    "continual-learning": {
+      "title": "Kontinuierliches Lernen",
+      "description": "Kontinuierliches Lernen aus neuen Daten ohne Vergessen zuvor erlernten Wissens."
+    },
+    "federated-learning": {
+      "title": "Föderiertes Lernen",
+      "description": "Training von Modellen auf dezentralisierten Geräten bei gleichzeitiger Lokalisierung der Daten."
+    },
+    "xai": {
+      "title": "Erklärbare KI (XAI)",
+      "description": "Methoden zur Transparenz und Interpretierbarkeit von KI-Entscheidungen für Menschen."
+    },
+    "ai-ethics": {
+      "title": "KI-Ethik und Fairness",
+      "description": "Sicherstellung, dass KI-Systeme fair, unvoreingenommen und mit ethischen Prinzipien ausgerichtet sind."
+    },
+    "machine-unlearning": {
+      "title": "Maschinelles Verlernen",
+      "description": "Techniken zum Entfernen spezifischer Daten oder Wissen aus trainierten Modellen."
+    }
+  }
+}
+

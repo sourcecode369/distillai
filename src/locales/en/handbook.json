@@ -1,0 +1,237 @@
+{
+  "nav": {
+    "handbooks": "Handbooks"
+  },
+  "homePage": {
+    "title": "Handbooks",
+    "subtitle": "Comprehensive guides to artificial intelligence concepts, techniques, and applications. Each handbook provides structured learning from fundamentals to advanced topics with clear explanations and practical examples.",
+    "searchResults": {
+      "found_one": "Found {{count}} result",
+      "found_other": "Found {{count}} results",
+      "for": "for \"{{query}}\""
+    },
+    "chapters": "Chapters",
+    "exploreHandbook": "Explore Handbook",
+    "timeUnits": {
+      "hours": "h",
+      "minutes": "m"
+    }
+  },
+  "categoryPage": {
+    "searchResults": {
+      "found_one": "Found {{count}} result",
+      "found_other": "Found {{count}} results",
+      "for": "for \"{{query}}\""
+    },
+    "completed": "Completed"
+  },
+  "sections": {
+    "core-ai-fields": {
+      "title": "Core AI Fields",
+      "subtitle": "Fundamental AI concepts and methodologies that form the foundation of artificial intelligence, from basic machine learning to advanced generative models."
+    },
+    "ai-for-specific-data-types": {
+      "title": "AI for Specific Data Types",
+      "subtitle": "Specialized AI techniques and architectures designed for processing different types of data, including text, images, audio, video, and structured information."
+    },
+    "autonomous-systems": {
+      "title": "Autonomous Systems",
+      "subtitle": "AI-powered systems that can operate independently, making decisions and taking actions in real-world environments without constant human intervention."
+    },
+    "optimization-and-operationalization": {
+      "title": "Optimization and Operationalization",
+      "subtitle": "Tools, techniques, and best practices for efficiently deploying, managing, and optimizing AI systems in production environments."
+    },
+    "advanced-algorithmic-approaches": {
+      "title": "Advanced Algorithmic Approaches",
+      "subtitle": "Cutting-edge algorithms and computational methods that push the boundaries of what AI systems can achieve, from evolutionary computation to adversarial learning."
+    },
+    "trustworthy-and-ethical-ai": {
+      "title": "Trustworthy and Ethical AI",
+      "subtitle": "Ensuring AI systems are transparent, fair, secure, and aligned with ethical principles while protecting user privacy and data rights."
+    },
+    "ai-in-specific-domains": {
+      "title": "AI in Specific Domains",
+      "subtitle": "Real-world applications of AI across various industries and domains, showcasing how artificial intelligence transforms different sectors."
+    }
+  },
+  "categories": {
+    "generative-ai": {
+      "title": "Generative AI",
+      "description": "Creating new content with AI: text, images, audio, and video generation."
+    },
+    "llms": {
+      "title": "Large Language Models",
+      "description": "Architectures, training strategies, and fine-tuning for modern LLMs."
+    },
+    "ml": {
+      "title": "Machine Learning",
+      "description": "Foundational algorithms, supervised and unsupervised learning, and model evaluation techniques."
+    },
+    "agentic-ai": {
+      "title": "Agentic AI",
+      "description": "AI agents that can reason, plan, and act autonomously to achieve goals."
+    },
+    "dl": {
+      "title": "Deep Learning",
+      "description": "Neural networks, backpropagation, and advanced architectures for deep learning applications."
+    },
+    "rl": {
+      "title": "Reinforcement Learning",
+      "description": "Agents, environments, rewards, and policy optimization."
+    },
+    "self-supervised": {
+      "title": "Self Supervised Learning",
+      "description": "Learning representations from unlabeled data through pretext tasks and contrastive learning."
+    },
+    "representation-learning": {
+      "title": "Representation Learning",
+      "description": "Learning useful representations of data that capture underlying structure and patterns."
+    },
+    "prompt-engineering": {
+      "title": "Prompt Engineering",
+      "description": "Mastering the art of crafting effective prompts and context to guide AI behavior."
+    },
+    "nlp": {
+      "title": "Natural Language Processing",
+      "description": "Techniques for processing and analyzing human language data with machine learning."
+    },
+    "cv": {
+      "title": "Computer Vision",
+      "description": "From CNNs to Vision Transformers and Stable Diffusion."
+    },
+    "audio-ai": {
+      "title": "Audio AI",
+      "description": "Processing and generating audio with AI: speech recognition, synthesis, and music generation."
+    },
+    "multimodal-ai": {
+      "title": "Multimodal AI",
+      "description": "Integrating and processing multiple types of data (text, image, audio) in AI systems."
+    },
+    "dl-documents": {
+      "title": "Deep Learning for Documents",
+      "description": "AI techniques for processing, understanding, and extracting information from documents."
+    },
+    "gnn": {
+      "title": "Graph Neural Networks",
+      "description": "Neural networks designed to work with graph-structured data and relational information."
+    },
+    "knowledge-graphs": {
+      "title": "Knowledge Graphs",
+      "description": "Structured representations of knowledge using entities, relationships, and semantic networks."
+    },
+    "tabular-dl": {
+      "title": "Tabular Deep Learning",
+      "description": "Deep learning approaches for structured tabular data and relational databases."
+    },
+    "time-series": {
+      "title": "Time Series Forecasting",
+      "description": "Predicting future values in sequential data using deep learning and statistical methods."
+    },
+    "video-ai": {
+      "title": "Video",
+      "description": "AI for video understanding, generation, and analysis: action recognition, video generation, and temporal modeling."
+    },
+    "ai-art": {
+      "title": "AI for Art and Aesthetics",
+      "description": "Creating art, music, and creative content using artificial intelligence."
+    },
+    "edge-ai": {
+      "title": "AI for Edge and IoT",
+      "description": "Deploying AI models on edge devices and Internet of Things systems."
+    },
+    "ai-finance": {
+      "title": "AI in Finance",
+      "description": "Applications of AI in financial services and algorithmic trading."
+    },
+    "ai-gaming": {
+      "title": "AI for Gaming",
+      "description": "AI techniques for game development: NPCs, procedural generation, and game AI."
+    },
+    "ai-healthcare": {
+      "title": "AI in Healthcare",
+      "description": "Transforming healthcare with AI-powered diagnostics and treatment planning."
+    },
+    "ai-cybersecurity": {
+      "title": "AI in Cybersecurity",
+      "description": "Using AI for threat detection, security analysis, and cyber defense."
+    },
+    "robotics-ai": {
+      "title": "Robotics and AI",
+      "description": "Combining AI with robotics for autonomous navigation, manipulation, and decision-making."
+    },
+    "self-driving-cars": {
+      "title": "Self Driving Cars",
+      "description": "Autonomous vehicle technology: perception, planning, and control systems."
+    },
+    "flying-cars": {
+      "title": "Flying Cars",
+      "description": "AI systems for autonomous aerial vehicles and urban air mobility."
+    },
+    "sensor-fusion": {
+      "title": "Sensor Fusion",
+      "description": "Combining data from multiple sensors to improve perception and decision-making in autonomous systems."
+    },
+    "recommender-systems": {
+      "title": "Recommender Systems",
+      "description": "AI-powered systems for personalized recommendations and content discovery."
+    },
+    "mlops": {
+      "title": "MLOps",
+      "description": "Best practices for deploying and maintaining machine learning models in production."
+    },
+    "automl": {
+      "title": "AutoML",
+      "description": "Automated machine learning: model selection, hyperparameter tuning, and architecture search."
+    },
+    "efficient-ai": {
+      "title": "Efficient AI and Optimization",
+      "description": "Techniques for making AI models faster, smaller, and more energy-efficient."
+    },
+    "gpu-programming": {
+      "title": "GPU Programming",
+      "description": "Programming GPUs for AI workloads: CUDA, optimization, and parallel computing."
+    },
+    "genetic-algorithms": {
+      "title": "Genetic Algorithms",
+      "description": "Evolutionary computation using genetic operators for optimization and search problems."
+    },
+    "evolutionary-algorithms": {
+      "title": "Evolutionary Algorithms",
+      "description": "Population-based optimization algorithms inspired by biological evolution."
+    },
+    "information-retrieval": {
+      "title": "Information Retrieval",
+      "description": "Search systems, ranking algorithms, and retrieval methods for finding relevant information."
+    },
+    "adversarial-ml": {
+      "title": "Adversarial Machine Learning",
+      "description": "Understanding and defending against adversarial attacks on machine learning models."
+    },
+    "bayesian-ml": {
+      "title": "Bayesian Machine Learning",
+      "description": "Probabilistic approaches to machine learning with uncertainty quantification."
+    },
+    "continual-learning": {
+      "title": "Continual Learning",
+      "description": "Learning continuously from new data without forgetting previously learned knowledge."
+    },
+    "federated-learning": {
+      "title": "Federated Learning",
+      "description": "Training models across decentralized devices while keeping data localized."
+    },
+    "xai": {
+      "title": "Explainable AI (XAI)",
+      "description": "Methods to make AI decisions transparent and interpretable to humans."
+    },
+    "ai-ethics": {
+      "title": "AI Ethics and Fairness",
+      "description": "Ensuring AI systems are fair, unbiased, and aligned with ethical principles."
+    },
+    "machine-unlearning": {
+      "title": "Machine Unlearning",
+      "description": "Techniques for removing specific data or knowledge from trained models."
+    }
+  }
+}
+

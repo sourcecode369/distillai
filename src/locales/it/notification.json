@@ -1,0 +1,70 @@
+{
+  "bell": {
+    "title": "Notifiche",
+    "ariaLabel": "Notifiche",
+    "ariaLabelUnread": "Notifiche, {{count}} non lette"
+  },
+  "dropdown": {
+    "title": "Notifiche",
+    "ariaLabel": "Notifiche",
+    "markAllRead": "Segna tutte come lette",
+    "loading": "Caricamento notifiche...",
+    "viewAll": "Vedi tutte le notifiche",
+    "viewAllCount": "Vedi le {{count}} notifiche",
+    "time": {
+      "justNow": "Proprio ora",
+      "minutesAgo": "{{count}} min fa",
+      "hoursAgo": "{{count}} h fa",
+      "daysAgo": "{{count}} giorni fa"
+    }
+  },
+  "page": {
+    "title": "Notifiche",
+    "subtitle": {
+      "unread": "non lette",
+      "total": "in totale",
+      "count": "{{count}} notifica",
+      "countPlural": "{{count}} notifiche"
+    },
+    "markAllRead": "Segna tutte come lette",
+    "signInRequired": "Accesso richiesto",
+    "signInMessage": "Accedi per visualizzare le tue notifiche",
+    "goBack": "Indietro",
+    "filters": {
+      "all": "Tutte",
+      "unread": "Non lette",
+      "read": "Lette"
+    },
+    "loading": "Caricamento notifiche...",
+    "empty": {
+      "all": {
+        "title": "Nessuna notifica ancora",
+        "description": "Vedrai le notifiche qui quando gli amministratori invieranno aggiornamenti e annunci"
+      },
+      "unread": {
+        "title": "Tutto aggiornato!",
+        "description": "Hai letto tutte le tue notifiche. Ottimo lavoro per rimanere aggiornato!"
+      },
+      "read": {
+        "title": "Nessuna notifica letta",
+        "description": "Prova a cambiare filtro per vedere più notifiche"
+      }
+    },
+    "markAsRead": "Segna come letta",
+    "markRead": "Segna come letta",
+    "new": "Nuovo",
+    "toast": {
+      "markedAsRead": "Notifica segnata come letta",
+      "markAllRead": "Tutte le notifiche segnate come lette",
+      "errorMarkAsRead": "Impossibile segnare la notifica come letta",
+      "errorMarkAllRead": "Impossibile segnare tutte le notifiche come lette"
+    },
+    "time": {
+      "justNow": "Proprio ora",
+      "minutesAgo": "{{count}} min fa",
+      "hoursAgo": "{{count}} h fa",
+      "daysAgo": "{{count}} giorni fa"
+    }
+  }
+}
+

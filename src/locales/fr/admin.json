@@ -1,0 +1,459 @@
+{
+  "title": "Tableau de Bord Administrateur",
+  "subtitle": "Gérer le contenu, les utilisateurs, les analyses et les paramètres de la plateforme",
+  "tabs": {
+    "analytics": "Analyses",
+    "users": "Utilisateurs",
+    "content": "Contenu",
+    "notifications": "Notifications",
+    "activity": "Activité",
+    "settings": "Paramètres"
+  },
+  "header": {
+    "title": "Tableau de Bord Administrateur",
+    "subtitle": "Gérer le contenu, les utilisateurs, les analyses et les paramètres de la plateforme",
+    "refresh": "Actualiser",
+    "refreshTooltip": "Actualiser toutes les données",
+    "switchToLightMode": "Passer en mode clair",
+    "switchToDarkMode": "Passer en mode sombre",
+    "notifications": "Notifications",
+    "loggedInAs": "Connecté en tant que"
+  },
+  "analytics": {
+    "title": "Tableau de Bord des Analyses",
+    "subtitle": "Informations complètes sur l'utilisation et l'engagement de la plateforme",
+    "loading": "Chargement des analyses...",
+    "noData": "Aucune donnée d'analyse disponible",
+    "timeframe": {
+      "label": "Période",
+      "selectPlaceholder": "Sélectionner une période",
+      "last7Days": "7 Derniers Jours",
+      "last30Days": "30 Derniers Jours",
+      "last90Days": "90 Derniers Jours",
+      "lastYear": "Dernière Année"
+    },
+    "sections": {
+      "keyPerformanceIndicators": "Indicateurs Clés de Performance",
+      "engagementMetrics": "Métriques d'Engagement",
+      "engagementLearning": "Analyses d'Engagement et d'Apprentissage",
+      "quizProgress": "Analyses de Quiz et de Progrès"
+    },
+    "metrics": {
+      "totalUsers": "Utilisateurs Totaux",
+      "activeUsers": "Utilisateurs Actifs",
+      "totalTopics": "Sujets Totaux",
+      "completedTopics": "Sujets Complétés",
+      "totalQuizzes": "Quiz Totaux",
+      "passedQuizzes": "Quiz Réussis",
+      "averageScore": "Score Moyen",
+      "totalBookmarks": "Signets Totaux",
+      "readingSessions": "Sessions de Lecture",
+      "quizAttempts": "Tentatives de Quiz",
+      "quizPassRate": "Taux de Réussite des Quiz",
+      "thisWeek": "cette semaine",
+      "new": "nouveau"
+    },
+    "charts": {
+      "userGrowth": "Croissance des Utilisateurs",
+      "topicViews": "Vues de Sujets",
+      "quizPerformance": "Performance des Quiz",
+      "categoryDistribution": "Distribution par Catégorie",
+      "engagementOverTime": "Engagement dans le Temps",
+      "dailyActiveUsers": "Utilisateurs Actifs Quotidiens",
+      "activityByHour": "Activité par Heure",
+      "topicViewsCompletions": "Vues et Complétions de Sujets par Catégorie",
+      "topViewedTopics": "Top 5 Sujets les Plus Consultés",
+      "quizPerformanceByTopic": "Performance des Quiz par Sujet",
+      "scoreDistribution": "Distribution des Scores",
+      "completionFunnel": "Entonnoir de Complétion",
+      "mostCompletedTopics": "Sujets les Plus Complétés",
+      "lastDays": "{{days}} derniers jours",
+      "peakUsageTimes": "Heures de pointe d'utilisation",
+      "categoryPerformance": "Aperçu de la performance par catégorie",
+      "mostPopularContent": "Contenu le plus populaire",
+      "topAttempts": "Top 10 sujets par tentatives",
+      "quizScoreRanges": "Gammes de scores de quiz",
+      "userProgression": "Métriques de progression de l'utilisateur",
+      "topCompletionRates": "Meilleurs taux de complétion",
+      "views": "vues",
+      "completions": "complétions",
+      "completion": "complétion",
+      "conversion": "conversion",
+      "noTopicViews": "Aucune donnée de vues de sujets disponible",
+      "noQuizData": "Aucune donnée de quiz disponible",
+      "noCompletionData": "Aucune donnée de complétion disponible",
+      "topic": "Sujet",
+      "attempts": "Tentatives",
+      "avgScore": "Score Moy.",
+      "passRate": "Taux de Réussite",
+      "readTopics": "Sujets Lus",
+      "attemptedQuiz": "Quiz Tenté",
+      "passedQuiz": "Quiz Réussi"
+    },
+    "insights": {
+      "title": "Analyses de Quiz et de Progrès",
+      "mostPopularTopics": "Sujets les Plus Populaires",
+      "mostCompletedTopics": "Sujets les Plus Complétés",
+      "averageCompletionRate": "Taux Moyen de Complétion"
+    }
+  },
+  "users": {
+    "title": "Gestion des Utilisateurs",
+    "subtitle": "Gérer tous les utilisateurs et permissions de la plateforme",
+    "export": "Exporter",
+    "search": {
+      "placeholder": "Rechercher des utilisateurs par nom ou email",
+      "noResults": "Aucun utilisateur trouvé"
+    },
+    "filters": {
+      "all": "Tous les Utilisateurs",
+      "admin": "Administrateurs",
+      "regular": "Utilisateurs Réguliers"
+    },
+    "sort": {
+      "newest": "Plus Récent en Premier",
+      "oldest": "Plus Ancien en Premier",
+      "name": "Trier par Nom"
+    },
+    "table": {
+      "user": "Utilisateur",
+      "email": "Email",
+      "role": "Rôle",
+      "joined": "Rejoint",
+      "lastActive": "Dernière Activité",
+      "actions": "Actions",
+      "noName": "Sans nom",
+      "adminBadge": "Admin"
+    },
+    "actions": {
+      "viewDetails": "Voir les Détails",
+      "makeAdmin": "Rendre Administrateur",
+      "removeAdmin": "Retirer Administrateur",
+      "deleteUser": "Supprimer l'Utilisateur",
+      "sendNotification": "Envoyer une Notification"
+    },
+    "modals": {
+      "userDetails": {
+        "title": "Détails de l'Utilisateur",
+        "stats": "Statistiques de l'Utilisateur",
+        "topicsCompleted": "Sujets Complétés",
+        "quizzesPassed": "Quiz Réussis",
+        "bookmarks": "Signets",
+        "readingTime": "Temps de Lecture",
+        "readingHistory": "Historique de Lecture",
+        "totalProgress": "Progrès Total",
+        "averageScore": "Score Moyen",
+        "joined": "Rejoint",
+        "lastUpdated": "Dernière Mise à Jour",
+        "noData": "—"
+      },
+      "makeAdmin": {
+        "title": "Rendre Administrateur",
+        "message": "Êtes-vous sûr de vouloir rendre {{name}} administrateur ?",
+        "confirm": "Rendre Administrateur",
+        "cancel": "Annuler"
+      },
+      "removeAdmin": {
+        "title": "Retirer Administrateur",
+        "message": "Êtes-vous sûr de vouloir retirer les privilèges d'administrateur de {{name}} ?",
+        "confirm": "Retirer Administrateur",
+        "cancel": "Annuler"
+      },
+      "deleteUser": {
+        "title": "Supprimer l'Utilisateur",
+        "message": "Êtes-vous sûr de vouloir supprimer {{name}} ? Cette action ne peut pas être annulée et supprimera définitivement toutes les données associées.",
+        "confirm": "Supprimer l'Utilisateur",
+        "cancel": "Annuler"
+      }
+    },
+    "empty": {
+      "title": "Aucun utilisateur pour le moment",
+      "description": "Aucun utilisateur ne s'est encore inscrit sur la plateforme."
+    }
+  },
+  "content": {
+    "title": "Gestion du Contenu",
+    "subtitle": "Gérer tous les sujets et catégories",
+    "loading": "Chargement des sujets...",
+    "search": {
+      "placeholder": "Rechercher des sujets...",
+      "label": "Rechercher des sujets"
+    },
+    "toolbar": {
+      "addTopic": "Ajouter un Sujet",
+      "importSectionsCategories": "Importer Sections et Catégories",
+      "importingData": "Importation des Données...",
+      "importStaticTopics": "Importer des Sujets Statiques",
+      "importingProgress": "Importation... ({{current}}/{{total}})",
+      "importSectionsTooltip": "Importer les sections et catégories des fichiers de code vers la base de données (doit être fait en premier)",
+      "importTopicsTooltip": "Importer tous les sujets statiques des fichiers de code vers la base de données",
+      "importSectionsFirst": "Importer d'abord les sections et catégories"
+    },
+    "categories": {
+      "title": "Catégories",
+      "add": "Ajouter une Catégorie",
+      "edit": "Modifier la Catégorie",
+      "delete": "Supprimer la Catégorie"
+    },
+    "topics": {
+      "title": "Sujets",
+      "add": "Ajouter un Sujet",
+      "edit": "Modifier le Sujet",
+      "delete": "Supprimer le Sujet",
+      "import": "Importer des Sujets",
+      "importing": "Importation des sujets...",
+      "importProgress": "Importation de {{current}} sur {{total}}",
+      "imported": "{{count}} sujets importés avec succès"
+    },
+    "table": {
+      "topic": "Sujet",
+      "category": "Catégorie",
+      "difficulty": "Difficulté",
+      "readTime": "Temps de Lecture",
+      "tags": "Tags",
+      "actions": "Actions"
+    },
+    "filters": {
+      "allCategories": "Toutes les Catégories",
+      "allDifficulties": "Toutes les Difficultés",
+      "beginner": "Débutant",
+      "intermediate": "Intermédiaire",
+      "advanced": "Avancé"
+    },
+    "modals": {
+      "deleteTopic": {
+        "title": "Supprimer le Sujet",
+        "message": "Êtes-vous sûr de vouloir supprimer \"{{title}}\" ? Cette action ne peut pas être annulée et supprimera définitivement le sujet de la base de données.",
+        "confirm": "Supprimer",
+        "cancel": "Annuler"
+      },
+      "topicForm": {
+        "title": "Sujet",
+        "addTitle": "Ajouter un Nouveau Sujet",
+        "editTitle": "Modifier le Sujet",
+        "createDescription": "Créer un nouveau sujet pour votre manuel",
+        "topicIdLabel": "ID du Sujet :",
+        "basicInfo": "Informations de Base",
+        "meta": "Métadonnées",
+        "content": "Contenu",
+        "titleLabel": "Titre",
+        "descriptionLabel": "Description",
+        "categoryLabel": "Catégorie",
+        "difficultyLabel": "Difficulté",
+        "readTimeLabel": "Temps de Lecture",
+        "tagsLabel": "Tags",
+        "categoryRequired": "La catégorie est requise",
+        "titleRequired": "Le titre est requis",
+        "descriptionRequired": "La description est requise",
+        "selectCategory": "Sélectionner une catégorie",
+        "titlePlaceholder": "Entrer le titre du sujet",
+        "descriptionPlaceholder": "Entrer la description du sujet",
+        "readTimePlaceholder": "ex. : 5 min de lecture",
+        "readTimeHelp": "Entrer les minutes (affiché aux apprenants)",
+        "addTag": "Ajouter",
+        "addTagPlaceholder": "Ajouter un tag",
+        "pressEnterToAdd": "Appuyer sur Entrée pour ajouter un tag",
+        "contentSummary": "Résumé du Contenu",
+        "noContentYet": "Aucun contenu pour le moment. Ajoutez des sections, des images, du code et plus encore.",
+        "editContent": "Modifier le Contenu",
+        "hideEditor": "Masquer l'Éditeur",
+        "contentEditor": "Éditeur de Contenu",
+        "cancel": "Annuler",
+        "createTopic": "Créer le Sujet",
+        "updateTopic": "Mettre à Jour le Sujet",
+        "saving": "Enregistrement...",
+        "saved": "Enregistré !",
+        "save": "Enregistrer le Sujet",
+        "errors": {
+          "titleRequired": "Le titre est requis",
+          "categoryRequired": "La catégorie est requise",
+          "difficultyRequired": "La difficulté est requise",
+          "descriptionRequired": "La description est requise",
+          "fixErrors": "Veuillez corriger les erreurs avant d'enregistrer."
+        },
+        "success": {
+          "created": "Sujet créé avec succès ! ✓",
+          "updated": "Sujet mis à jour avec succès ! ✓"
+        }
+      }
+    },
+    "empty": {
+      "title": "Aucun sujet disponible",
+      "description": "Commencez par créer votre premier sujet ou importer du contenu existant."
+    }
+  },
+  "notifications": {
+    "title": "Envoyer des Notifications",
+    "subtitle": "Envoyer des notifications dans l'application aux utilisateurs",
+    "form": {
+      "title": "Détails de la Notification",
+      "subtitle": "Créer et envoyer une notification à vos utilisateurs",
+      "titleLabel": "Titre",
+      "titlePlaceholder": "Entrer le titre de la notification",
+      "titleMaxLength": "{{length}}/100 caractères",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Entrer le message de la notification",
+      "messageMaxLength": "{{length}}/500 caractères",
+      "sendToLabel": "Envoyer À",
+      "allUsers": "Tous les Utilisateurs",
+      "specificUsers": "Utilisateurs Spécifiques",
+      "noUsersAvailable": "Aucun utilisateur disponible",
+      "usersSelected": "{{count}} utilisateur sélectionné",
+      "usersSelectedPlural": "{{count}} utilisateurs sélectionnés",
+      "send": "Envoyer la Notification",
+      "sending": "Envoi...",
+      "validation": {
+        "fillBoth": "Veuillez remplir le titre et le corps",
+        "selectAtLeastOne": "Veuillez sélectionner au moins un utilisateur",
+        "notAuthenticated": "Utilisateur non authentifié"
+      },
+      "success": {
+        "sentToAll": "Notification envoyée à {{count}} utilisateur(s)",
+        "sentToSpecific": "Notification envoyée à {{count}} utilisateur(s)"
+      },
+      "error": {
+        "partialSent": "Envoyé partiellement : {{count}} notifications créées, mais certaines ont échoué",
+        "failed": "Échec de l'envoi de la notification : {{message}}",
+        "failedGeneric": "Échec de l'envoi de la notification"
+      }
+    },
+    "types": {
+      "info": "Information",
+      "success": "Succès",
+      "warning": "Avertissement",
+      "error": "Erreur"
+    }
+  },
+  "activity": {
+    "title": "Journaux d'Activité",
+    "subtitle": "Voir toute l'activité de la plateforme et les actions des utilisateurs",
+    "export": "Exporter",
+    "empty": {
+      "title": "Aucun journal d'activité disponible",
+      "description": "Les journaux d'activité apparaîtront ici lorsque les utilisateurs interagiront avec la plateforme."
+    },
+    "filters": {
+      "all": "Toute l'Activité",
+      "userActions": "Actions des Utilisateurs",
+      "systemEvents": "Événements Système"
+    },
+    "table": {
+      "timestamp": "Horodatage",
+      "user": "Utilisateur",
+      "action": "Action",
+      "details": "Détails"
+    }
+  },
+  "settings": {
+    "title": "Paramètres",
+    "subtitle": "Configurer les paramètres et préférences de la plateforme",
+    "sections": {
+      "general": "Paramètres Généraux",
+      "security": "Paramètres de Sécurité",
+      "platformInfo": "Informations sur la Plateforme",
+      "dataExport": "Exportation de Données"
+    },
+    "general": {
+      "title": "Paramètres Généraux",
+      "siteName": "Nom du Site",
+      "siteDescription": "Description du Site",
+      "emailNotifications": "Notifications par Email",
+      "emailNotificationsDesc": "Recevoir des mises à jour par email sur l'activité de la plateforme",
+      "autoSave": "Enregistrement Automatique des Modifications",
+      "autoSaveDesc": "Enregistrer automatiquement les modifications de contenu"
+    },
+    "security": {
+      "title": "Paramètres de Sécurité",
+      "enableRegistration": "Activer l'Inscription des Utilisateurs",
+      "requireEmailVerification": "Exiger la Vérification de l'Email",
+      "sessionTimeout": "Délai d'Expiration de Session",
+      "sessionTimeoutDesc": "Déconnecter automatiquement les utilisateurs après inactivité",
+      "passwordRequirements": "Exigences de Mot de Passe",
+      "passwordRequirementsDesc": "Exigences minimales pour les mots de passe des utilisateurs",
+      "minCharacters": "Minimum 8 caractères",
+      "uppercaseLetter": "Au moins une lettre majuscule",
+      "numberRequired": "Au moins un chiffre",
+      "timeout15": "15 minutes",
+      "timeout30": "30 minutes",
+      "timeout60": "1 heure",
+      "timeout120": "2 heures"
+    },
+    "platformInfo": {
+      "platformVersion": "Version de la Plateforme",
+      "lastUpdated": "Dernière Mise à Jour",
+      "databaseStatus": "État de la Base de Données",
+      "apiStatus": "État de l'API",
+      "connected": "Connecté",
+      "operational": "Opérationnel"
+    },
+    "dataExport": {
+      "exportUsers": "Exporter les Utilisateurs",
+      "exportAnalytics": "Exporter les Analyses",
+      "exportActivity": "Exporter l'Activité"
+    },
+    "save": "Enregistrer les Paramètres",
+    "saving": "Enregistrement...",
+    "saved": "Paramètres enregistrés avec succès"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "refresh": "Actualiser",
+    "export": "Exporter",
+    "import": "Importer",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "sort": "Trier",
+    "actions": "Actions",
+    "noData": "Aucune donnée disponible",
+    "savedToDatabase": "Enregistré dans la base de données · Les modifications se synchronisent sur tous les appareils et utilisateurs.",
+    "dismissBanner": "Fermer la bannière",
+    "close": "Fermer",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "save": "Enregistrer",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "add": "Ajouter",
+    "create": "Créer",
+    "update": "Mettre à Jour",
+    "admin": "Admin",
+    "noName": "Sans nom"
+  },
+  "errors": {
+    "accessDenied": "Accès refusé. Privilèges d'administrateur requis.",
+    "loginRequired": "Veuillez vous connecter pour accéder au tableau de bord administrateur.",
+    "loadError": "Impossible de charger les données. Veuillez actualiser la page ou réessayer plus tard.",
+    "updateFailed": "Impossible de mettre à jour le statut de l'utilisateur. Veuillez vérifier vos permissions et réessayer.",
+    "deleteFailed": "Impossible de supprimer l'utilisateur. Cette action nécessite des permissions de rôle de service. Veuillez contacter votre administrateur.",
+    "saveFailed": "Échec de l'enregistrement. Veuillez réessayer.",
+    "deleteTopicFailed": "Échec de la suppression du sujet. Veuillez réessayer.",
+    "unexpectedError": "Une erreur inattendue s'est produite. Veuillez réessayer.",
+    "invalidIdentifier": "Impossible de supprimer le sujet : identifiant manquant"
+  },
+  "success": {
+    "userPromoted": "Utilisateur promu administrateur avec succès.",
+    "userRemoved": "Utilisateur retiré comme administrateur avec succès.",
+    "userDeleted": "L'utilisateur a été supprimé avec succès. Toutes les données associées ont été supprimées.",
+    "topicDeleted": "Sujet supprimé avec succès ! ✓",
+    "statusUpdated": "Statut Mis à Jour",
+    "dataRefreshed": "Toutes les données ont été actualisées avec succès.",
+    "refreshed": "Actualisé"
+  },
+  "confirmations": {
+    "deleteTopic": {
+      "title": "Supprimer le Sujet",
+      "message": "Êtes-vous sûr de vouloir supprimer \"{{title}}\" ? Cette action ne peut pas être annulée et supprimera définitivement le sujet de la base de données."
+    },
+    "deleteUser": {
+      "title": "Supprimer l'Utilisateur",
+      "message": "Êtes-vous sûr de vouloir supprimer {{email}} ? Cette action ne peut pas être annulée et supprimera définitivement toutes les données associées."
+    },
+    "importData": {
+      "message": "Cela importera toutes les sections et catégories de vos fichiers de code vers la base de données. Les éléments qui existent déjà seront ignorés. Cela doit être fait avant d'importer des sujets. Continuer ?"
+    },
+    "importTopics": {
+      "message": "Cela importera tous les sujets statiques de vos fichiers de code vers la base de données. Les sujets qui existent déjà seront ignorés. Continuer ?"
+    }
+  }
+}

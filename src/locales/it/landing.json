@@ -1,0 +1,101 @@
+{
+  "hero": {
+    "title": "Padroneggia l'",
+    "titleHighlight": "Intelligenza Artificiale",
+    "subtitle": "Dai Fondamenti all'Avanzato",
+    "description": "Guide complete su concetti, tecniche e applicazioni dell'intelligenza artificiale. Impara IA, ML e Data Science.",
+    "descriptionSecondary": "Impara al tuo ritmo con contenuti strutturati progettati per tutti i livelli di abilità.",
+    "badge": "La tua piattaforma completa di apprendimento IA",
+    "cta": "Esplora i Manuali",
+    "secondaryCta": "Scopri di più",
+    "rotatingWords": {
+      "ai": "Intelligenza Artificiale",
+      "ml": "Apprendimento Automatico",
+      "dataScience": "Scienza dei Dati",
+      "neuralNetworks": "Reti Neurali"
+    }
+  },
+  "features": {
+    "sectionLabel": "Funzionalità della Piattaforma",
+    "comingSoon": "Presto",
+    "title": "Tutto ciò di cui hai bisogno per padroneggiare l'IA",
+    "subtitle": "Percorsi di apprendimento strutturati progettati per ingegneri e ricercatori",
+    "handbooks": {
+      "title": "Manuali IA",
+      "description": "Guide complete che coprono IA, ML e Data Science dai fondamenti agli argomenti avanzati.",
+      "action": "Esplora i Manuali",
+      "stats": "50+ Argomenti"
+    },
+    "roadmaps": {
+      "title": "Percorsi di Carriera",
+      "description": "Percorsi di carriera passo-passo per ingegneri IA, ricercatori ML e data scientist.",
+      "action": "Prossimamente",
+      "stats": "3 Percorsi"
+    },
+    "ecosystem": {
+      "title": "Strumenti dell'Ecosistema",
+      "description": "Scopri strumenti essenziali di IA, framework, benchmark e modelli per costruire applicazioni IA.",
+      "action": "Prossimamente",
+      "stats": "100+ Strumenti"
+    },
+    "resources": {
+      "title": "Risorse di Apprendimento",
+      "description": "Libri, corsi, tutorial e materiali di preparazione per colloqui selezionati per accelerare il tuo apprendimento.",
+      "action": "Prossimamente",
+      "stats": "500+ Risorse"
+    },
+    "opportunities": {
+      "title": "Opportunità di Carriera",
+      "description": "Trova conferenze, borse di studio, competizioni, hackathon e stage in IA e ML.",
+      "action": "Prossimamente",
+      "stats": "100+ Opportunità"
+    },
+    "community": {
+      "title": "Comunità",
+      "description": "Unisciti a una vivace comunità di appassionati di IA, condividi conoscenze e collabora su progetti.",
+      "action": "Unisciti alla Comunità",
+      "stats": "10K+ Membri"
+    }
+  },
+  "benefits": {
+    "sectionLabel": "Perché sceglierci",
+    "title": "Perché scegliere AI Handbooks?",
+    "subtitle": "Tutto ciò di cui hai bisogno per avere successo nell'IA",
+    "structured": {
+      "title": "Apprendimento Strutturato",
+      "description": "Segui percorsi curati dai fondamenti agli argomenti avanzati, progettati da esperti del settore."
+    },
+    "comprehensive": {
+      "title": "Contenuto Completo",
+      "description": "Accedi a guide approfondite, tutorial e risorse che coprono tutti gli aspetti di IA, ML e Data Science."
+    },
+    "practical": {
+      "title": "Focus Pratico",
+      "description": "Impara attraverso esempi pratici, frammenti di codice e applicazioni del mondo reale."
+    },
+    "upToDate": {
+      "title": "Sempre Aggiornato",
+      "description": "Il contenuto viene aggiornato regolarmente per riflettere gli ultimi sviluppi in IA e ML."
+    },
+    "community": {
+      "title": "Comunità Attiva",
+      "description": "Partecipa a discussioni, fai domande e collabora con altri studenti ed esperti."
+    },
+    "free": {
+      "title": "Gratuito e Aperto",
+      "description": "Tutto il contenuto è gratuito e open source, disponibile per tutti."
+    }
+  },
+  "cta": {
+    "title": "Pronto per iniziare a imparare?",
+    "subtitle": "Unisciti a migliaia di studenti che padroneggiano IA, ML e Data Science.",
+    "button": "Inizia Gratis",
+    "secondaryButton": "Esplora i Manuali"
+  },
+  "stats": {
+    "topics": "Argomenti",
+    "roadmaps": "Percorsi",
+    "resources": "Risorse",
+    "tools": "Strumenti"
+  }
+}

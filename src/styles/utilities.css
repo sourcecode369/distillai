@@ -1,0 +1,333 @@
+/* Utility Classes - Shadows, Glass, Spacing, etc. */
+
+@layer base {
+  /* Improved shadows with better depth */
+  .shadow-elegant {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05),
+      0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 10px 15px -3px rgba(0, 0, 0, 0.02);
+  }
+
+  .shadow-elegant-hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08),
+      0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 20px 25px -5px rgba(0, 0, 0, 0.03);
+  }
+
+  /* Better glassmorphism */
+  .glass-enhanced {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .dark .glass-enhanced {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Sidebar active state utility class */
+  .sidebar-item-active {
+    background: linear-gradient(
+      135deg,
+      rgba(99, 102, 241, 1),
+      rgba(139, 92, 246, 1)
+    );
+    color: white;
+    box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.4),
+      0 0 0 1px rgba(99, 102, 241, 0.2),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .sidebar-item-active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 60%;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 0.8)
+    );
+    border-radius: 0 4px 4px 0;
+    box-shadow: 0 0 8px rgba(99, 102, 241, 0.6),
+      0 0 16px rgba(139, 92, 246, 0.4);
+  }
+
+  /* Improved gradient text */
+  .gradient-text-enhanced {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: gradient-shift 3s ease infinite;
+    filter: brightness(1.1) saturate(1.2);
+  }
+
+  /* Better badge styles */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold uppercase tracking-wider;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  /* Improved input styles */
+  .input-enhanced {
+    @apply transition-all duration-200;
+  }
+
+  .input-enhanced:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+  }
+
+  /* Better card depth */
+  .card-depth {
+    position: relative;
+  }
+
+  .card-depth::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(99, 102, 241, 0.1),
+      rgba(139, 92, 246, 0.1)
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .card-depth:hover::before {
+    opacity: 1;
+  }
+
+  /* Improved icon container */
+  .icon-container {
+    @apply relative transition-all duration-300;
+  }
+
+  .icon-container::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: inherit;
+    background: radial-gradient(
+      circle,
+      rgba(99, 102, 241, 0.2),
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: -1;
+  }
+
+  .icon-container:hover::after {
+    opacity: 1;
+  }
+
+  /* Better section dividers */
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(99, 102, 241, 0.2) 20%,
+      rgba(139, 92, 246, 0.2) 50%,
+      rgba(99, 102, 241, 0.2) 80%,
+      transparent 100%
+    );
+  }
+
+  /* Improved button groups */
+  .button-group {
+    @apply inline-flex items-center gap-2;
+  }
+
+  .button-group button:not(:last-child) {
+    @apply border-r border-gray-200 dark:border-slate-700 pr-2;
+  }
+
+  /* Improved list styles */
+  .list-enhanced li {
+    @apply relative pl-6;
+  }
+
+  .list-enhanced li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: #6366f1;
+    font-weight: bold;
+  }
+
+  /* Better loading states */
+  .loading-shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  .dark .loading-shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+  }
+
+  /* Improved focus rings */
+  .focus-ring-enhanced {
+    @apply focus:outline-none;
+  }
+
+  .focus-ring-enhanced:focus-visible {
+    @apply ring-2 ring-indigo-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-900;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+  }
+
+  /* Better spacing utilities */
+  .space-section {
+    @apply space-y-12 lg:space-y-16;
+  }
+
+  /* Improved card grid */
+  .card-grid {
+    @apply grid gap-6 lg:gap-8;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  /* Better text balance */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Improved hover lift */
+  .hover-lift {
+    @apply transition-transform duration-300;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+
+  /* Better border gradients */
+  .border-gradient {
+    position: relative;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+  }
+
+  .border-gradient::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1;
+  }
+
+  /* Hide scrollbar for horizontal scroll */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Smooth horizontal scroll */
+  .scrollbar-hide {
+    scroll-behavior: smooth;
+  }
+
+  /* Enhanced backdrop blur */
+  .backdrop-blur-premium {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+
+  /* Better spacing utilities */
+  .space-y-section {
+    @apply space-y-16 lg:space-y-24;
+  }
+
+  /* Improved focus states for better accessibility */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900;
+  }
+
+  /* Smooth transitions for all interactive elements */
+  .interactive {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  .interactive:hover {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  .interactive:active {
+    transform: scale(0.97);
+  }
+
+  /* Improved empty states */
+  .empty-state {
+    @apply flex flex-col items-center justify-center py-20 px-4;
+  }
+
+  .empty-state-icon {
+    @apply w-20 h-20 rounded-2xl bg-gradient-to-br from-indigo-100 to-violet-100 dark:from-indigo-900/30 dark:to-violet-900/30 flex items-center justify-center mb-6;
+  }
+
+  /* Keyboard navigation improvements */
+  .keyboard-shortcut {
+    @apply text-xs text-gray-400 dark:text-slate-500 font-mono;
+  }
+
+  /* Subtle scroll-triggered fade-in for article sections */
+  .section-fade-in {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .section-fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Reading progress indicator */
+  .reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+    z-index: 9999;
+    transition: width 0.1s ease-out;
+  }
+}
+

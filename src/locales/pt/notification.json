@@ -1,0 +1,70 @@
+{
+  "bell": {
+    "title": "Notificações",
+    "ariaLabel": "Notificações",
+    "ariaLabelUnread": "Notificações, {{count}} não lidas"
+  },
+  "dropdown": {
+    "title": "Notificações",
+    "ariaLabel": "Notificações",
+    "markAllRead": "Marcar todas como lidas",
+    "loading": "Carregando notificações...",
+    "viewAll": "Ver todas as notificações",
+    "viewAllCount": "Ver as {{count}} notificações",
+    "time": {
+      "justNow": "Agora mesmo",
+      "minutesAgo": "há {{count}} min",
+      "hoursAgo": "há {{count}} h",
+      "daysAgo": "há {{count}} dias"
+    }
+  },
+  "page": {
+    "title": "Notificações",
+    "subtitle": {
+      "unread": "não lidas",
+      "total": "no total",
+      "count": "{{count}} notificação",
+      "countPlural": "{{count}} notificações"
+    },
+    "markAllRead": "Marcar todas como lidas",
+    "signInRequired": "Login necessário",
+    "signInMessage": "Por favor, faça login para ver suas notificações",
+    "goBack": "Voltar",
+    "filters": {
+      "all": "Todas",
+      "unread": "Não lidas",
+      "read": "Lidas"
+    },
+    "loading": "Carregando notificações...",
+    "empty": {
+      "all": {
+        "title": "Ainda não há notificações",
+        "description": "Você verá notificações aqui quando os administradores enviarem atualizações e anúncios"
+      },
+      "unread": {
+        "title": "Tudo em dia!",
+        "description": "Você leu todas as suas notificações. Ótimo trabalho em se manter atualizado!"
+      },
+      "read": {
+        "title": "Nenhuma notificação lida",
+        "description": "Tente mudar para um filtro diferente para ver mais notificações"
+      }
+    },
+    "markAsRead": "Marcar como lida",
+    "markRead": "Marcar como lida",
+    "new": "Nova",
+    "toast": {
+      "markedAsRead": "Notificação marcada como lida",
+      "markAllRead": "Todas as notificações marcadas como lidas",
+      "errorMarkAsRead": "Falha ao marcar notificação como lida",
+      "errorMarkAllRead": "Falha ao marcar todas as notificações como lidas"
+    },
+    "time": {
+      "justNow": "Agora mesmo",
+      "minutesAgo": "há {{count}} min",
+      "hoursAgo": "há {{count}} h",
+      "daysAgo": "há {{count}} dias"
+    }
+  }
+}
+

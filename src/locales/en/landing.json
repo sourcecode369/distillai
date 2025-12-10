@@ -1,0 +1,101 @@
+{
+  "hero": {
+    "title": "Master",
+    "titleHighlight": "Artificial Intelligence",
+    "subtitle": "From Fundamentals to Advanced",
+    "description": "Comprehensive guides to artificial intelligence concepts, techniques, and applications. Learn AI, ML, and Data Science.",
+    "descriptionSecondary": "Learn at your own pace with structured content designed for all skill levels.",
+    "badge": "Your Complete AI Learning Platform",
+    "cta": "Explore Handbooks",
+    "secondaryCta": "Learn More",
+    "rotatingWords": {
+      "ai": "Artificial Intelligence",
+      "ml": "Machine Learning",
+      "dataScience": "Data Science",
+      "neuralNetworks": "Neural Networks"
+    }
+  },
+  "features": {
+    "sectionLabel": "Platform Features",
+    "comingSoon": "Soon",
+    "title": "Everything You Need to Master AI",
+    "subtitle": "Structured learning paths designed for engineers and researchers",
+    "handbooks": {
+      "title": "AI Handbooks",
+      "description": "Comprehensive guides covering AI, ML, and Data Science from fundamentals to advanced topics.",
+      "action": "Explore Handbooks",
+      "stats": "50+ Topics"
+    },
+    "roadmaps": {
+      "title": "Career Roadmaps",
+      "description": "Step-by-step career paths for AI engineers, ML researchers, and data scientists.",
+      "action": "Coming Soon",
+      "stats": "3 Roadmaps"
+    },
+    "ecosystem": {
+      "title": "Ecosystem Tools",
+      "description": "Discover essential AI tools, frameworks, benchmarks, and models for building AI applications.",
+      "action": "Coming Soon",
+      "stats": "100+ Tools"
+    },
+    "resources": {
+      "title": "Learning Resources",
+      "description": "Curated books, courses, tutorials, and interview prep materials to accelerate your learning.",
+      "action": "Coming Soon",
+      "stats": "500+ Resources"
+    },
+    "opportunities": {
+      "title": "Career Opportunities",
+      "description": "Find conferences, scholarships, competitions, hackathons, and internships in AI and ML.",
+      "action": "Coming Soon",
+      "stats": "100+ Opportunities"
+    },
+    "community": {
+      "title": "Community",
+      "description": "Join a vibrant community of AI enthusiasts, share knowledge, and collaborate on projects.",
+      "action": "Join Community",
+      "stats": "10K+ Members"
+    }
+  },
+  "benefits": {
+    "sectionLabel": "Why Choose Us",
+    "title": "Why Choose AI Handbooks?",
+    "subtitle": "Everything you need to succeed in AI",
+    "structured": {
+      "title": "Structured Learning",
+      "description": "Follow curated pathways from fundamentals to advanced topics, designed by industry experts."
+    },
+    "comprehensive": {
+      "title": "Comprehensive Content",
+      "description": "Access in-depth guides, tutorials, and resources covering all aspects of AI, ML, and Data Science."
+    },
+    "practical": {
+      "title": "Practical Focus",
+      "description": "Learn through hands-on examples, code snippets, and real-world applications."
+    },
+    "upToDate": {
+      "title": "Always Up-to-Date",
+      "description": "Content is regularly updated to reflect the latest developments in AI and ML."
+    },
+    "community": {
+      "title": "Active Community",
+      "description": "Join discussions, ask questions, and collaborate with fellow learners and experts."
+    },
+    "free": {
+      "title": "Free & Open",
+      "description": "All content is free and open-source, available to everyone."
+    }
+  },
+  "cta": {
+    "title": "Ready to Start Learning?",
+    "subtitle": "Join thousands of learners mastering AI, ML, and Data Science.",
+    "button": "Get Started Free",
+    "secondaryButton": "Explore Handbooks"
+  },
+  "stats": {
+    "topics": "Topics",
+    "roadmaps": "Roadmaps",
+    "resources": "Resources",
+    "tools": "Tools"
+  }
+}

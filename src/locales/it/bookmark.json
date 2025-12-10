@@ -1,0 +1,59 @@
+{
+  "dropdown": {
+    "title": "Preferiti",
+    "empty": {
+      "title": "Nessun preferito ancora",
+      "description": "Salva argomenti per accedervi rapidamente"
+    },
+    "viewAll": "Vedi tutti i preferiti",
+    "viewAllCount": "Vedi i {{count}} preferiti",
+    "time": {
+      "recently": "Di recente",
+      "justNow": "Proprio ora",
+      "minutesAgo": "{{count}} min fa",
+      "hoursAgo": "{{count}} h fa",
+      "daysAgo": "{{count}} giorni fa"
+    }
+  },
+  "page": {
+    "title": "Preferiti",
+    "subtitle": {
+      "count": "{{count}} argomento salvato",
+      "countPlural": "{{count}} argomenti salvati"
+    },
+    "searchPlaceholder": "Cerca preferiti...",
+    "filterByTag": "Filtra per tag:",
+    "all": "Tutti",
+    "empty": {
+      "title": "Nessun preferito ancora",
+      "description": "Inizia a segnare gli argomenti che vuoi leggere più tardi. I tuoi elementi salvati appariranno qui."
+    },
+    "emptySearch": {
+      "title": "Nessun preferito trovato",
+      "description": "Prova ad aggiustare la tua ricerca o filtro per trovare quello che stai cercando."
+    },
+    "removeBookmark": "Rimuovi preferito",
+    "time": {
+      "recently": "Di recente",
+      "justNow": "Proprio ora",
+      "minutesAgo": "{{count}} min fa",
+      "hoursAgo": "{{count}} h fa",
+      "daysAgo": "{{count}} giorni fa"
+    },
+    "toast": {
+      "removed": "Preferito rimosso",
+      "categoryNotFound": "Categoria non trovata",
+      "topicNotFound": "Argomento non trovato",
+      "loadFailed": "Impossibile caricare il preferito"
+    }
+  },
+  "button": {
+    "add": "Aggiungi ai preferiti",
+    "remove": "Rimuovi preferito",
+    "toast": {
+      "added": "Preferito aggiunto",
+      "removed": "Preferito rimosso"
+    }
+  }
+}
+

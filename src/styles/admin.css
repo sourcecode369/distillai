@@ -1,0 +1,76 @@
+/* Admin Dashboard Specific Styles */
+
+/* Grid pattern background for admin dashboard */
+.bg-grid-pattern {
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.dark .bg-grid-pattern {
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+/* Fix dialog slide animation - prevent slide-in-from-right for user details modal */
+@keyframes dialog-fade-zoom-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95) !important;
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) !important;
+  }
+}
+
+@keyframes dialog-fade-zoom-out {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) !important;
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95) !important;
+  }
+}
+
+/* Completely override animate-in class and prevent slide animation for user details dialog */
+/* Use maximum specificity to override Tailwind's data-[state=open]:animate-in */
+[data-radix-dialog-content].user-details-dialog,
+[data-radix-dialog-content].user-details-dialog.animate-in,
+.user-details-dialog.animate-in {
+  animation: dialog-fade-zoom-in 0.2s ease-out !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+[data-radix-dialog-content].user-details-dialog[data-state="open"],
+[data-radix-dialog-content].user-details-dialog[data-state="open"].animate-in,
+.user-details-dialog[data-state="open"],
+.user-details-dialog[data-state="open"].animate-in {
+  animation: dialog-fade-zoom-in 0.2s ease-out !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+[data-radix-dialog-content].user-details-dialog[data-state="closed"],
+[data-radix-dialog-content].user-details-dialog[data-state="closed"].animate-out,
+.user-details-dialog[data-state="closed"],
+.user-details-dialog[data-state="closed"].animate-out {
+  animation: dialog-fade-zoom-out 0.2s ease-out !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* Lock transform to center position at all times - highest priority */
+[data-radix-dialog-content].user-details-dialog,
+.user-details-dialog {
+  transform: translate(-50%, -50%) !important;
+}
+

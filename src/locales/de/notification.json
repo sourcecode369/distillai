@@ -1,0 +1,70 @@
+{
+  "bell": {
+    "title": "Benachrichtigungen",
+    "ariaLabel": "Benachrichtigungen",
+    "ariaLabelUnread": "Benachrichtigungen, {{count}} ungelesen"
+  },
+  "dropdown": {
+    "title": "Benachrichtigungen",
+    "ariaLabel": "Benachrichtigungen",
+    "markAllRead": "Alle als gelesen markieren",
+    "loading": "Benachrichtigungen werden geladen...",
+    "viewAll": "Alle Benachrichtigungen anzeigen",
+    "viewAllCount": "Alle {{count}} Benachrichtigungen anzeigen",
+    "time": {
+      "justNow": "Gerade eben",
+      "minutesAgo": "vor {{count}} Min.",
+      "hoursAgo": "vor {{count}} Std.",
+      "daysAgo": "vor {{count}} Tagen"
+    }
+  },
+  "page": {
+    "title": "Benachrichtigungen",
+    "subtitle": {
+      "unread": "ungelesen",
+      "total": "gesamt",
+      "count": "{{count}} Benachrichtigung",
+      "countPlural": "{{count}} Benachrichtigungen"
+    },
+    "markAllRead": "Alle als gelesen markieren",
+    "signInRequired": "Anmeldung erforderlich",
+    "signInMessage": "Bitte melde dich an, um deine Benachrichtigungen anzuzeigen",
+    "goBack": "Zurück",
+    "filters": {
+      "all": "Alle",
+      "unread": "Ungelesen",
+      "read": "Gelesen"
+    },
+    "loading": "Benachrichtigungen werden geladen...",
+    "empty": {
+      "all": {
+        "title": "Noch keine Benachrichtigungen",
+        "description": "Hier siehst du Benachrichtigungen, wenn Administratoren Updates und Ankündigungen senden"
+      },
+      "unread": {
+        "title": "Alles erledigt!",
+        "description": "Du hast alle deine Benachrichtigungen gelesen. Großartig, dass du auf dem Laufenden bleibst!"
+      },
+      "read": {
+        "title": "Keine gelesenen Benachrichtigungen",
+        "description": "Versuche, einen anderen Filter zu wählen, um mehr Benachrichtigungen zu sehen"
+      }
+    },
+    "markAsRead": "Als gelesen markieren",
+    "markRead": "Als gelesen markieren",
+    "new": "Neu",
+    "toast": {
+      "markedAsRead": "Benachrichtigung als gelesen markiert",
+      "markAllRead": "Alle Benachrichtigungen als gelesen markiert",
+      "errorMarkAsRead": "Benachrichtigung konnte nicht als gelesen markiert werden",
+      "errorMarkAllRead": "Alle Benachrichtigungen konnten nicht als gelesen markiert werden"
+    },
+    "time": {
+      "justNow": "Gerade eben",
+      "minutesAgo": "vor {{count}} Min.",
+      "hoursAgo": "vor {{count}} Std.",
+      "daysAgo": "vor {{count}} Tagen"
+    }
+  }
+}
+

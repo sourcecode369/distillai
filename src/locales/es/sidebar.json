@@ -1,0 +1,128 @@
+{
+  "appName": "XBuildsAI",
+  "appNameShort": "XBuilds",
+  "appNameSuffix": "AI",
+  "toggleMobileMenu": "Alternar menú móvil",
+  "goToHome": "Ir a AI Handbooks",
+  "weeklyReport": {
+    "title": "Informe semanal",
+    "ariaLabel": "Informe semanal"
+  },
+  "roadmaps": {
+    "title": "Rutas profesionales",
+    "comingSoon": "Pronto",
+    "ariaLabel": "Rutas profesionales (Próximamente)",
+    "submenu": {
+      "ariaLabel": "Submenú de rutas profesionales",
+      "aiCareer": "Ruta profesional de IA",
+      "mlCareer": "Ruta profesional de ML",
+      "dataScienceCareer": "Ruta profesional de Ciencia de Datos"
+    }
+  },
+  "ecosystem": {
+    "title": "Ecosistema",
+    "comingSoon": "Pronto",
+    "ariaLabel": "Ecosistema (Próximamente)",
+    "submenu": {
+      "ariaLabel": "Submenú de ecosistema",
+      "tools": "Herramientas",
+      "benchmarks": "Puntos de referencia",
+      "models": "Modelos",
+      "guides": "Guías"
+    }
+  },
+  "resources": {
+    "title": "Recursos",
+    "comingSoon": "Pronto",
+    "ariaLabel": "Recursos (Próximamente)",
+    "submenu": {
+      "ariaLabel": "Submenú de recursos",
+      "books": "Libros",
+      "courses": "Cursos",
+      "tutorials": "Tutoriales",
+      "blog": "Blog",
+      "interviewPrep": "Preparación para entrevistas",
+      "cheatsheets": "Hojas de referencia"
+    }
+  },
+  "opportunities": {
+    "title": "Oportunidades",
+    "comingSoon": "Pronto",
+    "ariaLabel": "Oportunidades (Próximamente)",
+    "submenu": {
+      "ariaLabel": "Submenú de oportunidades",
+      "conferences": "Conferencias",
+      "scholarships": "Becas",
+      "competitions": "Competiciones",
+      "techEvents": "Eventos Técnicos",
+      "hackathons": "Hackathons",
+      "internships": "Pasantías"
+    }
+  },
+  "playground": {
+    "title": "Playground IA",
+    "comingSoon": "Pronto",
+    "ariaLabel": "Playground IA (Próximamente)",
+    "submenu": {
+      "ariaLabel": "Submenú de playground",
+      "notebook": "Notebooks Interactivos",
+      "codeEditor": "Editor de Código",
+      "models": "Probar Modelos",
+      "datasets": "Conjuntos de Datos"
+    }
+  },
+  "news": {
+    "title": "Noticias e Investigación",
+    "comingSoon": "Pronto",
+    "ariaLabel": "Noticias e Investigación (Próximamente)",
+    "submenu": {
+      "ariaLabel": "Submenú de noticias",
+      "daily": "Resumen Diario",
+      "papers": "Artículos de Investigación",
+      "trending": "Tendencias",
+      "newsletter": "Boletín"
+    }
+  },
+  "certifications": {
+    "title": "Certificaciones",
+    "comingSoon": "Pronto",
+    "ariaLabel": "Certificaciones (Próximamente)",
+    "submenu": {
+      "ariaLabel": "Submenú de certificaciones",
+      "paths": "Rutas de Certificación",
+      "exams": "Hacer Examen",
+      "myCerts": "Mis Certificados",
+      "verify": "Verificar Certificado"
+    }
+  },
+  "community": {
+    "title": "Comunidad",
+    "comingSoon": "Pronto",
+    "ariaLabel": "Comunidad (Próximamente)",
+    "submenu": {
+      "ariaLabel": "Submenú de comunidad",
+      "projects": "Proyectos Destacados",
+      "mentorship": "Mentoría",
+      "studyGroups": "Grupos de Estudio",
+      "discussions": "Discusiones"
+    }
+  },
+  "bookmarks": {
+    "sectionTitle": "Favoritos",
+    "removeBookmark": "Quitar de favoritos",
+    "viewTopic": "Ver {{title}}"
+  },
+  "history": {
+    "sectionTitle": "Recientes"
+  },
+  "profile": {
+    "menu": {
+      "ariaLabel": "Menú de perfil de usuario",
+      "myProfile": "Mi perfil",
+      "ariaLabelMyProfile": "Mi perfil"
+    },
+    "signIn": {
+      "ariaLabel": "Iniciar sesión en tu cuenta"
+    }
+  }
+}

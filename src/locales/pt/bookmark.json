@@ -1,0 +1,59 @@
+{
+  "dropdown": {
+    "title": "Favoritos",
+    "empty": {
+      "title": "Ainda não há favoritos",
+      "description": "Salve tópicos para acessá-los rapidamente"
+    },
+    "viewAll": "Ver todos os favoritos",
+    "viewAllCount": "Ver os {{count}} favoritos",
+    "time": {
+      "recently": "Recentemente",
+      "justNow": "Agora mesmo",
+      "minutesAgo": "há {{count}} min",
+      "hoursAgo": "há {{count}} h",
+      "daysAgo": "há {{count}} dias"
+    }
+  },
+  "page": {
+    "title": "Favoritos",
+    "subtitle": {
+      "count": "{{count}} tópico salvo",
+      "countPlural": "{{count}} tópicos salvos"
+    },
+    "searchPlaceholder": "Pesquisar favoritos...",
+    "filterByTag": "Filtrar por tag:",
+    "all": "Todos",
+    "empty": {
+      "title": "Ainda não há favoritos",
+      "description": "Comece a marcar tópicos que você quer ler mais tarde. Seus itens salvos aparecerão aqui."
+    },
+    "emptySearch": {
+      "title": "Nenhum favorito encontrado",
+      "description": "Tente ajustar sua pesquisa ou filtro para encontrar o que você está procurando."
+    },
+    "removeBookmark": "Remover favorito",
+    "time": {
+      "recently": "Recentemente",
+      "justNow": "Agora mesmo",
+      "minutesAgo": "há {{count}} min",
+      "hoursAgo": "há {{count}} h",
+      "daysAgo": "há {{count}} dias"
+    },
+    "toast": {
+      "removed": "Favorito removido",
+      "categoryNotFound": "Categoria não encontrada",
+      "topicNotFound": "Tópico não encontrado",
+      "loadFailed": "Falha ao carregar favorito"
+    }
+  },
+  "button": {
+    "add": "Adicionar aos favoritos",
+    "remove": "Remover favorito",
+    "toast": {
+      "added": "Favorito adicionado",
+      "removed": "Favorito removido"
+    }
+  }
+}
+

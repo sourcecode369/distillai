@@ -1,0 +1,59 @@
+{
+  "dropdown": {
+    "title": "Favoris",
+    "empty": {
+      "title": "Aucun favori pour le moment",
+      "description": "Enregistrez des sujets pour y accéder rapidement"
+    },
+    "viewAll": "Voir tous les favoris",
+    "viewAllCount": "Voir les {{count}} favoris",
+    "time": {
+      "recently": "Récemment",
+      "justNow": "À l'instant",
+      "minutesAgo": "il y a {{count}} min",
+      "hoursAgo": "il y a {{count}} h",
+      "daysAgo": "il y a {{count}} jours"
+    }
+  },
+  "page": {
+    "title": "Favoris",
+    "subtitle": {
+      "count": "{{count}} sujet enregistré",
+      "countPlural": "{{count}} sujets enregistrés"
+    },
+    "searchPlaceholder": "Rechercher des favoris...",
+    "filterByTag": "Filtrer par étiquette :",
+    "all": "Tous",
+    "empty": {
+      "title": "Aucun favori pour le moment",
+      "description": "Commencez à marquer des sujets que vous souhaitez lire plus tard. Vos éléments enregistrés apparaîtront ici."
+    },
+    "emptySearch": {
+      "title": "Aucun favori trouvé",
+      "description": "Essayez d'ajuster votre recherche ou votre filtre pour trouver ce que vous cherchez."
+    },
+    "removeBookmark": "Supprimer le favori",
+    "time": {
+      "recently": "Récemment",
+      "justNow": "À l'instant",
+      "minutesAgo": "il y a {{count}} min",
+      "hoursAgo": "il y a {{count}} h",
+      "daysAgo": "il y a {{count}} jours"
+    },
+    "toast": {
+      "removed": "Favori supprimé",
+      "categoryNotFound": "Catégorie introuvable",
+      "topicNotFound": "Sujet introuvable",
+      "loadFailed": "Échec du chargement du favori"
+    }
+  },
+  "button": {
+    "add": "Ajouter aux favoris",
+    "remove": "Supprimer le favori",
+    "toast": {
+      "added": "Favori ajouté",
+      "removed": "Favori supprimé"
+    }
+  }
+}
+

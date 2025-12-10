@@ -1,0 +1,682 @@
+{
+  "nav": {
+    "home": "Manuales de IA",
+    "handbooks": "Manuales",
+    "about": "Acerca de",
+    "faq": "FAQ",
+    "contributing": "Contribuir",
+    "codeOfConduct": "Código de conducta",
+    "contact": "Contacto",
+    "profile": "Mi perfil",
+    "progress": "Mi progreso",
+    "bookmarks": "Favoritos",
+    "history": "Recientes",
+    "admin": "Panel de administración",
+    "settings": "Configuración",
+    "signIn": "Iniciar sesión",
+    "signOut": "Cerrar sesión",
+    "getStarted": "Empezar",
+    "darkMode": "Modo oscuro",
+    "toggleDarkMode": "Alternar modo oscuro"
+  },
+  "header": {
+    "search": "Buscar",
+    "searchPlaceholder": "Buscar temas, categorías...",
+    "bookmarks": "Favoritos",
+    "notifications": "Notificaciones",
+    "toggleMobileMenu": "Alternar menú móvil",
+    "expandSidebar": "Expandir barra lateral",
+    "collapseSidebar": "Contraer barra lateral",
+    "switchToLightMode": "Cambiar a modo claro",
+    "switchToDarkMode": "Cambiar a modo oscuro",
+    "starOnGitHub": "Dar estrella en GitHub",
+    "star": "Estrella"
+  },
+  "footer": {
+    "resources": "Recursos",
+    "connect": "Conectar",
+    "community": "Comunidad",
+    "tagline": "Rutas seleccionadas para dominar la IA moderna. Estructuradas por complejidad, optimizadas para ingeniería.",
+    "madeWith": "Creado con pasión para la comunidad de IA",
+    "copyright": "© {{year}} AI Handbooks. Todos los derechos reservados.",
+    "privacyPolicy": "Política de privacidad",
+    "termsOfService": "Términos de servicio",
+    "license": "Licencia"
+  },
+  "breadcrumbs": {
+    "home": "Inicio",
+    "goToHome": "Ir al inicio"
+  },
+  "buttons": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "close": "Cerrar",
+    "back": "Volver",
+    "backToHome": "Volver al inicio",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "submit": "Enviar",
+    "confirm": "Confirmar",
+    "dismiss": "Cerrar",
+    "viewAll": "Ver todo",
+    "explore": "Explorar",
+    "learnMore": "Más información",
+    "getStarted": "Empezar",
+    "continue": "Continuar",
+    "skip": "Saltar",
+    "retry": "Reintentar",
+    "refresh": "Actualizar",
+    "clear": "Borrar",
+    "filter": "Filtrar",
+    "sort": "Ordenar",
+    "search": "Buscar",
+    "apply": "Aplicar",
+    "reset": "Restablecer",
+    "export": "Exportar",
+    "import": "Importar",
+    "download": "Descargar",
+    "upload": "Subir",
+    "create": "Crear",
+    "add": "Añadir",
+    "remove": "Eliminar",
+    "update": "Actualizar",
+    "view": "Ver",
+    "showMore": "Mostrar más",
+    "showLess": "Mostrar menos"
+  },
+  "dialog": {
+    "confirm": "Confirmar",
+    "cancel": "Cancelar",
+    "close": "Cerrar diálogo"
+  },
+  "labels": {
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "name": "Nombre",
+    "fullName": "Nombre completo",
+    "username": "Nombre de usuario",
+    "role": "Rol",
+    "status": "Estado",
+    "date": "Fecha",
+    "time": "Hora",
+    "category": "Categoría",
+    "topic": "Tema",
+    "title": "Título",
+    "description": "Descripción",
+    "tags": "Etiquetas",
+    "difficulty": "Dificultad",
+    "readTime": "Tiempo de lectura",
+    "author": "Autor",
+    "created": "Creado",
+    "updated": "Actualizado",
+    "joined": "Se unió",
+    "lastActive": "Última actividad",
+    "actions": "Acciones",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "sortBy": "Ordenar por",
+    "all": "Todos",
+    "none": "Ninguno",
+    "select": "Seleccionar",
+    "selectAll": "Seleccionar todo",
+    "deselectAll": "Deseleccionar todo"
+  },
+  "status": {
+    "active": "Activo",
+    "inactive": "Inactivo",
+    "pending": "Pendiente",
+    "completed": "Completado",
+    "inProgress": "En progreso",
+    "notStarted": "No iniciado",
+    "published": "Publicado",
+    "draft": "Borrador",
+    "archived": "Archivado",
+    "admin": "Admin",
+    "member": "Miembro",
+    "user": "Usuario"
+  },
+  "messages": {
+    "loading": "Cargando...",
+    "saving": "Guardando...",
+    "deleting": "Eliminando...",
+    "processing": "Procesando...",
+    "noData": "No hay datos disponibles",
+    "noResults": "No se encontraron resultados",
+    "error": "Se ha producido un error",
+    "success": "Éxito",
+    "warning": "Aviso",
+    "info": "Información",
+    "confirm": "¿Estás seguro?",
+    "unsavedChanges": "Tienes cambios sin guardar. ¿Seguro que quieres salir?",
+    "deleteConfirm": "¿Seguro que quieres eliminar este elemento? Esta acción no se puede deshacer.",
+    "signOutConfirm": "¿Seguro que quieres cerrar sesión?",
+    "welcomeBack": "Bienvenido de nuevo, {{name}}.",
+    "signedOut": "Sesión cerrada correctamente",
+    "errorSigningOut": "Error al cerrar sesión. Inténtalo de nuevo.",
+    "errorSigningOutRefresh": "Error al cerrar sesión. Actualiza la página."
+  },
+  "accessibility": {
+    "skipToContent": "Saltar al contenido principal",
+    "closeDialog": "Cerrar diálogo",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "toggleTheme": "Cambiar tema",
+    "language": "Idioma"
+  },
+  "time": {
+    "justNow": "Justo ahora",
+    "minutesAgo": "Hace {{count}} minuto",
+    "minutesAgo_plural": "Hace {{count}} minutos",
+    "hoursAgo": "Hace {{count}} hora",
+    "hoursAgo_plural": "Hace {{count}} horas",
+    "daysAgo": "Hace {{count}} día",
+    "daysAgo_plural": "Hace {{count}} días",
+    "weeksAgo": "Hace {{count}} semana",
+    "weeksAgo_plural": "Hace {{count}} semanas",
+    "monthsAgo": "Hace {{count}} mes",
+    "monthsAgo_plural": "Hace {{count}} meses",
+    "yearsAgo": "Hace {{count}} año",
+    "yearsAgo_plural": "Hace {{count}} años"
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "subtitle": "Todo lo que necesitas saber sobre AI Handbooks",
+    "searchPlaceholder": "Buscar en las FAQ...",
+    "noResults": "No se encontraron resultados",
+    "noResultsDescription": "Prueba con otro término de búsqueda o explora todas las categorías de abajo.",
+    "clearSearch": "Borrar búsqueda",
+    "question": "Pregunta",
+    "question_plural": "Preguntas",
+    "categories": {
+      "gettingStarted": {
+        "title": "Primeros pasos",
+        "questions": {
+          "whatIs": {
+            "q": "¿Qué es AI Handbooks?",
+            "a": "AI Handbooks es un recurso completo y organizado diseñado para ayudar a los ingenieros a dominar las tecnologías modernas de IA. Proporcionamos rutas de aprendizaje estructuradas que se adaptan a diferentes niveles de experiencia, desde principiante hasta experto."
+          },
+          "howToStart": {
+            "q": "¿Cómo empezar?",
+            "a": "Simplemente navega por nuestras categorías en la página de inicio. Cada categoría contiene handbooks organizados por complejidad. Empieza por los temas marcados como \"Principiante\" y avanza hacia contenido más avanzado a medida que aprendes."
+          },
+          "needAccount": {
+            "q": "¿Necesito crear una cuenta?",
+            "a": "Crear una cuenta es opcional pero recomendable. Con una cuenta, puedes guardar temas en favoritos, seguir tu historial de lectura, hacer cuestionarios y acceder a recomendaciones de aprendizaje personalizadas."
+          },
+          "isFree": {
+            "q": "¿El contenido es gratuito?",
+            "a": "¡Sí! Todos nuestros handbooks y materiales de aprendizaje son totalmente gratuitos. Creemos en hacer que la educación en IA sea accesible para todos."
+          }
+        }
+      },
+      "learning": {
+        "title": "Aprendizaje y contenido",
+        "questions": {
+          "updateFrequency": {
+            "q": "¿Con qué frecuencia se actualiza el contenido?",
+            "a": "Actualizamos nuestro contenido regularmente para reflejar los últimos avances en IA. Las grandes actualizaciones se realizan mensualmente y las mejoras y correcciones menores se hacen de forma continua basándonos en los comentarios de la comunidad."
+          },
+          "suggestTopics": {
+            "q": "¿Puedo sugerir temas o mejoras?",
+            "a": "¡Por supuesto! Agradecemos las sugerencias. Puedes contribuir enviando pull requests en GitHub, creando issues o contactándonos directamente. Consulta nuestra página de Contribuir para más detalles."
+          },
+          "prerequisites": {
+            "q": "¿Hay requisitos previos para los temas?",
+            "a": "Cada tema indica sus requisitos previos. Recomendamos revisarlos antes de empezar. La mayoría de los temas de nivel principiante sólo requieren conocimientos básicos de programación, mientras que los temas avanzados pueden requerir conocimientos previos más específicos."
+          },
+          "offlineReading": {
+            "q": "¿Puedo descargar el contenido para leerlo sin conexión?",
+            "a": "Actualmente, el contenido sólo está disponible en línea. Sin embargo, puedes usar la función de imprimir del navegador para guardar las páginas como PDF. Estamos trabajando para añadir una función de exportación oficial en el futuro."
+          }
+        }
+      },
+      "account": {
+        "title": "Cuenta y funciones",
+        "questions": {
+          "accountFeatures": {
+            "q": "¿Qué funciones están disponibles con una cuenta?",
+            "a": "Con una cuenta, puedes guardar temas en favoritos, seguir tu historial de lectura, hacer cuestionarios, recibir recomendaciones personalizadas y sincronizar tu progreso en todos tus dispositivos."
+          },
+          "resetPassword": {
+            "q": "¿Cómo restablecer mi contraseña?",
+            "a": "Si olvidaste tu contraseña, haz clic en \"Iniciar sesión\" y luego en \"¿Olvidaste tu contraseña?\". Recibirás un correo con instrucciones para restablecerla."
+          },
+          "socialLogin": {
+            "q": "¿Puedo usar inicio de sesión social?",
+            "a": "Sí. Puedes iniciar sesión con Google o GitHub. Esto hace que empezar sea rápido y fácil sin crear una nueva contraseña."
+          },
+          "deleteAccount": {
+            "q": "¿Cómo elimino mi cuenta?",
+            "a": "Para eliminar tu cuenta, ponte en contacto con nosotros a través de la página de Contacto. Procesaremos tu solicitud en un plazo de 48 horas."
+          }
+        }
+      },
+      "technical": {
+        "title": "Aspectos técnicos",
+        "questions": {
+          "browsers": {
+            "q": "¿Qué navegadores son compatibles?",
+            "a": "AI Handbooks funciona mejor en navegadores modernos como Chrome, Firefox, Safari y Edge. Recomendamos usar la última versión para la mejor experiencia."
+          },
+          "mobile": {
+            "q": "¿Funciona en dispositivos móviles?",
+            "a": "Sí. Nuestro sitio es totalmente responsive y funciona muy bien en tabletas y smartphones. La experiencia móvil está optimizada para lectura y navegación."
+          },
+          "extensions": {
+            "q": "¿Hay extensiones de navegador?",
+            "a": "Todavía no, pero estamos explorando opciones de extensiones de navegador para funciones mejoradas como acceso rápido y lectura sin conexión. ¡Mantente atento!"
+          },
+          "reportBug": {
+            "q": "He encontrado un error, ¿cómo lo informo?",
+            "a": "Informa de los errores a través de nuestra página de issues en GitHub o contáctanos directamente. Agradecemos tu ayuda para mejorar AI Handbooks."
+          }
+        }
+      }
+    }
+  },
+  "about": {
+    "title": "Acerca de AI Handbooks",
+    "subtitle": "Empoderando a ingenieros para dominar la IA mediante aprendizaje estructurado y conocimiento comunitario",
+    "viewOnGitHub": "Ver en GitHub",
+    "ourJourney": {
+      "title": "Nuestro recorrido",
+      "subtitle": "Del concepto a la realidad: cómo estamos construyendo el futuro de la educación en IA",
+      "vision": {
+        "title": "La visión",
+        "description": "Nacido de la necesidad de hacer que la educación en IA sea accesible, estructurada y práctica para ingenieros de todos los niveles."
+      },
+      "launch": {
+        "title": "El lanzamiento",
+        "description": "Comenzó como una iniciativa open source y se convirtió rápidamente en un ecosistema de aprendizaje completo."
+      },
+      "community": {
+        "title": "La comunidad",
+        "description": "Construido por colaboradores apasionados de todo el mundo, evolucionando continuamente gracias a la colaboración."
+      },
+      "future": {
+        "title": "El futuro",
+        "description": "Comprometidos a mantenernos a la vanguardia de la innovación en IA, actualizando el contenido a medida que el campo evoluciona."
+      }
+    },
+    "growingTogether": {
+      "title": "Creciendo juntos",
+      "subtitle": "Nuestra comunidad sigue creciendo con contenido valioso y contribuciones de todo el mundo",
+      "categories": "Categorías",
+      "topics": "Temas",
+      "contributors": "Colaboradores",
+      "resources": "Recursos",
+      "categoriesDesc": "Rutas de aprendizaje organizadas",
+      "topicsDesc": "Contenido en profundidad",
+      "contributorsDesc": "Expertos de la comunidad",
+      "resourcesDesc": "Materiales seleccionados"
+    },
+    "mission": {
+      "title": "Nuestra misión",
+      "description1": "AI Handbooks existe para democratizar la educación en IA. Estamos construyendo una plataforma integral, impulsada por la comunidad, que hace que dominar la inteligencia artificial sea accesible, atractiva y práctica para ingenieros en cada etapa de su recorrido.",
+      "description2": "Tanto si estás dando tus primeros pasos en aprendizaje automático como si buscas ampliar tu experiencia hacia áreas de vanguardia, proporcionamos rutas de aprendizaje estructuradas que se adaptan a tu ritmo, estilo y objetivos. Nuestro contenido está meticulosamente organizado, se actualiza continuamente y está optimizado para aplicaciones de ingeniería del mundo real."
+    },
+    "values": {
+      "title": "Nuestros valores fundamentales",
+      "subtitle": "Los principios que guían todo lo que hacemos",
+      "clarity": {
+        "title": "Claridad ante todo",
+        "description": "Creemos que los conceptos complejos deben descomponerse en ideas comprensibles y accionables que construyan el conocimiento de forma progresiva."
+      },
+      "quality": {
+        "title": "Calidad sobre cantidad",
+        "description": "Cada recurso se selecciona y revisa cuidadosamente, garantizando que los estudiantes reciban el mejor contenido sin sobrecarga de información."
+      },
+      "practical": {
+        "title": "Aprendizaje práctico",
+        "description": "La teoría se une a la práctica con ejercicios prácticos, ejemplos del mundo real y contenido interactivo que refuerza la comprensión."
+      },
+      "community": {
+        "title": "Comunidad",
+        "description": "Construido por y para la comunidad, damos la bienvenida a contribuciones, comentarios y colaboración para mejorar juntos."
+      },
+      "evolving": {
+        "title": "Siempre evolucionando",
+        "description": "La IA avanza rápido, y nosotros también. Nuestro contenido se actualiza continuamente para reflejar los últimos desarrollos y buenas prácticas."
+      },
+      "accessible": {
+        "title": "Accesible para todos",
+        "description": "Gratuito, open source y diseñado para eliminar barreras a la educación en IA para estudiantes de cualquier lugar y trayectoria."
+      }
+    },
+    "builtByCommunity": {
+      "title": "Construido por la comunidad",
+      "description1": "AI Handbooks es un proyecto open source impulsado por colaboradores apasionados de todo el mundo. Cada pieza de contenido, cada mejora y cada funcionalidad provienen de nuestra comunidad de estudiantes, educadores y profesionales que creen en mejorar la educación en IA para todos.",
+      "description2": "Aceptamos contribuciones de todo tipo: actualizaciones de contenido, mejoras de código, mejoras de diseño, informes de errores o simplemente compartir tu experiencia de aprendizaje. Juntos, estamos construyendo el recurso de aprendizaje de IA más completo disponible.",
+      "contribute": "Contribuir en GitHub"
+    },
+    "connect": {
+      "title": "Conecta con nosotros",
+      "description": "¿Tienes preguntas, sugerencias o quieres involucrarte? ¡Nos encantaría saber de ti! Únete a nuestra creciente comunidad de estudiantes y colaboradores que están dando forma al futuro de la educación en IA.",
+      "github": "GitHub",
+      "emailUs": "Escríbenos"
+    }
+  },
+  "contact": {
+    "title": "Contáctanos",
+    "subtitle": "¿Tienes una pregunta, sugerencia o comentario? ¡Nos encantaría saber de ti!",
+    "getInTouch": {
+      "title": "Ponte en contacto",
+      "description": "Elige el método que mejor se adapte a ti. ¡Estamos aquí para ayudarte!",
+      "email": {
+        "title": "Correo electrónico",
+        "description": "Envíanos un correo y te responderemos en un plazo de 24 horas"
+      },
+      "github": {
+        "title": "GitHub",
+        "description": "Abre un issue o inicia una discusión en nuestro repositorio"
+      },
+      "twitter": {
+        "title": "Twitter",
+        "description": "Síguenos para actualizaciones, anuncios y respuestas rápidas"
+      },
+      "linkedin": {
+        "title": "LinkedIn",
+        "description": "Conéctate con nosotros profesionalmente en LinkedIn"
+      }
+    },
+    "responseTime": {
+      "title": "Tiempo de respuesta",
+      "description": "Normalmente respondemos en menos de <strong>24 horas</strong> en días laborables. Para asuntos urgentes, menciónalo en tu mensaje."
+    },
+    "sendMessage": {
+      "title": "Envíanos un mensaje",
+      "description": "Completa el siguiente formulario y te responderemos lo antes posible",
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "subject": "Asunto",
+      "message": "Mensaje",
+      "namePlaceholder": "Juan Pérez",
+      "emailPlaceholder": "juan@ejemplo.com",
+      "subjectPlaceholder": "¿De qué se trata?",
+      "messagePlaceholder": "Cuéntanos qué tienes en mente...",
+      "send": "Enviar mensaje",
+      "sent": "¡Mensaje enviado!",
+      "sentDescription": "Gracias por contactarnos. Te responderemos pronto."
+    }
+  },
+  "contributing": {
+    "title": "Guía de contribución",
+    "subtitle": "Únete a nuestra comunidad y ayuda a mejorar AI Handbooks para todos",
+    "viewOnGitHub": "Ver en GitHub",
+    "thankYou": {
+      "title": "¡Gracias por tu interés en contribuir!",
+      "description1": "Cada contribución, por pequeña que sea, hace que AI Handbooks sea mejor. Ya sea corrigiendo una errata, añadiendo contenido, informando de un error o sugiriendo mejoras, tu ayuda es inestimable para nuestra comunidad.",
+      "description2": "Aceptamos contribuciones de todos los niveles de experiencia. No te preocupes si eres nuevo en el open source: estamos aquí para ayudarte a empezar.",
+      "viewRepo": "Ver repositorio",
+      "quickStart": "Guía rápida"
+    },
+    "quickStart": {
+      "title": "Guía rápida",
+      "subtitle": "¿Nuevo en la contribución? Empieza aquí para familiarizarte con nuestro proceso",
+      "firstTime": {
+        "title": "¿Es tu primera contribución?",
+        "description": "¿Nuevo en el open source? ¡No pasa nada! Damos la bienvenida a colaboradores de todos los niveles.",
+        "action": "Empieza con pequeñas correcciones como erratas o mejoras de documentación"
+      },
+      "ideas": {
+        "title": "¿Buscas ideas?",
+        "description": "Consulta nuestro listado de issues para ver los marcados como \"good first issue\", perfectos para principiantes.",
+        "action": "Revisa los issues etiquetados como \"help wanted\" o \"good first issue\""
+      },
+      "help": {
+        "title": "¿Necesitas ayuda?",
+        "description": "No dudes en hacer preguntas. Nuestra comunidad es amable y siempre está dispuesta a ayudar.",
+        "action": "Abre una discusión o contacta con los mantenedores"
+      }
+    },
+    "contributionTypes": {
+      "title": "Formas de contribuir",
+      "subtitle": "Hay muchas maneras de contribuir, independientemente de tu nivel de experiencia. Elige la que mejor se adapte a ti.",
+      "content": {
+        "title": "Contribuciones de contenido",
+        "description": "Ayuda a mejorar el contenido existente o añade nuevos temas para ampliar nuestra base de conocimiento",
+        "badge": "Contenido",
+        "difficulty": "Fácil",
+        "items": {
+          "fixTypos": "Corregir erratas y errores gramaticales",
+          "updateInfo": "Actualizar información desactualizada",
+          "addExamples": "Añadir explicaciones o ejemplos que falten",
+          "improveCode": "Mejorar ejemplos de código y documentación",
+          "translate": "Traducir el contenido a otros idiomas"
+        }
+      },
+      "code": {
+        "title": "Contribuciones de código",
+        "description": "Mejora la funcionalidad del sitio web, las características y la experiencia de usuario en general",
+        "badge": "Código",
+        "difficulty": "Media",
+        "items": {
+          "fixBugs": "Corregir errores e incidencias",
+          "addFeatures": "Añadir nuevas funcionalidades",
+          "improveUI": "Mejorar componentes de UI/UX",
+          "optimize": "Optimizar el rendimiento",
+          "tests": "Escribir y mejorar tests"
+        }
+      },
+      "bugs": {
+        "title": "Informes de errores",
+        "description": "Ayúdanos a identificar y corregir problemas para hacer la plataforma más fiable",
+        "badge": "Bug",
+        "difficulty": "Fácil",
+        "items": {
+          "reportLinks": "Informar de enlaces rotos o errores",
+          "documentIssues": "Documentar problemas de UI/UX",
+          "accessibility": "Informar de problemas de accesibilidad",
+          "browser": "Compartir problemas de compatibilidad con navegadores"
+        }
+      },
+      "suggestions": {
+        "title": "Sugerencias e ideas",
+        "description": "Comparte tus ideas creativas para mejoras y nuevas funciones",
+        "badge": "Idea",
+        "difficulty": "Fácil",
+        "items": {
+          "proposeTopics": "Proponer nuevos temas o categorías",
+          "suggestFeatures": "Sugerir mejoras de funcionalidades",
+          "learningPaths": "Compartir ideas de rutas de aprendizaje",
+          "resources": "Recomendar recursos externos"
+        }
+      },
+      "whatYouCanDo": "Lo que puedes hacer:"
+    },
+    "process": {
+      "title": "Cómo contribuir",
+      "subtitle": "Sigue estos sencillos pasos para hacer tu primera contribución. Te guiaremos en cada fase.",
+      "fork": {
+        "step": 1,
+        "title": "Haz un fork del repositorio",
+        "description": "Crea tu propia copia del repositorio en GitHub haciendo clic en el botón \"Fork\"",
+        "details": "Esto crea una copia personal donde puedes hacer cambios libremente"
+      },
+      "branch": {
+        "step": 2,
+        "title": "Crea una rama",
+        "description": "Crea una nueva rama para tus cambios con un nombre descriptivo",
+        "details": "Usa nombres como \"fix-typo\", \"add-topic\" o \"improve-ui\""
+      },
+      "changes": {
+        "step": 3,
+        "title": "Haz tus cambios",
+        "description": "Edita archivos, añade contenido, corrige errores o implementa nuevas funciones",
+        "details": "Tómate tu tiempo para hacer mejoras de calidad"
+      },
+      "test": {
+        "step": 4,
+        "title": "Prueba tus cambios",
+        "description": "Comprueba que todo funciona correctamente antes de enviar tu contribución",
+        "details": "Ejecuta los tests localmente y revisa si hay errores"
+      },
+      "pr": {
+        "step": 5,
+        "title": "Envía un Pull Request",
+        "description": "Abre un pull request con un título claro y descriptivo y una explicación",
+        "details": "Incluye qué has cambiado y por qué en la descripción del PR"
+      },
+      "review": {
+        "step": 6,
+        "title": "Revisión y merge",
+        "description": "Nuestro equipo revisará tu contribución y dará feedback si es necesario",
+        "details": "Fusionaremos las contribuciones aprobadas y celebraremos tu ayuda."
+      }
+    },
+    "guidelines": {
+      "title": "Directrices de contribución",
+      "subtitle": "Sigue estas directrices para asegurarte de que tus contribuciones son de alta calidad y están alineadas con nuestros estándares",
+      "codeStyle": {
+        "title": "Estilo de código",
+        "description": "Sigue el estilo de código y formato existentes. Usa mensajes de commit significativos y mantén los cambios centrados en un único objetivo."
+      },
+      "quality": {
+        "title": "Calidad del contenido",
+        "description": "Asegúrate de que todo el contenido sea preciso, esté bien escrito y siga nuestra guía de estilo. Incluye ejemplos siempre que sea posible para mejorar la comprensión."
+      },
+      "testing": {
+        "title": "Pruebas",
+        "description": "Prueba tus cambios exhaustivamente antes de enviarlos. Asegúrate de que todo funciona como se espera en distintos escenarios."
+      },
+      "communication": {
+        "title": "Comunicación",
+        "description": "Sé respetuoso y constructivo en todas las interacciones. Estamos aquí para aprender y mejorar juntos como comunidad."
+      }
+    },
+    "help": {
+      "title": "¿Necesitas ayuda?",
+      "subtitle": "Estamos aquí para apoyarte en cada paso",
+      "questions": {
+        "title": "¿Tienes preguntas?",
+        "description": "No dudes en preguntar. Abre una discusión en GitHub o contacta con los mantenedores.",
+        "action": "Abrir una discusión"
+      },
+      "bugs": {
+        "title": "¿Has encontrado un error?",
+        "description": "Informa de los problemas que encuentres. Incluye los pasos para reproducirlos y todos los detalles relevantes.",
+        "action": "Informar de un problema"
+      }
+    },
+    "ready": {
+      "title": "¿Listo para contribuir?",
+      "description": "Únete a nuestra comunidad de colaboradores y ayuda a convertir AI Handbooks en el mejor recurso para aprender IA. Cada contribución cuenta.",
+      "start": "Empezar a contribuir",
+      "backToHome": "Volver al inicio"
+    }
+  },
+  "codeOfConduct": {
+    "title": "Código de conducta",
+    "subtitle": "Nuestro compromiso de crear una comunidad acogedora e inclusiva",
+    "introduction": "Este Código de conducta define nuestras expectativas para todos los participantes de la comunidad, así como las consecuencias de un comportamiento inaceptable. Invitamos a todos los que participan en AI Handbooks a ayudarnos a crear experiencias seguras y positivas para todos.",
+    "commitment": {
+      "title": "Nuestro compromiso",
+      "description": "Nos comprometemos a ofrecer una comunidad acogedora e inspiradora para todos y esperamos que se respete nuestro código de conducta. Cualquier persona que lo incumpla puede ser expulsada de la comunidad."
+    },
+    "pledge": {
+      "title": "Nuestro compromiso",
+      "description1": "Nosotros, como miembros, colaboradores y líderes, nos comprometemos a hacer que la participación en nuestra comunidad sea una experiencia libre de acoso para todos, independientemente de la edad, tamaño corporal, discapacidad visible o invisible, etnia, características sexuales, identidad y expresión de género, nivel de experiencia, educación, estatus socioeconómico, nacionalidad, apariencia personal, raza, religión o identidad y orientación sexual.",
+      "description2": "Nos comprometemos a actuar e interactuar de manera que contribuya a una comunidad abierta, acogedora, diversa, inclusiva y saludable."
+    },
+    "standards": {
+      "title": "Nuestras normas",
+      "subtitle": "Ejemplos de comportamiento que contribuyen a crear un entorno positivo para nuestra comunidad incluyen:",
+      "respectful": {
+        "title": "Sé respetuoso",
+        "description": "Trata a todo el mundo con respeto y amabilidad. Estamos aquí para aprender y crecer juntos en un entorno de apoyo que valora perspectivas diversas."
+      },
+      "inclusive": {
+        "title": "Sé inclusivo",
+        "description": "Da la bienvenida a personas de todos los orígenes, niveles de experiencia y puntos de vista. La diversidad hace que nuestra comunidad sea más fuerte e innovadora."
+      },
+      "constructive": {
+        "title": "Sé constructivo",
+        "description": "Ofrece comentarios y sugerencias útiles. Céntrate en mejorar las ideas, no en criticar a las personas. Asume buena fe en todas las interacciones."
+      },
+      "collaborative": {
+        "title": "Sé colaborativo",
+        "description": "Trabaja en equipo hacia objetivos comunes. Comparte conocimiento libremente, reconoce adecuadamente las contribuciones de los demás y ayuda a construir una comunidad acogedora."
+      },
+      "tip": "En caso de duda, elige la amabilidad. Una actitud positiva y de apoyo ayuda enormemente a construir una comunidad acogedora."
+    },
+    "unacceptable": {
+      "title": "Comportamiento inaceptable",
+      "subtitle": "Los siguientes comportamientos se consideran acoso y son inaceptables en nuestra comunidad:",
+      "harassment": {
+        "category": "Acoso y discriminación",
+        "items": [
+          "Acoso, discriminación o comentarios ofensivos basados en características personales como edad, tamaño corporal, discapacidad, etnia, características sexuales, identidad y expresión de género, nivel de experiencia, educación, estatus socioeconómico, nacionalidad, apariencia personal, raza, religión o identidad y orientación sexual",
+          "Acoso sexual en forma de comentarios o chistes sexualizados, avances sexuales inapropiados o atención sexual no deseada"
+        ]
+      },
+      "communication": {
+        "category": "Comunicación inapropiada",
+        "items": [
+          "Troleo, insultos o comentarios despectivos dirigidos a individuos o grupos",
+          "Ataques personales o políticos que crean un entorno hostil",
+          "Acoso público o privado, incluida la interrupción continuada de conversaciones u otros eventos"
+        ]
+      },
+      "privacy": {
+        "category": "Violación de privacidad y seguridad",
+        "items": [
+          "Publicar información privada de otras personas, como direcciones físicas o de correo electrónico, sin permiso explícito",
+          "Compartir capturas de pantalla o citas de canales privados sin permiso",
+          "Acoso o seguimiento, tanto en línea como en persona"
+        ]
+      },
+      "other": {
+        "category": "Otras violaciones",
+        "items": [
+          "Violencia, amenazas de violencia o lenguaje violento dirigido a otra persona",
+          "Fomentar o apoyar cualquiera de los comportamientos anteriores",
+          "Cualquier otro comportamiento que razonablemente pueda considerarse inapropiado en un entorno profesional"
+        ]
+      }
+    },
+    "enforcement": {
+      "title": "Responsabilidades de aplicación",
+      "description1": "Los líderes de la comunidad son responsables de aclarar y hacer cumplir nuestras normas de comportamiento aceptable y tomarán medidas correctivas apropiadas y justas en respuesta a cualquier comportamiento que consideren inapropiado, amenazante, ofensivo o perjudicial.",
+      "authority": {
+        "title": "Autoridad de los líderes de la comunidad",
+        "description": "Los líderes de la comunidad tienen el derecho y la responsabilidad de eliminar, editar o rechazar comentarios, commits, código, cambios en wikis, issues y otras contribuciones que no se alineen con este Código de conducta, o de prohibir temporal o permanentemente a cualquier colaborador por otros comportamientos que consideren inapropiados, amenazantes, ofensivos o perjudiciales."
+      },
+      "transparency": {
+        "title": "Transparencia",
+        "description": "Los líderes de la comunidad comunicarán cuando sea adecuado las razones de las decisiones de moderación, respetando la privacidad y seguridad de las personas implicadas."
+      }
+    },
+    "reporting": {
+      "title": "Denuncia de infracciones",
+      "description1": "Los casos de comportamiento abusivo, de acoso o de otro modo inaceptable pueden comunicarse a los líderes de la comunidad responsables de la aplicación. Todas las quejas serán revisadas e investigadas de forma rápida y justa.",
+      "important": "Todos los líderes de la comunidad están obligados a respetar la privacidad y seguridad de las personas que informan de incidentes.",
+      "howTo": {
+        "title": "Cómo denunciar",
+        "description1": "Ponte en contacto con nosotros a través de nuestra",
+        "contactPage": "página de Contacto",
+        "description2": "para informar de cualquier infracción. Todas las denuncias se tratarán con confidencialidad y respeto.",
+        "description3": "Al informar, incluye tantos detalles como sea posible, por ejemplo:",
+        "items": [
+          "Hora, fecha y lugar del incidente",
+          "Nombres o descripciones de las personas implicadas",
+          "Descripción de lo que ocurrió y cualquier contexto relevante"
+        ]
+      }
+    },
+    "scope": {
+      "title": "Ámbito de aplicación",
+      "description": "Este Código de conducta se aplica en todos los espacios comunitarios y también se aplica cuando una persona representa oficialmente a la comunidad en espacios públicos. Ejemplos de representación de nuestra comunidad incluyen el uso de una dirección de correo oficial, la publicación desde cuentas oficiales en redes sociales o actuar como representante designado en eventos en línea o presenciales."
+    },
+    "attribution": {
+      "title": "Atribución",
+      "description1": "Este Código de conducta está adaptado del",
+      "covenant": "Contributor Covenant",
+      "description2": ", versión 2.1, disponible en",
+      "versionUrl": "https://www.contributor-covenant.org/version/2/1/code_of_conduct/",
+      "description3": "Para respuestas a preguntas frecuentes sobre este Código de conducta, consulta",
+      "faqUrl": "https://www.contributor-covenant.org/faq"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "empty": {
+    "title": "Nessun quiz disponibile per questo argomento ancora.",
+    "backButton": "Torna all'argomento"
+  },
+  "header": {
+    "title": "Quiz: {{title}}",
+    "subtitle": "Metti alla prova la tua comprensione con {{count}} domande"
+  },
+  "navigation": {
+    "previous": "Precedente",
+    "next": "Successivo",
+    "submit": "Invia",
+    "backToTopic": "Torna all'argomento"
+  },
+  "validation": {
+    "answerAll": "Per favore rispondi a tutte le domande prima di inviare."
+  },
+  "results": {
+    "title": "Risultati del Quiz",
+    "saving": "Salvataggio del risultato...",
+    "savedSuccess": "Risultato del quiz salvato con successo! ✓",
+    "saveFailed": "Quiz completato! Il risultato non è stato salvato.",
+    "scoreOutOf": "{{score}} su {{total}} corrette",
+    "reviewTitle": "Rivedi le tue Risposte",
+    "questionLabel": "Domanda {{number}}",
+    "correct": "Corretto",
+    "incorrect": "Sbagliato",
+    "yourAnswer": "La tua Risposta",
+    "correctAnswer": "Risposta Corretta",
+    "explanation": "Spiegazione:",
+    "retakeQuiz": "Rifare il Quiz",
+    "backToTopic": "Torna all'argomento"
+  },
+  "scoreMessages": {
+    "perfect": "Perfetto! Lavoro eccezionale! 🎉",
+    "excellent": "Eccellente! Ottimo lavoro! 👏",
+    "good": "Buon impegno! Continua ad esercitarti! 💪",
+    "keepLearning": "Continua ad imparare! Rivedi il materiale e riprova! 📚"
+  }
+}

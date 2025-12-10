@@ -1,0 +1,101 @@
+{
+  "hero": {
+    "title": "Maîtrisez",
+    "titleHighlight": "l'Intelligence Artificielle",
+    "subtitle": "Des fondamentaux à l'avancé",
+    "description": "Guides complets sur les concepts, techniques et applications de l'intelligence artificielle. Apprenez l'IA, le ML et la Data Science.",
+    "descriptionSecondary": "Apprenez à votre rythme avec un contenu structuré conçu pour tous les niveaux.",
+    "badge": "Votre plateforme d'apprentissage IA complète",
+    "cta": "Explorer les Handbooks",
+    "secondaryCta": "En savoir plus",
+    "rotatingWords": {
+      "ai": "Intelligence Artificielle",
+      "ml": "Apprentissage Automatique",
+      "dataScience": "Science des Données",
+      "neuralNetworks": "Réseaux de Neurones"
+    }
+  },
+  "features": {
+    "sectionLabel": "Fonctionnalités de la plateforme",
+    "comingSoon": "Bientôt",
+    "title": "Tout ce dont vous avez besoin pour maîtriser l'IA",
+    "subtitle": "Parcours d'apprentissage structurés pour ingénieurs et chercheurs",
+    "handbooks": {
+      "title": "Handbooks IA",
+      "description": "Guides complets couvrant l’IA, le ML et la Data Science, des bases aux sujets avancés.",
+      "action": "Explorer les Handbooks",
+      "stats": "50+ Sujets"
+    },
+    "roadmaps": {
+      "title": "Parcours de carrière",
+      "description": "Parcours détaillés pour devenir ingénieur IA, chercheur ML ou data scientist.",
+      "action": "Bientôt disponible",
+      "stats": "3 Parcours"
+    },
+    "ecosystem": {
+      "title": "Outils de l’écosystème",
+      "description": "Découvrez les outils, frameworks, benchmarks et modèles essentiels pour construire des applications IA.",
+      "action": "Bientôt disponible",
+      "stats": "100+ Outils"
+    },
+    "resources": {
+      "title": "Ressources d’apprentissage",
+      "description": "Livres, cours, tutoriels et ressources d’entretien soigneusement sélectionnés pour accélérer votre apprentissage.",
+      "action": "Bientôt disponible",
+      "stats": "500+ Ressources"
+    },
+    "opportunities": {
+      "title": "Opportunités de carrière",
+      "description": "Trouvez des conférences, bourses, compétitions, hackathons et stages en IA et ML.",
+      "action": "Bientôt disponible",
+      "stats": "100+ Opportunités"
+    },
+    "community": {
+      "title": "Communauté",
+      "description": "Rejoignez une communauté dynamique de passionnés d’IA, partagez vos connaissances et collaborez sur des projets.",
+      "action": "Rejoindre la communauté",
+      "stats": "10K+ Membres"
+    }
+  },
+  "benefits": {
+    "sectionLabel": "Pourquoi nous choisir",
+    "title": "Pourquoi choisir AI Handbooks ?",
+    "subtitle": "Tout ce dont vous avez besoin pour réussir en IA",
+    "structured": {
+      "title": "Apprentissage structuré",
+      "description": "Suivez des parcours conçus par des experts, des fondamentaux aux sujets avancés."
+    },
+    "comprehensive": {
+      "title": "Contenu complet",
+      "description": "Accédez à des guides détaillés, tutoriels et ressources couvrant tous les aspects de l’IA, du ML et de la Data Science."
+    },
+    "practical": {
+      "title": "Orientation pratique",
+      "description": "Apprenez grâce à des exemples concrets, extraits de code et applications réelles."
+    },
+    "upToDate": {
+      "title": "Toujours à jour",
+      "description": "Le contenu est régulièrement mis à jour pour refléter les dernières avancées en IA et ML."
+    },
+    "community": {
+      "title": "Communauté active",
+      "description": "Participez aux discussions, posez vos questions et collaborez avec d’autres apprenants et experts."
+    },
+    "free": {
+      "title": "Gratuit & Open Source",
+      "description": "Tout le contenu est gratuit et open-source, accessible à tous."
+    }
+  },
+  "cta": {
+    "title": "Prêt à commencer ?",
+    "subtitle": "Rejoignez des milliers d'apprenants qui maîtrisent l'IA, le ML et la Data Science.",
+    "button": "Commencer gratuitement",
+    "secondaryButton": "Explorer les Handbooks"
+  },
+  "stats": {
+    "topics": "Sujets",
+    "roadmaps": "Parcours",
+    "resources": "Ressources",
+    "tools": "Outils"
+  }
+}

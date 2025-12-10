@@ -1,0 +1,59 @@
+{
+  "dropdown": {
+    "title": "Favoritos",
+    "empty": {
+      "title": "Aún no hay favoritos",
+      "description": "Guarda temas para acceder a ellos rápidamente"
+    },
+    "viewAll": "Ver todos los favoritos",
+    "viewAllCount": "Ver los {{count}} favoritos",
+    "time": {
+      "recently": "Recientemente",
+      "justNow": "Ahora mismo",
+      "minutesAgo": "hace {{count}} min.",
+      "hoursAgo": "hace {{count}} h",
+      "daysAgo": "hace {{count}} días"
+    }
+  },
+  "page": {
+    "title": "Favoritos",
+    "subtitle": {
+      "count": "{{count}} tema guardado",
+      "countPlural": "{{count}} temas guardados"
+    },
+    "searchPlaceholder": "Buscar favoritos...",
+    "filterByTag": "Filtrar por etiqueta:",
+    "all": "Todos",
+    "empty": {
+      "title": "Aún no hay favoritos",
+      "description": "Comienza a marcar temas que quieras leer más tarde. Tus elementos guardados aparecerán aquí."
+    },
+    "emptySearch": {
+      "title": "No se encontraron favoritos",
+      "description": "Intenta ajustar tu búsqueda o filtro para encontrar lo que buscas."
+    },
+    "removeBookmark": "Quitar de favoritos",
+    "time": {
+      "recently": "Recientemente",
+      "justNow": "Ahora mismo",
+      "minutesAgo": "hace {{count}} min.",
+      "hoursAgo": "hace {{count}} h",
+      "daysAgo": "hace {{count}} días"
+    },
+    "toast": {
+      "removed": "Favorito eliminado",
+      "categoryNotFound": "Categoría no encontrada",
+      "topicNotFound": "Tema no encontrado",
+      "loadFailed": "Error al cargar el favorito"
+    }
+  },
+  "button": {
+    "add": "Añadir a favoritos",
+    "remove": "Quitar de favoritos",
+    "toast": {
+      "added": "Favorito añadido",
+      "removed": "Favorito eliminado"
+    }
+  }
+}
+
