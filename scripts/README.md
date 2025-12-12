@@ -1,4 +1,60 @@
-# Build Scripts
+# Model Data Collection Script
+
+Standalone script to collect AI model data from multiple sources for testing before integration.
+
+## Features
+
+- ✅ Fetches from **Ollama Library** (local models)
+- ✅ Scrapes **Azure AI Model Catalog** (no API key needed!)
+- ✅ Fetches from **HuggingFace** (verified organizations only)
+- ✅ Includes **API-only models** (GPT-4, Claude, Gemini)
+- ✅ **Automatic deduplication** and data merging
+- ✅ **Statistics report** (sources, categories, counts)
+
+## Installation
+
+```bash
+cd scripts
+npm install
+```
+
+## Usage
+
+```bash
+npm run collect-models
+```
+
+## Output
+
+Creates `collected-models.json` with model data and statistics.
+
+## Verification
+
+```bash
+# Check statistics
+cat collected-models.json | jq '.stats'
+
+# View top models
+cat collected-models.json | jq '.models[:10]'
+
+# Check for duplicates (should be empty)
+cat collected-models.json | jq '[.models[] | .model_id] | group_by(.) | map(select(length > 1))'
+```
+
+## Customization
+
+- **Add API models:** Edit `API_ONLY_MODELS` array
+- **Add HF orgs:** Edit `VERIFIED_ORGS` array  
+- **Adjust scraping:** Update selectors in fetch functions
+
+## Next Steps
+
+After testing:
+1. Review `collected-models.json` for data quality
+2. Adjust deduplication logic if needed
+3. Ready to integrate into main application!
+
+---
 
 ## Sitemap Generation
 
@@ -40,5 +96,4 @@ The sitemap includes:
 - Topic URLs follow the pattern: `/topic/{categoryId}/{topicId}`
 - Category URLs follow the pattern: `/category/{categoryId}`
 - Last modified dates are taken from the database `updated_at` field
-
 

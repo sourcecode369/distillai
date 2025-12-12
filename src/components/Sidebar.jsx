@@ -483,15 +483,15 @@ const Sidebar = () => {
                       <div className="px-3 py-2 text-xs text-slate-600 dark:text-slate-400 font-medium hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-white/10 dark:hover:bg-white/10 rounded-lg transition-all duration-200 cursor-default tracking-wide hover:shadow-inner">
                         {tSidebar('ecosystem.submenu.benchmarks')}
                       </div>
-                      <div className="px-3 py-2 text-xs text-slate-600 dark:text-slate-400 font-medium hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-white/10 dark:hover:bg-white/10 rounded-lg transition-all duration-200 cursor-default tracking-wide hover:shadow-inner">
+                      <NavLink
+                        to="/models"
+                        className={({ isActive }) => `block px-3 py-2 text-xs font-medium rounded-lg transition-all duration-200 tracking-wide ${isActive
+                          ? "bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-semibold"
+                          : "text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-white/10 dark:hover:bg-white/10 hover:shadow-inner"
+                          }`}
+                      >
                         {tSidebar('ecosystem.submenu.models')}
-                      </div>
-                      <div className="px-3 py-2 text-xs text-slate-600 dark:text-slate-400 font-medium hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-white/10 dark:hover:bg-white/10 rounded-lg transition-all duration-200 cursor-default tracking-wide hover:shadow-inner">
-                        {tSidebar('ecosystem.submenu.datasets')}
-                      </div>
-                      <div className="px-3 py-2 text-xs text-slate-600 dark:text-slate-400 font-medium hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-white/10 dark:hover:bg-white/10 rounded-lg transition-all duration-200 cursor-default tracking-wide hover:shadow-inner">
-                        {tSidebar('ecosystem.submenu.mlops')}
-                      </div>
+                      </NavLink>
                       <div className="px-3 py-2 text-xs text-slate-600 dark:text-slate-400 font-medium hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-white/10 dark:hover:bg-white/10 rounded-lg transition-all duration-200 cursor-default tracking-wide hover:shadow-inner">
                         {tSidebar('ecosystem.submenu.promptLibrary')}
                       </div>

@@ -38,11 +38,11 @@ const CustomDropdown = ({
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between gap-3 px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl hover:border-indigo-300 dark:hover:border-indigo-700 hover:bg-slate-100 dark:hover:bg-slate-800 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-300 shadow-sm hover:shadow-md text-slate-900 dark:text-white font-medium"
+        className="w-full flex items-center justify-between gap-3 px-4 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl hover:border-indigo-300 dark:hover:border-indigo-700 hover:bg-slate-100 dark:hover:bg-slate-800 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-300 shadow-sm hover:shadow-md text-slate-900 dark:text-white font-medium"
       >
-        <div className="flex items-center gap-2.5">
-          {Icon && <Icon className="text-slate-400 dark:text-slate-500" size={18} />}
-          <span className="text-sm">{selectedOption?.label || placeholder}</span>
+        <div className="flex items-center gap-2.5 min-w-0">
+          {Icon && <Icon className="text-slate-400 dark:text-slate-500 shrink-0" size={18} />}
+          <span className="text-sm whitespace-nowrap truncate">{selectedOption?.label || placeholder}</span>
         </div>
         <ChevronDown
           className={`text-slate-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
@@ -62,8 +62,8 @@ const CustomDropdown = ({
                   type="button"
                   onClick={() => handleSelect(option.value)}
                   className={`w-full flex items-center justify-between px-4 py-2.5 text-sm transition-all duration-150 ${isSelected
-                      ? 'bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 font-semibold'
-                      : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 font-medium'
+                    ? 'bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 font-semibold'
+                    : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 font-medium'
                     }`}
                 >
                   <span>{option.label}</span>

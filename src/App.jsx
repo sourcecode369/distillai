@@ -29,6 +29,7 @@ const SearchHistoryPage = lazy(() => import("./pages/SearchHistoryPage"));
 const WeeklyReportPage = lazy(() => import("./pages/WeeklyReportPage"));
 const ConferencesPage = lazy(() => import("./pages/ConferencesPage"));
 const ToolsDirectoryPage = lazy(() => import("./pages/ToolsDirectoryPage"));
+const ModelsDirectoryPage = lazy(() => import("./pages/ModelsDirectoryPage"));
 const RoadmapsPage = lazy(() => import("./pages/RoadmapsPage"));
 
 // Loading fallback component
@@ -76,6 +77,7 @@ const App = () => {
                   <Route path="weekly-report" element={<WeeklyReportPage />} />
                   <Route path="conferences" element={<ConferencesPage />} />
                   <Route path="tools" element={<ToolsDirectoryPage />} />
+                  <Route path="models" element={<ModelsDirectoryPage />} />
                   <Route path="roadmaps" element={<RoadmapsPage />} />
                   <Route path="search" element={<GlobalSearchResultsPage />} />
 

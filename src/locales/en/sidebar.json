@@ -1,3 +1,4 @@
+
 {
   "appName": "XBuildsAI",
   "appNameShort": "XBuilds",
@@ -27,7 +28,7 @@
       "ariaLabel": "Ecosystem submenu",
       "tools": "AI Tools Directory",
       "benchmarks": "Model Benchmarks",
-      "models": "Model Marketplace",
+      "models": "Models Directory",
       "datasets": "Dataset Hub",
       "mlops": "MLOps Dashboard",
       "promptLibrary": "Prompt Library"
