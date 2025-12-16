@@ -15,7 +15,9 @@ const getIconForCategory = (category) => {
 };
 
 const ModelCard = ({ model, onClick }) => {
-  const isPaid = !model.is_open_source;
+  // Check if model is API-only (paid) - access_type is now an array
+  const accessTypes = Array.isArray(model.access_type) ? model.access_type : [];
+  const isPaid = accessTypes.includes('openrouter') && accessTypes.length === 1;
 
   // Format numbers
   const formatNumber = (num) => {
@@ -33,14 +35,29 @@ const ModelCard = ({ model, onClick }) => {
       onClick={onClick}
       className="card card-glow group hover-lift flex flex-row items-center gap-4 p-5 h-24"
     >
-      {/* Icon */}
+      {/* Publisher Image or Icon */}
       <div className={`
-        w-12 h-12 rounded-xl flex items-center justify-center shadow-sm shrink-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3
+        w-12 h-12 rounded-xl flex items-center justify-center shadow-sm shrink-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 overflow-hidden
         ${isPaid
           ? 'bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20 text-purple-600 dark:text-purple-400 ring-1 ring-purple-100 dark:ring-purple-800/50'
           : 'bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 text-blue-600 dark:text-blue-400 ring-1 ring-blue-100 dark:ring-blue-800/50'}
       `}>
-        {getIconForCategory(model.category)}
+        {model.publisher_image ? (
+          <img
+            src={model.publisher_image}
+            alt={`${publisher} logo`}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              // Hide image and show icon fallback on error
+              e.target.style.display = 'none';
+              const fallback = e.target.nextElementSibling;
+              if (fallback) fallback.style.display = 'flex';
+            }}
+          />
+        ) : null}
+        <div style={{ display: model.publisher_image ? 'none' : 'flex' }} className="w-full h-full items-center justify-center">
+          {getIconForCategory(model.category)}
+        </div>
       </div>
 
       {/* Content */}

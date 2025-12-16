@@ -1,0 +1,17 @@
+# System files
+.DS_Store
+
+# Environment
+.env
+
+# Dependencies
+node_modules/
+
+# Data files (large CSVs, XLSX)
+data/*.csv
+data/*.xlsx
+data/*.txt
+
+# Temporary files
+*.log
+*.tmp

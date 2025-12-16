@@ -212,10 +212,10 @@ const ToolsDirectoryPage = () => {
             value={sortBy}
             onChange={setSortBy}
             options={[
-              { value: 'stars-desc', label: '⭐ Most Stars' },
-              { value: 'stars-asc', label: '⭐ Least Stars' },
-              { value: 'name-asc', label: '🔤 Name (A-Z)' },
-              { value: 'name-desc', label: '🔤 Name (Z-A)' },
+              { value: 'stars-desc', label: 'Most Stars' },
+              { value: 'stars-asc', label: 'Least Stars' },
+              { value: 'name-asc', label: 'Name (A-Z)' },
+              { value: 'name-desc', label: 'Name (Z-A)' },
             ]}
             icon={ArrowUpDown}
             className="w-full md:w-56"
