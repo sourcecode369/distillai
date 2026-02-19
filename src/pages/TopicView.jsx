@@ -342,7 +342,7 @@ const TopicView = () => {
         description={seoDescription}
         type="article"
         url={topicUrl}
-        image={topic.content?.thumbnail || topic.content?.image || "/vite.svg"}
+        image={topic.content?.thumbnail || topic.content?.image || "/favicon.svg"}
         author="Distill AI"
         datePublished={datePublished}
         dateModified={dateModified}

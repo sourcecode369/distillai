@@ -32,7 +32,7 @@ export const useSEO = () => {
           description: activeTopic.description || activeTopic.content?.intro || `Learn about ${activeTopic.title} in ${activeCategory.title}.`,
           type: "article",
           url: `${baseUrl}/topic/${activeCategory.id}/${activeTopic.id}`,
-          image: activeTopic.content?.thumbnail || activeTopic.content?.image || "/vite.svg",
+          image: activeTopic.content?.thumbnail || activeTopic.content?.image || "/favicon.svg",
           author: "Distill AI",
           datePublished: activeTopic.content?.created_at || activeTopic.lastUpdated,
           dateModified: activeTopic.lastUpdated || activeTopic.content?.created_at,

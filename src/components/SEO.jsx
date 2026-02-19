@@ -21,7 +21,7 @@ const SEO = ({
   const fullUrl = url ? (url.startsWith("http") ? url : `${siteUrl}${url}`) : siteUrl;
   const fullImage = image
     ? (image.startsWith("http") ? image : `${siteUrl}${image}`)
-    : `${siteUrl}/vite.svg`; // Fallback image
+    : `${siteUrl}/favicon.svg`; // Fallback image
 
   // Default values
   const defaultTitle = `${siteName} - Learn AI, ML & Data Science`;
