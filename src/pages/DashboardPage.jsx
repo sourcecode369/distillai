@@ -37,6 +37,14 @@ const getGreeting = () => {
   return "Good evening";
 };
 
+const getSubtext = (hasHistory, count) => {
+  if (!hasHistory) return "Your AI learning journey starts here.";
+  if (count >= 20) return "You're on a roll. Keep pushing forward.";
+  if (count >= 10) return "Great progress. Keep the momentum going.";
+  if (count >= 5)  return "You're getting started. Pick up where you left off.";
+  return "Keep the momentum going.";
+};
+
 const formatRelativeTime = (ts) => {
   if (!ts) return "";
   const d = Math.floor((Date.now() - ts) / 86400000);
@@ -129,24 +137,28 @@ const DashboardPage = () => {
                   <span className="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">{firstName}.</span>
                 </h1>
                 <p className="text-gray-500 text-sm mt-1">
-                  {hasHistory ? "Keep the momentum going." : "Your AI learning journey starts here."}
+                  {getSubtext(hasHistory, readingHistory?.length || 0)}
                 </p>
               </div>
 
-              {/* Right: stat pills + search */}
+              {/* Right: stat pills */}
               <div className="flex items-center gap-2 flex-wrap">
                 <div className="flex items-center divide-x divide-gray-800 rounded-xl border border-gray-800 bg-gray-900/60 overflow-hidden backdrop-blur-sm">
                   {[
-                    { value: readingHistory?.length || 0, label: "Read",  icon: History  },
-                    { value: bookmarks?.length || 0,     label: "Saved", icon: Bookmark },
-                  ].map(({ value, label, icon: Icon }) => (
-                    <div key={label} className="flex items-center gap-2.5 px-4 py-2.5">
+                    { value: readingHistory?.length || 0, label: "Read",  icon: History,  path: "/search-history" },
+                    { value: bookmarks?.length || 0,     label: "Saved", icon: Bookmark, path: "/bookmarks"       },
+                  ].map(({ value, label, icon: Icon, path }) => (
+                    <button
+                      key={label}
+                      onClick={() => navigate(path)}
+                      className="flex items-center gap-2.5 px-4 py-2.5 hover:bg-gray-800/60 transition-colors"
+                    >
                       <Icon size={13} className="text-indigo-400/70" />
                       <div>
                         <span className="text-base font-extrabold text-gray-100 leading-none">{value}</span>
                         <span className="text-[10px] text-gray-500 ml-1.5 font-medium">{label}</span>
                       </div>
-                    </div>
+                    </button>
                   ))}
                 </div>
               </div>
@@ -293,7 +305,6 @@ const DashboardPage = () => {
                     const c = CAT_COLORS[i % CAT_COLORS.length];
                     const IconKey = FIELD_ICON_KEYS[i % FIELD_ICON_KEYS.length];
                     const Icon = FIELD_ICONS[IconKey];
-                    const isInterest = false;
 
                     return (
                       <button
@@ -416,16 +427,16 @@ const DashboardPage = () => {
                 <div className="rounded-[15px] bg-gray-950 p-5">
                   <div className="flex items-center gap-2 mb-2">
                     <Sparkles size={13} className="text-indigo-400" />
-                    <span className="text-xs font-bold text-indigo-300">Not sure what to read?</span>
+                    <span className="text-xs font-bold text-indigo-300">Find your next topic</span>
                   </div>
                   <p className="text-[11px] text-gray-500 mb-4 leading-relaxed">
-                    Search across 150+ handbooks and find exactly what you need next.
+                    Search 150+ handbooks by keyword, field, or concept.
                   </p>
                   <button
                     onClick={() => navigate("/search")}
                     className="w-full rounded-xl bg-indigo-600/20 border border-indigo-500/30 py-2.5 text-xs font-semibold text-indigo-300 hover:bg-indigo-600/30 hover:border-indigo-500/50 transition-all flex items-center justify-center gap-2"
                   >
-                    <Search size={11} /> Search Handbooks
+                    <Search size={11} /> Search
                   </button>
                 </div>
               </div>
