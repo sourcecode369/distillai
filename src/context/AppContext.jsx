@@ -264,18 +264,6 @@ export const AppProvider = ({ children }) => {
     localStorage.removeItem("readingHistory");
     currentUserIdRef.current = null;
 
-    // Clear history from database if user was logged in and Supabase is configured
-    // This is async but state is already cleared above
-    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || "";
-    const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || "";
-    if (userId && supabaseUrl && supabaseAnonKey) {
-      try {
-        await dbHelpers.clearReadingHistory(userId);
-      } catch (error) {
-        console.error("Error clearing reading history from database:", error);
-        // Continue even if database clear fails - state is already cleared
-      }
-    }
   }, []);
 
   const value = useMemo(() => ({
