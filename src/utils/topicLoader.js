@@ -1,17 +1,6 @@
-/**
- * Topic Loader Utility
- * 
- * Loads topics from database instead of static files.
- * This is the new source of truth for topics after importing static topics.
- */
-
 import { dbHelpers } from "../lib/supabase";
 import { DATA } from "../data";
 
-/**
- * Get all topics from database, organized by category
- * @returns {Promise<Object>} Object with categoryId as key, array of topics as value
- */
 export const loadTopicsFromDatabase = async () => {
   try {
     const { data, error } = await dbHelpers.getAllTopics();
@@ -37,6 +26,8 @@ export const loadTopicsFromDatabase = async () => {
         title: dbTopic.title,
         description: dbTopic.description,
         difficulty: dbTopic.difficulty,
+        section: dbTopic.section || dbTopic.difficulty || 'Fundamentals',
+        sectionDescription: dbTopic.section_description || null,
         readTime: dbTopic.read_time,
         tags: dbTopic.tags || [],
         video: dbTopic.video || content.video || null, // Use video column first, fallback to content.video
@@ -55,11 +46,6 @@ export const loadTopicsFromDatabase = async () => {
   }
 };
 
-/**
- * Get topics for a specific category from database
- * @param {string} categoryId - The category ID
- * @returns {Promise<Array>} Array of topics for the category
- */
 export const loadTopicsForCategory = async (categoryId) => {
   try {
     const { data, error } = await dbHelpers.getTopicsByCategory(categoryId);
@@ -78,6 +64,8 @@ export const loadTopicsForCategory = async (categoryId) => {
         title: dbTopic.title,
         description: dbTopic.description,
         difficulty: dbTopic.difficulty,
+        section: dbTopic.section || dbTopic.difficulty || 'Fundamentals',
+        sectionDescription: dbTopic.section_description || null,
         readTime: dbTopic.read_time,
         tags: dbTopic.tags || [],
         video: dbTopic.video || content.video || null, // Use video column first, fallback to content.video
@@ -93,12 +81,6 @@ export const loadTopicsForCategory = async (categoryId) => {
   }
 };
 
-/**
- * Get a single topic by category and topic ID
- * @param {string} categoryId - The category ID
- * @param {string} topicId - The topic ID
- * @returns {Promise<Object|null>} The topic object or null
- */
 export const loadTopic = async (categoryId, topicId) => {
   try {
     const { data, error } = await dbHelpers.getTopic(categoryId, topicId);
@@ -115,6 +97,8 @@ export const loadTopic = async (categoryId, topicId) => {
       title: data.title,
       description: data.description,
       difficulty: data.difficulty,
+      section: data.section || data.difficulty || 'Fundamentals',
+      sectionDescription: data.section_description || null,
       readTime: data.read_time,
       tags: data.tags || [],
       video: data.video || content.video || null, // Use video column first, fallback to content.video
@@ -129,11 +113,6 @@ export const loadTopic = async (categoryId, topicId) => {
   }
 };
 
-/**
- * Get all categories with their topics from database
- * This merges category metadata from static files with topics from database
- * @returns {Promise<Array>} Array of categories with topics loaded from database
- */
 export const loadCategoriesWithTopics = async () => {
   try {
     // Get all topics from database

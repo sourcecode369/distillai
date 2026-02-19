@@ -26,7 +26,6 @@ export const AuthProvider = ({ children }) => {
     
     if (!supabaseUrl || !supabaseAnonKey) {
       // Supabase not configured, skip auth and allow app to render
-      console.warn("Supabase not configured. Authentication features will be disabled.")
       setLoading(false)
       return
     }
@@ -136,7 +135,6 @@ export const AuthProvider = ({ children }) => {
       // Cache the result - only update if we got a successful response
       const finalStatus = adminStatus || false
       adminStatusCacheRef.current.set(userId, finalStatus)
-      console.log("Admin status check:", { userId, isAdmin: finalStatus })
       setIsAdmin(finalStatus)
     } catch (error) {
       console.error("Error checking admin status:", error)
@@ -225,7 +223,6 @@ export const AuthProvider = ({ children }) => {
             }
           })
         } catch (storageError) {
-          console.warn("Error clearing storage:", storageError)
         }
         return { error: null }
       }
@@ -248,7 +245,6 @@ export const AuthProvider = ({ children }) => {
           }
         })
       } catch (storageError) {
-        console.warn("Error clearing storage:", storageError)
       }
       return { error }
     } finally {

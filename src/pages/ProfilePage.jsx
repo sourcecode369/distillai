@@ -215,10 +215,8 @@ const ProfilePage = () => {
         });
 
         if (metadataError) {
-          console.warn("Failed to update user metadata:", metadataError);
         }
       } catch (metadataErr) {
-        console.warn("Error updating user metadata:", metadataErr);
       }
 
       setIsEditing(false);
@@ -468,7 +466,7 @@ const ProfilePage = () => {
 
   if (profileError && profileError.code !== "PGRST116") {
     return (
-      <div className="min-h-screen relative z-10">
+      <div className="min-h-screen bg-slate-950">
         <Hero
           title={t('profile.title')}
           subtitle={t('profile.subtitle')}
@@ -489,8 +487,8 @@ const ProfilePage = () => {
 
   if (!user) {
     return (
-      <div className="min-h-screen relative z-10">
-        <div className="relative overflow-hidden border-b border-gray-200/50 dark:border-slate-700/50">
+      <div className="min-h-screen bg-slate-950">
+        <div className="relative overflow-hidden border-b border-gray-800/50">
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-violet-500/5 to-pink-500/5 dark:from-indigo-500/10 dark:via-violet-500/10 dark:to-pink-500/10"></div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <Breadcrumbs
@@ -515,57 +513,62 @@ const ProfilePage = () => {
   const completion = calculateProfileCompletion();
 
   return (
-    <div className="min-h-screen relative z-10">
-      <Hero
-        title={t('profile.title')}
-        subtitle={t('profile.subtitle')}
-        icon={<User size={22} className="text-white drop-shadow-sm" />}
-        onBack={() => navigate(-1)}
-        rightActions={
-          !isEditing ? (
-            <Button
-              variant="primary"
-              size="md"
-              onClick={() => setIsEditing(true)}
-              icon={Edit2}
-              iconPosition="left"
+    <div className="min-h-screen bg-slate-950 pb-16">
+      {/* Dark header */}
+      <div className="relative overflow-hidden border-b border-gray-800/50">
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+          <div className="absolute left-0 top-0 w-72 h-44 rounded-full bg-indigo-600/8 blur-[80px]" />
+        </div>
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-7 flex items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => navigate(-1)}
+              className="flex-shrink-0 flex items-center justify-center h-9 w-9 rounded-xl border border-gray-800 bg-gray-900/60 text-gray-400 hover:text-gray-200 hover:border-gray-700 transition-all"
+              aria-label="Back"
             >
-              {t('profile.actions.edit')}
-            </Button>
-          ) : (
-            <>
-              <Button
-                variant="ghost"
-                size="md"
-                onClick={handleCancel}
-                icon={X}
-                iconPosition="left"
-                className="bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-600"
+              <ArrowRight size={16} className="rotate-180" />
+            </button>
+            <div>
+              <h1 className="text-2xl font-extrabold text-gray-100">{t('profile.title')}</h1>
+              <p className="text-sm text-gray-500 mt-0.5">{t('profile.subtitle')}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            {!isEditing ? (
+              <button
+                onClick={() => setIsEditing(true)}
+                className="inline-flex items-center gap-2 rounded-xl border border-indigo-500/40 bg-indigo-600/10 px-4 py-2.5 text-sm font-semibold text-indigo-300 hover:bg-indigo-600/20 hover:border-indigo-500/60 transition-all"
               >
-                {t('buttons.cancel')}
-              </Button>
-              <Button
-                variant="primary"
-                size="md"
-                onClick={handleSave}
-                disabled={saving}
-                isLoading={saving}
-                icon={saving ? undefined : Save}
-                iconPosition="left"
-              >
-                {saving ? t('messages.saving') : t('profile.actions.saveChanges')}
-              </Button>
-            </>
-          )
-        }
-      />
+                <Edit2 size={14} /> {t('profile.actions.edit')}
+              </button>
+            ) : (
+              <>
+                <button
+                  onClick={handleCancel}
+                  className="inline-flex items-center gap-2 rounded-xl border border-gray-700 bg-gray-800/60 px-4 py-2.5 text-sm font-semibold text-gray-300 hover:bg-gray-800 transition-all"
+                >
+                  <X size={14} /> {t('buttons.cancel')}
+                </button>
+                <button
+                  onClick={handleSave}
+                  disabled={saving}
+                  className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {saving ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}
+                  {saving ? t('messages.saving') : t('profile.actions.saveChanges')}
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
 
       {/* Content - Two Column Layout */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-6">
           {/* Left Profile Summary Card - Fixed Width */}
           <div>
-            <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-xl p-6 lg:sticky lg:top-32 transition-all duration-300">
+            <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-800/60 shadow-xl p-6 lg:sticky lg:top-32 transition-all duration-300">
               {/* Avatar - Larger */}
               <div className="flex flex-col items-center mb-6">
                 <div className="relative mb-4">
@@ -590,7 +593,7 @@ const ProfilePage = () => {
                     <Tooltip content={t('profile.labels.changeAvatar')} position="top">
                       <button
                         onClick={() => setShowAvatarSelector(true)}
-                        className="absolute bottom-0 right-0 p-2.5 bg-white dark:bg-slate-800 rounded-full shadow-lg border-2 border-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 transition-all duration-300 hover:scale-110 active:scale-95"
+                        className="absolute bottom-0 right-0 p-2.5 bg-gray-900/50 backdrop-blur-sm rounded-full shadow-lg border-2 border-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 transition-all duration-300 hover:scale-110 active:scale-95"
                         aria-label={t('profile.labels.changeAvatar')}
                       >
                         <Camera size={18} className="text-indigo-600 dark:text-indigo-400" />
@@ -600,13 +603,13 @@ const ProfilePage = () => {
                 </div>
 
                 {/* Name */}
-                <h2 className="text-xl font-bold text-slate-900 dark:text-slate-50 text-center mb-2">
+                <h2 className="text-xl font-bold text-gray-100 text-center mb-2">
                   {formData.full_name || user.user_metadata?.full_name || user.email?.split("@")[0] || "User"}
                 </h2>
 
                 {/* Bio */}
                 {formData.bio && (
-                  <p className="text-sm text-slate-600 dark:text-slate-400 text-center mb-3 leading-relaxed">
+                  <p className="text-sm text-gray-400 text-center mb-3 leading-relaxed">
                     {formData.bio}
                   </p>
                 )}
@@ -628,10 +631,10 @@ const ProfilePage = () => {
                         href={formData.github_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 bg-slate-100 dark:bg-slate-700 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors group"
+                        className="p-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors group"
                         aria-label="GitHub"
                       >
-                        <Github size={18} className="text-slate-700 dark:text-slate-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors" />
+                        <Github size={18} className="text-gray-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors" />
                       </a>
                     )}
                     {formData.linkedin_url && (
@@ -639,10 +642,10 @@ const ProfilePage = () => {
                         href={formData.linkedin_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 bg-slate-100 dark:bg-slate-700 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors group"
+                        className="p-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors group"
                         aria-label="LinkedIn"
                       >
-                        <Linkedin size={18} className="text-slate-700 dark:text-slate-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors" />
+                        <Linkedin size={18} className="text-gray-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors" />
                       </a>
                     )}
                     {formData.twitter_url && (
@@ -650,10 +653,10 @@ const ProfilePage = () => {
                         href={formData.twitter_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 bg-slate-100 dark:bg-slate-700 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors group"
+                        className="p-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors group"
                         aria-label="Twitter/X"
                       >
-                        <Twitter size={18} className="text-slate-700 dark:text-slate-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors" />
+                        <Twitter size={18} className="text-gray-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors" />
                       </a>
                     )}
                   </div>
@@ -661,29 +664,29 @@ const ProfilePage = () => {
               </div>
 
               {/* Divider */}
-              <div className="h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-700 to-transparent mb-4"></div>
+              <div className="h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent mb-4"></div>
 
               {/* Stats */}
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-slate-600 dark:text-slate-400">{t('profile.labels.memberSince')}</span>
+                  <span className="text-xs text-gray-400">{t('profile.labels.memberSince')}</span>
                   <div className="flex flex-col items-end">
-                    <span className="text-xs font-semibold text-slate-900 dark:text-slate-50">
+                    <span className="text-xs font-semibold text-gray-100">
                       {new Date(profile?.created_at || user.created_at).getFullYear()}
                     </span>
-                    <span className="text-[10px] text-slate-500 dark:text-slate-500">
+                    <span className="text-[10px] text-gray-600">
                       {formatDate(profile?.created_at || user.created_at)}
                     </span>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-slate-600 dark:text-slate-400">{t('profile.labels.lastUpdated')}</span>
+                  <span className="text-xs text-gray-400">{t('profile.labels.lastUpdated')}</span>
                   <div className="flex flex-col items-end">
-                    <span className="text-xs font-semibold text-slate-900 dark:text-slate-50">
+                    <span className="text-xs font-semibold text-gray-100">
                       {profile?.updated_at ? formatDate(profile.updated_at) : t('profile.labels.never')}
                     </span>
                     {profile?.updated_at && (
-                      <span className="text-[10px] text-slate-500 dark:text-slate-500">
+                      <span className="text-[10px] text-gray-600">
                         ({getRelativeTime(profile.updated_at)})
                       </span>
                     )}
@@ -695,24 +698,24 @@ const ProfilePage = () => {
 
           {/* Right Editable Sections - Full Width */}
           <div>
-            <div className={`bg-white dark:bg-slate-800 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-xl p-6 sm:p-8 transition-all duration-300 ${isEditing ? "opacity-100 scale-100" : "opacity-100 scale-100"}`}>
+            <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-800/60 p-6 sm:p-8">
               {/* Profile Completion Indicator */}
-              <div className="mb-6 p-4 bg-gradient-to-r from-indigo-50 to-violet-50 dark:from-indigo-900/20 dark:to-violet-900/20 rounded-xl border border-indigo-200/60 dark:border-indigo-800/40">
+              <div className="mb-6 p-4 bg-gradient-to-r from-indigo-950/60 to-violet-950/40 rounded-xl border border-indigo-500/20">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
                     <Sparkles size={16} className="text-indigo-600 dark:text-indigo-400" />
-                    <span className="text-sm font-semibold text-slate-900 dark:text-slate-50">
+                    <span className="text-sm font-semibold text-gray-100">
                       {t('profile.completion.percentage', { percentage: completion.percentage })}
                     </span>
                   </div>
-                  <div className="w-24 h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                  <div className="w-24 h-2 bg-gray-800 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-gradient-to-r from-indigo-600 to-violet-600 transition-all duration-500"
                       style={{ width: `${completion.percentage}%` }}
                     ></div>
                   </div>
                 </div>
-                <p className="text-xs text-slate-600 dark:text-slate-400">
+                <p className="text-xs text-gray-400">
                   {getCompletionHint()}
                 </p>
               </div>
@@ -720,7 +723,7 @@ const ProfilePage = () => {
               <div className="space-y-5">
                 {/* Personal Information Section */}
                 <div>
-                  <h3 className="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-4 flex items-center gap-2">
+                  <h3 className="text-sm font-bold text-gray-300 uppercase tracking-wider mb-4 flex items-center gap-2">
                     <User size={14} />
                     {t('profile.sections.personalInfo')}
                   </h3>
@@ -730,7 +733,7 @@ const ProfilePage = () => {
                     <div>
                       <label
                         htmlFor="full_name"
-                        className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2"
+                        className="block text-sm font-semibold text-gray-300 mb-2"
                       >
                         {t('profile.fields.fullName')}
                       </label>
@@ -743,9 +746,9 @@ const ProfilePage = () => {
                             value={formData.full_name}
                             onChange={handleInputChange}
                             placeholder={t('profile.placeholders.fullName')}
-                            className={`w-full px-4 py-2.5 border rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 transition-all ${errors.full_name
+                            className={`w-full px-4 py-2.5 border rounded-xl bg-gray-800/60 text-gray-100 placeholder:text-gray-600 focus:outline-none focus:ring-2 transition-all ${errors.full_name
                               ? "border-red-500 focus:ring-red-500/20"
-                              : "border-slate-300 dark:border-slate-600 focus:border-indigo-500 focus:ring-indigo-500/20"
+                              : "border-gray-700 focus:border-indigo-500 focus:ring-indigo-500/20"
                               }`}
                             maxLength={100}
                           />
@@ -757,10 +760,10 @@ const ProfilePage = () => {
                           )}
                         </>
                       ) : (
-                        <div className="px-4 py-2.5 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
-                          <p className="text-slate-900 dark:text-slate-50">
+                        <div className="px-4 py-2.5 bg-gray-800/50 rounded-xl border border-gray-800/50">
+                          <p className="text-gray-100">
                             {formData.full_name || (
-                              <span className="text-slate-400 dark:text-slate-500 italic">
+                              <span className="text-gray-600 italic">
                                 {t('profile.labels.notSet')}
                               </span>
                             )}
@@ -771,17 +774,17 @@ const ProfilePage = () => {
 
                     {/* Email (Read-only Badge) */}
                     <div>
-                      <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
+                      <label className="block text-sm font-semibold text-gray-300 mb-2">
                         {t('profile.fields.email')}
                       </label>
-                      <div className="px-4 py-2.5 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center gap-2">
-                        <Mail size={16} className="text-slate-400 dark:text-slate-500" />
-                        <p className="text-slate-900 dark:text-slate-50 flex-1">{user.email}</p>
+                      <div className="px-4 py-2.5 bg-gray-800/50 rounded-xl border border-gray-800/50 flex items-center gap-2">
+                        <Mail size={16} className="text-gray-600" />
+                        <p className="text-gray-100 flex-1">{user.email}</p>
                         <span className="text-xs px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-md font-semibold">
                           {t('profile.labels.verified')}
                         </span>
                       </div>
-                      <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                      <p className="mt-1 text-xs text-gray-500">
                         {t('profile.labels.emailCannotChange')}
                       </p>
                     </div>
@@ -790,7 +793,7 @@ const ProfilePage = () => {
                     <div>
                       <label
                         htmlFor="bio"
-                        className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2"
+                        className="block text-sm font-semibold text-gray-300 mb-2"
                       >
                         {t('profile.fields.bio')}
                       </label>
@@ -803,9 +806,9 @@ const ProfilePage = () => {
                             onChange={handleInputChange}
                             placeholder={t('profile.placeholders.bio')}
                             rows={4}
-                            className={`w-full px-4 py-2.5 border rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 transition-all resize-none ${errors.bio
+                            className={`w-full px-4 py-2.5 border rounded-xl bg-gray-800/60 text-gray-100 placeholder:text-gray-600 focus:outline-none focus:ring-2 transition-all resize-none ${errors.bio
                               ? "border-red-500 focus:ring-red-500/20"
-                              : "border-slate-300 dark:border-slate-600 focus:border-indigo-500 focus:ring-indigo-500/20"
+                              : "border-gray-700 focus:border-indigo-500 focus:ring-indigo-500/20"
                               }`}
                             maxLength={200}
                           />
@@ -816,16 +819,16 @@ const ProfilePage = () => {
                                 {errors.bio}
                               </p>
                             )}
-                            <p className="text-xs text-slate-500 ml-auto">
+                            <p className="text-xs text-gray-600 ml-auto">
                               {formData.bio.length}/200
                             </p>
                           </div>
                         </>
                       ) : (
-                        <div className="px-4 py-2.5 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 min-h-[100px]">
-                          <p className="text-slate-900 dark:text-slate-50 whitespace-pre-wrap">
+                        <div className="px-4 py-2.5 bg-gray-800/50 rounded-xl border border-gray-800/50 min-h-[100px]">
+                          <p className="text-gray-100 whitespace-pre-wrap">
                             {formData.bio || (
-                              <span className="text-slate-400 dark:text-slate-500 italic">
+                              <span className="text-gray-600 italic">
                                 {t('profile.labels.notSet')}
                               </span>
                             )}
@@ -837,11 +840,11 @@ const ProfilePage = () => {
                 </div>
 
                 {/* Divider */}
-                <div className="h-px bg-slate-200 dark:bg-slate-700"></div>
+                <div className="h-px bg-gray-800"></div>
 
                 {/* Social Links Section */}
                 <div>
-                  <h3 className="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-4 flex items-center gap-2">
+                  <h3 className="text-sm font-bold text-gray-300 uppercase tracking-wider mb-4 flex items-center gap-2">
                     <ExternalLink size={14} />
                     {t('profile.sections.socialLinks')}
                   </h3>
@@ -851,7 +854,7 @@ const ProfilePage = () => {
                     <div>
                       <label
                         htmlFor="github_url"
-                        className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-2"
+                        className="block text-sm font-semibold text-gray-300 mb-2 flex items-center gap-2"
                       >
                         <Github size={16} />
                         GitHub
@@ -865,9 +868,9 @@ const ProfilePage = () => {
                             value={formData.github_url}
                             onChange={handleInputChange}
                             placeholder="https://github.com/username"
-                            className={`w-full px-4 py-2.5 border rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 transition-all ${errors.github_url
+                            className={`w-full px-4 py-2.5 border rounded-xl bg-gray-800/60 text-gray-100 placeholder:text-gray-600 focus:outline-none focus:ring-2 transition-all ${errors.github_url
                               ? "border-red-500 focus:ring-red-500/20"
-                              : "border-slate-300 dark:border-slate-600 focus:border-indigo-500 focus:ring-indigo-500/20"
+                              : "border-gray-700 focus:border-indigo-500 focus:ring-indigo-500/20"
                               }`}
                           />
                           {errors.github_url && (
@@ -878,7 +881,7 @@ const ProfilePage = () => {
                           )}
                         </>
                       ) : (
-                        <div className="px-4 py-2.5 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 truncate">
+                        <div className="px-4 py-2.5 bg-gray-800/50 rounded-xl border border-gray-800/50 truncate">
                           {formData.github_url ? (
                             <a
                               href={formData.github_url}
@@ -890,7 +893,7 @@ const ProfilePage = () => {
                               <ExternalLink size={12} />
                             </a>
                           ) : (
-                            <span className="text-slate-400 dark:text-slate-500 italic">
+                            <span className="text-gray-600 italic">
                               {t('profile.labels.notSet')}
                             </span>
                           )}
@@ -902,7 +905,7 @@ const ProfilePage = () => {
                     <div>
                       <label
                         htmlFor="linkedin_url"
-                        className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-2"
+                        className="block text-sm font-semibold text-gray-300 mb-2 flex items-center gap-2"
                       >
                         <Linkedin size={16} />
                         LinkedIn
@@ -916,9 +919,9 @@ const ProfilePage = () => {
                             value={formData.linkedin_url}
                             onChange={handleInputChange}
                             placeholder="https://linkedin.com/in/username"
-                            className={`w-full px-4 py-2.5 border rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 transition-all ${errors.linkedin_url
+                            className={`w-full px-4 py-2.5 border rounded-xl bg-gray-800/60 text-gray-100 placeholder:text-gray-600 focus:outline-none focus:ring-2 transition-all ${errors.linkedin_url
                               ? "border-red-500 focus:ring-red-500/20"
-                              : "border-slate-300 dark:border-slate-600 focus:border-indigo-500 focus:ring-indigo-500/20"
+                              : "border-gray-700 focus:border-indigo-500 focus:ring-indigo-500/20"
                               }`}
                           />
                           {errors.linkedin_url && (
@@ -929,7 +932,7 @@ const ProfilePage = () => {
                           )}
                         </>
                       ) : (
-                        <div className="px-4 py-2.5 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 truncate">
+                        <div className="px-4 py-2.5 bg-gray-800/50 rounded-xl border border-gray-800/50 truncate">
                           {formData.linkedin_url ? (
                             <a
                               href={formData.linkedin_url}
@@ -941,7 +944,7 @@ const ProfilePage = () => {
                               <ExternalLink size={12} />
                             </a>
                           ) : (
-                            <span className="text-slate-400 dark:text-slate-500 italic">
+                            <span className="text-gray-600 italic">
                               {t('profile.labels.notSet')}
                             </span>
                           )}
@@ -953,7 +956,7 @@ const ProfilePage = () => {
                     <div>
                       <label
                         htmlFor="twitter_url"
-                        className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-2"
+                        className="block text-sm font-semibold text-gray-300 mb-2 flex items-center gap-2"
                       >
                         <Twitter size={16} />
                         Twitter / X
@@ -967,9 +970,9 @@ const ProfilePage = () => {
                             value={formData.twitter_url}
                             onChange={handleInputChange}
                             placeholder="https://twitter.com/username"
-                            className={`w-full px-4 py-2.5 border rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 transition-all ${errors.twitter_url
+                            className={`w-full px-4 py-2.5 border rounded-xl bg-gray-800/60 text-gray-100 placeholder:text-gray-600 focus:outline-none focus:ring-2 transition-all ${errors.twitter_url
                               ? "border-red-500 focus:ring-red-500/20"
-                              : "border-slate-300 dark:border-slate-600 focus:border-indigo-500 focus:ring-indigo-500/20"
+                              : "border-gray-700 focus:border-indigo-500 focus:ring-indigo-500/20"
                               }`}
                           />
                           {errors.twitter_url && (
@@ -980,7 +983,7 @@ const ProfilePage = () => {
                           )}
                         </>
                       ) : (
-                        <div className="px-4 py-2.5 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 truncate">
+                        <div className="px-4 py-2.5 bg-gray-800/50 rounded-xl border border-gray-800/50 truncate">
                           {formData.twitter_url ? (
                             <a
                               href={formData.twitter_url}
@@ -992,7 +995,7 @@ const ProfilePage = () => {
                               <ExternalLink size={12} />
                             </a>
                           ) : (
-                            <span className="text-slate-400 dark:text-slate-500 italic">
+                            <span className="text-gray-600 italic">
                               {t('profile.labels.notSet')}
                             </span>
                           )}
@@ -1003,11 +1006,11 @@ const ProfilePage = () => {
                 </div>
 
                 {/* Divider */}
-                <div className="h-px bg-slate-200 dark:bg-slate-700"></div>
+                <div className="h-px bg-gray-800"></div>
 
                 {/* Preferences Section */}
                 <div>
-                  <h3 className="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-4 flex items-center gap-2">
+                  <h3 className="text-sm font-bold text-gray-300 uppercase tracking-wider mb-4 flex items-center gap-2">
                     <Bell size={14} />
                     {t('profile.sections.preferences')}
                   </h3>
@@ -1016,21 +1019,21 @@ const ProfilePage = () => {
                     {/* Newsletter */}
                     <div className={`p-4 rounded-xl border transition-all ${formData.newsletter_enabled
                       ? "bg-indigo-50 dark:bg-indigo-900/20 border-indigo-200 dark:border-indigo-800"
-                      : "bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700"
+                      : "bg-gray-800/50 border-gray-800/50"
                       }`}>
                       <label className="flex items-center justify-between cursor-pointer">
                         <div className="flex items-center gap-3">
                           <div className={`p-2 rounded-lg ${formData.newsletter_enabled
                             ? "bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400"
-                            : "bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400"
+                            : "bg-gray-800 text-gray-500"
                             }`}>
                             <Mail size={18} />
                           </div>
                           <div>
-                            <span className="block text-sm font-semibold text-slate-900 dark:text-slate-50">
+                            <span className="block text-sm font-semibold text-gray-100">
                               {t('profile.preferences.newsletter.title')}
                             </span>
-                            <span className="block text-xs text-slate-500 dark:text-slate-400">
+                            <span className="block text-xs text-gray-500">
                               {t('profile.preferences.newsletter.description')}
                             </span>
                           </div>
@@ -1044,7 +1047,7 @@ const ProfilePage = () => {
                             disabled={!isEditing}
                             className="sr-only peer"
                           />
-                          <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 dark:peer-focus:ring-indigo-800 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600"></div>
+                          <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 dark:peer-focus:ring-indigo-800 rounded-full peer bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600"></div>
                         </div>
                       </label>
                     </div>
@@ -1052,21 +1055,21 @@ const ProfilePage = () => {
                     {/* Handbook Alerts */}
                     <div className={`p-4 rounded-xl border transition-all ${formData.handbook_alerts_enabled
                       ? "bg-indigo-50 dark:bg-indigo-900/20 border-indigo-200 dark:border-indigo-800"
-                      : "bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700"
+                      : "bg-gray-800/50 border-gray-800/50"
                       }`}>
                       <label className="flex items-center justify-between cursor-pointer">
                         <div className="flex items-center gap-3">
                           <div className={`p-2 rounded-lg ${formData.handbook_alerts_enabled
                             ? "bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400"
-                            : "bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400"
+                            : "bg-gray-800 text-gray-500"
                             }`}>
                             <Bell size={18} />
                           </div>
                           <div>
-                            <span className="block text-sm font-semibold text-slate-900 dark:text-slate-50">
+                            <span className="block text-sm font-semibold text-gray-100">
                               {t('profile.preferences.handbookAlerts.title')}
                             </span>
-                            <span className="block text-xs text-slate-500 dark:text-slate-400">
+                            <span className="block text-xs text-gray-500">
                               {t('profile.preferences.handbookAlerts.description')}
                             </span>
                           </div>
@@ -1080,7 +1083,7 @@ const ProfilePage = () => {
                             disabled={!isEditing}
                             className="sr-only peer"
                           />
-                          <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 dark:peer-focus:ring-indigo-800 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600"></div>
+                          <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 dark:peer-focus:ring-indigo-800 rounded-full peer bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600"></div>
                         </div>
                       </label>
                     </div>
@@ -1088,21 +1091,21 @@ const ProfilePage = () => {
                     {/* Product Updates */}
                     <div className={`p-4 rounded-xl border transition-all ${formData.product_updates_enabled
                       ? "bg-indigo-50 dark:bg-indigo-900/20 border-indigo-200 dark:border-indigo-800"
-                      : "bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700"
+                      : "bg-gray-800/50 border-gray-800/50"
                       }`}>
                       <label className="flex items-center justify-between cursor-pointer">
                         <div className="flex items-center gap-3">
                           <div className={`p-2 rounded-lg ${formData.product_updates_enabled
                             ? "bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400"
-                            : "bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400"
+                            : "bg-gray-800 text-gray-500"
                             }`}>
                             <Sparkles size={18} />
                           </div>
                           <div>
-                            <span className="block text-sm font-semibold text-slate-900 dark:text-slate-50">
+                            <span className="block text-sm font-semibold text-gray-100">
                               {t('profile.preferences.productUpdates.title')}
                             </span>
-                            <span className="block text-xs text-slate-500 dark:text-slate-400">
+                            <span className="block text-xs text-gray-500">
                               {t('profile.preferences.productUpdates.description')}
                             </span>
                           </div>
@@ -1116,7 +1119,7 @@ const ProfilePage = () => {
                             disabled={!isEditing}
                             className="sr-only peer"
                           />
-                          <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 dark:peer-focus:ring-indigo-800 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600"></div>
+                          <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 dark:peer-focus:ring-indigo-800 rounded-full peer bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600"></div>
                         </div>
                       </label>
                     </div>
@@ -1126,8 +1129,8 @@ const ProfilePage = () => {
             </div>
 
             {/* Account & Security Section - Separate Card */}
-            <div className="mt-8 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-xl p-6 sm:p-8">
-              <h3 className="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-6 flex items-center gap-2">
+            <div className="mt-8 bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-800/60 shadow-xl p-6 sm:p-8">
+              <h3 className="text-sm font-bold text-gray-300 uppercase tracking-wider mb-6 flex items-center gap-2">
                 <Shield size={14} />
                 {t('profile.sections.accountSecurity')}
               </h3>
@@ -1135,7 +1138,7 @@ const ProfilePage = () => {
               <div className="space-y-8">
                 {/* Change Email */}
                 <div>
-                  <h4 className="text-base font-semibold text-slate-900 dark:text-slate-50 mb-4 flex items-center gap-2">
+                  <h4 className="text-base font-semibold text-gray-100 mb-4 flex items-center gap-2">
                     <Mail size={18} className="text-slate-400" />
                     {t('profile.security.changeEmail.title')}
                   </h4>
@@ -1145,7 +1148,7 @@ const ProfilePage = () => {
                       value={newEmail}
                       onChange={(e) => setNewEmail(e.target.value)}
                       placeholder={t('profile.security.email.placeholder')}
-                      className="flex-1 px-4 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+                      className="flex-1 px-4 py-2.5 border border-gray-700 rounded-xl bg-gray-800/60 text-gray-100 placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
                     />
                     <Button
                       variant="outline"
@@ -1158,11 +1161,11 @@ const ProfilePage = () => {
                   </div>
                 </div>
 
-                <div className="h-px bg-slate-200 dark:bg-slate-700"></div>
+                <div className="h-px bg-gray-800"></div>
 
                 {/* Change Password */}
                 <div>
-                  <h4 className="text-base font-semibold text-slate-900 dark:text-slate-50 mb-4 flex items-center gap-2">
+                  <h4 className="text-base font-semibold text-gray-100 mb-4 flex items-center gap-2">
                     <Lock size={18} className="text-slate-400" />
                     {t('profile.security.changePassword.title')}
                   </h4>
@@ -1173,14 +1176,14 @@ const ProfilePage = () => {
                         value={newPassword}
                         onChange={(e) => setNewPassword(e.target.value)}
                         placeholder={t('profile.placeholders.newPassword')}
-                        className="px-4 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+                        className="px-4 py-2.5 border border-gray-700 rounded-xl bg-gray-800/60 text-gray-100 placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
                       />
                       <input
                         type="password"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         placeholder={t('profile.placeholders.confirmPassword')}
-                        className="px-4 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+                        className="px-4 py-2.5 border border-gray-700 rounded-xl bg-gray-800/60 text-gray-100 placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
                       />
                     </div>
                     <div className="flex justify-end">
@@ -1196,7 +1199,7 @@ const ProfilePage = () => {
                   </div>
                 </div>
 
-                <div className="h-px bg-slate-200 dark:bg-slate-700"></div>
+                <div className="h-px bg-gray-800"></div>
 
                 {/* Delete Account */}
                 <div>
@@ -1204,7 +1207,7 @@ const ProfilePage = () => {
                     <AlertCircle size={18} />
                     {t('profile.security.delete.title')}
                   </h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                  <p className="text-sm text-gray-400 mb-4">
                     {t('profile.security.delete.description')}
                   </p>
 
@@ -1227,7 +1230,7 @@ const ProfilePage = () => {
                           value={deleteConfirmText}
                           onChange={(e) => setDeleteConfirmText(e.target.value)}
                           placeholder="DELETE"
-                          className="flex-1 px-4 py-2 border border-red-300 dark:border-red-800 rounded-lg bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500"
+                          className="flex-1 px-4 py-2 border border-red-300 dark:border-red-800 rounded-lg bg-gray-800/60 text-gray-100 placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500"
                         />
                         <div className="flex gap-2">
                           <button
@@ -1235,7 +1238,7 @@ const ProfilePage = () => {
                               setShowDeleteModal(false);
                               setDeleteConfirmText("");
                             }}
-                            className="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors font-medium text-sm"
+                            className="px-4 py-2 bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 text-gray-300 rounded-lg hover:bg-gray-800 transition-colors font-medium text-sm"
                           >
                             {t('buttons.cancel')}
                           </button>

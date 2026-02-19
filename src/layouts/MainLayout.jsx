@@ -118,15 +118,7 @@ const MainLayout = () => {
             <Outlet />
           </main>
 
-          {location.pathname === '/' && (
-            <Footer
-              onAboutClick={() => navigate('/about')}
-              onFAQClick={() => navigate('/faq')}
-              onContributingClick={() => navigate('/contributing')}
-              onCodeOfConductClick={() => navigate('/code-of-conduct')}
-              onContactClick={() => navigate('/contact')}
-            />
-          )}
+          {location.pathname === '/' && <Footer />}
 
           {/* Scroll to Top Button */}
           {showScrollTop && (

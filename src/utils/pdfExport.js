@@ -1,19 +1,3 @@
-/**
- * Exports the current page content to PDF by opening a print dialog
- * 
- * Creates a new window with a print-friendly version of the content,
- * then automatically triggers the browser's print dialog. The content
- * is styled for optimal printing with proper typography and spacing.
- * 
- * Note: This function relies on the browser's native print functionality.
- * For true PDF generation, consider using a library like jsPDF or Puppeteer.
- * 
- * @returns {void}
- * 
- * @example
- * // Call when user clicks "Export to PDF" button
- * exportToPDF();
- */
 export const exportToPDF = () => {
   // Create a print-friendly version in a new window
   const printWindow = window.open('', '_blank');

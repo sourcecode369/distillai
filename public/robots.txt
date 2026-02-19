@@ -1,7 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://aihandbooks.com/sitemap.xml
-
-
+Sitemap: https://distillai.dev/sitemap.xml

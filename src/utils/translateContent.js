@@ -1,16 +1,5 @@
-/**
- * Translation helper for sections and categories
- * Translates section and category titles/descriptions based on their IDs
- */
-
 import i18n from '../i18n/config';
 
-/**
- * Get translated section data
- * @param {Object} section - Section object with section_id, title, subtitle
- * @param {Function} t - Translation function (optional, will use i18n if not provided)
- * @returns {Object} Section with translated title and subtitle
- */
 export const translateSection = (section, t = null) => {
   if (!section || !section.section_id) return section;
   
@@ -27,12 +16,6 @@ export const translateSection = (section, t = null) => {
   };
 };
 
-/**
- * Get translated category data
- * @param {Object} category - Category object with category_id, title, description
- * @param {Function} t - Translation function (optional, will use i18n if not provided)
- * @returns {Object} Category with translated title and description
- */
 export const translateCategory = (category, t = null) => {
   if (!category || !category.category_id) return category;
   
@@ -49,12 +32,6 @@ export const translateCategory = (category, t = null) => {
   };
 };
 
-/**
- * Translate all sections with their categories
- * @param {Array} sections - Array of sections with categories
- * @param {Function} t - Translation function (optional, will use i18n if not provided)
- * @returns {Array} Translated sections
- */
 export const translateSectionsWithCategories = (sections, t = null) => {
   if (!Array.isArray(sections)) return sections;
   

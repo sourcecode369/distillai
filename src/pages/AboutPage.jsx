@@ -384,7 +384,7 @@ const AboutPage = () => {
                 <span>{t('about.connect.github')}</span>
               </a>
               <a
-                href="mailto:contact@robuildsai.com"
+                href="mailto:contact@distillai.com"
                 className="group/btn flex items-center gap-3 px-8 py-5 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-2xl hover:from-indigo-700 hover:to-violet-700 transition-all shadow-xl hover:shadow-2xl font-bold text-lg hover:scale-105 active:scale-95"
               >
                 <Mail size={22} className="drop-shadow-sm group-hover/btn:scale-110 transition-transform duration-300" />

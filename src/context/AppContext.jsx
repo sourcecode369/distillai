@@ -100,20 +100,22 @@ export const AppProvider = ({ children }) => {
       // Sync bookmarks
       const { data: dbBookmarks, error: bookmarksError } = await dbHelpers.getBookmarks(userId);
       if (!bookmarksError && dbBookmarks) {
-        // Remove duplicates by id
+        // Remove duplicates by item_id
         const bookmarkMap = new Map();
         dbBookmarks.forEach((b) => {
-          const id = `${b.category_id}-${b.topic_id}`;
-          if (!bookmarkMap.has(id)) {
-            bookmarkMap.set(id, {
-              id,
+          const itemId = b.item_id || `${b.category_id}-${b.topic_id}`;
+          if (!bookmarkMap.has(itemId)) {
+            const bookmark = {
+              id: itemId,
               type: "topic",
-              categoryId: b.category_id,
-              topicId: b.topic_id,
               title: b.title,
               categoryTitle: b.category_title,
+              categoryId: b.category_id,
+              topicId: b.topic_id,
               timestamp: new Date(b.created_at).getTime(),
-            });
+            };
+
+            bookmarkMap.set(itemId, bookmark);
           }
         });
         const formattedBookmarks = Array.from(bookmarkMap.values());
@@ -171,7 +173,7 @@ export const AppProvider = ({ children }) => {
   }, []);
 
   const removeBookmark = useCallback(async (id, userId = null) => {
-    // Find bookmark to get categoryId and topicId
+    // Find bookmark to get type and related IDs
     const bookmark = bookmarks.find((b) => b.id === id);
 
     // Update local state

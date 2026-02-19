@@ -1,9 +1,5 @@
 import { useState, useEffect } from "react";
 
-/**
- * Custom hook to track sidebar offset for positioning progress bar
- * @returns {number} Sidebar offset in pixels
- */
 export const useSidebarOffset = () => {
   const [sidebarOffset, setSidebarOffset] = useState(0);
 

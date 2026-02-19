@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useTranslation } from "react-i18next"
-import { BarChart3, Users, BookOpen, Mail, Activity, Settings } from "lucide-react"
+import { BarChart3, Users, BookOpen, Mail, Activity, Settings, Star } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const AdminNav = ({ activeTab, onTabChange }) => {
@@ -10,6 +10,7 @@ const AdminNav = ({ activeTab, onTabChange }) => {
     { id: "analytics", label: t("tabs.analytics"), icon: BarChart3 },
     { id: "users", label: t("tabs.users"), icon: Users },
     { id: "content", label: t("tabs.content"), icon: BookOpen },
+    { id: "featured-models", label: t("tabs.featuredModels"), icon: Star },
     { id: "notifications", label: t("tabs.notifications"), icon: Mail },
     { id: "activity", label: t("tabs.activity"), icon: Activity },
     { id: "settings", label: t("tabs.settings"), icon: Settings },

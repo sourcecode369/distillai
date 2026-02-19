@@ -22,64 +22,67 @@ const LanguageDropdown = ({ onClose }) => {
   };
 
   return (
-    <div 
+    <div
       data-language-dropdown
-      className="w-[calc(100vw-1rem)] sm:w-64 max-w-[calc(100vw-1rem)] sm:max-w-[16rem] bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 shadow-2xl shadow-slate-500/20 dark:shadow-slate-900/40 z-50 flex flex-col overflow-hidden"
+      className="w-[calc(100vw-1rem)] sm:w-64 max-w-[calc(100vw-1rem)] sm:max-w-[16rem] bg-slate-950/95 backdrop-blur-xl rounded-2xl border border-slate-800/50 shadow-2xl shadow-black/50 z-50 flex flex-col overflow-hidden"
       onClick={(e) => e.stopPropagation()}
       onMouseDown={(e) => e.stopPropagation()}
     >
+      {/* Animated gradient border */}
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-500/20 via-violet-500/20 to-pink-500/20 opacity-50 blur-xl pointer-events-none" />
+
       {/* Header */}
-      <div className="p-5 border-b border-slate-200/40 dark:border-slate-700/40 bg-gradient-to-r from-indigo-50/60 via-violet-50/30 to-transparent dark:from-indigo-900/20 dark:via-violet-900/10 flex items-center justify-between">
+      <div className="relative p-5 border-b border-slate-800/50 bg-gradient-to-r from-indigo-900/30 via-violet-900/20 to-transparent flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-xl bg-gradient-to-br from-indigo-100 to-violet-100 dark:from-indigo-900/40 dark:to-violet-900/30 shadow-sm">
-            <Globe size={18} className="text-indigo-600 dark:text-indigo-400" />
+          <div className="p-2 rounded-xl bg-gradient-to-br from-indigo-500/20 to-violet-500/20 shadow-lg shadow-indigo-500/20 border border-indigo-500/30">
+            <Globe size={18} className="text-indigo-400" />
           </div>
-          <h3 className="text-base font-bold text-slate-900 dark:text-slate-200">{t('dropdown.title')}</h3>
+          <h3 className="text-base font-bold text-slate-100">{t('dropdown.title')}</h3>
         </div>
       </div>
 
       {/* Languages List */}
-      <div className="max-h-[420px] overflow-y-auto">
+      <div className="relative max-h-[420px] overflow-y-auto">
         {languages.map((lang) => (
           <div
             key={lang.code}
-            className={`group relative px-4 py-2.5 cursor-pointer transition-all duration-300 border-b border-slate-200/30 dark:border-slate-700/30 last:border-b-0 overflow-hidden ${
-              i18n.language === lang.code ? "bg-indigo-50/30 dark:bg-indigo-900/10" : ""
-            } hover:bg-indigo-50/30 dark:hover:bg-indigo-900/10`}
+            className={`group relative px-4 py-2.5 cursor-pointer transition-all duration-300 border-b border-slate-800/30 last:border-b-0 overflow-hidden ${
+              i18n.language === lang.code ? "bg-slate-800/50" : ""
+            } hover:bg-slate-800/50`}
             onClick={(e) => {
               e.stopPropagation();
               handleLanguageChange(lang.code);
             }}
             onMouseDown={(e) => e.stopPropagation()}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-50/0 via-indigo-50/70 to-indigo-50/0 dark:from-indigo-900/0 dark:via-indigo-900/25 dark:to-indigo-900/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/0 via-indigo-500/10 to-indigo-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <div className="relative z-10 flex items-center justify-between gap-3">
               <div className="flex items-center gap-3 flex-1 min-w-0">
-                <div className={`flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110 ${
+                <div className={`flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110 border ${
                   i18n.language === lang.code
-                    ? "bg-indigo-500 text-white group-hover:bg-indigo-600"
-                    : "bg-slate-200 dark:bg-slate-700 text-slate-500 dark:text-slate-400 group-hover:bg-indigo-100 dark:group-hover:bg-indigo-900/30 group-hover:text-indigo-600 dark:group-hover:text-indigo-400"
+                    ? "bg-indigo-500 text-white border-indigo-500 group-hover:bg-indigo-600"
+                    : "bg-slate-800/60 text-slate-500 border-slate-700/50 group-hover:bg-indigo-500/20 group-hover:text-indigo-400 group-hover:border-indigo-500/30"
                 }`}>
                   <Globe size={14} />
                 </div>
                 <div className="flex-1 min-w-0">
                   <h4 className={`text-sm leading-snug transition-colors duration-300 ${
                     i18n.language === lang.code
-                      ? "font-semibold text-slate-900 dark:text-slate-200 group-hover:text-indigo-700 dark:group-hover:text-indigo-300"
-                      : "font-medium text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-slate-100"
+                      ? "font-semibold text-slate-100 group-hover:text-indigo-300"
+                      : "font-medium text-slate-300 group-hover:text-slate-100"
                   }`}>
                     {lang.nativeName}
                   </h4>
-                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
+                  <p className="text-xs text-slate-400 mt-0.5">
                     {lang.name} • {lang.code.toUpperCase()}
                   </p>
                 </div>
               </div>
               {i18n.language === lang.code && (
-                <Check size={16} className="text-indigo-600 dark:text-indigo-400 flex-shrink-0" />
+                <Check size={16} className="text-indigo-400 flex-shrink-0" />
               )}
               {i18n.language !== lang.code && (
-                <ArrowRight size={14} className="text-slate-400 dark:text-slate-500 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 group-hover:translate-x-1 transition-all duration-300 flex-shrink-0 opacity-0 group-hover:opacity-100" />
+                <ArrowRight size={14} className="text-slate-500 group-hover:text-indigo-400 group-hover:translate-x-1 transition-all duration-300 flex-shrink-0 opacity-0 group-hover:opacity-100" />
               )}
             </div>
           </div>

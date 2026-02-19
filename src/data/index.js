@@ -142,12 +142,5 @@ export const DATA = {
   ],
 };
 
-// Debug: Log DATA structure
-console.log("DATA loaded:", {
-  sectionsCount: DATA.sections.length,
-  categoriesCount: DATA.categories.length,
-  sections: DATA.sections.map((s) => s.title),
-});
-
 // Export for convenience
 export default DATA;

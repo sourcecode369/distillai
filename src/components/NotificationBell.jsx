@@ -46,7 +46,7 @@ const NotificationBell = () => {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-        className="min-w-[44px] min-h-[44px] w-11 h-11 flex items-center justify-center rounded-xl bg-white/70 dark:bg-slate-800/70 border border-white/70 dark:border-slate-700/70 backdrop-blur-sm text-gray-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-white dark:hover:bg-slate-800 hover:border-indigo-500/50 transition-all duration-300 shadow-md hover:shadow-lg touch-manipulation relative focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        className="min-w-[44px] min-h-[44px] w-11 h-11 flex items-center justify-center rounded-xl bg-gray-800/50 border border-gray-700/50 backdrop-blur-sm text-gray-400 hover:text-indigo-400 hover:bg-gray-800 hover:border-indigo-500/50 transition-all duration-300 shadow-lg hover:shadow-indigo-500/20 touch-manipulation relative focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-950"
         title={t('bell.title')}
         aria-label={unreadCount > 0 ? t('bell.ariaLabelUnread', { count: unreadCount }) : t('bell.ariaLabel')}
         aria-expanded={isDropdownOpen}
@@ -54,7 +54,7 @@ const NotificationBell = () => {
       >
         <Bell size={20} aria-hidden="true" />
         {unreadCount > 0 && (
-          <span className="absolute top-1.5 right-1.5 min-w-[18px] h-[18px] px-1.5 flex items-center justify-center bg-gradient-to-br from-red-500 to-pink-500 text-white text-[10px] font-bold rounded-full border-2 border-white dark:border-gray-800 shadow-lg animate-pulse">
+          <span className="absolute top-1.5 right-1.5 min-w-[18px] h-[18px] px-1.5 flex items-center justify-center bg-gradient-to-br from-red-500 to-pink-500 text-white text-[10px] font-bold rounded-full ring-2 ring-gray-950 shadow-lg animate-pulse">
             {unreadCount > 99 ? "99+" : unreadCount}
           </span>
         )}

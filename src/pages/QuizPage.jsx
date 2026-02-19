@@ -16,7 +16,6 @@ import SEO from "../components/SEO";
 const QuizPage = () => {
   const { categoryId, topicId } = useParams();
   const navigate = useNavigate();
-  console.log("QuizPage mounted", { categoryId, topicId });
   const { t } = useTranslation("quiz");
   const { user } = useAuth();
   const { showToast } = useApp();

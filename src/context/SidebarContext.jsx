@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const SidebarContext = createContext();
 
@@ -11,8 +11,17 @@ export const useSidebar = () => {
 };
 
 export const SidebarProvider = ({ children }) => {
-  const [isDesktopSidebarOpen, setIsDesktopSidebarOpen] = useState(true);
+  // Initialize from localStorage, default to false (closed)
+  const [isDesktopSidebarOpen, setIsDesktopSidebarOpen] = useState(() => {
+    const saved = localStorage.getItem('desktopSidebarOpen');
+    return saved !== null ? JSON.parse(saved) : false;
+  });
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+
+  // Save to localStorage whenever desktop sidebar state changes
+  useEffect(() => {
+    localStorage.setItem('desktopSidebarOpen', JSON.stringify(isDesktopSidebarOpen));
+  }, [isDesktopSidebarOpen]);
 
   const toggleDesktop = () => setIsDesktopSidebarOpen(prev => !prev);
   const toggleMobile = () => setIsMobileSidebarOpen(prev => !prev);

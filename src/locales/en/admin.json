@@ -5,6 +5,7 @@
     "analytics": "Analytics",
     "users": "Users",
     "content": "Content",
+    "featuredModels": "Featured Models",
     "notifications": "Notifications",
     "activity": "Activity",
     "settings": "Settings"
@@ -473,6 +474,56 @@
     },
     "importTopics": {
       "message": "This will import all static topics from your code files into the database. Topics that already exist will be skipped. Continue?"
+    }
+  },
+  "featuredModels": {
+    "title": "Featured Models Management",
+    "subtitle": "Manage which models appear in the featured section on the Models Directory page",
+    "searchPlaceholder": "Search models...",
+    "filters": {
+      "all": "All Models",
+      "featured": "Featured Only",
+      "notFeatured": "Not Featured",
+      "expired": "Expired"
+    },
+    "table": {
+      "model": "Model",
+      "category": "Category",
+      "status": "Status",
+      "featuredUntil": "Featured Until",
+      "actions": "Actions"
+    },
+    "actions": {
+      "feature": "Feature",
+      "unfeature": "Unfeature",
+      "viewHistory": "View History"
+    },
+    "modal": {
+      "featureTitle": "Feature {{name}}",
+      "featuredUntilLabel": "Featured Until (Optional)",
+      "featuredUntilHelp": "This date is for reference only. Model will stay featured until manually removed.",
+      "confirmFeature": "Feature Model",
+      "cancel": "Cancel"
+    },
+    "history": {
+      "title": "Featured Models History",
+      "active": "Active",
+      "ended": "Ended",
+      "featured": "Featured",
+      "unfeatured": "Unfeatured",
+      "targetEnd": "Target End",
+      "duration": "Duration",
+      "daysOngoing": "{{days}} days (ongoing)",
+      "daysTotal": "{{days}} days"
+    },
+    "success": {
+      "featured": "{{name}} featured successfully",
+      "unfeatured": "{{name}} unfeatured successfully"
+    },
+    "errors": {
+      "loadFailed": "Failed to load models",
+      "featureFailed": "Failed to feature model",
+      "unfeatureFailed": "Failed to unfeature model"
     }
   }
 }

@@ -1,10 +1,5 @@
 import { useState, useEffect } from "react";
 
-/**
- * Custom hook to track the currently active section in the table of contents
- * @param {Object} topic - The topic object containing sections
- * @returns {string} ID of the currently active section
- */
 export const useActiveSection = (topic) => {
   const [activeSection, setActiveSection] = useState("overview");
 

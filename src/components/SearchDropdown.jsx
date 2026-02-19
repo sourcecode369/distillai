@@ -202,22 +202,25 @@ const SearchDropdown = ({
     <div
       ref={dropdownRef}
       data-search-dropdown
-      className="absolute right-0 sm:right-0 top-full mt-2 w-[calc(100vw-1rem)] sm:w-96 max-w-[calc(100vw-1rem)] sm:max-w-[24rem] bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 shadow-2xl shadow-slate-500/20 dark:shadow-slate-900/40 z-50 flex flex-col overflow-hidden"
+      className="absolute right-0 sm:right-0 top-full mt-2 w-[calc(100vw-1rem)] sm:w-96 max-w-[calc(100vw-1rem)] sm:max-w-[24rem] bg-slate-950/95 backdrop-blur-xl rounded-2xl border border-slate-800/50 shadow-2xl shadow-black/50 z-50 flex flex-col overflow-hidden"
       onMouseDown={(e) => e.stopPropagation()}
       onClick={(e) => e.stopPropagation()}
     >
+      {/* Animated gradient border */}
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-500/20 via-violet-500/20 to-pink-500/20 opacity-50 blur-xl pointer-events-none" />
+
       {/* Header */}
-      <div className="p-5 border-b border-slate-200/40 dark:border-slate-700/40 bg-gradient-to-r from-indigo-50/60 via-violet-50/30 to-transparent dark:from-indigo-900/20 dark:via-violet-900/10 flex items-center justify-between">
+      <div className="relative p-5 border-b border-slate-800/50 bg-gradient-to-r from-indigo-900/30 via-violet-900/20 to-transparent flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-xl bg-gradient-to-br from-indigo-100 to-violet-100 dark:from-indigo-900/40 dark:to-violet-900/30 shadow-sm">
-            <Search size={18} className="text-indigo-600 dark:text-indigo-400" />
+          <div className="p-2 rounded-xl bg-gradient-to-br from-indigo-500/20 to-violet-500/20 shadow-lg shadow-indigo-500/20 border border-indigo-500/30">
+            <Search size={18} className="text-indigo-400" />
           </div>
-          <h3 className="text-base font-bold text-slate-900 dark:text-slate-200">{t('dropdown.title')}</h3>
+          <h3 className="text-base font-bold text-slate-100">{t('dropdown.title')}</h3>
         </div>
       </div>
 
       {/* Search Input */}
-      <div className="p-4 border-b border-slate-200/40 dark:border-slate-700/40">
+      <div className="relative p-4 border-b border-slate-800/50">
         <div className="relative">
           <input
             ref={inputRef}
@@ -231,9 +234,9 @@ const SearchDropdown = ({
             onMouseDown={(e) => e.stopPropagation()}
             onClick={(e) => e.stopPropagation()}
             placeholder={t('dropdown.placeholder')}
-            className="w-full pl-10 pr-10 py-2.5 border border-slate-200/60 dark:border-slate-700/60 rounded-xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm text-sm text-slate-900 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500 dark:focus:border-indigo-500 transition-all"
+            className="w-full pl-10 pr-10 py-2.5 border border-slate-700/50 rounded-xl bg-slate-900/60 backdrop-blur-sm text-sm text-slate-200 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500/50 transition-all"
           />
-          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500" />
+          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
           {localQuery && (
             <button
               onClick={(e) => {
@@ -242,7 +245,7 @@ const SearchDropdown = ({
                 if (onQueryChange) onQueryChange("");
               }}
               onMouseDown={(e) => e.stopPropagation()}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors"
             >
               <X size={16} />
             </button>
@@ -254,20 +257,20 @@ const SearchDropdown = ({
       <div className="max-h-[420px] overflow-y-auto">
         {/* Autocomplete Suggestions */}
         {localQuery.trim() && allSuggestions.length > 0 && (
-          <div className="p-2">
-            <div className="px-3 py-2 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+          <div className="relative p-2">
+            <div className="px-3 py-2 text-xs font-semibold text-slate-400 uppercase tracking-wider">
               {t('dropdown.suggestions')}
             </div>
             {allSuggestions.map((suggestion, index) => (
               <button
                 key={index}
                 onClick={() => handleSearch(suggestion)}
-                className="w-full group relative px-4 py-2.5 cursor-pointer transition-all duration-300 rounded-xl hover:bg-indigo-50/50 dark:hover:bg-indigo-900/10 overflow-hidden text-left"
+                className="w-full group relative px-4 py-2.5 cursor-pointer transition-all duration-300 rounded-xl hover:bg-slate-800/50 overflow-hidden text-left border border-transparent hover:border-indigo-500/30"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-indigo-50/0 via-indigo-50/70 to-indigo-50/0 dark:from-indigo-900/0 dark:via-indigo-900/25 dark:to-indigo-900/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/0 via-indigo-500/10 to-indigo-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="relative z-10 flex items-center gap-3">
-                  <Search size={14} className="text-slate-400 dark:text-slate-500 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors" />
-                  <span className="text-sm text-slate-700 dark:text-slate-300 group-hover:text-indigo-700 dark:group-hover:text-indigo-300 transition-colors">
+                  <Search size={14} className="text-slate-500 group-hover:text-indigo-400 transition-colors" />
+                  <span className="text-sm text-slate-300 group-hover:text-indigo-300 transition-colors">
                     {suggestion}
                   </span>
                 </div>
@@ -280,22 +283,22 @@ const SearchDropdown = ({
         {!localQuery.trim() && (
           <>
             {isLoading ? (
-              <div className="p-10 text-center">
-                <div className="inline-block animate-spin rounded-full h-7 w-7 border-b-2 border-indigo-600 mb-4"></div>
-                <p className="text-sm text-gray-500 dark:text-slate-400">{t('dropdown.loading')}</p>
+              <div className="relative p-10 text-center">
+                <div className="inline-block animate-spin rounded-full h-7 w-7 border-b-2 border-indigo-500 mb-4"></div>
+                <p className="text-sm text-slate-400">{t('dropdown.loading')}</p>
               </div>
             ) : recentSearches.length === 0 ? (
-              <div className="p-10 text-center flex flex-col items-center justify-center">
-                <div className="p-3 rounded-xl bg-slate-100 dark:bg-slate-700 w-fit mb-4 flex items-center justify-center">
-                  <Search size={20} className="text-slate-400 dark:text-slate-500" />
+              <div className="relative p-10 text-center flex flex-col items-center justify-center">
+                <div className="p-3 rounded-xl bg-slate-800/60 w-fit mb-4 flex items-center justify-center border border-slate-700/50">
+                  <Search size={20} className="text-slate-500" />
                 </div>
-                <p className="text-sm text-slate-500 dark:text-slate-400">{t('dropdown.empty.title')}</p>
-                <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">{t('dropdown.empty.description')}</p>
+                <p className="text-sm text-slate-400">{t('dropdown.empty.title')}</p>
+                <p className="text-xs text-slate-500 mt-1">{t('dropdown.empty.description')}</p>
               </div>
             ) : (
-              <div>
-                <div className="px-4 py-2 flex items-center justify-between border-b border-slate-200/30 dark:border-slate-700/30">
-                  <div className="px-3 py-1 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+              <div className="relative">
+                <div className="px-4 py-2 flex items-center justify-between border-b border-slate-800/50">
+                  <div className="px-3 py-1 text-xs font-semibold text-slate-400 uppercase tracking-wider">
                     {t('dropdown.recentSearches')}
                   </div>
                   {recentSearches.length > 0 && (
@@ -305,7 +308,7 @@ const SearchDropdown = ({
                         handleClearRecent(e);
                       }}
                       onMouseDown={(e) => e.stopPropagation()}
-                      className="text-xs text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors px-2 py-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700"
+                      className="text-xs text-slate-500 hover:text-slate-300 transition-colors px-2 py-1 rounded-lg hover:bg-slate-800/50"
                     >
                       {t('dropdown.clear')}
                     </button>
@@ -314,26 +317,26 @@ const SearchDropdown = ({
                 {recentSearches.slice(0, 3).map((search, index) => (
                   <div
                     key={search.id}
-                    className={`group relative px-4 py-2.5 cursor-pointer transition-all duration-300 border-b border-slate-200/30 dark:border-slate-700/30 last:border-b-0 overflow-hidden hover:bg-indigo-50/30 dark:hover:bg-indigo-900/10`}
+                    className={`group relative px-4 py-2.5 cursor-pointer transition-all duration-300 border-b border-slate-800/30 last:border-b-0 overflow-hidden hover:bg-slate-800/50`}
                     onClick={(e) => handleRecentSearchClick(e, search.query)}
                     onMouseDown={(e) => e.stopPropagation()}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-indigo-50/0 via-indigo-50/70 to-indigo-50/0 dark:from-indigo-900/0 dark:via-indigo-900/25 dark:to-indigo-900/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/0 via-indigo-500/10 to-indigo-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="relative z-10 flex items-center justify-between gap-3">
                       <div className="flex items-center gap-3 flex-1 min-w-0 text-left">
-                        <div className="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400 group-hover:bg-indigo-100 dark:group-hover:bg-indigo-900/30 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-all duration-300">
+                        <div className="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center bg-slate-800/60 text-slate-500 group-hover:bg-indigo-500/20 group-hover:text-indigo-400 transition-all duration-300 border border-slate-700/50 group-hover:border-indigo-500/30">
                           <Clock size={14} />
                         </div>
                         <div className="flex-1 min-w-0 text-left">
-                          <p className="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover:text-indigo-700 dark:group-hover:text-indigo-300 transition-colors truncate text-left">
+                          <p className="text-sm font-medium text-slate-300 group-hover:text-indigo-300 transition-colors truncate text-left">
                             {search.query}
                           </p>
-                          <span className="text-[10px] text-slate-400 dark:text-slate-500 text-left block">
+                          <span className="text-[10px] text-slate-500 text-left block">
                             {formatTime(search.created_at)}
                           </span>
                         </div>
                       </div>
-                      <ArrowRight size={14} className="text-slate-400 dark:text-slate-500 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 group-hover:translate-x-1 transition-all duration-300 flex-shrink-0" />
+                      <ArrowRight size={14} className="text-slate-500 group-hover:text-indigo-400 group-hover:translate-x-1 transition-all duration-300 flex-shrink-0" />
                     </div>
                   </div>
                 ))}
@@ -345,13 +348,13 @@ const SearchDropdown = ({
 
       {/* Footer - Show if there are searches or more available */}
       {!localQuery.trim() && (recentSearches.length > 0 || hasMore) && (
-        <div className="px-4 py-3 border-t border-slate-200/40 dark:border-slate-700/40">
+        <div className="relative px-4 py-3 border-t border-slate-800/50">
           <button
             onClick={handleViewAll}
             onMouseDown={(e) => e.stopPropagation()}
-            className="group w-full flex items-center justify-center gap-2 text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-all duration-300 py-2.5 rounded-xl relative overflow-hidden"
+            className="group w-full flex items-center justify-center gap-2 text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-all duration-300 py-2.5 rounded-xl relative overflow-hidden border border-transparent hover:border-indigo-500/30 hover:bg-slate-800/50"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-50/0 via-indigo-50/60 to-indigo-50/0 dark:from-indigo-900/0 dark:via-indigo-900/20 dark:to-indigo-900/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/0 via-indigo-500/10 to-indigo-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <span className="relative z-10">{hasMore ? t('dropdown.viewAllCount', { count: totalCount }) : t('dropdown.viewAll')}</span>
             <ArrowRight size={14} className="relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
           </button>

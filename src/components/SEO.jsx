@@ -16,7 +16,7 @@ const SEO = ({
   dateModified,
   keywords,
 }) => {
-  const siteName = "XBuildsAI";
+  const siteName = "Distill AI";
   const siteUrl = typeof window !== "undefined" ? window.location.origin : "";
   const fullUrl = url ? (url.startsWith("http") ? url : `${siteUrl}${url}`) : siteUrl;
   const fullImage = image

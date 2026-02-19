@@ -19,7 +19,6 @@ const ContactPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
@@ -39,8 +38,8 @@ const ContactPage = () => {
       icon: Mail,
       title: t('contact.getInTouch.email.title'),
       description: t('contact.getInTouch.email.description'),
-      contact: "contact@robuildsai.com",
-      link: "mailto:contact@robuildsai.com",
+      contact: "contact@distillai.com",
+      link: "mailto:contact@distillai.com",
       gradient: "from-indigo-500 to-indigo-600",
       hoverGradient: "from-indigo-600 to-indigo-700",
     },
@@ -57,7 +56,7 @@ const ContactPage = () => {
       icon: Twitter,
       title: t('contact.getInTouch.twitter.title'),
       description: t('contact.getInTouch.twitter.description'),
-      contact: "@robuildsai",
+      contact: "@distillai",
       link: "https://twitter.com",
       gradient: "from-blue-500 to-blue-600",
       hoverGradient: "from-blue-600 to-blue-700",
@@ -66,7 +65,7 @@ const ContactPage = () => {
       icon: Linkedin,
       title: t('contact.getInTouch.linkedin.title'),
       description: t('contact.getInTouch.linkedin.description'),
-      contact: "XBuildsAI",
+      contact: "Distill AI",
       link: "https://linkedin.com",
       gradient: "from-indigo-600 to-blue-600",
       hoverGradient: "from-indigo-700 to-blue-700",

@@ -1,172 +1,216 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useTranslation } from "react-i18next";
-import { Github, Linkedin, Mail, Twitter, BookOpen, Users, FileText, HelpCircle, Shield, Code, Heart } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-const Footer = ({ onAboutClick, onFAQClick, onContributingClick, onCodeOfConductClick, onContactClick }) => {
-  const { t } = useTranslation('common');
-  const currentYear = new Date().getFullYear();
-
-  const footerLinks = {
-    resources: [
-      { name: t('nav.about'), icon: BookOpen, onClick: onAboutClick },
-      { name: t('nav.faq'), icon: HelpCircle, onClick: onFAQClick },
-      { name: t('nav.contributing'), icon: Code, onClick: onContributingClick },
-      { name: t('nav.codeOfConduct'), icon: Shield, onClick: onCodeOfConductClick },
-    ],
-    connect: [
-      { name: "GitHub", icon: Github, href: "https://github.com" },
-      { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com" },
-      { name: "Twitter", icon: Twitter, href: "https://twitter.com" },
-      { name: t('nav.contact'), icon: Mail, onClick: onContactClick },
-    ],
-  };
+const Footer = () => {
+  const navigate = useNavigate();
 
   return (
-    <footer className="relative border-t-2 border-gray-300/60 dark:border-slate-700/80 glass-enhanced pt-8">
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-violet-500/5 to-pink-500/5 dark:from-indigo-500/10 dark:via-violet-500/10 dark:to-pink-500/10"></div>
-      
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-20 sm:pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          {/* Brand Section */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="bg-gradient-to-br from-indigo-600 to-violet-600 text-white p-2 rounded-xl shadow-lg shadow-indigo-500/30">
-                <BookOpen size={20} fill="currentColor" />
-              </div>
-              <span className="text-xl font-bold text-slate-900 dark:text-gray-100 tracking-tight">
-                AI<span className="text-slate-600 dark:text-gray-400 font-semibold">Handbooks</span>
-              </span>
-            </div>
-            <p className="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
-              {t('footer.tagline')}
-            </p>
-            <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-slate-500 flex-wrap">
-              <Heart size={12} className="text-red-500 flex-shrink-0" />
-              <span className="break-words">{t('footer.madeWith')}</span>
-            </div>
-          </div>
+    <footer className="relative bg-gray-950">
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-violet-500/5 pointer-events-none" />
 
-          {/* Resources */}
-          <div>
-            <h3 className="text-sm font-bold text-slate-900 dark:text-gray-100 uppercase tracking-wider mb-4">
-              {t('footer.resources')}
-            </h3>
-            <ul className="space-y-3">
-              {footerLinks.resources.map((link) => (
-                <li key={link.name}>
-                  <button
-                    onClick={link.onClick}
-                    className="flex items-center gap-2 text-sm text-gray-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200 group active:scale-95 focus:outline-none rounded-lg px-1 py-0.5"
-                    aria-label={link.name}
-                  >
-                    <link.icon size={16} className="group-hover:scale-110 transition-transform" />
-                    {link.name}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Connect */}
-          <div>
-            <h3 className="text-sm font-bold text-slate-900 dark:text-gray-100 uppercase tracking-wider mb-4">
-              {t('footer.connect')}
-            </h3>
-            <ul className="space-y-3">
-              {footerLinks.connect.map((link) => (
-                <li key={link.name}>
-                  {link.onClick ? (
-                    <button
-                      onClick={link.onClick}
-                      className="flex items-center gap-2 text-sm text-gray-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200 group active:scale-95 focus:outline-none rounded-lg px-1 py-0.5"
-                      aria-label={link.name}
-                    >
-                      <link.icon size={16} className="group-hover:scale-110 transition-transform" />
-                      {link.name}
-                    </button>
-                  ) : (
-                    <a
-                      href={link.href}
-                      target={link.href.startsWith("http") ? "_blank" : undefined}
-                      rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="flex items-center gap-2 text-sm text-gray-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200 group"
-                    >
-                      <link.icon size={16} className="group-hover:scale-110 transition-transform" />
-                      {link.name}
-                    </a>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Community */}
-          <div>
-            <h3 className="text-sm font-bold text-slate-900 dark:text-gray-100 uppercase tracking-wider mb-4">
-              {t('footer.community')}
-            </h3>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="#discord"
-                  className="flex items-center gap-2 text-sm text-gray-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200 group active:scale-95 focus:outline-none rounded-lg px-1 py-0.5"
-                  aria-label="Discord"
-                >
-                  <Users size={16} className="group-hover:scale-110 transition-transform" />
-                  Discord
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#forum"
-                  className="flex items-center gap-2 text-sm text-gray-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200 group active:scale-95 focus:outline-none rounded-lg px-1 py-0.5"
-                  aria-label="Forum"
-                >
-                  <FileText size={16} className="group-hover:scale-110 transition-transform" />
-                  Forum
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#newsletter"
-                  className="flex items-center gap-2 text-sm text-gray-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200 group active:scale-95 focus:outline-none rounded-lg px-1 py-0.5"
-                  aria-label="Newsletter"
-                >
-                  <Mail size={16} className="group-hover:scale-110 transition-transform" />
-                  Newsletter
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#blog"
-                  className="flex items-center gap-2 text-sm text-gray-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200 group active:scale-95 focus:outline-none rounded-lg px-1 py-0.5"
-                  aria-label="Blog"
-                >
-                  <BookOpen size={16} className="group-hover:scale-110 transition-transform" />
-                  Blog
-                </a>
-              </li>
-            </ul>
-          </div>
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+        {/* Footer illustration */}
+        <div
+          className="pointer-events-none absolute bottom-0 left-1/2 -z-10 -translate-x-1/2 opacity-30"
+          aria-hidden="true"
+        >
+          <img
+            className="max-w-none"
+            src="/images/footer-illustration.svg"
+            width={1076}
+            height={378}
+            alt="Footer illustration"
+          />
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-gray-200/50 dark:border-slate-700/50 pb-6 sm:pb-8">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6">
-            <p className="text-xs sm:text-sm text-gray-500 dark:text-slate-500 text-center sm:text-left whitespace-nowrap">
-              {t('footer.copyright', { year: currentYear })}
-            </p>
-            <div className="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm text-gray-500 dark:text-slate-500 flex-wrap justify-center sm:justify-end">
-              <a href="#privacy" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors whitespace-nowrap">
-                {t('footer.privacyPolicy')}
-              </a>
-              <a href="#terms" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors whitespace-nowrap">
-                {t('footer.termsOfService')}
-              </a>
-              <a href="#license" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors whitespace-nowrap">
-                {t('footer.license')}
-              </a>
+        <div className="grid grid-cols-2 justify-between gap-12 border-t py-12 sm:grid-rows-[auto_auto] md:grid-cols-4 md:grid-rows-[auto_auto] md:py-16 lg:grid-cols-[repeat(4,minmax(0,140px))_1fr] lg:grid-rows-1 xl:gap-20" style={{
+          borderImage: 'linear-gradient(to right, transparent, rgba(148, 163, 184, 0.25), transparent) 1'
+        }}>
+          {/* 1st block - Platform */}
+          <div className="space-y-2">
+            <h3 className="text-sm font-medium text-gray-200">Platform</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a
+                  className="text-indigo-200/65 transition hover:text-indigo-500 cursor-pointer"
+                  onClick={(e) => { e.preventDefault(); navigate('/handbooks'); }}
+                >
+                  Handbooks
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* 2nd block - Resources */}
+          <div className="space-y-2">
+            <h3 className="text-sm font-medium text-gray-200">Resources</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a
+                  className="text-indigo-200/65 transition hover:text-indigo-500 cursor-pointer"
+                  onClick={(e) => { e.preventDefault(); navigate('/about'); }}
+                >
+                  About us
+                </a>
+              </li>
+              <li>
+                <a
+                  className="text-indigo-200/65 transition hover:text-indigo-500 cursor-pointer"
+                  onClick={(e) => { e.preventDefault(); navigate('/faq'); }}
+                >
+                  FAQ
+                </a>
+              </li>
+              <li>
+                <a
+                  className="text-indigo-200/65 transition hover:text-indigo-500 cursor-pointer"
+                  onClick={(e) => { e.preventDefault(); navigate('/contact'); }}
+                >
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* 3rd block - Community */}
+          <div className="space-y-2">
+            <h3 className="text-sm font-medium text-gray-200">Community</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a
+                  className="text-indigo-200/65 transition hover:text-indigo-500 cursor-pointer"
+                  onClick={(e) => { e.preventDefault(); navigate('/bookmarks'); }}
+                >
+                  Bookmarks
+                </a>
+              </li>
+              <li>
+                <a
+                  className="text-indigo-200/65 transition hover:text-indigo-500 cursor-pointer"
+                  onClick={(e) => { e.preventDefault(); navigate('/profile'); }}
+                >
+                  Profile
+                </a>
+              </li>
+              <li>
+                <a
+                  className="text-indigo-200/65 transition hover:text-indigo-500 cursor-pointer"
+                  onClick={(e) => { e.preventDefault(); navigate('/progress'); }}
+                >
+                  Progress
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* 4th block - Learning */}
+          <div className="space-y-2">
+            <h3 className="text-sm font-medium text-gray-200">Learning</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a
+                  className="text-indigo-200/65 transition hover:text-indigo-500 cursor-pointer"
+                  onClick={(e) => { e.preventDefault(); navigate('/handbooks'); }}
+                >
+                  Get Started
+                </a>
+              </li>
+              <li>
+                <a
+                  className="text-indigo-200/65 transition hover:text-indigo-500 cursor-pointer"
+                  onClick={(e) => { e.preventDefault(); navigate('/search-history'); }}
+                >
+                  Search History
+                </a>
+              </li>
+              <li>
+                <a
+                  className="text-indigo-200/65 transition hover:text-indigo-500 cursor-pointer"
+                  onClick={(e) => { e.preventDefault(); navigate('/notifications'); }}
+                >
+                  Notifications
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* 5th block - Branding & Social */}
+          <div className="col-span-2 md:col-span-4 lg:col-span-1 lg:text-right">
+            <div className="mb-3">
+              <div className="inline-flex items-center gap-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-600 to-violet-700">
+                  <svg viewBox="0 0 100 100" className="w-5 h-5" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="footer-d" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#ffffff" />
+                        <stop offset="100%" stopColor="#c7d2fe" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M28 20 L28 80 L52 80 C70 80 78 68 78 50 C78 32 70 20 52 20 Z M40 32 L50 32 C62 32 66 39 66 50 C66 61 62 68 50 68 L40 68 Z" fill="url(#footer-d)" />
+                  </svg>
+                </div>
+                <span className="font-semibold text-gray-200">Distill AI</span>
+              </div>
+            </div>
+            <div className="text-sm">
+              <p className="mb-3 text-indigo-200/65">
+                © 2025 Distill AI
+              </p>
+              <ul className="inline-flex gap-1">
+                <li>
+                  <a
+                    className="flex items-center justify-center text-indigo-500 transition hover:text-indigo-400"
+                    href="https://twitter.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Twitter"
+                  >
+                    <svg
+                      className="h-8 w-8 fill-current"
+                      viewBox="0 0 32 32"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="m13.063 9 3.495 4.475L20.601 9h2.454l-5.359 5.931L24 23h-4.938l-3.866-4.893L10.771 23H8.316l5.735-6.342L8 9h5.063Zm-.74 1.347h-1.457l8.875 11.232h1.36l-8.778-11.232Z" />
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="flex items-center justify-center text-indigo-500 transition hover:text-indigo-400"
+                    href="https://linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                  >
+                    <svg
+                      className="h-8 w-8 fill-current"
+                      viewBox="0 0 32 32"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M23 8H9a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1Zm-8 12h-2v-6h2v6Zm-1-6.8a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4ZM20 20h-2v-3.2c0-1-.4-1.8-1.4-1.8-.8 0-1.2.5-1.4 1-.1.2-.1.4-.1.6V20h-2v-6h2v.8c.3-.4.9-1 2.1-1 1.5 0 2.7 1 2.7 3.1V20Z" />
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="flex items-center justify-center text-indigo-500 transition hover:text-indigo-400"
+                    href="https://github.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Github"
+                  >
+                    <svg
+                      className="h-8 w-8 fill-current"
+                      viewBox="0 0 32 32"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M16 8.2c-4.4 0-8 3.6-8 8 0 3.5 2.3 6.5 5.5 7.6.4.1.5-.2.5-.4V22c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.3 1.9.9 2.3.7.1-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8.6-.2 1.3-.3 2-.3s1.4.1 2 .3c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.1 0 3.1-1.9 3.7-3.7 3.9.3.4.6.9.6 1.6v2.2c0 .2.1.5.6.4 3.2-1.1 5.5-4.1 5.5-7.6-.1-4.4-3.7-8-8.1-8z" />
+                    </svg>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -175,13 +219,7 @@ const Footer = ({ onAboutClick, onFAQClick, onContributingClick, onCodeOfConduct
   );
 };
 
-Footer.propTypes = {
-  onAboutClick: PropTypes.func.isRequired,
-  onFAQClick: PropTypes.func.isRequired,
-  onContributingClick: PropTypes.func.isRequired,
-  onCodeOfConductClick: PropTypes.func.isRequired,
-  onContactClick: PropTypes.func.isRequired,
-};
+Footer.propTypes = {};
 
 export default Footer;
 

@@ -18,12 +18,9 @@ const ContentPage = ({
   onDeleteTopic,
   onImportStaticData,
   onImportStaticTopics,
-  onImportStaticWeeklyReports,
   importingData,
   importingTopics,
-  importingWeeklyReports,
   importProgress,
-  weeklyReportImportProgress,
   categoriesLength,
   loadingTopics,
   filteredTopics,
@@ -49,12 +46,9 @@ const ContentPage = ({
             onAddTopic={onAddTopic}
             onImportStaticData={onImportStaticData}
             onImportStaticTopics={onImportStaticTopics}
-            onImportStaticWeeklyReports={onImportStaticWeeklyReports}
             importingData={importingData}
             importingTopics={importingTopics}
-            importingWeeklyReports={importingWeeklyReports}
             importProgress={importProgress}
-            weeklyReportImportProgress={weeklyReportImportProgress}
             categoriesLength={categoriesLength}
           />
         </CardContent>
@@ -128,12 +122,9 @@ ContentPage.propTypes = {
   onDeleteTopic: PropTypes.func.isRequired,
   onImportStaticData: PropTypes.func.isRequired,
   onImportStaticTopics: PropTypes.func.isRequired,
-  onImportStaticWeeklyReports: PropTypes.func,
   importingData: PropTypes.bool.isRequired,
   importingTopics: PropTypes.bool.isRequired,
-  importingWeeklyReports: PropTypes.bool,
   importProgress: PropTypes.number,
-  weeklyReportImportProgress: PropTypes.object,
   categoriesLength: PropTypes.number,
   loadingTopics: PropTypes.bool.isRequired,
   filteredTopics: PropTypes.arrayOf(

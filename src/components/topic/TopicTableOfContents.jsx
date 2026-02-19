@@ -89,7 +89,7 @@ const TopicTableOfContents = ({
 
   // Desktop version
   return (
-    <aside className="hidden lg:block w-64 flex-shrink-0 lg:sticky lg:top-20 lg:self-start lg:max-h-[calc(100vh-5rem)] lg:mt-8 lg:ml-0 lg:mr-28 lg:-translate-x-12" style={{ minWidth: '256px', flexShrink: 0 }}>
+    <aside className="hidden lg:block w-64 flex-shrink-0 sticky top-20 self-start max-h-[calc(100vh-5rem)] mt-8">
       <div className="overflow-y-auto rounded-2xl p-6 border border-slate-200/60 dark:border-slate-700/60 bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl shadow-lg shadow-slate-500/5 dark:shadow-slate-900/20">
         <h5 className="text-sm font-bold text-slate-900 dark:text-slate-200 uppercase tracking-wider mb-6 flex items-center gap-2.5 pb-3 border-b border-slate-200/60 dark:border-slate-700/60">
           <div className="p-1.5 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 border border-indigo-200/60 dark:border-indigo-800/60">
@@ -111,7 +111,7 @@ TopicTableOfContents.propTypes = {
       level: PropTypes.number,
     })
   ).isRequired,
-  activeSection: PropTypes.string.isRequired,
+  activeSection: PropTypes.string,
   isMobileOpen: PropTypes.bool,
   onMobileToggle: PropTypes.func,
   onSectionClick: PropTypes.func,

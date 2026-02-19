@@ -5,9 +5,6 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || "";
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || "";
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.warn(
-    "Supabase URL and Anon Key must be set in environment variables. Authentication features will be disabled."
-  );
 }
 
 // Create client with fallback empty strings to prevent errors
@@ -101,7 +98,6 @@ export const authHelpers = {
       }
       sessionKeysToRemove.forEach((key) => sessionStorage.removeItem(key));
     } catch (storageError) {
-      console.warn("Error clearing storage:", storageError);
       // Continue even if storage clear fails
     }
 
@@ -161,15 +157,19 @@ export const dbHelpers = {
   },
 
   addBookmark: async (userId, bookmark) => {
+    const insertData = {
+      user_id: userId,
+      type: 'topic',
+      title: bookmark.title,
+      category_title: bookmark.categoryTitle,
+      category_id: bookmark.categoryId,
+      topic_id: bookmark.topicId,
+      item_id: `${bookmark.categoryId}-${bookmark.topicId}`,
+    };
+
     const { data, error } = await supabase
       .from("bookmarks")
-      .insert({
-        user_id: userId,
-        category_id: bookmark.categoryId,
-        topic_id: bookmark.topicId,
-        title: bookmark.title,
-        category_title: bookmark.categoryTitle,
-      })
+      .insert(insertData)
       .select()
       .single();
     return { data, error };
@@ -347,7 +347,6 @@ export const dbHelpers = {
       if (error) {
         // If user profile doesn't exist, return false (don't try to create it here)
         if (error.code === "PGRST116") {
-          console.warn("User profile not found for user:", userId);
           return { isAdmin: false, error: null };
         }
         console.error("Error checking admin status:", error);
@@ -358,7 +357,6 @@ export const dbHelpers = {
     } catch (err) {
       // Handle timeout or other errors
       if (err.message === "Admin check timeout") {
-        console.warn("Admin status check timed out");
       } else {
         console.error("Exception checking admin status:", err);
       }
@@ -892,6 +890,8 @@ export const dbHelpers = {
         title: topicData.title,
         description: topicData.description,
         difficulty: topicData.difficulty || "Beginner",
+        section: topicData.section || null,
+        section_description: topicData.section_description || null,
         read_time: topicData.readTime,
         tags: topicData.tags || [],
         video: topicData.video || null,
@@ -911,6 +911,8 @@ export const dbHelpers = {
         title: topicData.title,
         description: topicData.description,
         difficulty: topicData.difficulty,
+        section: topicData.section !== undefined ? topicData.section : undefined,
+        section_description: topicData.section_description !== undefined ? topicData.section_description : undefined,
         read_time: topicData.readTime,
         tags: topicData.tags || [],
         video: topicData.video !== undefined ? topicData.video : undefined,
@@ -931,10 +933,12 @@ export const dbHelpers = {
     try {
       // Build update object with only provided fields
       const updateObj = {};
-      
+
       if (topicData.title !== undefined) updateObj.title = topicData.title;
       if (topicData.description !== undefined) updateObj.description = topicData.description;
       if (topicData.difficulty !== undefined) updateObj.difficulty = topicData.difficulty;
+      if (topicData.section !== undefined) updateObj.section = topicData.section;
+      if (topicData.section_description !== undefined) updateObj.section_description = topicData.section_description;
       if (topicData.readTime !== undefined) updateObj.read_time = topicData.readTime;
       if (topicData.tags !== undefined) updateObj.tags = topicData.tags;
       if (topicData.video !== undefined) updateObj.video = topicData.video;
@@ -1102,7 +1106,6 @@ export const dbHelpers = {
   // Notifications
   getNotifications: async (userId, limit = 50) => {
     try {
-      console.log("Fetching notifications for user:", userId);
       const { data, error } = await supabase
         .from("notifications")
         .select("*")
@@ -1115,7 +1118,6 @@ export const dbHelpers = {
         return { data: null, error };
       }
       
-      console.log(`Fetched ${data?.length || 0} notifications for user ${userId}`);
       return { data, error: null };
     } catch (error) {
       console.error("Unexpected error in getNotifications:", error);
@@ -1125,7 +1127,6 @@ export const dbHelpers = {
 
   getUnreadCount: async (userId) => {
     try {
-      console.log("Fetching unread count for user:", userId);
       const { count, error } = await supabase
         .from("notifications")
         .select("*", { count: "exact", head: true })
@@ -1137,7 +1138,6 @@ export const dbHelpers = {
         return { count: 0, error };
       }
       
-      console.log(`Unread count for user ${userId}:`, count || 0);
       return { count: count || 0, error: null };
     } catch (error) {
       console.error("Unexpected error in getUnreadCount:", error);
@@ -1168,9 +1168,6 @@ export const dbHelpers = {
 
   createNotification: async (notificationData) => {
     try {
-      console.log("Creating notification for user:", notificationData.userId);
-      console.log("Created by (admin user ID):", notificationData.createdBy);
-      console.log("Current auth.uid():", (await supabase.auth.getUser()).data?.user?.id);
       
       const insertData = {
         user_id: notificationData.userId,
@@ -1179,7 +1176,6 @@ export const dbHelpers = {
         created_by: notificationData.createdBy || null,
       };
       
-      console.log("Insert data:", insertData);
       
       const { data, error } = await supabase
         .from("notifications")
@@ -1192,7 +1188,6 @@ export const dbHelpers = {
         return { data: null, error };
       }
       
-      console.log("Notification created successfully:", data?.id);
       return { data, error: null };
     } catch (error) {
       console.error("Unexpected error in createNotification:", error);
@@ -1213,7 +1208,6 @@ export const dbHelpers = {
       }
 
       if (!profiles || profiles.length === 0) {
-        console.warn("No user profiles found");
         return { data: [], error: null };
       }
 
@@ -1222,7 +1216,6 @@ export const dbHelpers = {
         .map((profile) => profile.id)
         .filter((id) => id !== createdBy);
 
-      console.log(`Creating notifications for ${recipientIds.length} users (excluding admin)`);
 
       // Create notifications for all users except the admin
       const notifications = recipientIds.map((userId) => ({
@@ -1239,16 +1232,10 @@ export const dbHelpers = {
       
       // Get current user ID for verification
       const { data: { user: currentUser } } = await supabase.auth.getUser();
-      console.log("Current authenticated user ID (auth.uid()):", currentUser?.id);
-      console.log("CreatedBy value being used:", createdBy);
-      console.log("Do they match?", currentUser?.id === createdBy);
       
       for (let i = 0; i < notifications.length; i += batchSize) {
         const batch = notifications.slice(i, i + batchSize);
         const batchNum = Math.floor(i / batchSize) + 1;
-        console.log(`Inserting batch ${batchNum} (${batch.length} notifications)`);
-        console.log("First notification in batch:", batch[0]);
-        console.log("Batch created_by values:", batch.map(n => n.created_by));
         
         const { data, error } = await supabase
           .from("notifications")
@@ -1261,7 +1248,6 @@ export const dbHelpers = {
           errors.push({ batch: batchNum, error });
           // Continue with other batches instead of failing completely
         } else {
-          console.log(`Batch ${batchNum} inserted successfully:`, data?.length || 0, "notifications");
           results.push(...(data || []));
         }
       }
@@ -1278,7 +1264,6 @@ export const dbHelpers = {
         };
       }
 
-      console.log(`Successfully created ${results.length} notifications`);
       return { data: results, error: null };
     } catch (error) {
       console.error("Unexpected error in createNotificationForAllUsers:", error);
@@ -1443,6 +1428,76 @@ export const dbHelpers = {
       .from("weekly_reports")
       .delete()
       .eq("id", reportId);
+    return { data, error };
+  },
+
+  // ========== FEATURED MODELS MANAGEMENT ==========
+
+  // Get all featured models (for display on ModelsDirectoryPage)
+  getFeaturedModels: async () => {
+    const { data, error } = await supabase
+      .from('models_catalog')
+      .select('*')
+      .eq('is_featured', true)
+      .order('featured_at', { ascending: false });
+    return { data, error };
+  },
+
+  // Admin: Get all models with featured status (for management)
+  getAllModelsForFeaturing: async () => {
+    const { data, error } = await supabase
+      .from('models_catalog')
+      .select('id, canonical_model_id, name, publisher, category, tier, is_featured, featured_until, featured_at, featured_by, downloads, likes, access_type')
+      .order('name', { ascending: true })
+      .range(0, 9999); // Get up to 10,000 models (Supabase default is 1000)
+    return { data, error };
+  },
+
+  // Admin: Feature a model
+  featureModel: async (modelId, featuredUntil = null) => {
+    const { data, error } = await supabase.rpc('feature_model', {
+      p_model_id: modelId,
+      p_featured_until: featuredUntil
+    });
+    return { data, error };
+  },
+
+  // Admin: Unfeature a model
+  unfeatureModel: async (modelId) => {
+    const { data, error } = await supabase.rpc('unfeature_model', {
+      p_model_id: modelId
+    });
+    return { data, error };
+  },
+
+  // Admin: Get featured models history
+  getFeaturedModelsHistory: async (limit = 100) => {
+    const { data, error } = await supabase
+      .from('featured_models_history')
+      .select('*')
+      .order('featured_at', { ascending: false })
+      .limit(limit);
+    return { data, error };
+  },
+
+  // Admin: Get history for specific model
+  getModelFeaturedHistory: async (modelId) => {
+    const { data, error } = await supabase
+      .from('featured_models_history')
+      .select('*')
+      .eq('model_id', modelId)
+      .order('featured_at', { ascending: false });
+    return { data, error };
+  },
+
+  // Admin: Get expired featured models (for warnings)
+  getExpiredFeaturedModels: async () => {
+    const { data, error } = await supabase
+      .from('models_catalog')
+      .select('id, name, publisher, featured_until, featured_at')
+      .eq('is_featured', true)
+      .not('featured_until', 'is', null)
+      .lt('featured_until', new Date().toISOString());
     return { data, error };
   },
 };

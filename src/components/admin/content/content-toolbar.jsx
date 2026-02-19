@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useTranslation } from "react-i18next"
-import { Search, Plus, Database, Download, Loader2, FileText } from "lucide-react"
+import { Search, Plus, Database, Download, Loader2 } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
@@ -14,12 +14,9 @@ const ContentToolbar = ({
   onAddTopic,
   onImportStaticData,
   onImportStaticTopics,
-  onImportStaticWeeklyReports,
   importingData,
   importingTopics,
-  importingWeeklyReports,
   importProgress,
-  weeklyReportImportProgress,
   categoriesLength,
 }) => {
   const { t } = useTranslation("admin")
@@ -120,40 +117,6 @@ const ContentToolbar = ({
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
-        {onImportStaticWeeklyReports && (
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  onClick={onImportStaticWeeklyReports}
-                  disabled={importingWeeklyReports}
-                  variant="secondary"
-                  size="default"
-                  className="group shrink-0"
-                >
-                  {importingWeeklyReports ? (
-                    <>
-                      <Loader2 size={18} className="animate-spin" />
-                      <span className="hidden sm:inline">
-                        {weeklyReportImportProgress?.current && weeklyReportImportProgress?.total
-                          ? `Importing ${weeklyReportImportProgress.current}/${weeklyReportImportProgress.total}...`
-                          : t("content.toolbar.importingWeeklyReports")}
-                      </span>
-                    </>
-                  ) : (
-                    <>
-                      <FileText size={18} className="group-hover:scale-110 transition-transform" />
-                      <span className="hidden sm:inline">{t("content.toolbar.importWeeklyReports")}</span>
-                    </>
-                  )}
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{t("content.toolbar.importWeeklyReportsTooltip")}</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        )}
       </div>
     </div>
   )
@@ -165,12 +128,9 @@ ContentToolbar.propTypes = {
   onAddTopic: PropTypes.func.isRequired,
   onImportStaticData: PropTypes.func.isRequired,
   onImportStaticTopics: PropTypes.func.isRequired,
-  onImportStaticWeeklyReports: PropTypes.func,
   importingData: PropTypes.bool.isRequired,
   importingTopics: PropTypes.bool.isRequired,
-  importingWeeklyReports: PropTypes.bool,
   importProgress: PropTypes.number,
-  weeklyReportImportProgress: PropTypes.object,
   categoriesLength: PropTypes.number,
 }
 

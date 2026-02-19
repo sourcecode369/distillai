@@ -141,12 +141,17 @@ const Topbar = ({
   }, []);
 
   return (
-    <header className="sticky top-0 z-40 glass-enhanced border-b border-white/40 dark:border-slate-700/60 h-16 transition-all shadow-elegant backdrop-blur-2xl">
-      <div className="h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+    <header className="sticky top-0 z-40 bg-gray-950/80 backdrop-blur-xl border-b h-16 transition-all shadow-2xl" style={{
+      borderImage: 'linear-gradient(to right, transparent, rgba(148, 163, 184, 0.25), transparent) 1'
+    }}>
+      {/* Gradient overlay for premium effect */}
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-violet-500/5 pointer-events-none" />
+
+      <div className="relative h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
         <div className="flex items-center gap-4 flex-1">
           <button
             onClick={toggleMobile}
-            className="lg:hidden min-w-[44px] min-h-[44px] p-2.5 -ml-2 text-gray-500 hover:bg-white/60 hover:text-indigo-600 rounded-xl transition-all duration-300 flex items-center justify-center touch-manipulation"
+            className="lg:hidden min-w-[44px] min-h-[44px] p-2.5 -ml-2 text-gray-400 hover:text-indigo-400 hover:bg-gray-800/50 rounded-xl transition-all duration-300 flex items-center justify-center touch-manipulation border border-transparent hover:border-indigo-500/30"
             aria-label={t('toggleMobileMenu')}
           >
             <Menu size={22} aria-hidden="true" />
@@ -155,7 +160,7 @@ const Topbar = ({
           {!isDesktopOpen && (
             <button
               onClick={toggleDesktop}
-              className="hidden lg:flex items-center justify-center w-9 h-9 -ml-2 text-gray-500 dark:text-gray-400 hover:text-white dark:hover:text-white hover:bg-gradient-to-r hover:from-indigo-500 hover:to-violet-500 rounded-xl border border-gray-200/50 dark:border-gray-700/50 hover:border-transparent transition-all duration-300 group shadow-sm hover:shadow-lg hover:shadow-indigo-500/30"
+              className="hidden lg:flex items-center justify-center w-9 h-9 -ml-2 text-gray-400 hover:text-white hover:bg-gradient-to-r hover:from-indigo-500 hover:to-violet-500 rounded-xl border border-gray-800 hover:border-transparent transition-all duration-300 group shadow-sm hover:shadow-lg hover:shadow-indigo-500/30"
               title={t('expandSidebar')}
             >
               <ChevronRight size={18} className="group-hover:translate-x-[2px] transition-transform duration-300" strokeWidth={2.5} aria-hidden="true" />
@@ -172,7 +177,7 @@ const Topbar = ({
             >
               <button
                 onClick={handleSearchButtonClick}
-                className="min-w-[44px] min-h-[44px] w-11 h-11 flex items-center justify-center rounded-xl bg-white/70 dark:bg-slate-800/70 border border-white/70 dark:border-slate-700/70 backdrop-blur-sm text-gray-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-white dark:hover:bg-slate-800 hover:border-indigo-500/50 transition-all duration-300 shadow-md hover:shadow-lg touch-manipulation relative focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="min-w-[44px] min-h-[44px] w-11 h-11 flex items-center justify-center rounded-xl bg-gray-800/50 border border-gray-700/50 backdrop-blur-sm text-gray-400 hover:text-indigo-400 hover:bg-gray-800 hover:border-indigo-500/50 transition-all duration-300 shadow-lg hover:shadow-indigo-500/20 touch-manipulation relative focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-950"
                 title={`${t('search')} (Ctrl+K)`}
                 aria-label={t('search')}
               >
@@ -199,13 +204,13 @@ const Topbar = ({
             >
               <button
                 onClick={handleBookmarkButtonClick}
-                className="min-w-[44px] min-h-[44px] w-11 h-11 flex items-center justify-center rounded-xl bg-white/70 dark:bg-slate-800/70 border border-white/70 dark:border-slate-700/70 backdrop-blur-sm text-gray-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-white dark:hover:bg-slate-800 hover:border-indigo-500/50 transition-all duration-300 shadow-md hover:shadow-lg touch-manipulation relative focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="min-w-[44px] min-h-[44px] w-11 h-11 flex items-center justify-center rounded-xl bg-gray-800/50 border border-gray-700/50 backdrop-blur-sm text-gray-400 hover:text-indigo-400 hover:bg-gray-800 hover:border-indigo-500/50 transition-all duration-300 shadow-lg hover:shadow-indigo-500/20 touch-manipulation relative focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-950"
                 title={t('bookmarks')}
                 aria-label={t('bookmarks')}
               >
                 <Bookmark size={20} />
                 {bookmarks.length > 0 && (
-                  <span className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-indigo-500 to-violet-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center shadow-md">
+                  <span className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-indigo-500 to-violet-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center shadow-md ring-2 ring-gray-950">
                     {bookmarks.length > 9 ? '9+' : bookmarks.length}
                   </span>
                 )}
@@ -228,7 +233,7 @@ const Topbar = ({
           >
             <button
               onClick={handleLanguageButtonClick}
-              className="min-w-[44px] min-h-[44px] w-11 h-11 flex items-center justify-center rounded-xl bg-white/70 dark:bg-slate-800/70 border border-white/70 dark:border-slate-700/70 backdrop-blur-sm text-gray-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-white dark:hover:bg-slate-800 hover:border-indigo-500/50 transition-all duration-300 shadow-md hover:shadow-lg touch-manipulation relative focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              className="min-w-[44px] min-h-[44px] w-11 h-11 flex items-center justify-center rounded-xl bg-gray-800/50 border border-gray-700/50 backdrop-blur-sm text-gray-400 hover:text-indigo-400 hover:bg-gray-800 hover:border-indigo-500/50 transition-all duration-300 shadow-lg hover:shadow-indigo-500/20 touch-manipulation relative focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-950"
               title={t('selectLanguage')}
               aria-label={t('selectLanguage')}
             >
@@ -241,15 +246,13 @@ const Topbar = ({
             )}
           </div>
 
-
-
           {/* Visual separator for grouping */}
-          <div className="hidden lg:block h-8 w-px bg-slate-300/50 dark:bg-slate-600/50 mx-2" aria-hidden="true"></div>
+          <div className="hidden lg:block h-8 w-px bg-gray-700/50 mx-2" aria-hidden="true"></div>
 
           {/* Action buttons group */}
           <div className="hidden lg:flex items-center gap-2">
             <button
-              className="hidden lg:flex items-center gap-2 bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-800 dark:to-slate-700 hover:from-slate-800 hover:to-slate-700 dark:hover:from-slate-700 dark:hover:to-slate-600 text-white min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 shadow-lg shadow-slate-900/20 hover:shadow-xl hover:shadow-slate-900/30 hover:scale-105 active:scale-95 touch-manipulation focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              className="hidden lg:flex items-center gap-2 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 text-gray-200 border border-gray-700/50 hover:border-gray-600 min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-gray-900/30 hover:scale-105 active:scale-95 touch-manipulation focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-950"
               aria-label={t('starOnGitHub')}
             >
               <Github size={18} aria-hidden="true" />
@@ -259,7 +262,7 @@ const Topbar = ({
               href="https://www.youtube.com/@XBuildsAI"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden lg:flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 dark:from-red-700 dark:to-red-800 hover:from-red-700 hover:to-red-800 dark:hover:from-red-800 dark:hover:to-red-900 text-white min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 shadow-lg shadow-red-900/20 hover:shadow-xl hover:shadow-red-900/30 hover:scale-105 active:scale-95 touch-manipulation focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              className="hidden lg:flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 shadow-lg shadow-red-900/30 hover:shadow-xl hover:shadow-red-900/40 hover:scale-105 active:scale-95 touch-manipulation focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-950"
               aria-label={t('visitYouTube')}
             >
               <Youtube size={18} aria-hidden="true" />

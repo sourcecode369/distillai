@@ -1,17 +1,6 @@
-/**
- * Data Loader Utility
- * 
- * Loads sections and categories from database instead of static files.
- * This is the new source of truth for all content structure.
- */
-
 import { dbHelpers } from "../lib/supabase";
 import { getIcon } from "./iconMapper";
 
-/**
- * Get all sections from database
- * @returns {Promise<Array>} Array of sections
- */
 export const loadSections = async () => {
   try {
     const { data, error } = await dbHelpers.getAllSections();
@@ -37,10 +26,6 @@ export const loadSections = async () => {
   }
 };
 
-/**
- * Get all categories from database
- * @returns {Promise<Array>} Array of categories
- */
 export const loadCategories = async () => {
   try {
     const { data, error } = await dbHelpers.getAllCategories();
@@ -70,11 +55,6 @@ export const loadCategories = async () => {
   }
 };
 
-/**
- * Get categories for a specific section
- * @param {string} sectionId - The section ID
- * @returns {Promise<Array>} Array of categories for the section
- */
 export const loadCategoriesForSection = async (sectionId) => {
   try {
     const { data, error } = await dbHelpers.getCategoriesBySection(sectionId);
@@ -103,11 +83,6 @@ export const loadCategoriesForSection = async (sectionId) => {
   }
 };
 
-/**
- * Get a single category by ID
- * @param {string} categoryId - The category ID
- * @returns {Promise<Object|null>} The category object or null
- */
 export const loadCategory = async (categoryId) => {
   try {
     const { data, error } = await dbHelpers.getCategory(categoryId);
@@ -135,11 +110,6 @@ export const loadCategory = async (categoryId) => {
   }
 };
 
-/**
- * Get all sections with their categories
- * This is the main function that replaces DATA.sections
- * @returns {Promise<Array>} Array of sections with categories
- */
 export const loadSectionsWithCategories = async () => {
   try {
     // Load sections and categories in parallel
@@ -169,11 +139,6 @@ export const loadSectionsWithCategories = async () => {
   }
 };
 
-/**
- * Get all categories (flat list)
- * This replaces DATA.categories
- * @returns {Promise<Array>} Array of all categories
- */
 export const loadAllCategories = async () => {
   return loadCategories();
 };

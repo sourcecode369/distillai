@@ -261,7 +261,7 @@ const ProgressPage = () => {
 
   if (progressError || historyError) {
     return (
-      <div className="min-h-screen relative z-10">
+      <div className="min-h-screen bg-slate-950">
         <Hero
           title={t('progress.title')}
           subtitle={t('progress.subtitle')}
@@ -282,7 +282,7 @@ const ProgressPage = () => {
 
   if (!user) {
     return (
-      <div className="min-h-screen relative z-10">
+      <div className="min-h-screen bg-slate-950">
         <div className="relative overflow-hidden border-b border-gray-200/50 dark:border-slate-700/50">
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-violet-500/5 to-pink-500/5 dark:from-indigo-500/10 dark:via-violet-500/10 dark:to-pink-500/10"></div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -305,233 +305,178 @@ const ProgressPage = () => {
     );
   }
 
+  const radius = 52;
+  const circ = 2 * Math.PI * radius;
+  const dashOffset = circ - (learningProgress.completionPercentage / 100) * circ;
+
   return (
-    <div className="min-h-screen relative z-10">
-      <Hero
-        title={t('progress.title')}
-        subtitle={t('progress.subtitle')}
-        icon={<TrendingUp size={22} className="text-white drop-shadow-sm" />}
-        onBack={() => navigate(-1)}
-      />
+    <div className="min-h-screen bg-slate-950 pb-16">
+      {/* Dark header */}
+      <div className="relative overflow-hidden border-b border-gray-800/50">
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+          <div className="absolute left-0 top-0 w-80 h-48 rounded-full bg-indigo-600/8 blur-[80px]" />
+          <div className="absolute right-0 bottom-0 w-56 h-40 rounded-full bg-violet-600/6 blur-[70px]" />
+        </div>
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-7 flex items-center gap-4">
+          <button
+            onClick={() => navigate(-1)}
+            className="flex-shrink-0 flex items-center justify-center h-9 w-9 rounded-xl border border-gray-800 bg-gray-900/60 text-gray-400 hover:text-gray-200 hover:border-gray-700 transition-all"
+            aria-label="Back"
+          >
+            <ArrowRight size={16} className="rotate-180" />
+          </button>
+          <div>
+            <h1 className="text-2xl font-extrabold text-gray-100">{t('progress.title')}</h1>
+            <p className="text-sm text-gray-500 mt-0.5">{t('progress.subtitle')}</p>
+          </div>
+        </div>
+      </div>
 
-      {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="space-y-8">
-          {/* Learning Progress Section */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-xl p-6 sm:p-8">
-            <h2 className="text-xl font-bold text-slate-900 dark:text-slate-50 mb-6 flex items-center gap-2">
-              <BookOpen size={20} className="text-indigo-600 dark:text-indigo-400" />
-              {t('progress.learningProgress.title')}
-            </h2>
-
-            {loadingProgress ? (
-              // Using ProgressSkeleton instead of spinner for better UX
-              // Shows the expected layout structure while progress data loads
-              <ProgressSkeleton />
-            ) : (
-              <div className="space-y-6">
-                {/* Overall Completion */}
-                <div className="p-6 bg-gradient-to-r from-indigo-50 to-violet-50 dark:from-indigo-900/20 dark:to-violet-900/20 rounded-xl border border-indigo-200/60 dark:border-indigo-800/40">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-3">
-                      <BookOpen size={20} className="text-indigo-600 dark:text-indigo-400" />
-                      <span className="text-base font-semibold text-slate-900 dark:text-slate-50">
-                        {t('progress.learningProgress.handbookCompletion')}
-                      </span>
-                    </div>
-                    <span className="text-2xl font-bold text-indigo-700 dark:text-indigo-300">
-                      {learningProgress.completionPercentage}%
-                    </span>
-                  </div>
-                  <div className="w-full h-4 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-gradient-to-r from-indigo-600 to-violet-600 transition-all duration-500"
-                      style={{ width: `${learningProgress.completionPercentage}%` }}
-                    ></div>
-                  </div>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 mt-3">
-                    {t('progress.learningProgress.topicsCompleted', { completed: learningProgress.completedTopics, total: learningProgress.totalTopics })}
-                  </p>
-                </div>
-
-                {/* Stats Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
-                    <div className="flex items-center gap-2 mb-2">
-                      <CheckCircle2 size={18} className="text-green-600 dark:text-green-400" />
-                      <span className="text-sm text-slate-600 dark:text-slate-400 font-medium">{t('progress.stats.topicsCompleted')}</span>
-                    </div>
-                    <p className="text-3xl font-bold text-slate-900 dark:text-slate-50">
-                      {learningProgress.completedTopics}
-                    </p>
-                    <p className="text-xs text-slate-500 dark:text-slate-500 mt-1">
-                      {t('progress.stats.outOf', { total: learningProgress.totalTopics })}
-                    </p>
-                  </div>
-                  <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Target size={18} className="text-indigo-600 dark:text-indigo-400" />
-                      <span className="text-sm text-slate-600 dark:text-slate-400 font-medium">{t('progress.stats.quizzesTaken')}</span>
-                    </div>
-                    <p className="text-3xl font-bold text-slate-900 dark:text-slate-50">
-                      {learningProgress.totalQuizzes}
-                    </p>
-                    <p className="text-xs text-slate-500 dark:text-slate-500 mt-1">
-                      {t('progress.stats.totalAttempts')}
-                    </p>
-                  </div>
-                  <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
-                    <div className="flex items-center gap-2 mb-2">
-                      <History size={18} className="text-violet-600 dark:text-violet-400" />
-                      <span className="text-sm text-slate-600 dark:text-slate-400 font-medium">{t('progress.stats.readingHistory')}</span>
-                    </div>
-                    <p className="text-3xl font-bold text-slate-900 dark:text-slate-50">
-                      {readingHistory.length}
-                    </p>
-                    <p className="text-xs text-slate-500 dark:text-slate-500 mt-1">
-                      {t('progress.stats.recentItems')}
-                    </p>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-8">
+        <div className="space-y-6">
+          {/* Overview: progress ring + stats */}
+          {loadingProgress ? (
+            <ProgressSkeleton />
+          ) : (
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+              {/* Progress ring card */}
+              <div className="flex flex-col items-center justify-center rounded-2xl border border-gray-800/60 bg-gray-900/50 backdrop-blur-sm p-8 gap-4">
+                <div className="relative">
+                  <svg width="140" height="140" viewBox="0 0 120 120">
+                    <defs>
+                      <linearGradient id="ring-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#6366f1" />
+                        <stop offset="100%" stopColor="#8b5cf6" />
+                      </linearGradient>
+                    </defs>
+                    {/* Track */}
+                    <circle cx="60" cy="60" r={radius} fill="none" stroke="rgb(31,41,55)" strokeWidth="10" />
+                    {/* Progress */}
+                    <circle
+                      cx="60" cy="60" r={radius} fill="none"
+                      stroke="url(#ring-grad)" strokeWidth="10" strokeLinecap="round"
+                      strokeDasharray={circ} strokeDashoffset={dashOffset}
+                      transform="rotate(-90 60 60)"
+                      style={{ transition: "stroke-dashoffset 0.8s ease" }}
+                    />
+                  </svg>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    <span className="text-3xl font-extrabold text-gray-100">{learningProgress.completionPercentage}%</span>
+                    <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Complete</span>
                   </div>
                 </div>
+                <div className="text-center">
+                  <p className="text-sm font-semibold text-gray-300">{t('progress.learningProgress.handbookCompletion')}</p>
+                  <p className="text-xs text-gray-600 mt-0.5">{learningProgress.completedTopics} of {learningProgress.totalTopics} topics</p>
+                </div>
+              </div>
 
-                {/* Reading History Summary */}
+              {/* Stats */}
+              <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {[
+                  { label: t('progress.stats.topicsCompleted'), value: learningProgress.completedTopics, sub: `of ${learningProgress.totalTopics}`, icon: CheckCircle2, gradient: "from-green-500/20 to-emerald-500/10", border: "border-green-500/20", iconColor: "text-green-400" },
+                  { label: t('progress.stats.quizzesTaken'),    value: learningProgress.totalQuizzes,   sub: t('progress.stats.totalAttempts'),           icon: Target,        gradient: "from-indigo-500/20 to-violet-500/10",  border: "border-indigo-500/20", iconColor: "text-indigo-400" },
+                  { label: t('progress.stats.readingHistory'),  value: readingHistory.length,           sub: t('progress.stats.recentItems'),             icon: History,       gradient: "from-violet-500/20 to-purple-500/10", border: "border-violet-500/20", iconColor: "text-violet-400" },
+                ].map(({ label, value, sub, icon: Icon, gradient, border, iconColor }) => (
+                  <div key={label} className={`flex flex-col rounded-2xl border bg-gradient-to-br ${gradient} ${border} p-6 backdrop-blur-sm`}>
+                    <div className={`mb-3 ${iconColor}`}><Icon size={20} strokeWidth={2} /></div>
+                    <p className="text-4xl font-extrabold text-gray-100 leading-none mb-1">{value}</p>
+                    <p className="text-xs font-semibold text-gray-400">{label}</p>
+                    <p className="text-[10px] text-gray-600 mt-0.5">{sub}</p>
+                  </div>
+                ))}
+
+                {/* Recent reading history */}
                 {readingHistory.length > 0 && (
-                  <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
-                    <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-3 flex items-center gap-2">
-                      <History size={14} />
-                      {t('progress.readingHistory.title')}
+                  <div className="sm:col-span-3 rounded-2xl border border-gray-800/60 bg-gray-900/50 p-5">
+                    <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 flex items-center gap-1.5">
+                      <History size={11} /> {t('progress.readingHistory.title')}
                     </h3>
-                    <div className="space-y-2">
+                    <div className="divide-y divide-gray-800/60">
                       {readingHistory.slice(0, 5).map((item, index) => (
-                        <div
-                          key={item.id || index}
-                          className="p-3 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-indigo-300 dark:hover:border-indigo-700 transition-colors"
-                        >
-                          <div className="flex items-center justify-between">
-                            <div className="flex-1 min-w-0">
-                              <p className="text-sm font-medium text-slate-900 dark:text-slate-50 truncate">
-                                {item.title}
-                              </p>
-                              <p className="text-xs text-slate-500 dark:text-slate-400 truncate">
-                                {item.category_title}
-                              </p>
-                            </div>
-                            <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 ml-4">
-                              <Calendar size={12} />
-                              {formatDate(item.last_read_at)}
-                            </div>
+                        <div key={item.id || index} className="flex items-center justify-between py-2.5 first:pt-0 last:pb-0 group">
+                          <div className="min-w-0 flex-1">
+                            <p className="text-sm font-medium text-gray-300 group-hover:text-indigo-300 transition-colors truncate">{item.title}</p>
+                            <p className="text-[11px] text-gray-600 truncate">{item.category_title}</p>
                           </div>
+                          <span className="text-[10px] text-gray-600 ml-4 flex-shrink-0 flex items-center gap-1">
+                            <Calendar size={10} />{formatDate(item.last_read_at)}
+                          </span>
                         </div>
                       ))}
                     </div>
                   </div>
                 )}
               </div>
-            )}
-          </div>
+            </div>
+          )}
 
-          {/* Quiz History Section */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-xl p-6 sm:p-8">
-            <h2 className="text-xl font-bold text-slate-900 dark:text-slate-50 mb-6 flex items-center gap-2">
-              <Target size={20} className="text-indigo-600 dark:text-indigo-400" />
-              {t('progress.quizHistory.title')}
+          {/* Quiz History */}
+          <div className="rounded-2xl border border-gray-800/60 bg-gray-900/50 backdrop-blur-sm p-6">
+            <h2 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-5 flex items-center gap-2">
+              <Target size={13} className="text-indigo-400" /> {t('progress.quizHistory.title')}
             </h2>
 
             {loadingProgress ? (
-              <div className="flex items-center justify-center py-12">
-                <Loader2 className="w-8 h-8 animate-spin text-indigo-600 dark:text-indigo-400" />
-              </div>
+              <div className="flex items-center justify-center py-10"><Loader2 className="w-6 h-6 animate-spin text-indigo-400" /></div>
             ) : progressData?.quizHistory && progressData.quizHistory.length > 0 ? (
               <div className="space-y-3">
                 {progressData.quizHistory.map((quiz, index) => {
-                  const scorePercentage = quiz.quiz_score || 0;
-                  const getScoreColor = () => {
-                    if (scorePercentage >= 80) return "text-green-600 dark:text-green-400";
-                    if (scorePercentage >= 60) return "text-yellow-600 dark:text-yellow-400";
-                    return "text-red-600 dark:text-red-400";
-                  };
-                  const getScoreBgColor = () => {
-                    if (scorePercentage >= 80) return "bg-green-100 dark:bg-green-900/30";
-                    if (scorePercentage >= 60) return "bg-yellow-100 dark:bg-yellow-900/30";
-                    return "bg-red-100 dark:bg-red-900/30";
-                  };
-
+                  const score = quiz.quiz_score || 0;
+                  const scoreColor = score >= 80 ? "text-green-400" : score >= 60 ? "text-yellow-400" : "text-red-400";
+                  const barColor = score >= 80 ? "bg-green-500" : score >= 60 ? "bg-yellow-500" : "bg-red-500";
                   return (
-                    <div
-                      key={quiz.id || index}
-                      className="p-4 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-indigo-300 dark:hover:border-indigo-700 transition-colors"
-                    >
-                      <div className="flex items-start justify-between gap-4 mb-2">
-                        <div className="flex-1 min-w-0">
-                          <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-50 truncate">
-                            {quiz.topicTitle}
-                          </h4>
-                          <p className="text-xs text-slate-500 dark:text-slate-400 truncate">
-                            {quiz.categoryTitle}
-                          </p>
+                    <div key={quiz.id || index} className="rounded-xl border border-gray-800/50 bg-gray-800/40 p-4 hover:border-indigo-500/30 transition-colors">
+                      <div className="flex items-start justify-between gap-4 mb-3">
+                        <div className="min-w-0 flex-1">
+                          <h4 className="text-sm font-semibold text-gray-200 truncate">{quiz.topicTitle}</h4>
+                          <p className="text-[11px] text-gray-600 truncate mt-0.5">{quiz.categoryTitle}</p>
                         </div>
-                        <div className={`px-3 py-1.5 rounded-lg ${getScoreBgColor()} ${getScoreColor()} font-bold text-sm whitespace-nowrap`}>
-                          {scorePercentage}%
-                        </div>
+                        <span className={`text-xl font-extrabold flex-shrink-0 ${scoreColor}`}>{score}%</span>
                       </div>
-                      <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-                        <span className="flex items-center gap-1">
-                          <Calendar size={12} />
-                          {formatDateTime(quiz.updated_at || quiz.completed_at || quiz.created_at)}
-                        </span>
-                        {quiz.completed && (
-                          <span className="flex items-center gap-1 text-green-600 dark:text-green-400">
-                            <CheckCircle2 size={12} />
-                            {t('progress.completed')}
-                          </span>
-                        )}
+                      {/* Score bar */}
+                      <div className="h-1.5 rounded-full bg-gray-700 overflow-hidden mb-3">
+                        <div className={`h-full rounded-full ${barColor} transition-all duration-500`} style={{ width: `${score}%` }} />
+                      </div>
+                      <div className="flex items-center justify-between text-[10px] text-gray-600">
+                        <span className="flex items-center gap-1"><Calendar size={10} />{formatDateTime(quiz.updated_at || quiz.completed_at || quiz.created_at)}</span>
+                        {quiz.completed && <span className="flex items-center gap-1 text-green-500"><CheckCircle2 size={10} />{t('progress.completed')}</span>}
                       </div>
                     </div>
                   );
                 })}
               </div>
             ) : (
-              <EmptyState
-                icon={Target}
-                title={t('progress.quizHistory.empty.title')}
-                description={t('progress.quizHistory.empty.description')}
-                variant="default"
-              />
+              <div className="py-10 text-center">
+                <Target size={32} className="mx-auto mb-3 text-gray-700" />
+                <p className="text-sm font-semibold text-gray-400">{t('progress.quizHistory.empty.title')}</p>
+                <p className="text-xs text-gray-600 mt-1">{t('progress.quizHistory.empty.description')}</p>
+              </div>
             )}
           </div>
 
-          {/* Achievements & Certificates Section */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-xl p-6 sm:p-8">
-            <h2 className="text-xl font-bold text-slate-900 dark:text-slate-50 mb-6 flex items-center gap-2">
-              <Trophy size={20} className="text-indigo-600 dark:text-indigo-400" />
-              {t('progress.achievements.title')}
+          {/* Achievements */}
+          <div className="rounded-2xl border border-gray-800/60 bg-gray-900/50 backdrop-blur-sm p-6">
+            <h2 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-5 flex items-center gap-2">
+              <Trophy size={13} className="text-yellow-400" /> {t('progress.achievements.title')}
             </h2>
 
             {loadingProgress ? (
-              <div className="flex items-center justify-center py-12">
-                <Loader2 className="w-8 h-8 animate-spin text-indigo-600 dark:text-indigo-400" />
-              </div>
+              <div className="flex items-center justify-center py-10"><Loader2 className="w-6 h-6 animate-spin text-indigo-400" /></div>
             ) : achievements && achievements.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {achievements.map((achievement) => {
                   const Icon = achievement.icon;
                   return (
-                    <div
-                      key={achievement.id}
-                      className="relative p-5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
-                    >
-                      <div className={`absolute inset-0 bg-gradient-to-br ${achievement.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
-                      <div className="relative flex items-start gap-3">
-                        <div className={`p-3 bg-gradient-to-br ${achievement.color} rounded-lg shadow-md`}>
-                          <Icon size={24} className="text-white" />
+                    <div key={achievement.id} className="group relative overflow-hidden rounded-2xl border border-gray-800/50 bg-gray-800/40 p-5 hover:border-gray-700 transition-all duration-200">
+                      <div className={`absolute inset-0 bg-gradient-to-br ${achievement.color} opacity-0 group-hover:opacity-[0.06] transition-opacity duration-300 pointer-events-none`} />
+                      <div className="relative flex items-start gap-4">
+                        <div className={`flex-shrink-0 p-3 bg-gradient-to-br ${achievement.color} rounded-xl shadow-lg`}>
+                          <Icon size={20} className="text-white" />
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <h4 className="text-sm font-bold text-slate-900 dark:text-slate-50 mb-1">
-                            {achievement.title}
-                          </h4>
-                          <p className="text-xs text-slate-600 dark:text-slate-400">
-                            {achievement.description}
-                          </p>
+                        <div>
+                          <h4 className="text-sm font-bold text-gray-200 mb-1">{achievement.title}</h4>
+                          <p className="text-xs text-gray-500 leading-relaxed">{achievement.description}</p>
                         </div>
                       </div>
                     </div>
@@ -539,11 +484,10 @@ const ProgressPage = () => {
                 })}
               </div>
             ) : (
-              <div className="p-8 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
-                <Trophy size={40} className="mx-auto mb-3 text-slate-400 dark:text-slate-500" />
-                <p className="text-sm text-slate-600 dark:text-slate-400">
-                  {t('progress.achievements.empty')}
-                </p>
+              <div className="py-10 text-center rounded-xl border border-dashed border-gray-800">
+                <Trophy size={36} className="mx-auto mb-3 text-gray-700" />
+                <p className="text-sm font-semibold text-gray-400">{t('progress.achievements.empty')}</p>
+                <p className="text-xs text-gray-600 mt-1">Complete topics and quizzes to unlock achievements</p>
               </div>
             )}
           </div>

@@ -1,9 +1,5 @@
 import { useEffect } from "react";
 
-/**
- * Custom hook to add scroll-triggered fade-in animations to sections
- * @param {Object} topic - The topic object containing sections
- */
 export const useScrollAnimation = (topic) => {
   useEffect(() => {
     if (!topic) return;

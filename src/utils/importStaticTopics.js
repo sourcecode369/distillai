@@ -1,23 +1,6 @@
-/**
- * Import Static Topics to Database
- * 
- * This utility imports all topics from static DATA files into the Supabase database.
- * Run this once to migrate existing static topics to the database.
- * 
- * Usage:
- * - Call from Admin Dashboard (one-click import button)
- * - Or run as a standalone script
- */
-
 import { dbHelpers } from "../lib/supabase";
 import { DATA } from "../data";
 
-/**
- * Import all static topics to database
- * @param {Function} onProgress - Callback for progress updates (current, total, topicTitle)
- * @param {Function} onComplete - Callback when import completes (successCount, errorCount, errors)
- * @returns {Promise<{success: number, errors: number, details: Array}>}
- */
 export const importStaticTopics = async (onProgress = null, onComplete = null) => {
   const results = {
     success: 0,
@@ -54,6 +37,8 @@ export const importStaticTopics = async (onProgress = null, onComplete = null) =
             title: topic.title,
             description: topic.description || "",
             difficulty: topic.difficulty || "Beginner",
+            section: topic.section || null,
+            section_description: topic.sectionDescription || null,
             readTime: topic.readTime || "5 min read",
             tags: topic.tags || [],
             video: topic.video || null,
@@ -94,6 +79,8 @@ export const importStaticTopics = async (onProgress = null, onComplete = null) =
             title: topic.title,
             description: topic.description || "",
             difficulty: topic.difficulty || "Beginner",
+            section: topic.section || null,
+            section_description: topic.sectionDescription || null,
             readTime: topic.readTime || "5 min read",
             tags: topic.tags || [],
             video: topic.video || null, // Store video in dedicated column
@@ -151,10 +138,6 @@ export const importStaticTopics = async (onProgress = null, onComplete = null) =
   }
 };
 
-/**
- * Check if static topics have been imported
- * @returns {Promise<{imported: boolean, count: number}>}
- */
 export const checkImportStatus = async () => {
   try {
     const { data: dbTopics } = await dbHelpers.getAllTopics();

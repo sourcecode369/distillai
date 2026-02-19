@@ -1,9 +1,9 @@
 {
-  "appName": "XBuildsAI",
-  "appNameShort": "XBuilds",
+  "appName": "Distill AI",
+  "appNameShort": "Distill",
   "appNameSuffix": "AI",
   "toggleMobileMenu": "Attiva/disattiva menu mobile",
-  "goToHome": "Vai a RoBuildsAI",
+  "goToHome": "Vai a Distill AI",
   "weeklyReport": {
     "title": "Rapporto settimanale",
     "ariaLabel": "Rapporto settimanale"

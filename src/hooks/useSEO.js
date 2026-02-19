@@ -33,7 +33,7 @@ export const useSEO = () => {
           type: "article",
           url: `${baseUrl}/topic/${activeCategory.id}/${activeTopic.id}`,
           image: activeTopic.content?.thumbnail || activeTopic.content?.image || "/vite.svg",
-          author: "XBuildsAI",
+          author: "Distill AI",
           datePublished: activeTopic.content?.created_at || activeTopic.lastUpdated,
           dateModified: activeTopic.lastUpdated || activeTopic.content?.created_at,
           keywords: [...(activeTopic.tags || []), activeTopic.difficulty, activeCategory.title, "AI", "Machine Learning"],
@@ -47,25 +47,25 @@ export const useSEO = () => {
       case "about":
         return {
           title: "About",
-          description: "Learn about XBuildsAI - your comprehensive resource for artificial intelligence, machine learning, and data science education.",
+          description: "Learn about Distill AI - your comprehensive resource for artificial intelligence, machine learning, and data science education.",
           url: `${baseUrl}/about`,
         };
       case "profile":
         return {
           title: "My Profile",
-          description: "Manage your XBuildsAI profile, preferences, and learning progress.",
+          description: "Manage your Distill AI profile, preferences, and learning progress.",
           url: `${baseUrl}/profile`,
         };
       case "progress":
         return {
           title: "My Progress",
-          description: "Track your learning progress across XBuildsAI topics and categories.",
+          description: "Track your learning progress across Distill AI topics and categories.",
           url: `${baseUrl}/progress`,
         };
       case "search-results":
         return {
           title: `Search: ${searchQuery}`,
-          description: `Search results for "${searchQuery}" in XBuildsAI.`,
+          description: `Search results for "${searchQuery}" in Distill AI.`,
           url: `${baseUrl}/search?q=${encodeURIComponent(searchQuery)}`,
         };
       case "weekly-report":
@@ -76,7 +76,7 @@ export const useSEO = () => {
         };
       default:
         return {
-          title: "XBuildsAI",
+          title: "Distill AI",
           description: "Comprehensive guides to artificial intelligence concepts, techniques, and applications.",
           url: baseUrl,
         };

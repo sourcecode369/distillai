@@ -1,10 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 
-/**
- * Custom hook to track reading progress through an article
- * @param {Object} topic - The topic object to track progress for
- * @returns {number} Progress percentage (0-100)
- */
 export const useReadingProgress = (topic) => {
   const [readingProgress, setReadingProgress] = useState(0);
   const contentRef = useRef(null);

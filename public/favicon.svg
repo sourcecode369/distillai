@@ -1,57 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#4F46E5;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#8B5CF6;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
     </linearGradient>
-    <linearGradient id="xGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#E0E7FF;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    <linearGradient id="letter" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#c7d2fe"/>
     </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
   </defs>
-  
-  <!-- Background with gradient -->
-  <rect width="100" height="100" rx="22" fill="url(#bgGrad)"/>
-  
-  <!-- 3D Shadow layer -->
-  <path d="M25 20 L75 70 M75 20 L25 70" 
-    stroke="#1E1B4B" 
-    stroke-width="12" 
-    stroke-linecap="round" 
-    stroke-linejoin="round"
-    opacity="0.2"
-    transform="translate(2, 2)"
-  />
-  
-  <!-- Main X with gradient and glow -->
-  <path d="M25 20 L75 70 M75 20 L25 70" 
-    stroke="url(#xGrad)" 
-    stroke-width="10" 
-    stroke-linecap="round" 
-    stroke-linejoin="round"
-    filter="url(#glow)"
-  />
-  
-  <!-- Highlight accent for 3D effect -->
-  <path d="M25 20 L40 35" 
-    stroke="#FFFFFF" 
-    stroke-width="3" 
-    stroke-linecap="round" 
-    opacity="0.6"
-  />
-  <path d="M75 20 L60 35" 
-    stroke="#FFFFFF" 
-    stroke-width="3" 
-    stroke-linecap="round" 
-    opacity="0.6"
-  />
+  <rect width="100" height="100" rx="22" ry="22" fill="url(#bg)"/>
+  <path d="M28 20 L28 80 L52 80 C70 80 78 68 78 50 C78 32 70 20 52 20 Z M40 32 L50 32 C62 32 66 39 66 50 C66 61 62 68 50 68 L40 68 Z" fill="url(#letter)"/>
 </svg>

@@ -1,18 +1,6 @@
-/**
- * Import Static Data Utility
- * 
- * Imports sections and categories from static files into the database.
- * This is a one-time migration script.
- */
-
 import { DATA } from "../data";
 import { dbHelpers } from "../lib/supabase";
 
-/**
- * Extract icon name from React element
- * @param {React.Element} iconElement - React icon element
- * @returns {string|null} Icon name or null
- */
 const extractIconName = (iconElement) => {
   if (!iconElement || !iconElement.type) return null;
   
@@ -48,12 +36,6 @@ const extractIconName = (iconElement) => {
   return componentName || null;
 };
 
-/**
- * Import all sections and categories from static files
- * @param {Function} onProgress - Progress callback (processed, total, item)
- * @param {Function} onComplete - Completion callback (results)
- * @returns {Promise<Object>} Import results
- */
 export const importStaticData = async (onProgress = null, onComplete = null) => {
   const results = {
     sections: { success: 0, errors: 0, details: [] },
@@ -144,7 +126,6 @@ export const importStaticData = async (onProgress = null, onComplete = null) => 
         // Extract icon name
         const iconName = extractIconName(category.icon);
         if (!iconName) {
-          console.warn(`Could not extract icon name for category ${category.id}, using default`);
         }
 
         // Get display order for this section
@@ -207,10 +188,6 @@ export const importStaticData = async (onProgress = null, onComplete = null) => 
   }
 };
 
-/**
- * Check if import is needed
- * @returns {Promise<Object>} Status object
- */
 export const checkImportStatus = async () => {
   try {
     const { data: sections } = await dbHelpers.getAllSections();

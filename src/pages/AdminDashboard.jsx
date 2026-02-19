@@ -54,7 +54,6 @@ import { useApp } from "../context/AppContext";
 import { dbHelpers } from "../lib/supabase";
 import { importStaticTopics } from "../utils/importStaticTopics";
 import { importStaticData } from "../utils/importStaticData";
-import { importStaticWeeklyReports } from "../utils/importStaticWeeklyReports";
 import { AdminDashboardSkeleton, ListItemSkeleton } from "../components/LoadingSkeleton";
 import { EmptyUsers, EmptySearch } from "../components/EmptyState";
 import ConfirmationDialog from "../components/ConfirmationDialog";
@@ -76,6 +75,7 @@ import ContentPage from "../components/admin/content/content-page";
 import NotificationsPage from "../components/admin/notifications/notifications-page";
 import ActivityPage from "../components/admin/activity/activity-page";
 import SettingsPage from "../components/admin/settings/settings-page";
+import FeaturedModelsPage from "../components/admin/featured-models/featured-models-page";
 import UserDetailsModal from "../components/admin/UserDetailsModal";
 import { useAdminData } from "../hooks/useAdminData";
 // Lazy load heavy admin components - TopicModal is large and only needed when editing topics
@@ -133,8 +133,6 @@ const AdminDashboard = () => {
   const [importingTopics, setImportingTopics] = useState(false);
   const [importProgress, setImportProgress] = useState({ current: 0, total: 0, currentTopic: "" });
   const [importingData, setImportingData] = useState(false);
-  const [importingWeeklyReports, setImportingWeeklyReports] = useState(false);
-  const [weeklyReportImportProgress, setWeeklyReportImportProgress] = useState({ current: 0, total: 0, currentReport: "" });
   const [analyticsTimeframe, setAnalyticsTimeframe] = useState(30); // days
 
   // Use custom hook for all admin data fetching
@@ -280,7 +278,6 @@ const AdminDashboard = () => {
       await importStaticData(
         (processed, total, item) => {
           // Progress callback
-          console.log(`Importing: ${processed}/${total} - ${item}`);
         },
         async (importResults) => {
           // Completion callback
@@ -360,54 +357,6 @@ const AdminDashboard = () => {
       showToast("Failed to import topics. Please try again.", "error");
       setImportingTopics(false);
       setImportProgress({ current: 0, total: 0, currentTopic: "" });
-    }
-  };
-
-  const handleImportStaticWeeklyReports = async () => {
-    if (importingWeeklyReports) return;
-
-    const confirmed = window.confirm(
-      "This will import all weekly reports from the static JSON file into the database. " +
-      "Reports that already exist (same week start date) will be skipped. Continue?"
-    );
-
-    if (!confirmed) return;
-
-    setImportingWeeklyReports(true);
-    setWeeklyReportImportProgress({ current: 0, total: 0, currentReport: "" });
-
-    try {
-      await importStaticWeeklyReports(
-        (current, total, reportTitle) => {
-          setWeeklyReportImportProgress({ current, total, currentReport: reportTitle });
-        },
-        async (successCount, errorCount) => {
-          setImportingWeeklyReports(false);
-          setWeeklyReportImportProgress({ current: 0, total: 0, currentReport: "" });
-
-          if (errorCount === 0) {
-            showToast(
-              `Successfully imported ${successCount} weekly report(s)! ✓`,
-              "success",
-              4000
-            );
-          } else {
-            showToast(
-              `Imported ${successCount} weekly report(s) with ${errorCount} error(s). Check console for details.`,
-              "warning",
-              5000
-            );
-          }
-
-          // Refresh weekly reports list (if we add a query for it)
-          // await queryClient.invalidateQueries({ queryKey: ["weekly-reports"] });
-        }
-      );
-    } catch (error) {
-      console.error("Import failed:", error);
-      showToast("Failed to import weekly reports. Please try again.", "error");
-      setImportingWeeklyReports(false);
-      setWeeklyReportImportProgress({ current: 0, total: 0, currentReport: "" });
     }
   };
 
@@ -617,12 +566,9 @@ const AdminDashboard = () => {
                 onDeleteTopic={handleDeleteTopic}
                 onImportStaticData={handleImportStaticData}
                 onImportStaticTopics={handleImportStaticTopics}
-                onImportStaticWeeklyReports={handleImportStaticWeeklyReports}
                 importingData={importingData}
                 importingTopics={importingTopics}
-                importingWeeklyReports={importingWeeklyReports}
                 importProgress={importProgress}
-                weeklyReportImportProgress={weeklyReportImportProgress}
                 categoriesLength={categories.length}
                 loadingTopics={loadingTopics}
                 filteredTopics={filteredTopics}
@@ -646,6 +592,11 @@ const AdminDashboard = () => {
             {/* Settings Tab */}
             {activeTab === "settings" && (
               <SettingsPage exportData={exportData} />
+            )}
+
+            {/* Featured Models Tab */}
+            {activeTab === "featured-models" && (
+              <FeaturedModelsPage showToast={showToast} />
             )}
           </>
         )}

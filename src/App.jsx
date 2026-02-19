@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import { useAuth } from "./context/AuthContext";
 import { AppProvider } from "./context/AppContext";
 import { AuthProvider } from "./context/AuthContext";
 import { SidebarProvider } from "./context/SidebarContext";
@@ -9,14 +10,11 @@ import { CardSkeleton } from "./components/LoadingSkeleton";
 import ErrorBoundary from "./components/ErrorBoundary";
 
 // Code splitting: Lazy load route components
-const LandingPage = lazy(() => import("./pages/LandingPage"));
 const HomePage = lazy(() => import("./pages/HomePage"));
 const CategoryView = lazy(() => import("./pages/CategoryView"));
 const TopicView = lazy(() => import("./pages/TopicView"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
 const FAQPage = lazy(() => import("./pages/FAQPage"));
-const ContributingPage = lazy(() => import("./pages/ContributingPage"));
-const CodeOfConductPage = lazy(() => import("./pages/CodeOfConductPage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 const QuizPage = lazy(() => import("./pages/QuizPage"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
@@ -26,11 +24,15 @@ const GlobalSearchResultsPage = lazy(() => import("./pages/GlobalSearchResultsPa
 const NotificationsPage = lazy(() => import("./pages/NotificationsPage"));
 const BookmarksPage = lazy(() => import("./pages/BookmarksPage"));
 const SearchHistoryPage = lazy(() => import("./pages/SearchHistoryPage"));
-const WeeklyReportPage = lazy(() => import("./pages/WeeklyReportPage"));
-const ConferencesPage = lazy(() => import("./pages/ConferencesPage"));
-const ToolsDirectoryPage = lazy(() => import("./pages/ToolsDirectoryPage"));
-const ModelsDirectoryPage = lazy(() => import("./pages/ModelsDirectoryPage"));
-const RoadmapsPage = lazy(() => import("./pages/RoadmapsPage"));
+const DemoPage = lazy(() => import("./pages/DemoPage"));
+const DashboardPage = lazy(() => import("./pages/DashboardPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
+
+// Smart home: shows dashboard for logged-in users, landing page for guests
+const SmartHomePage = () => {
+  const { user } = useAuth();
+  return user ? <DashboardPage /> : <DemoPage />;
+};
 
 // Loading fallback component
 const PageLoadingFallback = () => (
@@ -58,15 +60,13 @@ const App = () => {
             <Suspense fallback={<PageLoadingFallback />}>
               <Routes>
                 <Route path="/" element={<MainLayout />}>
-                  <Route index element={<LandingPage />} />
+                  <Route index element={<SmartHomePage />} />
                   <Route path="handbooks" element={<HomePage />} />
                   <Route path="category/:categoryId" element={<CategoryView />} />
                   <Route path="topic/:categoryId/:topicId" element={<TopicView />} />
                   <Route path="quiz/:categoryId/:topicId" element={<QuizPage />} />
                   <Route path="about" element={<AboutPage />} />
                   <Route path="faq" element={<FAQPage />} />
-                  <Route path="contributing" element={<ContributingPage />} />
-                  <Route path="code-of-conduct" element={<CodeOfConductPage />} />
                   <Route path="contact" element={<ContactPage />} />
                   <Route path="admin" element={<AdminDashboard />} />
                   <Route path="profile" element={<ProfilePage />} />
@@ -74,14 +74,9 @@ const App = () => {
                   <Route path="notifications" element={<NotificationsPage />} />
                   <Route path="bookmarks" element={<BookmarksPage />} />
                   <Route path="search-history" element={<SearchHistoryPage />} />
-                  <Route path="weekly-report" element={<WeeklyReportPage />} />
-                  <Route path="conferences" element={<ConferencesPage />} />
-                  <Route path="tools" element={<ToolsDirectoryPage />} />
-                  <Route path="models" element={<ModelsDirectoryPage />} />
-                  <Route path="roadmaps" element={<RoadmapsPage />} />
                   <Route path="search" element={<GlobalSearchResultsPage />} />
 
-                  <Route path="*" element={<Navigate to="/" replace />} />
+                  <Route path="*" element={<NotFoundPage />} />
                 </Route>
               </Routes>
             </Suspense>

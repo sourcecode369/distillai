@@ -365,7 +365,6 @@ const TopicModal = ({ isOpen, onClose, topic, categoryId, onSave }) => {
       if (!result.data) {
         // Handle case where update succeeded but returned no data (e.g. RLS)
         // We can't update the UI with new data, but we can assume success if no error
-        console.warn("Update returned no data (check RLS policies)");
 
         // If we have the original topic data, we can try to use that + changes
         // But safer to just notify user

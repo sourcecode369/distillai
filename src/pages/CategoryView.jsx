@@ -1,12 +1,11 @@
-import React, { useMemo, useState, useEffect, useCallback } from "react";
+import React, { useMemo, useState, useEffect, useCallback, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowRight, CheckCircle2, Sparkles, Search, Loader2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, Sparkles, Search, Loader2, Clock, Award, ChevronDown, ChevronUp } from "lucide-react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useApp } from "../context/AppContext";
 import { useAuth } from "../context/AuthContext";
 import BookmarkButton from "../components/BookmarkButton";
-import FilterBar from "../components/FilterBar";
 import Breadcrumbs from "../components/Breadcrumbs";
 import { CardSkeleton } from "../components/LoadingSkeleton";
 import { EmptyTopics, EmptySearch, ErrorState } from "../components/EmptyState";
@@ -26,7 +25,54 @@ const CategoryView = () => {
   const { categoryId } = useParams();
   const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get("q") || "";
-  const [filters, setFilters] = useState({ selectedTags: [], selectedDifficulty: null });
+  const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
+  const [expandedSections, setExpandedSections] = useState({});
+  const sectionRefs = useRef({});
+
+  // Mouse tracking for dynamic gradients
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({
+        x: (e.clientX / window.innerWidth) * 100,
+        y: (e.clientY / window.innerHeight) * 100,
+      });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  // Load accordion state from localStorage
+  useEffect(() => {
+    const savedState = localStorage.getItem(`accordion-state-${categoryId}`);
+    if (savedState) {
+      try {
+        setExpandedSections(JSON.parse(savedState));
+      } catch (e) {
+        console.error('Failed to parse accordion state:', e);
+      }
+    }
+  }, [categoryId]);
+
+  // Save accordion state to localStorage
+  useEffect(() => {
+    if (Object.keys(expandedSections).length > 0) {
+      localStorage.setItem(`accordion-state-${categoryId}`, JSON.stringify(expandedSections));
+    }
+  }, [expandedSections, categoryId]);
+
+  // Memoized particle configurations
+  const particles = useMemo(() => {
+    return [...Array(30)].map((_, i) => ({
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      size: [2, 3, 4, 5, 6, 8][Math.floor(Math.random() * 6)],
+      duration: 3 + Math.random() * 5,
+      delay: Math.random() * 4,
+      opacity: 0.2 + Math.random() * 0.5,
+      color: i % 3 === 0 ? 'from-indigo-400 to-violet-400' : i % 3 === 1 ? 'from-violet-400 to-pink-400' : 'from-pink-400 to-indigo-400'
+    }));
+  }, []);
 
   // Fetch sections to get category metadata
   const { data: sectionsData } = useQuery({
@@ -75,22 +121,8 @@ const CategoryView = () => {
     return new Set(progressData.map((p) => p.topic_id));
   }, [progressData]);
 
-  // Get all unique tags and difficulties
-  const allTags = useMemo(() => {
-    const tags = new Set();
-    topics.forEach((topic) => topic.tags.forEach((tag) => tags.add(tag)));
-    return Array.from(tags);
-  }, [topics]);
 
-  const allDifficulties = useMemo(() => {
-    const difficulties = new Set();
-    topics.forEach((topic) => {
-      if (topic.difficulty) difficulties.add(topic.difficulty);
-    });
-    return Array.from(difficulties);
-  }, [topics]);
-
-  // Filter topics based on search query and filters
+  // Filter topics based on search query
   const filteredTopics = useMemo(() => {
     let filtered = topics;
 
@@ -100,25 +132,90 @@ const CategoryView = () => {
       filtered = filtered.filter(
         (topic) =>
           topic.title.toLowerCase().includes(query) ||
-          topic.description.toLowerCase().includes(query) ||
-          topic.tags.some((tag) => tag.toLowerCase().includes(query))
+          topic.description.toLowerCase().includes(query)
       );
-    }
-
-    // Apply tag filter
-    if (filters.selectedTags.length > 0) {
-      filtered = filtered.filter((topic) =>
-        filters.selectedTags.some((tag) => topic.tags.includes(tag))
-      );
-    }
-
-    // Apply difficulty filter
-    if (filters.selectedDifficulty) {
-      filtered = filtered.filter((topic) => topic.difficulty === filters.selectedDifficulty);
     }
 
     return filtered;
-  }, [topics, searchQuery, filters]);
+  }, [topics, searchQuery]);
+
+  // Group topics by section
+  const groupedTopics = useMemo(() => {
+    const groups = {};
+
+    filteredTopics.forEach(topic => {
+      const section = topic.section || topic.difficulty || 'Fundamentals';
+      if (!groups[section]) {
+        groups[section] = {
+          topics: [],
+          sectionDescription: topic.sectionDescription // Get description from first topic in section
+        };
+      }
+      groups[section].topics.push(topic);
+    });
+
+    // Return only non-empty groups, sorted by section name
+    return Object.entries(groups)
+      .filter(([_, group]) => group.topics.length > 0)
+      .sort(([a], [b]) => {
+        // Custom sort order for Agentic AI sections
+        const order = [
+          'Introduction to AI Agents',
+          'Core Agentic Design Patterns',
+          'Advanced Agent Capabilities',
+          'Reliability and Human Integration',
+          'Production Patterns',
+          'Advanced Techniques',
+          'Hands-On Tutorials',
+          'Impact and Future',
+          'Fundamentals',
+          'Core Concepts',
+          'Advanced Topics',
+          'Beginner',
+          'Intermediate',
+          'Advanced'
+        ];
+        const aIndex = order.indexOf(a);
+        const bIndex = order.indexOf(b);
+        if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex;
+        if (aIndex !== -1) return -1;
+        if (bIndex !== -1) return 1;
+        return a.localeCompare(b);
+      })
+      .map(([sectionName, group], index) => ({
+        sectionName,
+        topics: group.topics,
+        sectionDescription: group.sectionDescription,
+        sectionIdx: index
+      }));
+  }, [filteredTopics]);
+
+  // Calculate section statistics
+  const sectionStats = useMemo(() => {
+    return groupedTopics.map(({ topics: sectionTopics, sectionIdx }) => {
+      const completed = sectionTopics.filter(t => completedTopics.has(t.id)).length;
+      const total = sectionTopics.length;
+      const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+      // Calculate total estimated time
+      const totalMinutes = sectionTopics.reduce((sum, topic) => {
+        const match = topic.readTime?.match(/(\d+)/);
+        return sum + (match ? parseInt(match[1]) : 0);
+      }, 0);
+
+      return { sectionIdx, completed, total, percentage, totalMinutes };
+    });
+  }, [groupedTopics, completedTopics]);
+
+
+  // Calculate total duration in minutes
+  const totalDuration = useMemo(() => {
+    return topics.reduce((total, topic) => {
+      const match = topic.readTime?.match(/(\d+)/);
+      return total + (match ? parseInt(match[1]) : 0);
+    }, 0);
+  }, [topics]);
+
 
   // Memoize topic selection handler
   const handleTopicSelect = useCallback((topic) => {
@@ -136,8 +233,82 @@ const CategoryView = () => {
 
   // Memoize clear filters handler
   const handleClearFilters = useCallback(() => {
-    setFilters({ selectedTags: [], selectedDifficulty: null });
+    navigate(`/category/${categoryId}`);
+  }, [navigate, categoryId]);
+
+  // Toggle section expansion with smooth scroll
+  const toggleSection = useCallback((sectionIdx) => {
+    setExpandedSections(prev => {
+      const newState = {
+        ...prev,
+        [sectionIdx]: !prev[sectionIdx]
+      };
+
+      // Smooth scroll to section after a brief delay for animation
+      setTimeout(() => {
+        const sectionElement = sectionRefs.current[sectionIdx];
+        if (sectionElement && newState[sectionIdx]) {
+          sectionElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'start'
+          });
+        }
+      }, 100);
+
+      return newState;
+    });
   }, []);
+
+  // Expand all sections
+  const expandAll = useCallback(() => {
+    const allExpanded = {};
+    groupedTopics.forEach(({ sectionIdx }) => {
+      allExpanded[sectionIdx] = true;
+    });
+    setExpandedSections(allExpanded);
+  }, [groupedTopics]);
+
+  // Collapse all sections
+  const collapseAll = useCallback(() => {
+    const allCollapsed = {};
+    groupedTopics.forEach(({ sectionIdx }) => {
+      allCollapsed[sectionIdx] = false;
+    });
+    setExpandedSections(allCollapsed);
+  }, [groupedTopics]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      // Only handle keyboard navigation when not in an input/textarea
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+        return;
+      }
+
+      const currentSections = groupedTopics.map(g => g.sectionIdx);
+      const expandedIndices = currentSections.filter(idx => expandedSections[idx]);
+
+      if (e.key === 'ArrowDown' && expandedIndices.length > 0) {
+        e.preventDefault();
+        const lastExpanded = expandedIndices[expandedIndices.length - 1];
+        const nextIdx = currentSections.find(idx => idx > lastExpanded);
+        if (nextIdx !== undefined) {
+          toggleSection(nextIdx);
+        }
+      } else if (e.key === 'ArrowUp' && expandedIndices.length > 0) {
+        e.preventDefault();
+        const firstExpanded = expandedIndices[0];
+        const prevIdx = [...currentSections].reverse().find(idx => idx < firstExpanded);
+        if (prevIdx !== undefined) {
+          toggleSection(prevIdx);
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [groupedTopics, expandedSections, toggleSection]);
 
   // Scroll-triggered fade-in for topic cards
   useEffect(() => {
@@ -206,64 +377,136 @@ const CategoryView = () => {
   }
 
   return (
-    <div className="min-h-screen relative z-10 overflow-x-hidden">
+    <div className="relative min-h-screen overflow-hidden bg-slate-950 pb-24">
       <SEO
         title={categoryTitle}
         description={categoryDescription}
         url={`/category/${category.id}`}
         keywords={[categoryTitle, "AI", "Machine Learning", "Handbooks"]}
       />
-      <Hero
-        title={categoryTitle}
-        subtitle={categoryDescription}
-        icon={category.icon ? React.cloneElement(category.icon, {
-          className: `text-white drop-shadow-sm`,
-          size: 22
-        }) : <div className="w-6 h-6" />}
-        children={
-          <Breadcrumbs
-            items={[
-              { label: t('nav.handbooks', { defaultValue: 'Handbooks' }), to: '/handbooks' },
-              { label: categoryTitle }
-            ]}
-          />
-        }
+
+      {/* Dynamic gradient orbs */}
+      <div
+        className="pointer-events-none absolute -z-10 opacity-40 blur-3xl transition-all duration-700"
+        style={{
+          left: `${mousePosition.x}%`,
+          top: `${mousePosition.y}%`,
+          width: '600px',
+          height: '600px',
+          background: 'radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, transparent 70%)',
+          transform: 'translate(-50%, -50%)',
+        }}
+        aria-hidden="true"
       />
 
-      {/* Topics Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-x-hidden">
-        <div className="flex flex-col items-center pt-4">
-          {(searchQuery || filters.selectedTags.length > 0 || filters.selectedDifficulty) && (
-            <div className="mb-4 p-3 bg-indigo-50/50 dark:bg-indigo-900/20 rounded-lg border border-indigo-200/50 dark:border-indigo-800/30 w-full max-w-5xl">
-              <div className="flex items-center gap-2 text-sm text-indigo-700 dark:text-indigo-300">
-                <Search size={16} />
+      <div
+        className="pointer-events-none absolute -z-10 opacity-30 blur-3xl transition-all duration-1000"
+        style={{
+          left: `${100 - mousePosition.x}%`,
+          top: `${100 - mousePosition.y}%`,
+          width: '500px',
+          height: '500px',
+          background: 'radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, transparent 70%)',
+          transform: 'translate(-50%, -50%)',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Floating particles */}
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+        {particles.map((particle, i) => (
+          <div
+            key={i}
+            className={`absolute rounded-full bg-gradient-to-br ${particle.color}`}
+            style={{
+              left: `${particle.left}%`,
+              top: `${particle.top}%`,
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              opacity: particle.opacity,
+              animation: `float ${particle.duration}s ease-in-out ${particle.delay}s infinite`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Header Section with Stats */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-6">
+        <Breadcrumbs
+          items={[
+            { label: t('nav.handbooks', { defaultValue: 'Handbooks' }), to: '/handbooks' },
+            { label: categoryTitle }
+          ]}
+          className="mb-4"
+        />
+
+        <div className="mb-6">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-200 mb-4">
+            {categoryTitle}
+          </h1>
+          <p className="text-lg text-slate-400 max-w-4xl">
+            {categoryDescription}
+          </p>
+        </div>
+
+        {/* Stats Bar */}
+        <div className="flex flex-wrap items-center gap-6 text-sm text-slate-400 py-4 border-y border-slate-800/50">
+          <div className="flex items-center gap-2">
+            <Award size={18} className="text-violet-400" />
+            <span className="font-semibold text-slate-300">{groupedTopics.length}</span>
+            <span>section{groupedTopics.length !== 1 ? 's' : ''}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Award size={18} className="text-indigo-400" />
+            <span className="font-semibold text-slate-300">{topics.length}</span>
+            <span>topic{topics.length !== 1 ? 's' : ''}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Clock size={18} className="text-pink-400" />
+            <span className="font-semibold text-slate-300">
+              {Math.floor(totalDuration / 60)}h {totalDuration % 60}m
+            </span>
+            <span>total</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Topics Accordion */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-x-hidden pb-24">
+        <div className="flex flex-col items-center pt-2">
+          {searchQuery && (
+            <div className="mb-4 p-4 bg-slate-900/60 backdrop-blur-xl rounded-2xl border border-slate-800/50 w-full max-w-5xl shadow-xl">
+              <div className="flex items-center gap-3 text-sm text-slate-200">
+                <div className="p-2 rounded-xl bg-gradient-to-br from-indigo-500/20 to-violet-500/20 shadow-lg shadow-indigo-500/20">
+                  <Search size={16} className="text-indigo-400" />
+                </div>
                 <span>
                   {t('categoryPage.searchResults.found', {
                     count: filteredTopics.length,
                     defaultValue: `Found ${filteredTopics.length} result${filteredTopics.length !== 1 ? 's' : ''}`
                   })}
-                  {searchQuery && ` ${t('categoryPage.searchResults.for', { query: searchQuery })}`}
+                  {searchQuery && (
+                    <span className="text-indigo-400 font-semibold ml-1">
+                      {t('categoryPage.searchResults.for', { query: searchQuery })}
+                    </span>
+                  )}
                 </span>
               </div>
             </div>
           )}
 
-          {(allTags.length > 0 || allDifficulties.length > 0) && (
-            <div className="w-full max-w-5xl mb-2">
-              <FilterBar
-                filters={filters}
-                onFilterChange={setFilters}
-                availableTags={allTags}
-                availableDifficulties={allDifficulties}
-              />
-            </div>
-          )}
         </div>
         <div className="pt-4 pb-16">
           {loadingTopics ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <CardSkeleton key={i} />
+            <div className="space-y-4">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="bg-slate-900/40 rounded-2xl border border-slate-800/50 p-6 animate-pulse">
+                  <div className="h-8 bg-slate-800 rounded w-1/3 mb-4"></div>
+                  <div className="space-y-3">
+                    <div className="h-20 bg-slate-800/50 rounded-xl"></div>
+                    <div className="h-20 bg-slate-800/50 rounded-xl"></div>
+                  </div>
+                </div>
               ))}
             </div>
           ) : topicsError ? (
@@ -274,7 +517,7 @@ const CategoryView = () => {
               onRetry={() => window.location.reload()}
             />
           ) : filteredTopics.length === 0 ? (
-            searchQuery || filters.selectedTags.length > 0 || filters.selectedDifficulty ? (
+            searchQuery ? (
               <EmptySearch
                 searchQuery={searchQuery}
                 onClear={handleClearFilters}
@@ -286,87 +529,217 @@ const CategoryView = () => {
               />
             )
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-              {filteredTopics.map((topic) => (
-                <div
-                  key={topic.id}
-                  className="topic-card-fade-in section-fade-in group relative h-full transform transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
-                >
-                  <TopicCard
-                    onClick={() => handleTopicSelect(topic)}
-                    className="rounded-3xl flex flex-col h-full group/card"
+            <div className="space-y-4">
+              {/* Expand/Collapse All Controls */}
+              {groupedTopics.length > 1 && (
+                <div className="flex items-center justify-end gap-3 mb-4">
+                  <button
+                    onClick={expandAll}
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900/60 hover:bg-slate-900/80 border border-slate-800/50 hover:border-indigo-500/30 text-slate-300 hover:text-indigo-400 text-sm font-semibold transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-indigo-500/10 group"
                   >
-                    <div className="relative z-10 flex flex-col h-full">
-                      {/* Header with bookmark */}
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="flex items-center gap-2 flex-wrap flex-1">
-                          {completedTopics.has(topic.id) && (
-                            <span className="flex items-center gap-1 text-xs font-bold text-green-700 dark:text-green-400 bg-gradient-to-br from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 px-2.5 py-1 rounded-lg border border-green-200/60 dark:border-green-800/40 shadow-md backdrop-blur-sm">
-                              <CheckCircle2 size={12} className="fill-current" />
-                              {t('categoryPage.completed')}
-                            </span>
-                          )}
-                          {topic.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="text-xs font-bold text-gray-700 dark:text-slate-300 bg-gradient-to-br from-indigo-100 via-violet-100 to-pink-100 dark:from-indigo-900/30 dark:via-violet-900/30 dark:to-pink-900/30 px-2.5 py-1 rounded-lg uppercase tracking-wider border border-indigo-200/60 dark:border-indigo-800/40 shadow-md backdrop-blur-sm group-hover/card:scale-105 transition-transform duration-300"
-                            >
-                              {tag}
-                            </span>
-                          ))}
+                    <ChevronDown size={16} className="transition-transform group-hover:scale-110" />
+                    <span>Expand All</span>
+                  </button>
+                  <button
+                    onClick={collapseAll}
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900/60 hover:bg-slate-900/80 border border-slate-800/50 hover:border-indigo-500/30 text-slate-300 hover:text-indigo-400 text-sm font-semibold transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-indigo-500/10 group"
+                  >
+                    <ChevronUp size={16} className="transition-transform group-hover:scale-110" />
+                    <span>Collapse All</span>
+                  </button>
+                </div>
+              )}
+
+              {groupedTopics.map(({ sectionName, topics: sectionTopics, sectionDescription, sectionIdx }) => {
+                const isExpanded = expandedSections[sectionIdx] ?? (sectionIdx === 0);
+                const stats = sectionStats.find(s => s.sectionIdx === sectionIdx);
+
+                return (
+                  <div
+                    key={sectionIdx}
+                    ref={el => sectionRefs.current[sectionIdx] = el}
+                    className={`bg-slate-900/40 rounded-2xl border overflow-hidden transition-all duration-300 ${
+                      isExpanded
+                        ? 'border-indigo-500/30 shadow-lg shadow-indigo-500/10'
+                        : 'border-slate-800/50'
+                    }`}
+                  >
+                    {/* Section Header */}
+                    <button
+                      onClick={() => toggleSection(sectionIdx)}
+                      className="w-full px-6 py-4 flex items-center gap-4 hover:bg-slate-900/60 transition-all duration-300 group"
+                      aria-expanded={isExpanded}
+                      aria-controls={`section-content-${sectionIdx}`}
+                      id={`section-header-${sectionIdx}`}
+                    >
+                      {/* Section Title */}
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-2 flex-wrap">
+                          <h3 className="text-lg font-bold text-slate-200 group-hover:text-indigo-400 transition-colors duration-300">
+                            {sectionName}
+                          </h3>
+                          <span className="text-sm text-slate-500">
+                            ({sectionTopics.length} topic{sectionTopics.length !== 1 ? 's' : ''}
+                            {stats && stats.totalMinutes > 0 && (
+                              <> • ~{stats.totalMinutes} min</>
+                            )})
+                          </span>
                         </div>
-                        {user && (
-                          <div onClick={(e) => e.stopPropagation()}>
-                            <BookmarkButton
-                              item={{
-                                id: topic.id,
-                                type: 'topic',
-                                categoryId: category.id,
-                                topicId: topic.id,
-                                title: topic.title,
-                                categoryTitle: category.title,
-                              }}
-                              className="flex-shrink-0"
-                            />
+
+                        {/* Progress Bar */}
+                        {stats && (
+                          <div className="mb-3">
+                            <div className="flex items-center justify-between mb-1.5">
+                              <span className="text-xs font-semibold text-slate-400">
+                                {stats.completed} of {stats.total} completed
+                              </span>
+                              <span className={`text-xs font-bold ${
+                                stats.percentage === 100 ? 'text-pink-400' :
+                                stats.percentage > 0 ? 'text-indigo-400' :
+                                'text-slate-500'
+                              }`}>
+                                {stats.percentage}%
+                              </span>
+                            </div>
+                            <div className="w-full h-2 bg-slate-800/50 rounded-full overflow-hidden">
+                              <div
+                                className={`h-full transition-all duration-500 ease-out ${
+                                  stats.percentage === 100
+                                    ? 'bg-gradient-to-r from-pink-500 to-violet-500'
+                                    : stats.percentage > 0
+                                    ? 'bg-gradient-to-r from-indigo-500 to-violet-500'
+                                    : 'bg-slate-700'
+                                }`}
+                                style={{ width: `${stats.percentage}%` }}
+                              />
+                            </div>
                           </div>
                         )}
+
+                        <p className="text-sm text-slate-400 leading-relaxed pr-8 text-left">
+                          {sectionDescription || (() => {
+                            // Fallback descriptions for sections without database description
+                            const descriptions = {
+                              'Fundamentals': 'Start your learning journey with fundamental concepts and essential building blocks.',
+                              'Core Concepts': 'Deepen your understanding with core principles and practical applications.',
+                              'Advanced Topics': 'Master complex topics and cutting-edge approaches for expert-level knowledge.',
+                              'Beginner': 'Start your learning journey with fundamental concepts and essential building blocks.',
+                              'Intermediate': 'Deepen your understanding with practical applications and advanced techniques.',
+                              'Advanced': 'Master complex topics and cutting-edge approaches for expert-level knowledge.'
+                            };
+                            return descriptions[sectionName] || `Explore ${sectionTopics.length} topic${sectionTopics.length !== 1 ? 's' : ''} in this section.`;
+                          })()}
+                        </p>
                       </div>
 
-                      {/* Title */}
-                      <h3 className="text-lg lg:text-xl font-semibold text-slate-700 dark:text-slate-200 mb-3 group-hover/card:text-transparent group-hover/card:bg-clip-text group-hover/card:bg-gradient-to-r group-hover/card:from-indigo-600 group-hover/card:to-violet-600 transition-all duration-300 line-clamp-2">
-                        {topic.title}
-                      </h3>
+                      {/* Expand/Collapse Icon */}
+                      <div className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}>
+                        <svg
+                          className="w-5 h-5 text-slate-400 group-hover:text-indigo-400 transition-colors duration-300"
+                          fill="none"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                      </div>
+                    </button>
 
-                      {/* Description */}
-                      <p className="text-xs text-gray-600 dark:text-slate-400 leading-relaxed mb-4 flex-1 group-hover/card:text-gray-700 dark:group-hover/card:text-slate-300 transition-colors duration-300 line-clamp-3">
-                        {topic.description}
-                      </p>
+                    {/* Topics Grid (Animated Accordion) */}
+                    <div
+                      id={`section-content-${sectionIdx}`}
+                      role="region"
+                      aria-labelledby={`section-header-${sectionIdx}`}
+                      className={`grid transition-all duration-300 ease-in-out ${
+                        isExpanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="px-6 pb-6 space-y-3">
+                          {sectionTopics.map((topic, topicIdx) => (
+                            <React.Fragment key={topic.id}>
+                              <div
+                                onClick={() => handleTopicSelect(topic)}
+                                className="group flex gap-4 p-4 rounded-xl cursor-pointer transition-all duration-300 border border-transparent hover:border-indigo-500/30 hover:bg-slate-900/60 hover:shadow-md hover:shadow-indigo-500/10 hover:scale-[1.01] active:scale-[0.99]"
+                                style={{
+                                  animation: isExpanded ? `fadeInUp 0.4s ease-out ${topicIdx * 0.05}s both` : 'none'
+                                }}
+                              >
+                                {/* Topic Badge */}
+                                <div className="flex-shrink-0">
+                                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-xs font-bold transition-all duration-300 shadow-md ${
+                                    completedTopics.has(topic.id)
+                                      ? 'bg-gradient-to-br from-pink-500 to-violet-500 text-white shadow-pink-500/30 group-hover:shadow-pink-500/50 group-hover:scale-105'
+                                      : 'bg-gradient-to-br from-indigo-600 to-indigo-500 text-white shadow-indigo-500/30 group-hover:from-indigo-500 group-hover:to-indigo-400 group-hover:shadow-indigo-500/50 group-hover:scale-105'
+                                  }`}>
+                                    {completedTopics.has(topic.id) ? (
+                                      <CheckCircle2 size={18} className="fill-current animate-pulse" />
+                                    ) : (
+                                      <span>T{topicIdx + 1}</span>
+                                    )}
+                                  </div>
+                                </div>
 
-                      {/* Footer with metadata and action */}
-                      <div className="mt-auto pt-4 border-t border-gray-100 dark:border-slate-700 group-hover:border-indigo-100 dark:group-hover:border-indigo-800/50 transition-colors">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-slate-400">
-                            <span className="flex items-center gap-1.5">
-                              <Sparkles size={12} className="text-indigo-500 dark:text-indigo-400" />
-                              {topic.readTime}
-                            </span>
-                            {topic.lastUpdated && (
-                              <span className="flex items-center gap-1.5">
-                                <CheckCircle2 size={12} className="text-green-500 dark:text-green-400" />
-                                {topic.lastUpdated.split(',')[0]}
-                              </span>
-                            )}
-                          </div>
-                          <div className="p-1.5 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 text-white shadow-lg group-hover/card:shadow-xl group-hover/card:scale-110 transition-all duration-300 opacity-0 group-hover/card:opacity-100 relative overflow-hidden">
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/card:translate-x-full transition-transform duration-700"></div>
-                            <ArrowRight size={14} className="group-hover/card:translate-x-0.5 transition-transform duration-300 relative z-10" />
-                          </div>
+                                {/* Topic Content */}
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-center justify-between">
+                                    <h3 className="text-base font-bold text-slate-200 group-hover:text-indigo-400 transition-all duration-300 leading-tight">
+                                      {topic.title}
+                                    </h3>
+                                    {user && (
+                                      <div onClick={(e) => e.stopPropagation()} className="flex-shrink-0">
+                                        <BookmarkButton
+                                          item={{
+                                            id: topic.id,
+                                            type: 'topic',
+                                            categoryId: category.id,
+                                            topicId: topic.id,
+                                            title: topic.title,
+                                            categoryTitle: category.title,
+                                          }}
+                                          className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                        />
+                                      </div>
+                                    )}
+                                  </div>
+
+                                  <p className="text-sm text-slate-400 leading-relaxed mb-2 group-hover:text-slate-300 transition-colors duration-300">
+                                    {topic.description}
+                                  </p>
+
+                                  {/* Metadata */}
+                                  <div className="flex items-center gap-2 flex-wrap">
+                                    {completedTopics.has(topic.id) && (
+                                      <span className="flex items-center gap-1.5 text-xs font-semibold text-pink-400 bg-pink-900/20 px-2.5 py-1 rounded-lg border border-pink-800/30">
+                                        <CheckCircle2 size={12} className="fill-current" />
+                                        Completed
+                                      </span>
+                                    )}
+                                    {topic.readTime && (
+                                      <span className="flex items-center gap-1 text-xs text-slate-500 group-hover:text-slate-400 transition-colors duration-300">
+                                        <Clock size={12} />
+                                        {topic.readTime}
+                                      </span>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                              {/* Subtle divider between topics */}
+                              {topicIdx < sectionTopics.length - 1 && (
+                                <div className="h-px bg-gradient-to-r from-transparent via-slate-800/50 to-transparent my-1"></div>
+                              )}
+                            </React.Fragment>
+                          ))}
                         </div>
                       </div>
                     </div>
-                  </TopicCard>
-                </div>
-              ))}
+                  </div>
+                );
+              })}
             </div>
           )}
         </div>

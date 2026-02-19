@@ -20,7 +20,7 @@
     "toggleDarkMode": "Toggle dark mode"
   },
   "brand": {
-    "name": "RoBuildsAI",
+    "name": "Distill AI",
     "handbook": "AI Handbook"
   },
   "header": {
@@ -42,7 +42,7 @@
     "community": "Community",
     "tagline": "Curated pathways for mastering modern AI. Structured by complexity, optimized for engineering.",
     "madeWith": "Made with passion for the AI community",
-    "copyright": "© {{year}} RoBuildsAI. All rights reserved.",
+    "copyright": "© {{year}} Distill AI. All rights reserved.",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
     "license": "License"
