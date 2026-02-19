@@ -233,15 +233,59 @@ const DashboardPage = () => {
                 )}
               </section>
 
-              {/* Based on Your Interests / Suggested Fields */}
+              {/* Based on Your Interests — only when history exists */}
+              {hasHistory && interestCategories.length > 0 && (
+                <section>
+                  <div className="flex items-center justify-between mb-4">
+                    <h2 className="text-sm font-bold text-gray-300 uppercase tracking-widest flex items-center gap-2">
+                      <Sparkles size={12} className="text-violet-400" /> Based on Your Interests
+                    </h2>
+                    <button
+                      onClick={() => navigate("/handbooks")}
+                      className="text-xs text-indigo-400 hover:text-indigo-300 flex items-center gap-1 transition-colors"
+                    >
+                      All 20 fields <ChevronRight size={11} />
+                    </button>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {interestCategories.map((item, i) => {
+                      const c = CAT_COLORS[i % CAT_COLORS.length];
+                      const IconKey = FIELD_ICON_KEYS[i % FIELD_ICON_KEYS.length];
+                      const Icon = FIELD_ICONS[IconKey];
+                      return (
+                        <button
+                          key={item.title}
+                          onClick={() => navigate("/handbooks")}
+                          className={`group relative flex flex-col gap-3 rounded-2xl border bg-gradient-to-br ${c.gradient} ${c.border} p-5 text-left hover:brightness-110 transition-all duration-200 active:scale-[0.98] overflow-hidden`}
+                        >
+                          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none" />
+                          <div className="flex items-start justify-between gap-2">
+                            <div className={`h-10 w-10 rounded-xl ${c.badge} flex items-center justify-center flex-shrink-0`}>
+                              <Icon size={18} strokeWidth={2} />
+                            </div>
+                            {item.count > 1 && (
+                              <span className={`text-[10px] font-bold rounded-full px-2 py-0.5 ${c.badge}`}>{item.count} read</span>
+                            )}
+                          </div>
+                          <div>
+                            <p className="font-bold text-gray-100 text-sm mb-1">{item.title}</p>
+                            <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">You&apos;ve been exploring this field. Dive deeper.</p>
+                          </div>
+                          <div className={`flex items-center gap-1 text-xs font-semibold ${c.icon} group-hover:gap-1.5 transition-all`}>
+                            Explore more <ArrowRight size={11} className="group-hover:translate-x-0.5 transition-transform" />
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </section>
+              )}
+
+              {/* Popular Fields — always visible */}
               <section>
                 <div className="flex items-center justify-between mb-4">
                   <h2 className="text-sm font-bold text-gray-300 uppercase tracking-widest flex items-center gap-2">
-                    {hasHistory ? (
-                      <><Sparkles size={12} className="text-violet-400" /> Based on Your Interests</>
-                    ) : (
-                      <><Brain size={12} className="text-violet-400" /> Popular Fields</>
-                    )}
+                    <Brain size={12} className="text-violet-400" /> Popular Fields
                   </h2>
                   <button
                     onClick={() => navigate("/handbooks")}
@@ -252,11 +296,11 @@ const DashboardPage = () => {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {(hasHistory ? interestCategories : SUGGESTED_FIELDS).map((item, i) => {
+                  {SUGGESTED_FIELDS.map((item, i) => {
                     const c = CAT_COLORS[i % CAT_COLORS.length];
                     const IconKey = FIELD_ICON_KEYS[i % FIELD_ICON_KEYS.length];
                     const Icon = FIELD_ICONS[IconKey];
-                    const isInterest = hasHistory;
+                    const isInterest = false;
 
                     return (
                       <button
@@ -270,20 +314,13 @@ const DashboardPage = () => {
                           <div className={`h-10 w-10 rounded-xl ${c.badge} flex items-center justify-center flex-shrink-0`}>
                             <Icon size={18} strokeWidth={2} />
                           </div>
-                          {isInterest && item.count > 1 && (
-                            <span className={`text-[10px] font-bold rounded-full px-2 py-0.5 ${c.badge}`}>
-                              {item.count} read
-                            </span>
-                          )}
                         </div>
                         <div>
                           <p className="font-bold text-gray-100 text-sm mb-1">{item.title}</p>
-                          <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">
-                            {item.desc || (isInterest ? `You've been exploring this field. Dive deeper.` : "")}
-                          </p>
+                          <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">{item.desc}</p>
                         </div>
                         <div className={`flex items-center gap-1 text-xs font-semibold ${c.icon} group-hover:gap-1.5 transition-all`}>
-                          {isInterest ? "Explore more" : "Start reading"} <ArrowRight size={11} className="group-hover:translate-x-0.5 transition-transform" />
+                          Start reading <ArrowRight size={11} className="group-hover:translate-x-0.5 transition-transform" />
                         </div>
                       </button>
                     );

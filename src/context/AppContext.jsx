@@ -124,10 +124,22 @@ export const AppProvider = ({ children }) => {
         setBookmarks([]);
       }
 
-      // Don't sync reading history on login - it should start fresh
-      // Reading history will be built as the user visits topics
-      // This ensures that when a user logs out and logs back in, they start with a clean history
-      setReadingHistory([]);
+      // Sync reading history from database on login
+      const { data: dbHistory, error: historyError } = await dbHelpers.getReadingHistory(userId, 10);
+      if (!historyError && dbHistory && dbHistory.length > 0) {
+        const formattedHistory = dbHistory.map((h) => ({
+          id: `${h.category_id}-${h.topic_id}`,
+          type: "topic",
+          categoryId: h.category_id,
+          topicId: h.topic_id,
+          title: h.title,
+          categoryTitle: h.category_title,
+          timestamp: new Date(h.last_read_at || h.created_at).getTime(),
+        }));
+        setReadingHistory(formattedHistory);
+      } else {
+        setReadingHistory([]);
+      }
     } catch (error) {
       console.error("Error syncing user data:", error);
       // Clear data on error
