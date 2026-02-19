@@ -68,12 +68,6 @@ export const useSEO = () => {
           description: `Search results for "${searchQuery}" in Distill AI.`,
           url: `${baseUrl}/search?q=${encodeURIComponent(searchQuery)}`,
         };
-      case "weekly-report":
-        return {
-          title: "Weekly Reports",
-          description: "Stay updated with the latest AI research and developments. Weekly highlights of significant progress in AI/ML research and applications.",
-          url: `${baseUrl}/weekly-report`,
-        };
       default:
         return {
           title: "Distill AI",

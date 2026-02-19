@@ -251,13 +251,16 @@ const Topbar = ({
 
           {/* Action buttons group */}
           <div className="hidden lg:flex items-center gap-2">
-            <button
+            <a
+              href="https://github.com/sourcecode369"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hidden lg:flex items-center gap-2 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 text-gray-200 border border-gray-700/50 hover:border-gray-600 min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-gray-900/30 hover:scale-105 active:scale-95 touch-manipulation focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-950"
               aria-label={t('starOnGitHub')}
             >
               <Github size={18} aria-hidden="true" />
               <span className="hidden sm:inline">{t('star')}</span>
-            </button>
+            </a>
           </div>
         </div>
       </div>
