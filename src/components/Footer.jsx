@@ -162,7 +162,7 @@ const Footer = () => {
                 <li>
                   <a
                     className="flex items-center justify-center text-indigo-500 transition hover:text-indigo-400"
-                    href="https://twitter.com"
+                    href="https://twitter.com/distillai"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Twitter"
@@ -179,7 +179,7 @@ const Footer = () => {
                 <li>
                   <a
                     className="flex items-center justify-center text-indigo-500 transition hover:text-indigo-400"
-                    href="https://linkedin.com"
+                    href="https://linkedin.com/company/distillai"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
@@ -196,7 +196,7 @@ const Footer = () => {
                 <li>
                   <a
                     className="flex items-center justify-center text-indigo-500 transition hover:text-indigo-400"
-                    href="https://github.com"
+                    href="https://github.com/sourcecode369"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Github"
