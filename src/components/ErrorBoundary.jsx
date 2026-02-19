@@ -55,8 +55,8 @@ class ErrorBoundary extends React.Component {
 
       // Enhanced fallback UI with glassmorphic design
       return (
-        <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-slate-50 via-indigo-50/30 to-violet-50/20 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950">
-          <div className="max-w-2xl w-full bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl rounded-3xl border border-slate-200/50 dark:border-slate-700/50 shadow-2xl shadow-slate-500/20 dark:shadow-slate-900/40 p-8 lg:p-10">
+        <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br slate-950">
+          <div className="max-w-2xl w-full bg-gray-900/80 backdrop-blur-xl rounded-3xl border border-gray-800/60 shadow-2xl shadow-black/40 p-8 lg:p-10">
             {/* Header with icon */}
             <div className="text-center mb-8">
               <div className="relative inline-flex items-center justify-center mb-6">
@@ -65,22 +65,22 @@ class ErrorBoundary extends React.Component {
                   <AlertTriangle className="text-white" size={32} />
                 </div>
               </div>
-              <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">
+              <h1 className="text-3xl font-bold text-gray-100 mb-3 tracking-tight">
                 Something went wrong
               </h1>
-              <p className="text-base text-slate-600 dark:text-slate-400 leading-relaxed max-w-md mx-auto">
+              <p className="text-base text-gray-400 leading-relaxed max-w-md mx-auto">
                 {this.props.message || "An unexpected error occurred. Don't worry, we can help you get back on track."}
               </p>
             </div>
 
             {/* Error details (development only) */}
             {process.env.NODE_ENV === "development" && this.state.error && (
-              <div className="mb-6 p-5 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-sm rounded-2xl border border-slate-200/60 dark:border-slate-700/60">
+              <div className="mb-6 p-5 bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-gray-700/60">
                 <details className="text-left">
-                  <summary className="cursor-pointer text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+                  <summary className="cursor-pointer text-sm font-semibold text-gray-300 mb-3 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
                     Error Details (Development Only)
                   </summary>
-                  <div className="mt-3 text-xs font-mono text-red-600 dark:text-red-400 overflow-auto max-h-48 p-3 bg-white/50 dark:bg-slate-800/50 rounded-xl">
+                  <div className="mt-3 text-xs font-mono text-red-600 dark:text-red-400 overflow-auto max-h-48 p-3 bg-gray-900/50 rounded-xl">
                     <div className="mb-2">
                       <strong>Error:</strong> {this.state.error.toString()}
                     </div>
@@ -132,8 +132,8 @@ class ErrorBoundary extends React.Component {
               </div>
 
               {/* Additional Help Links */}
-              <div className="pt-4 border-t border-slate-200/60 dark:border-slate-700/60">
-                <p className="text-xs text-center text-slate-500 dark:text-slate-400 mb-3">
+              <div className="pt-4 border-t border-gray-700/60">
+                <p className="text-xs text-center text-gray-500 mb-3">
                   Need more help?
                 </p>
                 <div className="flex items-center justify-center gap-4 flex-wrap">

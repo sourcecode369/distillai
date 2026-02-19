@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
-import { Search, Menu, ChevronRight, Github, Bookmark, Globe, Youtube } from "lucide-react";
+import { Search, Menu, ChevronRight, Github, Bookmark, Globe } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../context/AppContext";
 import { useAuth } from "../context/AuthContext";
@@ -258,16 +258,6 @@ const Topbar = ({
               <Github size={18} aria-hidden="true" />
               <span className="hidden sm:inline">{t('star')}</span>
             </button>
-            <a
-              href="https://www.youtube.com/@XBuildsAI"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden lg:flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 shadow-lg shadow-red-900/30 hover:shadow-xl hover:shadow-red-900/40 hover:scale-105 active:scale-95 touch-manipulation focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-950"
-              aria-label={t('visitYouTube')}
-            >
-              <Youtube size={18} aria-hidden="true" />
-              <span className="hidden sm:inline">{t('youtube')}</span>
-            </a>
           </div>
         </div>
       </div>

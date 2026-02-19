@@ -84,28 +84,28 @@ const AboutPage = () => {
   const stats = useMemo(() => [
     {
       label: t('about.growingTogether.categories'),
-      value: "50+",
+      value: "20",
       icon: <Layers size={28} className="drop-shadow-lg" />,
       color: "from-indigo-500 to-violet-600",
       description: t('about.growingTogether.categoriesDesc')
     },
     {
       label: t('about.growingTogether.topics'),
-      value: "200+",
+      value: "150+",
       icon: <BookOpen size={28} className="drop-shadow-lg" />,
       color: "from-violet-500 to-purple-600",
       description: t('about.growingTogether.topicsDesc')
     },
     {
       label: t('about.growingTogether.contributors'),
-      value: "100+",
+      value: "150+",
       icon: <Users size={28} className="drop-shadow-lg" />,
       color: "from-amber-500 to-orange-600",
       description: t('about.growingTogether.contributorsDesc')
     },
     {
       label: t('about.growingTogether.resources'),
-      value: "1000+",
+      value: "Free",
       icon: <Sparkles size={28} className="drop-shadow-lg" />,
       color: "from-emerald-500 to-teal-600",
       description: t('about.growingTogether.resourcesDesc')

@@ -69,16 +69,15 @@ export default defineConfig({
         ],
       },
       manifest: {
-        name: "AI Handbooks",
-        short_name: "AI Handbooks",
-        description:
-          "Master Artificial Intelligence, Machine Learning, and Data Science",
+        name: "Distill AI",
+        short_name: "Distill AI",
+        description: "150+ expert-curated AI & ML handbooks across 20 specializations. Free to start.",
         theme_color: "#4f46e5",
-        background_color: "#ffffff",
+        background_color: "#030712",
         display: "standalone",
         icons: [
           {
-            src: "/vite.svg",
+            src: "/favicon.svg",
             sizes: "any",
             type: "image/svg+xml",
           },
