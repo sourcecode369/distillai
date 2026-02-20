@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   BookOpen,
@@ -55,6 +55,30 @@ const AI_FIELDS = [
 const DemoPage = () => {
   const navigate = useNavigate();
   const [isAnnual, setIsAnnual] = useState(true);
+  const hiwSectionRef = useRef(null);
+
+  useEffect(() => {
+    const section = hiwSectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll(".hiw-line").forEach((el) => el.classList.add("visible"));
+            entry.target.querySelectorAll(".hiw-card").forEach((el, i) => {
+              setTimeout(() => el.classList.add("visible"), i * 150);
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
 
   const testimonials = [
     {
@@ -292,9 +316,9 @@ const DemoPage = () => {
               </div>
 
               {/* Steps */}
-              <div className="relative grid gap-6 md:grid-cols-3 mb-16">
-                {/* Connecting line (desktop) */}
-                <div className="hidden md:block absolute top-10 left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] h-px bg-gradient-to-r from-indigo-500/30 via-violet-500/30 to-indigo-500/30" />
+              <div ref={hiwSectionRef} className="relative grid gap-6 md:grid-cols-3 mb-16">
+                {/* Connecting line (desktop) — draws left-to-right on scroll */}
+                <div className="hiw-line hidden md:block absolute top-10 left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] h-px bg-gradient-to-r from-indigo-500/40 via-violet-500/40 to-indigo-500/40 origin-left" />
 
                 {[
                   {
@@ -319,13 +343,13 @@ const DemoPage = () => {
                     tag: "Per-topic quizzes",
                   },
                 ].map(({ step, Icon, title, desc, tag }, i) => (
-                  <div key={i} className="relative group flex flex-col rounded-2xl border border-gray-800/60 bg-gray-900/50 p-8 backdrop-blur-sm hover:border-indigo-500/40 hover:bg-gray-900/70 transition-all duration-300">
-                    {/* Step number */}
-                    <div className="text-5xl font-extrabold bg-gradient-to-br from-indigo-500/20 to-violet-500/20 bg-clip-text text-transparent leading-none mb-5 select-none">
+                  <div key={i} className="hiw-card relative group flex flex-col rounded-2xl border border-gray-800/60 bg-gray-900/50 p-8 backdrop-blur-sm hover:border-indigo-500/40 hover:bg-gray-900/70 transition-[opacity,transform,border-color,background-color] duration-300">
+                    {/* Step number — pops in */}
+                    <div className="hiw-step-num text-5xl font-extrabold bg-gradient-to-br from-indigo-500/30 to-violet-500/20 bg-clip-text text-transparent leading-none mb-5 select-none">
                       {step}
                     </div>
-                    {/* Icon */}
-                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500/15 to-violet-500/15 border border-indigo-500/20 text-indigo-400 group-hover:from-indigo-500/25 group-hover:to-violet-500/25 group-hover:text-indigo-300 transition-all duration-300">
+                    {/* Icon — slight rotate on entry */}
+                    <div className="hiw-icon mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500/15 to-violet-500/15 border border-indigo-500/20 text-indigo-400 group-hover:from-indigo-500/25 group-hover:to-violet-500/25 group-hover:text-indigo-300 group-hover:scale-110 transition-all duration-300">
                       <Icon size={22} strokeWidth={2} />
                     </div>
                     {/* Text */}
