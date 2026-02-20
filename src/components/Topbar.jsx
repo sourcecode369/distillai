@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
-import { Search, Github, Bookmark, Globe, User, TrendingUp, Shield, LogOut, LogIn, Loader2 } from "lucide-react";
+import { Search, Github, Bookmark, Globe, User, TrendingUp, Shield, LogOut, LogIn, Loader2, LayoutDashboard, BookOpen } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link, NavLink, useNavigate, useSearchParams } from "react-router-dom";
 import { useApp } from "../context/AppContext";
@@ -101,10 +101,6 @@ const Topbar = () => {
   const initials = getInitials(user);
   const displayName = user?.user_metadata?.full_name || user?.email?.split("@")[0] || "User";
 
-  const navLink = ({ isActive }) =>
-    `text-sm font-semibold px-3.5 py-1.5 rounded-xl transition-all duration-200 ${isActive
-      ? "bg-indigo-600/20 border border-indigo-500/30 text-indigo-300"
-      : "text-gray-400 hover:text-gray-200 hover:bg-gray-800/60 border border-transparent"}`;
 
   return (
     <header
@@ -137,14 +133,34 @@ const Topbar = () => {
         </Link>
 
         {/* ── CENTER: Nav ──────────────────────────────────────────────── */}
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden md:flex items-stretch h-full gap-1">
           {user && (
-            <NavLink to="/" end className={navLink}>
-              Dashboard
+            <NavLink to="/" end>
+              {({ isActive }) => (
+                <span className={`relative flex items-center gap-2 px-4 h-full text-sm font-semibold transition-colors duration-200 select-none ${
+                  isActive ? "text-gray-100" : "text-gray-500 hover:text-gray-300"
+                }`}>
+                  <LayoutDashboard size={14} className={isActive ? "text-indigo-400" : ""} />
+                  Dashboard
+                  {isActive && (
+                    <span className="absolute bottom-0 left-2 right-2 h-0.5 rounded-t-full bg-gradient-to-r from-indigo-500 to-violet-500" />
+                  )}
+                </span>
+              )}
             </NavLink>
           )}
-          <NavLink to="/handbooks" className={navLink}>
-            Handbooks
+          <NavLink to="/handbooks">
+            {({ isActive }) => (
+              <span className={`relative flex items-center gap-2 px-4 h-full text-sm font-semibold transition-colors duration-200 select-none ${
+                isActive ? "text-gray-100" : "text-gray-500 hover:text-gray-300"
+              }`}>
+                <BookOpen size={14} className={isActive ? "text-indigo-400" : ""} />
+                Handbooks
+                {isActive && (
+                  <span className="absolute bottom-0 left-2 right-2 h-0.5 rounded-t-full bg-gradient-to-r from-indigo-500 to-violet-500" />
+                )}
+              </span>
+            )}
           </NavLink>
         </nav>
 
