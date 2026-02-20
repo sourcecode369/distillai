@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Shield, RefreshCw, Moon, Sun, Bell, User } from "lucide-react"
+import { Shield, RefreshCw, User } from "lucide-react"
 import { useTranslation } from "react-i18next"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils"
 
 const AdminHeader = ({ user, onRefresh, refreshing = false }) => {
   const { t } = useTranslation("admin")
-  const { darkMode, toggleDarkMode } = useApp()
+  const { } = useApp()
 
   // Right actions for Hero component
   const rightActions = (

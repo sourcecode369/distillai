@@ -1,11 +1,9 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
-import PropTypes from "prop-types";
-import { Search, Menu, ChevronRight, Github, Bookmark, Globe, User, TrendingUp, Settings, Shield, LogOut, LogIn, Moon, Sun, Loader2 } from "lucide-react";
+import { Search, Github, Bookmark, Globe, User, TrendingUp, Shield, LogOut, LogIn, Loader2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useNavigate, useSearchParams } from "react-router-dom";
 import { useApp } from "../context/AppContext";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuthModal } from "../context/AuthModalContext";
 import NotificationBell from "./NotificationBell";
 import SearchDropdown from "./SearchDropdown";
@@ -20,92 +18,69 @@ const getInitials = (user) => {
   return name[0]?.toUpperCase() || "U";
 };
 
-const Topbar = ({
-  toggleMobile,
-  toggleDesktop,
-  isDesktopOpen,
-}) => {
-  const { t } = useTranslation('header');
-  const { t: tCommon } = useTranslation('common');
-  const { bookmarks, darkMode, toggleDarkMode } = useApp();
+const Topbar = () => {
+  const { t } = useTranslation("header");
+  const { t: tCommon } = useTranslation("common");
+  const { bookmarks } = useApp();
   const { user, isAdmin, signOut } = useAuth();
   const { setIsLoginModalOpen } = useAuthModal();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const initialQuery = searchParams.get("q") || "";
 
-  const [searchQuery, setSearchQuery] = useState(initialQuery);
-  const [isSearchExpanded, setIsSearchExpanded] = useState(false);
+  const [searchQuery, setSearchQuery] = useState(searchParams.get("q") || "");
   const [showSearchDropdown, setShowSearchDropdown] = useState(false);
   const [showBookmarkDropdown, setShowBookmarkDropdown] = useState(false);
   const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const [isSigningOut, setIsSigningOut] = useState(false);
 
-  const searchInputRef = useRef(null);
-  const searchContainerRef = useRef(null);
-  const bookmarkButtonRef = useRef(null);
-  const languageButtonRef = useRef(null);
-  const userButtonRef = useRef(null);
+  const searchRef = useRef(null);
+  const bookmarkRef = useRef(null);
+  const languageRef = useRef(null);
+  const userRef = useRef(null);
 
-  // Sync local state with URL param
   useEffect(() => {
     setSearchQuery(searchParams.get("q") || "");
   }, [searchParams]);
 
+  // Close all dropdowns on outside click
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      const searchDropdown = document.querySelector('[data-search-dropdown]');
-      const isClickInSearchContainer = searchContainerRef.current?.contains(event.target);
-      const isClickInSearchDropdown = searchDropdown?.contains(event.target);
-      if (!isClickInSearchContainer && !isClickInSearchDropdown) {
-        if (!searchQuery) setIsSearchExpanded(false);
+    const handler = (e) => {
+      if (!searchRef.current?.contains(e.target) && !document.querySelector("[data-search-dropdown]")?.contains(e.target)) {
         setShowSearchDropdown(false);
       }
-
-      const bookmarkDropdown = document.querySelector('[data-bookmark-dropdown]');
-      if (!bookmarkButtonRef.current?.contains(event.target) && !bookmarkDropdown?.contains(event.target)) {
+      if (!bookmarkRef.current?.contains(e.target) && !document.querySelector("[data-bookmark-dropdown]")?.contains(e.target)) {
         setShowBookmarkDropdown(false);
       }
-
-      const languageDropdown = document.querySelector('[data-language-dropdown]');
-      if (!languageButtonRef.current?.contains(event.target) && !languageDropdown?.contains(event.target)) {
+      if (!languageRef.current?.contains(e.target) && !document.querySelector("[data-language-dropdown]")?.contains(e.target)) {
         setShowLanguageDropdown(false);
       }
-
-      if (!userButtonRef.current?.contains(event.target)) {
+      if (!userRef.current?.contains(e.target)) {
         setShowUserDropdown(false);
       }
     };
+    document.addEventListener("mousedown", handler, true);
+    return () => document.removeEventListener("mousedown", handler, true);
+  }, []);
 
-    document.addEventListener("mousedown", handleClickOutside, true);
-    return () => document.removeEventListener("mousedown", handleClickOutside, true);
-  }, [searchQuery]);
-
+  // Ctrl+K to open search
   useEffect(() => {
-    if (isSearchExpanded && searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-  }, [isSearchExpanded]);
-
-  useEffect(() => {
-    const handleKeyDown = (e) => {
+    const onKey = (e) => {
       if ((e.ctrlKey || e.metaKey) && e.key === "k") {
         e.preventDefault();
-        setIsSearchExpanded(true);
-      }
-      if (e.key === "Escape" && isSearchExpanded) {
-        setIsSearchExpanded(false);
-        setSearchQuery("");
+        setShowSearchDropdown(true);
       }
     };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isSearchExpanded]);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
-  const handleSearchClose = useCallback(() => setShowSearchDropdown(false), []);
-  const handleBookmarkClose = useCallback(() => setShowBookmarkDropdown(false), []);
-  const handleLanguageClose = useCallback(() => setShowLanguageDropdown(false), []);
+  const closeAll = () => {
+    setShowSearchDropdown(false);
+    setShowBookmarkDropdown(false);
+    setShowLanguageDropdown(false);
+    setShowUserDropdown(false);
+  };
 
   const handleSearch = useCallback((query) => {
     setSearchQuery(query);
@@ -113,103 +88,88 @@ const Topbar = ({
     navigate(`/search?q=${encodeURIComponent(query)}`);
   }, [navigate]);
 
-  const handleSearchButtonClick = useCallback((e) => {
-    e.stopPropagation();
-    setShowSearchDropdown(prev => !prev);
-    setShowBookmarkDropdown(false);
-    setShowLanguageDropdown(false);
-    setShowUserDropdown(false);
-  }, []);
-
-  const handleBookmarkButtonClick = useCallback((e) => {
-    e.stopPropagation();
-    setShowBookmarkDropdown(prev => !prev);
-    setShowSearchDropdown(false);
-    setShowLanguageDropdown(false);
-    setShowUserDropdown(false);
-  }, []);
-
-  const handleLanguageButtonClick = useCallback((e) => {
-    e.stopPropagation();
-    setShowLanguageDropdown(prev => !prev);
-    setShowSearchDropdown(false);
-    setShowBookmarkDropdown(false);
-    setShowUserDropdown(false);
-  }, []);
-
-  const handleUserButtonClick = useCallback((e) => {
-    e.stopPropagation();
-    if (!user) {
-      setIsLoginModalOpen(true);
-      return;
-    }
-    setShowUserDropdown(prev => !prev);
-    setShowSearchDropdown(false);
-    setShowBookmarkDropdown(false);
-    setShowLanguageDropdown(false);
-  }, [user, setIsLoginModalOpen]);
-
   const handleSignOut = async () => {
     if (isSigningOut) return;
     setIsSigningOut(true);
-    setShowUserDropdown(false);
-    try {
-      await signOut();
-      navigate("/");
-    } catch {
-      // ignore
-    } finally {
-      setIsSigningOut(false);
-    }
+    closeAll();
+    try { await signOut(); navigate("/"); } catch { /* ignore */ }
+    finally { setIsSigningOut(false); }
   };
+
+  const iconBtn = "min-w-[40px] min-h-[40px] w-10 h-10 flex items-center justify-center rounded-xl bg-gray-800/50 border border-gray-700/50 text-gray-400 hover:text-indigo-400 hover:bg-gray-800 hover:border-indigo-500/50 transition-all duration-200 touch-manipulation focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-950 relative";
 
   const initials = getInitials(user);
   const displayName = user?.user_metadata?.full_name || user?.email?.split("@")[0] || "User";
 
+  const navLink = ({ isActive }) =>
+    `text-sm font-semibold px-3.5 py-1.5 rounded-xl transition-all duration-200 ${isActive
+      ? "bg-indigo-600/20 border border-indigo-500/30 text-indigo-300"
+      : "text-gray-400 hover:text-gray-200 hover:bg-gray-800/60 border border-transparent"}`;
+
   return (
-    <header className="sticky top-0 z-40 bg-gray-950/80 backdrop-blur-xl border-b h-16 transition-all shadow-2xl" style={{
-      borderImage: 'linear-gradient(to right, transparent, rgba(148, 163, 184, 0.25), transparent) 1'
-    }}>
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-violet-500/5 pointer-events-none" />
+    <header
+      className="sticky top-0 z-40 bg-gray-950/90 backdrop-blur-xl border-b border-gray-800/60 h-16 shadow-lg"
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/4 via-transparent to-violet-500/4 pointer-events-none" />
 
-      <div className="relative h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
-        {/* Left: hamburger */}
-        <div className="flex items-center gap-4 flex-1">
-          <button
-            onClick={toggleMobile}
-            className="lg:hidden min-w-[44px] min-h-[44px] p-2.5 -ml-2 text-gray-400 hover:text-indigo-400 hover:bg-gray-800/50 rounded-xl transition-all duration-300 flex items-center justify-center touch-manipulation border border-transparent hover:border-indigo-500/30"
-            aria-label={t('toggleMobileMenu')}
-          >
-            <Menu size={22} aria-hidden="true" />
-          </button>
+      <div className="relative h-full max-w-screen-2xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
 
-          {!isDesktopOpen && (
-            <button
-              onClick={toggleDesktop}
-              className="hidden lg:flex items-center justify-center w-9 h-9 -ml-2 text-gray-400 hover:text-white hover:bg-gradient-to-r hover:from-indigo-500 hover:to-violet-500 rounded-xl border border-gray-800 hover:border-transparent transition-all duration-300 group shadow-sm hover:shadow-lg hover:shadow-indigo-500/30"
-              title={t('expandSidebar')}
-            >
-              <ChevronRight size={18} className="group-hover:translate-x-[2px] transition-transform duration-300" strokeWidth={2.5} aria-hidden="true" />
-            </button>
+        {/* ── LEFT: Logo ───────────────────────────────────────────────── */}
+        <Link to="/" className="flex items-center gap-2.5 shrink-0 group">
+          <div className="relative flex-shrink-0 w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700 shadow-lg shadow-indigo-500/30 group-hover:shadow-indigo-500/50 group-hover:scale-[1.05] transition-all duration-200 ring-2 ring-indigo-400/20 flex items-center justify-center">
+            <svg viewBox="0 0 100 100" className="w-5 h-5" aria-hidden="true">
+              <defs>
+                <linearGradient id="navD" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#fff" />
+                  <stop offset="100%" stopColor="#c7d2fe" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M28 20 L28 80 L52 80 C70 80 78 68 78 50 C78 32 70 20 52 20 Z M40 32 L50 32 C62 32 66 39 66 50 C66 61 62 68 50 68 L40 68 Z"
+                fill="url(#navD)"
+              />
+            </svg>
+          </div>
+          <span className="hidden sm:flex items-baseline gap-1 leading-none">
+            <span className="font-extrabold text-lg bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">Distill</span>
+            <span className="font-semibold text-lg text-gray-400">AI</span>
+          </span>
+        </Link>
+
+        {/* ── CENTER: Nav ──────────────────────────────────────────────── */}
+        <nav className="hidden md:flex items-center gap-1">
+          {user && (
+            <NavLink to="/" end className={navLink}>
+              Dashboard
+            </NavLink>
           )}
-        </div>
+          <NavLink to="/handbooks" className={navLink}>
+            Handbooks
+          </NavLink>
+        </nav>
 
-        {/* Right: actions */}
-        <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+        {/* ── RIGHT: Actions ───────────────────────────────────────────── */}
+        <div className="flex items-center gap-1.5 shrink-0">
+
           {/* Search */}
           {user && (
-            <div ref={searchContainerRef} className="relative">
+            <div ref={searchRef} className="relative">
               <button
-                onClick={handleSearchButtonClick}
-                className="min-w-[44px] min-h-[44px] w-11 h-11 flex items-center justify-center rounded-xl bg-gray-800/50 border border-gray-700/50 text-gray-400 hover:text-indigo-400 hover:bg-gray-800 hover:border-indigo-500/50 transition-all duration-300 touch-manipulation focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-950"
-                title={`${t('search')} (Ctrl+K)`}
-                aria-label={t('search')}
+                onClick={() => { closeAll(); setShowSearchDropdown(p => !p); }}
+                className={iconBtn}
+                title={`${t("search")} (Ctrl+K)`}
+                aria-label={t("search")}
               >
-                <Search size={20} />
+                <Search size={18} />
               </button>
               {showSearchDropdown && (
-                <div className="absolute top-full right-0 mt-2 z-50" style={{ maxWidth: 'calc(100vw - 1rem)' }}>
-                  <SearchDropdown onClose={handleSearchClose} onSearch={handleSearch} searchQuery={searchQuery} onQueryChange={setSearchQuery} />
+                <div className="absolute top-full right-0 mt-2 z-50" style={{ maxWidth: "calc(100vw - 1rem)" }}>
+                  <SearchDropdown
+                    onClose={() => setShowSearchDropdown(false)}
+                    onSearch={handleSearch}
+                    searchQuery={searchQuery}
+                    onQueryChange={setSearchQuery}
+                  />
                 </div>
               )}
             </div>
@@ -217,23 +177,23 @@ const Topbar = ({
 
           {/* Bookmarks */}
           {user && (
-            <div ref={bookmarkButtonRef} className="relative">
+            <div ref={bookmarkRef} className="relative">
               <button
-                onClick={handleBookmarkButtonClick}
-                className="min-w-[44px] min-h-[44px] w-11 h-11 flex items-center justify-center rounded-xl bg-gray-800/50 border border-gray-700/50 text-gray-400 hover:text-indigo-400 hover:bg-gray-800 hover:border-indigo-500/50 transition-all duration-300 touch-manipulation focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-950 relative"
-                title={t('bookmarks')}
-                aria-label={t('bookmarks')}
+                onClick={() => { closeAll(); setShowBookmarkDropdown(p => !p); }}
+                className={iconBtn}
+                title={t("bookmarks")}
+                aria-label={t("bookmarks")}
               >
-                <Bookmark size={20} />
+                <Bookmark size={18} />
                 {bookmarks.length > 0 && (
-                  <span className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-indigo-500 to-violet-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center ring-2 ring-gray-950">
-                    {bookmarks.length > 9 ? '9+' : bookmarks.length}
+                  <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-indigo-500 text-[9px] font-bold text-white flex items-center justify-center ring-2 ring-gray-950">
+                    {bookmarks.length > 9 ? "9+" : bookmarks.length}
                   </span>
                 )}
               </button>
               {showBookmarkDropdown && (
-                <div className="absolute top-full right-0 mt-2 z-50" style={{ maxWidth: 'calc(100vw - 1rem)' }}>
-                  <BookmarkDropdown onClose={handleBookmarkClose} />
+                <div className="absolute top-full right-0 mt-2 z-50" style={{ maxWidth: "calc(100vw - 1rem)" }}>
+                  <BookmarkDropdown onClose={() => setShowBookmarkDropdown(false)} />
                 </div>
               )}
             </div>
@@ -242,43 +202,43 @@ const Topbar = ({
           <NotificationBell />
 
           {/* Language */}
-          <div ref={languageButtonRef} className="relative">
+          <div ref={languageRef} className="relative">
             <button
-              onClick={handleLanguageButtonClick}
-              className="min-w-[44px] min-h-[44px] w-11 h-11 flex items-center justify-center rounded-xl bg-gray-800/50 border border-gray-700/50 text-gray-400 hover:text-indigo-400 hover:bg-gray-800 hover:border-indigo-500/50 transition-all duration-300 touch-manipulation focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-950"
-              title={t('selectLanguage')}
-              aria-label={t('selectLanguage')}
+              onClick={() => { closeAll(); setShowLanguageDropdown(p => !p); }}
+              className={iconBtn}
+              title={t("selectLanguage")}
+              aria-label={t("selectLanguage")}
             >
-              <Globe size={20} />
+              <Globe size={18} />
             </button>
             {showLanguageDropdown && (
-              <div className="absolute top-full right-0 mt-2 z-50" style={{ maxWidth: 'calc(100vw - 1rem)' }}>
-                <LanguageDropdown onClose={handleLanguageClose} />
+              <div className="absolute top-full right-0 mt-2 z-50" style={{ maxWidth: "calc(100vw - 1rem)" }}>
+                <LanguageDropdown onClose={() => setShowLanguageDropdown(false)} />
               </div>
             )}
           </div>
 
           {/* Separator */}
-          <div className="hidden sm:block h-8 w-px bg-gray-800 mx-1" aria-hidden="true" />
+          <div className="hidden sm:block h-7 w-px bg-gray-800 mx-1" aria-hidden="true" />
 
           {/* GitHub */}
           <a
             href="https://github.com/sourcecode369"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:flex items-center gap-2 bg-gray-800/60 hover:bg-gray-800 text-gray-300 border border-gray-700/50 hover:border-gray-600 h-9 px-3.5 rounded-xl text-sm font-semibold transition-all duration-200 hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-950"
-            aria-label={t('starOnGitHub')}
+            className="hidden sm:flex items-center gap-2 h-9 px-3 rounded-xl bg-gray-800/60 border border-gray-700/50 text-gray-300 hover:text-gray-100 hover:bg-gray-800 hover:border-gray-600 text-sm font-semibold transition-all duration-200 hover:scale-[1.02]"
+            aria-label={t("starOnGitHub")}
           >
-            <Github size={16} aria-hidden="true" />
-            <span className="hidden md:inline">{t('star')}</span>
+            <Github size={16} />
+            <span className="hidden lg:inline">{t("star")}</span>
           </a>
 
-          {/* User avatar / Sign In */}
-          <div ref={userButtonRef} className="relative">
+          {/* User avatar or Login */}
+          <div ref={userRef} className="relative">
             {user ? (
               <>
                 <button
-                  onClick={handleUserButtonClick}
+                  onClick={() => { closeAll(); setShowUserDropdown(p => !p); }}
                   className="flex items-center justify-center h-9 w-9 rounded-full bg-gradient-to-br from-indigo-600 to-violet-600 text-white text-sm font-bold ring-2 ring-indigo-500/30 hover:ring-indigo-500/60 hover:scale-[1.05] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-950 select-none"
                   aria-label="User menu"
                   aria-expanded={showUserDropdown}
@@ -287,75 +247,61 @@ const Topbar = ({
                 </button>
 
                 {showUserDropdown && (
-                  <div className="absolute top-full right-0 mt-2 w-60 rounded-2xl border border-gray-800 bg-gray-900/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.6)] overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                    {/* Header */}
+                  <div className="absolute top-full right-0 mt-2 w-56 rounded-2xl border border-gray-800 bg-gray-900/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.6)] overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                    {/* User info */}
                     <div className="px-4 pt-4 pb-3 border-b border-gray-800/60">
                       <div className="flex items-center gap-3">
-                        <div className="flex items-center justify-center h-10 w-10 rounded-full bg-gradient-to-br from-indigo-600 to-violet-600 text-white text-sm font-bold flex-shrink-0">
+                        <div className="flex items-center justify-center h-9 w-9 rounded-full bg-gradient-to-br from-indigo-600 to-violet-600 text-white text-sm font-bold flex-shrink-0">
                           {initials}
                         </div>
                         <div className="min-w-0">
                           <p className="text-sm font-bold text-gray-100 truncate">{displayName}</p>
-                          <p className="text-[11px] text-gray-500 truncate">{user.email}</p>
+                          <p className="text-[11px] text-gray-600 truncate">{user.email}</p>
                         </div>
                       </div>
                     </div>
 
-                    {/* Menu items */}
+                    {/* Links */}
                     <div className="py-1.5 px-1.5 space-y-0.5">
                       <Link
                         to="/profile"
-                        onClick={() => setShowUserDropdown(false)}
+                        onClick={closeAll}
                         className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-300 hover:text-gray-100 hover:bg-gray-800/60 transition-all duration-150"
                       >
-                        <User size={15} className="text-indigo-400 flex-shrink-0" />
-                        {tCommon('nav.profile')}
+                        <User size={14} className="text-indigo-400 flex-shrink-0" />
+                        {tCommon("nav.profile")}
                       </Link>
                       <Link
                         to="/progress"
-                        onClick={() => setShowUserDropdown(false)}
+                        onClick={closeAll}
                         className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-300 hover:text-gray-100 hover:bg-gray-800/60 transition-all duration-150"
                       >
-                        <TrendingUp size={15} className="text-violet-400 flex-shrink-0" />
-                        {tCommon('nav.progress')}
+                        <TrendingUp size={14} className="text-indigo-400 flex-shrink-0" />
+                        {tCommon("nav.progress")}
                       </Link>
                       {isAdmin && (
                         <Link
                           to="/admin"
-                          onClick={() => setShowUserDropdown(false)}
+                          onClick={closeAll}
                           className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-indigo-400 hover:text-indigo-300 hover:bg-indigo-600/10 transition-all duration-150"
                         >
-                          <Shield size={15} className="flex-shrink-0" />
-                          {tCommon('nav.admin')}
+                          <Shield size={14} className="flex-shrink-0" />
+                          {tCommon("nav.admin")}
                         </Link>
                       )}
                     </div>
 
-                    <div className="px-2.5 py-2 border-t border-gray-800/60">
-                      <div className="flex items-center justify-between px-3 py-2">
-                        <span className="flex items-center gap-2 text-sm font-medium text-gray-400">
-                          {darkMode ? <Moon size={14} /> : <Sun size={14} />}
-                          {tCommon('nav.darkMode') || 'Dark Mode'}
-                        </span>
-                        <button
-                          onClick={(e) => { e.stopPropagation(); toggleDarkMode(); }}
-                          className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors focus:outline-none ${darkMode ? 'bg-indigo-600' : 'bg-gray-600'}`}
-                          role="switch"
-                          aria-checked={darkMode}
-                        >
-                          <span className={`${darkMode ? 'translate-x-4' : 'translate-x-0.5'} inline-block h-4 w-4 transform rounded-full bg-white transition-transform`} />
-                        </button>
-                      </div>
-                    </div>
-
-                    <div className="px-2.5 pb-2 border-t border-gray-800/60 pt-1.5">
+                    {/* Sign out */}
+                    <div className="px-2.5 pb-2.5 pt-1 border-t border-gray-800/60">
                       <button
                         onClick={handleSignOut}
                         disabled={isSigningOut}
                         className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-all duration-150 disabled:opacity-60"
                       >
-                        {isSigningOut ? <Loader2 size={15} className="animate-spin flex-shrink-0" /> : <LogOut size={15} className="flex-shrink-0" />}
-                        {isSigningOut ? (tCommon('messages.signingOut') || 'Signing out…') : tCommon('nav.signOut')}
+                        {isSigningOut
+                          ? <Loader2 size={14} className="animate-spin flex-shrink-0" />
+                          : <LogOut size={14} className="flex-shrink-0" />}
+                        {isSigningOut ? (tCommon("messages.signingOut") || "Signing out…") : tCommon("nav.signOut")}
                       </button>
                     </div>
                   </div>
@@ -364,24 +310,18 @@ const Topbar = ({
             ) : (
               <button
                 onClick={() => setIsLoginModalOpen(true)}
-                className="flex items-center gap-2 h-9 px-3.5 rounded-xl bg-indigo-600/20 border border-indigo-500/30 text-indigo-300 hover:bg-indigo-600/30 hover:border-indigo-500/50 text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-950"
-                aria-label={tCommon('nav.signIn')}
+                className="flex items-center gap-2 h-9 px-4 rounded-xl bg-indigo-600/20 border border-indigo-500/30 text-indigo-300 hover:bg-indigo-600/30 hover:border-indigo-500/60 text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-950"
               >
-                <LogIn size={15} />
-                <span className="hidden sm:inline">Login / Signup</span>
+                <LogIn size={14} />
+                <span>Login / Signup</span>
               </button>
             )}
           </div>
+
         </div>
       </div>
     </header>
   );
-};
-
-Topbar.propTypes = {
-  toggleMobile: PropTypes.func.isRequired,
-  toggleDesktop: PropTypes.func.isRequired,
-  isDesktopOpen: PropTypes.bool.isRequired,
 };
 
 export default Topbar;

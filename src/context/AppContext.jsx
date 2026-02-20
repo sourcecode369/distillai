@@ -12,10 +12,10 @@ export const useApp = () => {
 };
 
 export const AppProvider = ({ children }) => {
-  const [darkMode, setDarkMode] = useState(() => {
-    const saved = localStorage.getItem("darkMode");
-    return saved !== null ? JSON.parse(saved) : true; // Default to dark mode
-  });
+  // Dark mode is permanently on — no toggle
+  useEffect(() => {
+    document.documentElement.classList.add("dark");
+  }, []);
 
   const [bookmarks, setBookmarks] = useState(() => {
     const saved = localStorage.getItem("bookmarks");
@@ -38,27 +38,6 @@ export const AppProvider = ({ children }) => {
 
   const removeToast = useCallback((id) => {
     setToasts((prev) => prev.filter((toast) => toast.id !== id));
-  }, []);
-
-  // Apply dark mode class to document immediately on mount
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-    localStorage.setItem("darkMode", JSON.stringify(darkMode));
-  }, [darkMode]);
-
-  // Apply initial dark mode class on mount (before React hydration)
-  useEffect(() => {
-    const saved = localStorage.getItem("darkMode");
-    const initialDarkMode = saved !== null ? JSON.parse(saved) : true;
-    if (initialDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
   }, []);
 
   // Save bookmarks to localStorage (fallback for offline)
@@ -148,10 +127,6 @@ export const AppProvider = ({ children }) => {
     }
   }, []);
 
-
-  const toggleDarkMode = useCallback(() => {
-    setDarkMode((prev) => !prev);
-  }, []);
 
   const addBookmark = useCallback(async (item, userId = null) => {
     const bookmark = {
@@ -289,8 +264,6 @@ export const AppProvider = ({ children }) => {
   }, []);
 
   const value = useMemo(() => ({
-    darkMode,
-    toggleDarkMode,
     bookmarks,
     addBookmark,
     removeBookmark,
@@ -303,8 +276,6 @@ export const AppProvider = ({ children }) => {
     syncUserData,
     clearUserData,
   }), [
-    darkMode,
-    toggleDarkMode,
     bookmarks,
     addBookmark,
     removeBookmark,

@@ -56,7 +56,7 @@ import { translateSectionsWithCategories } from "../utils/translateContent";
 
 const TopicView = () => {
   const { t } = useTranslation('handbook');
-  const { addToHistory, darkMode } = useApp();
+  const { addToHistory } = useApp();
   const { user } = useAuth();
   const queryClient = useQueryClient();
   const navigate = useNavigate();
@@ -352,7 +352,6 @@ const TopicView = () => {
       <TopicProgressBar
         readingProgress={readingProgress}
         sidebarOffset={sidebarOffset}
-        darkMode={darkMode}
       />
 
       <div className="relative min-h-screen bg-slate-950 pb-24 topic-content">

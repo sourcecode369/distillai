@@ -50,7 +50,7 @@ const Sidebar = () => {
     };
     fetchCategories();
   }, []);
-  const { showToast, darkMode, toggleDarkMode } = useApp();
+  const { showToast } = useApp();
 
 
   useEffect(() => {
