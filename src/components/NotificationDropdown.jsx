@@ -76,7 +76,7 @@ const NotificationDropdown = ({ onClose, onMarkAllRead }) => {
 
   return (
     <div
-      className="absolute right-0 sm:right-0 top-full mt-2 w-[calc(100vw-1rem)] sm:w-64 max-w-[calc(100vw-1rem)] sm:max-w-[16rem] bg-slate-950/95 backdrop-blur-xl rounded-2xl border border-slate-800/50 shadow-2xl shadow-black/50 z-50 flex flex-col overflow-hidden"
+      className="w-full sm:w-64 bg-slate-950/95 backdrop-blur-xl rounded-2xl border border-slate-800/50 shadow-2xl shadow-black/50 flex flex-col overflow-hidden"
       role="menu"
       aria-label={t('dropdown.ariaLabel')}
       aria-live="polite"

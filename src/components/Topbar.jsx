@@ -191,7 +191,7 @@ const Topbar = () => {
                 <Search size={18} />
               </button>
               {showSearchDropdown && (
-                <div className="absolute top-full right-0 mt-2 z-50" style={{ maxWidth: "calc(100vw - 1rem)" }}>
+                <div className="fixed sm:absolute top-16 sm:top-full left-2 right-2 sm:left-auto sm:right-0 sm:mt-2 z-50">
                   <SearchDropdown
                     onClose={() => setShowSearchDropdown(false)}
                     onSearch={handleSearch}
@@ -220,7 +220,7 @@ const Topbar = () => {
                 )}
               </button>
               {showBookmarkDropdown && (
-                <div className="absolute top-full right-0 mt-2 z-50" style={{ maxWidth: "calc(100vw - 1rem)" }}>
+                <div className="fixed sm:absolute top-16 sm:top-full left-2 right-2 sm:left-auto sm:right-0 sm:mt-2 z-50">
                   <BookmarkDropdown onClose={() => setShowBookmarkDropdown(false)} />
                 </div>
               )}
@@ -240,7 +240,7 @@ const Topbar = () => {
               <Globe size={18} />
             </button>
             {showLanguageDropdown && (
-              <div className="absolute top-full right-0 mt-2 z-50" style={{ maxWidth: "calc(100vw - 1rem)" }}>
+              <div className="fixed sm:absolute top-16 sm:top-full left-2 right-2 sm:left-auto sm:right-0 sm:mt-2 z-50">
                 <LanguageDropdown onClose={() => setShowLanguageDropdown(false)} />
               </div>
             )}
@@ -275,7 +275,7 @@ const Topbar = () => {
                 </button>
 
                 {showUserDropdown && (
-                  <div className="absolute top-full right-0 mt-2 w-56 rounded-2xl border border-gray-800 bg-gray-900/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.6)] overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                  <div className="fixed sm:absolute top-16 sm:top-full left-2 right-2 sm:left-auto sm:right-0 sm:mt-2 sm:w-56 rounded-2xl border border-gray-800 bg-gray-900/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.6)] overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-150">
                     {/* User info */}
                     <div className="px-4 pt-4 pb-3 border-b border-gray-800/60">
                       <div className="flex items-center gap-3">

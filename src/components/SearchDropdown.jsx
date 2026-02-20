@@ -202,7 +202,7 @@ const SearchDropdown = ({
     <div
       ref={dropdownRef}
       data-search-dropdown
-      className="absolute right-0 sm:right-0 top-full mt-2 w-[calc(100vw-1rem)] sm:w-96 max-w-[calc(100vw-1rem)] sm:max-w-[24rem] bg-slate-950/95 backdrop-blur-xl rounded-2xl border border-slate-800/50 shadow-2xl shadow-black/50 z-50 flex flex-col overflow-hidden"
+      className="w-full sm:w-96 bg-slate-950/95 backdrop-blur-xl rounded-2xl border border-slate-800/50 shadow-2xl shadow-black/50 flex flex-col overflow-hidden"
       onMouseDown={(e) => e.stopPropagation()}
       onClick={(e) => e.stopPropagation()}
     >

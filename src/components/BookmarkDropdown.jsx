@@ -57,7 +57,7 @@ const BookmarkDropdown = ({ onClose }) => {
   return (
     <div
       data-bookmark-dropdown
-      className="absolute right-0 sm:right-0 top-full mt-2 w-[calc(100vw-1rem)] sm:w-80 max-w-[calc(100vw-1rem)] sm:max-w-[20rem] bg-slate-950/95 backdrop-blur-xl rounded-2xl border border-slate-800/50 shadow-2xl shadow-black/50 z-50 flex flex-col overflow-hidden"
+      className="w-full sm:w-80 bg-slate-950/95 backdrop-blur-xl rounded-2xl border border-slate-800/50 shadow-2xl shadow-black/50 flex flex-col overflow-hidden"
       onClick={(e) => e.stopPropagation()}
     >
       {/* Animated gradient border */}

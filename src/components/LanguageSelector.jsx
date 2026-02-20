@@ -24,7 +24,7 @@ const LanguageDropdown = ({ onClose }) => {
   return (
     <div
       data-language-dropdown
-      className="w-[calc(100vw-1rem)] sm:w-64 max-w-[calc(100vw-1rem)] sm:max-w-[16rem] bg-slate-950/95 backdrop-blur-xl rounded-2xl border border-slate-800/50 shadow-2xl shadow-black/50 z-50 flex flex-col overflow-hidden"
+      className="w-full sm:w-64 bg-slate-950/95 backdrop-blur-xl rounded-2xl border border-slate-800/50 shadow-2xl shadow-black/50 flex flex-col overflow-hidden"
       onClick={(e) => e.stopPropagation()}
       onMouseDown={(e) => e.stopPropagation()}
     >

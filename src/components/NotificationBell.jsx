@@ -61,7 +61,7 @@ const NotificationBell = () => {
       </button>
 
       {isDropdownOpen && (
-        <div className="absolute top-full right-0 sm:right-0 left-auto sm:left-auto mt-2 z-50" style={{ maxWidth: 'calc(100vw - 1rem)' }}>
+        <div className="fixed sm:absolute top-16 sm:top-full left-2 right-2 sm:left-auto sm:right-0 sm:mt-2 z-50">
           <NotificationDropdown
             onClose={() => setIsDropdownOpen(false)}
             onMarkAllRead={() => {
