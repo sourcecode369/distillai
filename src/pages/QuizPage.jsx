@@ -155,8 +155,8 @@ const QuizPage = () => {
     return (
       <div className="min-h-screen flex items-center justify-center p-4">
         <div className="max-w-2xl w-full text-center">
-          <div className="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-elegant">
-            <p className="text-slate-600 dark:text-slate-400 mb-6">
+          <div className="bg-gray-900/60 rounded-3xl p-8 shadow-elegant">
+            <p className="text-gray-500 mb-6">
               {t("empty.title")}
             </p>
             <button
@@ -188,7 +188,7 @@ const QuizPage = () => {
         rightActions={
           !isSubmitted && (
             <div className="flex items-center gap-3">
-              <div className="text-sm font-semibold text-slate-600 dark:text-slate-400">
+              <div className="text-sm font-semibold text-gray-500">
                 {currentQuestionIndex + 1}/{questions.length}
               </div>
               <div className="w-32 h-2 bg-gray-200 dark:bg-slate-700 rounded-full overflow-hidden">
@@ -226,7 +226,7 @@ const QuizPage = () => {
             </div>
 
             {/* Current Question */}
-            <div className="bg-white dark:bg-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-elegant hover:shadow-elegant-hover transition-all">
+            <div className="bg-gray-900/60 rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-elegant hover:shadow-elegant-hover transition-all">
               <div className="mb-4 sm:mb-6">
                 <div className="flex items-start sm:items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
                   <span className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white font-bold text-base sm:text-lg shadow-elegant shadow-indigo-500/30 flex-shrink-0">
@@ -345,7 +345,7 @@ const QuizPage = () => {
                 return (
                   <div
                     key={index}
-                    className={`bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-elegant border-2 ${isCorrect
+                    className={`bg-gray-900/60 rounded-2xl p-6 shadow-elegant border-2 ${isCorrect
                       ? "border-green-200 dark:border-green-800"
                       : "border-red-200 dark:border-red-800"
                       }`}
@@ -414,7 +414,7 @@ const QuizPage = () => {
                                       ? "text-green-700 dark:text-green-300"
                                       : isUserAnswer && !isCorrect
                                         ? "text-red-700 dark:text-red-300"
-                                        : "text-slate-600 dark:text-slate-400"
+                                        : "text-gray-500"
                                       }`}
                                   >
                                     {option}

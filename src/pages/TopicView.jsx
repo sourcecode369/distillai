@@ -468,8 +468,8 @@ const TopicView = () => {
                     <button
                       onClick={() => setHideCode(!hideCode)}
                       className={`min-w-[44px] min-h-[44px] p-2.5 rounded-lg border transition-all duration-300 shadow-sm hover:shadow-md touch-manipulation flex items-center justify-center active:scale-95 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ${hideCode
-                        ? "bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 border-indigo-300 dark:border-indigo-700 hover:bg-indigo-200 dark:hover:bg-indigo-900/50"
-                        : "bg-white dark:bg-slate-800 text-gray-600 dark:text-slate-400 border-gray-200 dark:border-slate-700 hover:bg-gray-100 dark:hover:bg-slate-700 hover:border-indigo-300 dark:hover:border-indigo-700"
+                        ? "bg-indigo-900/30 text-indigo-400 border-indigo-700 hover:bg-indigo-900/50"
+                        : "bg-gray-900/60 text-gray-500 border-gray-800 hover:bg-gray-800/60 hover:border-indigo-700"
                         }`}
                       title={hideCode ? "Show code blocks" : "Hide code blocks"}
                       aria-label={hideCode ? "Show code blocks" : "Hide code blocks"}
@@ -483,7 +483,7 @@ const TopicView = () => {
                 <div className="flex items-center gap-1.5 pr-1.5 sm:pr-2 border-r border-gray-200 dark:border-slate-700">
                   <button
                     onClick={handlePrint}
-                    className="min-w-[44px] min-h-[44px] p-2.5 rounded-lg bg-white dark:bg-slate-800 text-gray-600 dark:text-slate-400 hover:bg-gray-100 dark:hover:bg-slate-700 border border-gray-200 dark:border-slate-700 hover:border-indigo-300 dark:hover:border-indigo-700 transition-all duration-300 shadow-sm hover:shadow-md touch-manipulation flex items-center justify-center active:scale-95 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="min-w-[44px] min-h-[44px] p-2.5 rounded-lg bg-gray-900/60 text-gray-500 hover:bg-gray-800/60 border border-gray-800 hover:border-indigo-700 transition-all duration-300 shadow-sm hover:shadow-md touch-manipulation flex items-center justify-center active:scale-95 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                     title="Print"
                     aria-label="Print"
                   >
@@ -491,7 +491,7 @@ const TopicView = () => {
                   </button>
                   <button
                     onClick={exportToPDF}
-                    className="min-w-[44px] min-h-[44px] p-2.5 rounded-lg bg-white dark:bg-slate-800 text-gray-600 dark:text-slate-400 hover:bg-gray-100 dark:hover:bg-slate-700 border border-gray-200 dark:border-slate-700 hover:border-indigo-300 dark:hover:border-indigo-700 transition-all duration-300 shadow-sm hover:shadow-md touch-manipulation flex items-center justify-center active:scale-95 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="min-w-[44px] min-h-[44px] p-2.5 rounded-lg bg-gray-900/60 text-gray-500 hover:bg-gray-800/60 border border-gray-800 hover:border-indigo-700 transition-all duration-300 shadow-sm hover:shadow-md touch-manipulation flex items-center justify-center active:scale-95 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                     title="Export to PDF"
                     aria-label="Export to PDF"
                   >

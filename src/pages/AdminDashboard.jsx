@@ -86,7 +86,7 @@ const TopicModal = lazy(() => import("../components/admin/TopicModal"));
 const PageSectionHeader = ({ title, description, action }) => (
   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
     <div>
-      <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-1.5 tracking-tight">
+      <h2 className="text-2xl font-bold text-gray-100 mb-1.5 tracking-tight">
         {title}
       </h2>
       {description && (
@@ -622,8 +622,8 @@ const AdminDashboard = () => {
       {showTopicModal && (
         <Suspense fallback={
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-            <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 max-w-md w-full mx-4">
-              <div className="h-6 w-48 bg-gray-200 dark:bg-slate-700 rounded animate-pulse mb-4"></div>
+            <div className="bg-gray-900 rounded-2xl p-8 max-w-md w-full mx-4">
+              <div className="h-6 w-48 bg-gray-800 rounded animate-pulse mb-4"></div>
               <div className="space-y-3">
                 <div className="h-4 w-full bg-gray-200 dark:bg-slate-700 rounded animate-pulse"></div>
                 <div className="h-4 w-3/4 bg-gray-200 dark:bg-slate-700 rounded animate-pulse"></div>

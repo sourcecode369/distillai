@@ -237,7 +237,7 @@ const GlobalSearchResultsPage = () => {
                 onClick={() => setTypeFilter(null)}
                 className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 ${typeFilter === null
                   ? "bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-500/30"
-                  : "bg-white dark:bg-slate-800 text-gray-700 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 border border-gray-200 dark:border-slate-700"
+                  : "bg-gray-900/60 text-gray-400 hover:bg-indigo-900/20 border border-gray-800"
                   }`}
               >
                 {t("results.filterButtons.all")}
@@ -246,7 +246,7 @@ const GlobalSearchResultsPage = () => {
                 onClick={() => setTypeFilter(SEARCH_TYPES.CATEGORY)}
                 className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 ${typeFilter === SEARCH_TYPES.CATEGORY
                   ? "bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-500/30"
-                  : "bg-white dark:bg-slate-800 text-gray-700 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 border border-gray-200 dark:border-slate-700"
+                  : "bg-gray-900/60 text-gray-400 hover:bg-indigo-900/20 border border-gray-800"
                   }`}
               >
                 {t("results.filterButtons.handbooks")}
@@ -255,7 +255,7 @@ const GlobalSearchResultsPage = () => {
                 onClick={() => setTypeFilter(SEARCH_TYPES.TOPIC)}
                 className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 ${typeFilter === SEARCH_TYPES.TOPIC
                   ? "bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-500/30"
-                  : "bg-white dark:bg-slate-800 text-gray-700 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 border border-gray-200 dark:border-slate-700"
+                  : "bg-gray-900/60 text-gray-400 hover:bg-indigo-900/20 border border-gray-800"
                   }`}
               >
                 {t("results.filterButtons.topics")}
@@ -264,7 +264,7 @@ const GlobalSearchResultsPage = () => {
                 onClick={() => setTypeFilter(SEARCH_TYPES.QUIZ)}
                 className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 ${typeFilter === SEARCH_TYPES.QUIZ
                   ? "bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-500/30"
-                  : "bg-white dark:bg-slate-800 text-gray-700 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 border border-gray-200 dark:border-slate-700"
+                  : "bg-gray-900/60 text-gray-400 hover:bg-indigo-900/20 border border-gray-800"
                   }`}
               >
                 {t("results.filterButtons.quizzes")}

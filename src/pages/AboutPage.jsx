@@ -121,7 +121,7 @@ const AboutPage = () => {
       />
       {/* Animated Background */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/40 via-violet-50/20 to-pink-50/40 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-gray-950 to-gray-900"></div>
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-purple-400/15 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-blue-400/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }}></div>
         <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '3s' }}></div>
@@ -137,7 +137,7 @@ const AboutPage = () => {
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900 dark:bg-slate-800 text-white rounded-xl hover:bg-slate-800 dark:hover:bg-slate-700 transition-all duration-300 shadow-md hover:shadow-lg font-medium text-sm hover:scale-[1.02] active:scale-[0.98] group"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-800 text-gray-200 rounded-xl hover:bg-gray-700 transition-all duration-300 shadow-md hover:shadow-lg font-medium text-sm hover:scale-[1.02] active:scale-[0.98] group"
           >
             <Github size={16} className="group-hover:scale-110 transition-transform duration-300" />
             {t('about.viewOnGitHub')}
@@ -153,10 +153,10 @@ const AboutPage = () => {
             <Sparkles size={24} className="text-indigo-500 dark:text-indigo-400" />
             <div className="h-px w-16 bg-gradient-to-r from-transparent via-indigo-500 to-transparent"></div>
           </div>
-          <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-gray-50 mb-2">
+          <h2 className="text-2xl lg:text-3xl font-bold text-gray-100 mb-2">
             {t('about.ourJourney.title')}
           </h2>
-          <p className="text-lg lg:text-xl text-gray-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg lg:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
             {t('about.ourJourney.subtitle')}
           </p>
         </div>
@@ -183,12 +183,12 @@ const AboutPage = () => {
                 {/* Content Card */}
                 <div className={`flex-1 ${index % 2 === 0 ? 'lg:text-left' : 'lg:text-right'} text-center lg:text-left`}>
                   <div className="relative group">
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/80 to-gray-50/80 dark:from-slate-800/80 dark:to-slate-900/80 rounded-3xl blur-xl"></div>
-                    <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-3xl shadow-xl border border-gray-200/50 dark:border-slate-700/50 p-6 lg:p-8 hover:shadow-2xl transition-all duration-300">
-                      <h3 className="text-xl lg:text-2xl font-bold text-slate-900 dark:text-gray-50 mb-3">
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-900/60 to-gray-950/60 rounded-3xl blur-xl"></div>
+                    <div className="relative bg-gray-900/60 backdrop-blur-sm rounded-3xl shadow-xl border border-gray-800/60 p-6 lg:p-8 hover:shadow-2xl transition-all duration-300">
+                      <h3 className="text-xl lg:text-2xl font-bold text-gray-100 mb-3">
                         {step.title}
                       </h3>
-                      <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed font-light">
+                      <p className="text-lg text-gray-400 leading-relaxed font-light">
                         {step.description}
                       </p>
                     </div>
@@ -203,10 +203,10 @@ const AboutPage = () => {
       {/* Stats Section */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="text-center mb-8">
-          <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-gray-50 mb-2">
+          <h2 className="text-2xl lg:text-3xl font-bold text-gray-100 mb-2">
             {t('about.growingTogether.title')}
           </h2>
-          <p className="text-lg lg:text-xl text-gray-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg lg:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
             {t('about.growingTogether.subtitle')}
           </p>
         </div>
@@ -214,7 +214,7 @@ const AboutPage = () => {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-3xl shadow-xl border border-gray-200/50 dark:border-slate-700/50 p-8 lg:p-10 text-center hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:scale-[1.02]"
+              className="group relative bg-gray-900/60 backdrop-blur-sm rounded-3xl shadow-xl border border-gray-800/60 p-8 lg:p-10 text-center hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:scale-[1.02]"
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-10 rounded-3xl transition-opacity duration-500`}></div>
               <div className={`absolute -inset-1 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-30 blur-2xl rounded-3xl transition-opacity duration-500`}></div>
@@ -223,10 +223,10 @@ const AboutPage = () => {
                 <div className={`inline-flex p-5 rounded-2xl bg-gradient-to-br ${stat.color} text-white mb-6 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
                   {stat.icon}
                 </div>
-                <div className="text-3xl lg:text-4xl font-extrabold bg-gradient-to-br from-slate-900 to-slate-700 dark:from-gray-50 dark:to-gray-300 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-500">
+                <div className="text-3xl lg:text-4xl font-extrabold bg-gradient-to-br from-gray-100 to-gray-300 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-500">
                   {stat.value}
                 </div>
-                <div className="text-base font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-2">
+                <div className="text-base font-bold text-gray-400 uppercase tracking-wider mb-2">
                   {stat.label}
                 </div>
                 <div className="text-sm text-gray-500 dark:text-gray-400 font-medium">
@@ -243,7 +243,7 @@ const AboutPage = () => {
         {/* Mission Statement */}
         <div className="relative group mb-10">
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/25 to-violet-500/25 rounded-[3rem] blur-3xl"></div>
-          <div className="relative bg-gradient-to-br from-indigo-50/95 to-violet-50/95 dark:from-indigo-900/40 dark:to-violet-900/40 backdrop-blur-xl rounded-[3rem] p-8 lg:p-12 border-2 border-indigo-200/60 dark:border-indigo-800/60 shadow-2xl">
+          <div className="relative bg-gradient-to-br from-indigo-900/25 to-violet-900/15 backdrop-blur-sm rounded-[3rem] p-8 lg:p-12 border border-indigo-800/40 shadow-2xl">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-6">
               <div className="relative shrink-0">
                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 to-violet-600 rounded-3xl blur-xl opacity-50"></div>
@@ -252,17 +252,17 @@ const AboutPage = () => {
                 </div>
               </div>
               <div>
-                <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-gray-50 mb-2">
+                <h2 className="text-2xl lg:text-3xl font-bold text-gray-100 mb-2">
                   {t('about.mission.title')}
                 </h2>
                 <div className="h-1.5 w-24 bg-gradient-to-r from-indigo-500 to-violet-600 rounded-full"></div>
               </div>
             </div>
             <div className="space-y-3">
-              <p className="text-base lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed font-light">
+              <p className="text-base lg:text-lg text-gray-400 leading-relaxed font-light">
                 {t('about.mission.description1')}
               </p>
-              <p className="text-base lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed font-light">
+              <p className="text-base lg:text-lg text-gray-400 leading-relaxed font-light">
                 {t('about.mission.description2')}
               </p>
             </div>
@@ -277,10 +277,10 @@ const AboutPage = () => {
               <Award size={24} className="text-violet-500 dark:text-violet-400" />
               <div className="h-px w-16 bg-gradient-to-r from-transparent via-violet-500 to-transparent"></div>
             </div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-gray-50 mb-2">
+            <h2 className="text-2xl lg:text-3xl font-bold text-gray-100 mb-2">
               {t('about.values.title')}
             </h2>
-            <p className="text-lg lg:text-xl text-gray-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg lg:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
               {t('about.values.subtitle')}
             </p>
           </div>
@@ -289,7 +289,7 @@ const AboutPage = () => {
             {values.map((value, index) => (
               <div
                 key={index}
-                className="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-[2.5rem] shadow-xl border border-gray-200/50 dark:border-slate-700/50 p-6 lg:p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02]"
+                className="group relative bg-gray-900/60 backdrop-blur-sm rounded-[2.5rem] shadow-xl border border-gray-800/60 p-6 lg:p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02]"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${value.bgColor} opacity-0 group-hover:opacity-100 rounded-[2.5rem] transition-opacity duration-500`}></div>
                 <div className={`absolute -inset-2 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-25 blur-2xl transition-opacity duration-500 rounded-[2.5rem]`}></div>
@@ -299,10 +299,10 @@ const AboutPage = () => {
                   <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${value.color} text-white mb-4 shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
                     {value.icon}
                   </div>
-                  <h3 className="text-lg lg:text-xl font-bold text-slate-900 dark:text-gray-50 mb-3 group-hover:text-indigo-700 dark:group-hover:text-indigo-400 transition-colors duration-300">
+                  <h3 className="text-lg lg:text-xl font-bold text-gray-100 mb-3 group-hover:text-indigo-700 dark:group-hover:text-indigo-400 transition-colors duration-300">
                     {value.title}
                   </h3>
-                  <p className="text-base lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed font-light">
+                  <p className="text-base lg:text-lg text-gray-400 leading-relaxed font-light">
                     {value.description}
                   </p>
                 </div>
@@ -316,7 +316,7 @@ const AboutPage = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="relative group mb-10">
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/25 to-violet-500/25 rounded-[3rem] blur-3xl"></div>
-          <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-[3rem] shadow-2xl border border-gray-200/50 dark:border-slate-700/50 p-8 lg:p-12">
+          <div className="relative bg-gray-900/60 backdrop-blur-sm rounded-[3rem] shadow-2xl border border-gray-800/60 p-8 lg:p-12">
             <div className="flex flex-col lg:flex-row items-start gap-6 lg:gap-8">
               <div className="relative shrink-0">
                 <div className="absolute inset-0 bg-indigo-500/30 rounded-3xl blur-2xl animate-pulse"></div>
@@ -326,22 +326,22 @@ const AboutPage = () => {
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-4 mb-4">
-                  <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-gray-50">
+                  <h2 className="text-2xl lg:text-3xl font-bold text-gray-100">
                     {t('about.builtByCommunity.title')}
                   </h2>
                   <div className="h-1.5 flex-1 max-w-32 bg-gradient-to-r from-indigo-500 to-violet-600 rounded-full"></div>
                 </div>
-                <p className="text-base lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed font-light mb-3">
+                <p className="text-base lg:text-lg text-gray-400 leading-relaxed font-light mb-3">
                   {t('about.builtByCommunity.description1')}
                 </p>
-                <p className="text-base lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed font-light mb-5">
+                <p className="text-base lg:text-lg text-gray-400 leading-relaxed font-light mb-5">
                   {t('about.builtByCommunity.description2')}
                 </p>
                 <a
                   href="https://github.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/btn inline-flex items-center gap-3 px-8 py-5 bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-800 dark:to-slate-700 text-white rounded-2xl hover:from-slate-800 hover:to-slate-700 dark:hover:from-slate-700 dark:hover:to-slate-600 transition-all shadow-xl hover:shadow-2xl font-bold text-lg hover:scale-105 active:scale-95"
+                  className="group/btn inline-flex items-center gap-3 px-8 py-5 bg-gradient-to-r from-gray-800 to-gray-900 text-gray-200 rounded-2xl hover:from-gray-700 hover:to-gray-800 transition-all shadow-xl hover:shadow-2xl font-bold text-lg hover:scale-105 active:scale-95"
                 >
                   <Github size={22} className="drop-shadow-sm group-hover/btn:rotate-12 transition-transform duration-300" />
                   <span>{t('about.builtByCommunity.contribute')}</span>
@@ -355,7 +355,7 @@ const AboutPage = () => {
         {/* Connect Section */}
         <div className="relative group">
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/25 to-violet-500/25 rounded-[3rem] blur-3xl"></div>
-          <div className="relative bg-gradient-to-br from-indigo-50/95 to-violet-50/95 dark:from-indigo-900/40 dark:to-violet-900/40 backdrop-blur-xl rounded-[3rem] p-8 lg:p-12 border-2 border-indigo-200/60 dark:border-indigo-800/60 shadow-2xl">
+          <div className="relative bg-gradient-to-br from-indigo-900/25 to-violet-900/15 backdrop-blur-sm rounded-[3rem] p-8 lg:p-12 border border-indigo-800/40 shadow-2xl">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-5">
               <div className="relative shrink-0">
                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 to-violet-600 rounded-3xl blur-xl opacity-50"></div>
@@ -364,13 +364,13 @@ const AboutPage = () => {
                 </div>
               </div>
               <div className="flex-1">
-                <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-gray-50 mb-2">
+                <h2 className="text-2xl lg:text-3xl font-bold text-gray-100 mb-2">
                   {t('about.connect.title')}
                 </h2>
                 <div className="h-1.5 w-24 bg-gradient-to-r from-indigo-500 to-violet-600 rounded-full"></div>
               </div>
             </div>
-            <p className="text-base lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed font-light mb-5 max-w-2xl">
+            <p className="text-base lg:text-lg text-gray-400 leading-relaxed font-light mb-5 max-w-2xl">
               {t('about.connect.description')}
             </p>
             <div className="flex flex-wrap items-center gap-5">
@@ -378,7 +378,7 @@ const AboutPage = () => {
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/btn flex items-center gap-3 px-8 py-5 bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-800 dark:to-slate-700 text-white rounded-2xl hover:from-slate-800 hover:to-slate-700 dark:hover:from-slate-700 dark:hover:to-slate-600 transition-all shadow-xl hover:shadow-2xl font-bold text-lg hover:scale-105 active:scale-95"
+                className="group/btn flex items-center gap-3 px-8 py-5 bg-gradient-to-r from-gray-800 to-gray-900 text-gray-200 rounded-2xl hover:from-gray-700 hover:to-gray-800 transition-all shadow-xl hover:shadow-2xl font-bold text-lg hover:scale-105 active:scale-95"
               >
                 <Github size={24} className="group-hover/btn:rotate-12 transition-transform duration-300" />
                 <span>{t('about.connect.github')}</span>
