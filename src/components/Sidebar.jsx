@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import {
@@ -9,8 +9,6 @@ import {
   ChevronDown,
   Settings,
   LogOut,
-  Bookmark,
-  History,
   LogIn,
   Shield,
   TrendingUp,
@@ -52,24 +50,8 @@ const Sidebar = () => {
     };
     fetchCategories();
   }, []);
-  const { bookmarks, readingHistory, removeBookmark, showToast, darkMode, toggleDarkMode } = useApp();
+  const { showToast, darkMode, toggleDarkMode } = useApp();
 
-  // Deduplicate reading history to prevent duplicates and flickering
-  // Also ensure we only show history when user is logged in
-  const uniqueHistory = useMemo(() => {
-    if (!user || !readingHistory || readingHistory.length === 0) return [];
-    // Use Map to deduplicate by ID, keeping the first (most recent) occurrence
-    const seen = new Map();
-    readingHistory.forEach((item) => {
-      if (!item || !item.id) return;
-      // Only add if we haven't seen this ID yet (first occurrence is most recent)
-      if (!seen.has(item.id)) {
-        seen.set(item.id, item);
-      }
-    });
-    // Convert to array and limit to 5 (already sorted by most recent first)
-    return Array.from(seen.values()).slice(0, 5);
-  }, [user, readingHistory]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -288,94 +270,6 @@ const Sidebar = () => {
 
             </div>
 
-            {isDesktopOpen && (
-              <>
-                {bookmarks.length > 0 && (() => {
-                  // Group bookmarks by category
-                  const groupedBookmarks = bookmarks.reduce((acc, bookmark) => {
-                    const categoryTitle = bookmark.categoryTitle || "Uncategorized";
-                    if (!acc[categoryTitle]) {
-                      acc[categoryTitle] = [];
-                    }
-                    acc[categoryTitle].push(bookmark);
-                    return acc;
-                  }, {});
-
-                  return (
-                    <div className="mt-6 pt-6 border-t border-white/15 dark:border-white/10">
-                      <div className="px-3 mb-4 text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
-                        {tSidebar('bookmarks.sectionTitle')}
-                      </div>
-                      <div className="space-y-4 max-h-64 overflow-y-auto custom-scrollbar">
-                        {Object.entries(groupedBookmarks).map(([categoryTitle, categoryBookmarks]) => (
-                          <div key={categoryTitle}>
-                            <div className="px-3 mb-2 text-[11px] font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wide">
-                              {categoryTitle}
-                            </div>
-                            <div className="space-y-1">
-                              {categoryBookmarks.map((bookmark) => {
-                                // Determine navigation path based on bookmark type
-                                let bookmarkPath = '/';
-                                if (bookmark.type === 'topic' || !bookmark.type) {
-                                  bookmarkPath = bookmark.topicId ? `/topic/${bookmark.categoryId}/${bookmark.topicId}` : `/category/${bookmark.categoryId}`;
-                                }
-
-                                return (
-                                  <Link
-                                    key={bookmark.id}
-                                    to={bookmarkPath}
-                                    className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg hover:bg-white/10 dark:hover:bg-white/10 transition-all duration-200 group text-left active:scale-[0.98] hover:shadow-inner"
-                                  >
-                                    <Bookmark size={14} className="text-indigo-500 dark:text-indigo-400 flex-shrink-0" strokeWidth={2.5} fill="currentColor" aria-hidden="true" />
-                                    <span className="text-xs text-slate-700 dark:text-slate-300 truncate flex-1 font-medium tracking-wide">
-                                      {bookmark.title}
-                                    </span>
-                                    <button
-                                      onClick={(e) => {
-                                        e.preventDefault();
-                                        e.stopPropagation();
-                                        removeBookmark(bookmark.id);
-                                      }}
-                                      className="opacity-0 group-hover:opacity-100 text-slate-400 hover:text-red-500 dark:hover:text-red-400 transition-all duration-200 min-w-[36px] min-h-[36px] p-1.5 rounded-lg hover:bg-white/10 dark:hover:bg-white/10 touch-manipulation flex items-center justify-center hover:shadow-inner"
-                                      aria-label={tSidebar('bookmarks.removeBookmark')}
-                                    >
-                                      <X size={16} strokeWidth={2.5} aria-hidden="true" />
-                                    </button>
-                                  </Link>
-                                );
-                              })}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  );
-                })()}
-
-                {user && uniqueHistory.length > 0 && (
-                  <div className="mt-4 pt-4 border-t border-white/15 dark:border-white/10">
-                    <div className="px-3 mb-3 text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
-                      {tSidebar('history.sectionTitle')}
-                    </div>
-                    <div className="space-y-1 max-h-48 overflow-y-auto custom-scrollbar">
-                      {uniqueHistory.map((item) => (
-                        <Link
-                          key={item.id}
-                          to={`/topic/${item.categoryId}/${item.topicId}`}
-                          className="flex items-center gap-2.5 px-3 py-2 rounded-lg hover:bg-white/10 dark:hover:bg-white/10 transition-all duration-200 active:scale-[0.98] focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500/50 cursor-pointer hover:shadow-inner"
-                          aria-label={tSidebar('bookmarks.viewTopic', { title: item.title })}
-                        >
-                          <History size={14} className="text-slate-400 dark:text-slate-500 flex-shrink-0" strokeWidth={2.5} aria-hidden="true" />
-                          <span className="text-xs text-slate-700 dark:text-slate-300 truncate font-medium tracking-wide">
-                            {item.title}
-                          </span>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </>
-            )}
           </div>
 
           <div className={`relative border-t backdrop-blur-xl transition-all duration-300 ${isDesktopOpen ? "p-4" : "lg:p-2"
