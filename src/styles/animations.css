@@ -355,50 +355,122 @@
   }
 }
 
-/* ── How It Works section scroll-reveal ──────────────────────────────────── */
+/* ── How It Works — premium SaaS scroll-reveal ───────────────────────────── */
 
-/* Cards: start hidden, slide up into view */
+/* ── Cards: blur + scale + slide entry ─────── */
 .hiw-card {
   opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(52px) scale(0.9);
+  filter: blur(6px);
+  will-change: opacity, transform, filter;
+}
+.hiw-card:not(.visible) {
+  transition:
+    opacity  0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    filter   0.75s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .hiw-card.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+  filter: blur(0);
 }
 
-/* Step number: punch in from above */
-.hiw-card .hiw-step-num {
-  transition: opacity 0.5s ease 0.15s, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s;
+/* Card hover: subtle lift (only after visible) */
+.hiw-card.visible {
+  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+.hiw-card.visible:hover {
+  box-shadow: 0 0 0 1px rgba(99,102,241,0.2), 0 8px 32px rgba(99,102,241,0.08);
+}
+
+/* ── Ambient glow: fades in after card enters ─ */
+.hiw-card .hiw-ambient {
   opacity: 0;
-  transform: translateY(-10px) scale(0.85);
+  transition: opacity 1s ease 0.5s;
+}
+.hiw-card.visible .hiw-ambient {
+  opacity: 1;
+}
+
+/* ── Top accent line: draws left-to-right ───── */
+.hiw-card .hiw-accent {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.45s;
+}
+.hiw-card.visible .hiw-accent {
+  transform: scaleX(1);
+}
+
+/* ── Step number: blur + drop from above ──────── */
+.hiw-card .hiw-step-num {
+  opacity: 0;
+  transform: translateY(-18px);
+  filter: blur(10px);
+  transition:
+    opacity   0.6s ease 0.2s,
+    transform 0.6s cubic-bezier(0.34, 1.4, 0.64, 1) 0.2s,
+    filter    0.6s ease 0.2s;
 }
 .hiw-card.visible .hiw-step-num {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
+  filter: blur(0);
 }
 
-/* Icon: scale-in with a slight pop */
+/* ── Icon: spin-in + continuous glow pulse ─────── */
 .hiw-card .hiw-icon {
-  transition: opacity 0.45s ease 0.25s, transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) 0.25s;
   opacity: 0;
-  transform: scale(0.7) rotate(-8deg);
+  transform: scale(0.5) rotate(-25deg);
+  transition:
+    opacity   0.55s ease 0.35s,
+    transform 0.55s cubic-bezier(0.34, 1.5, 0.64, 1) 0.35s;
 }
 .hiw-card.visible .hiw-icon {
   opacity: 1;
   transform: scale(1) rotate(0deg);
+  animation: hiw-icon-glow 3.5s ease-in-out 1.2s infinite;
+}
+@keyframes hiw-icon-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(99,102,241,0);    }
+  50%       { box-shadow: 0 0 18px 3px rgba(99,102,241,0.22); }
 }
 
-/* Connecting line: draw left-to-right */
+/* ── Content block: cascading fade-up ─────────── */
+.hiw-card .hiw-content {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.55s ease 0.45s, transform 0.55s ease 0.45s;
+}
+.hiw-card.visible .hiw-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Connector lines: draw left-to-right ─────── */
 .hiw-line {
   transform: scaleX(0);
   transform-origin: left center;
-  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
 }
 .hiw-line.visible {
   transform: scaleX(1);
+}
+
+/* ── Traveling luminous dot along connector ───── */
+.hiw-dot {
+  opacity: 0;
+  left: 0;
+}
+.hiw-dot.visible {
+  animation: hiw-travel-dot 1.6s cubic-bezier(0.4, 0, 0.6, 1) 1.1s forwards;
+}
+@keyframes hiw-travel-dot {
+  0%   { left: 0%;    opacity: 0; }
+  6%   { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { left: 100%;  opacity: 0; }
 }
 
 /* Animation utility classes */

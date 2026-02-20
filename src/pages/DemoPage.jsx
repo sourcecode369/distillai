@@ -65,15 +65,15 @@ const DemoPage = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.querySelectorAll(".hiw-line").forEach((el) => el.classList.add("visible"));
+            entry.target.querySelectorAll(".hiw-line, .hiw-dot").forEach((el) => el.classList.add("visible"));
             entry.target.querySelectorAll(".hiw-card").forEach((el, i) => {
-              setTimeout(() => el.classList.add("visible"), i * 150);
+              setTimeout(() => el.classList.add("visible"), i * 180);
             });
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
 
     observer.observe(section);
@@ -317,48 +317,47 @@ const DemoPage = () => {
 
               {/* Steps */}
               <div ref={hiwSectionRef} className="relative grid gap-6 md:grid-cols-3 mb-16">
-                {/* Connecting line (desktop) — draws left-to-right on scroll */}
-                <div className="hiw-line hidden md:block absolute top-10 left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] h-px bg-gradient-to-r from-indigo-500/40 via-violet-500/40 to-indigo-500/40 origin-left" />
+
+                {/* Connector: dim base + bright glow overlay + traveling dot */}
+                <div className="hidden md:block absolute top-[52px] left-[calc(16.67%+2rem)] right-[calc(16.67%+2rem)]" style={{ height: "1px" }}>
+                  <div className="hiw-line absolute inset-0 bg-gradient-to-r from-indigo-500/15 via-violet-500/15 to-indigo-500/15 origin-left" />
+                  <div className="hiw-line absolute inset-0 bg-gradient-to-r from-indigo-500/50 via-violet-400/70 to-indigo-500/50 origin-left blur-[1px]" style={{ transitionDelay: "0.05s" }} />
+                  <div className="hiw-dot absolute top-1/2 h-2.5 w-2.5 -translate-y-1/2 rounded-full bg-indigo-400 shadow-[0_0_10px_3px_rgba(99,102,241,0.7),0_0_20px_6px_rgba(139,92,246,0.4)]" />
+                </div>
 
                 {[
-                  {
-                    step: "01",
-                    Icon: Brain,
-                    title: "Pick your specialization",
-                    desc: "Browse 20 AI fields — from Core ML and Deep Learning to MLOps and Trustworthy AI. Start wherever you are.",
-                    tag: "20 fields covered",
-                  },
-                  {
-                    step: "02",
-                    Icon: BookOpen,
-                    title: "Read the handbook",
-                    desc: "Expert-written, code-level guides. Each handbook breaks a complex topic down into clear, structured sections.",
-                    tag: "150+ handbooks",
-                  },
-                  {
-                    step: "03",
-                    Icon: GraduationCap,
-                    title: "Test what you know",
-                    desc: "Every topic ends with a quiz to reinforce your understanding and flag gaps before you move on.",
-                    tag: "Per-topic quizzes",
-                  },
+                  { step: "01", Icon: Brain,        title: "Pick your specialization", desc: "Browse 20 AI fields — from Core ML and Deep Learning to MLOps and Trustworthy AI. Start wherever you are.", tag: "20 fields covered" },
+                  { step: "02", Icon: BookOpen,      title: "Read the handbook",         desc: "Expert-written, code-level guides. Each handbook breaks a complex topic down into clear, structured sections.", tag: "150+ handbooks" },
+                  { step: "03", Icon: GraduationCap, title: "Test what you know",         desc: "Every topic ends with a quiz to reinforce your understanding and flag gaps before you move on.",              tag: "Per-topic quizzes" },
                 ].map(({ step, Icon, title, desc, tag }, i) => (
-                  <div key={i} className="hiw-card relative group flex flex-col rounded-2xl border border-gray-800/60 bg-gray-900/50 p-8 backdrop-blur-sm hover:border-indigo-500/40 hover:bg-gray-900/70 transition-[opacity,transform,border-color,background-color] duration-300">
-                    {/* Step number — pops in */}
-                    <div className="hiw-step-num text-5xl font-extrabold bg-gradient-to-br from-indigo-500/30 to-violet-500/20 bg-clip-text text-transparent leading-none mb-5 select-none">
+                  <div key={i} className="hiw-card group relative flex flex-col rounded-2xl border border-gray-800/60 bg-gray-900/50 p-8 overflow-hidden hover:border-indigo-500/30 cursor-default">
+
+                    {/* Ambient radial glow — fades in on .visible */}
+                    <div className="hiw-ambient pointer-events-none absolute -top-10 -left-10 h-40 w-40 rounded-full bg-indigo-600/12 blur-2xl" />
+
+                    {/* Top accent line — scaleX reveal */}
+                    <div className="hiw-accent absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-indigo-400/60 to-transparent origin-left" />
+
+                    {/* Decorative step number */}
+                    <div className="hiw-step-num mb-6 text-6xl font-black leading-none select-none tabular-nums bg-gradient-to-br from-indigo-400/50 to-violet-500/30 bg-clip-text text-transparent">
                       {step}
                     </div>
-                    {/* Icon — slight rotate on entry */}
-                    <div className="hiw-icon mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500/15 to-violet-500/15 border border-indigo-500/20 text-indigo-400 group-hover:from-indigo-500/25 group-hover:to-violet-500/25 group-hover:text-indigo-300 group-hover:scale-110 transition-all duration-300">
+
+                    {/* Icon */}
+                    <div className="hiw-icon mb-5 flex h-13 w-13 items-center justify-center rounded-2xl border border-indigo-500/25 bg-gradient-to-br from-indigo-600/20 to-violet-600/10 text-indigo-400 group-hover:text-indigo-300 group-hover:border-indigo-400/40 transition-colors duration-300" style={{ width: 52, height: 52 }}>
                       <Icon size={22} strokeWidth={2} />
                     </div>
-                    {/* Text */}
-                    <h3 className="font-bold text-lg text-gray-100 mb-2">{title}</h3>
-                    <p className="text-sm text-gray-400 leading-relaxed flex-1">{desc}</p>
-                    {/* Tag */}
-                    <div className="mt-5 inline-flex w-fit items-center rounded-full bg-indigo-500/10 border border-indigo-500/20 px-3 py-1 text-xs font-medium text-indigo-400">
-                      {tag}
+
+                    {/* Content */}
+                    <div className="hiw-content flex flex-col flex-1">
+                      <h3 className="font-bold text-[17px] text-gray-100 mb-2 leading-snug">{title}</h3>
+                      <p className="text-sm text-gray-500 leading-relaxed flex-1">{desc}</p>
+                      <div className="mt-6 inline-flex w-fit items-center gap-1.5 rounded-full border border-indigo-500/20 bg-indigo-500/8 px-3 py-1 text-xs font-semibold text-indigo-400">
+                        <span className="h-1.5 w-1.5 rounded-full bg-indigo-400 animate-pulse" />
+                        {tag}
+                      </div>
                     </div>
+
                   </div>
                 ))}
               </div>
