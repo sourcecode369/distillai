@@ -1,23 +1,22 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useTranslation } from "react-i18next"
-import { BarChart3, Users, BookOpen, Mail, Activity, Settings, Star } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { BarChart3, Users, BookOpen, Mail, Activity, Settings, MessageSquare } from "lucide-react"
 
 const AdminNav = ({ activeTab, onTabChange }) => {
   const { t } = useTranslation("admin")
   const tabs = [
-    { id: "analytics", label: t("tabs.analytics"), icon: BarChart3 },
-    { id: "users", label: t("tabs.users"), icon: Users },
-    { id: "content", label: t("tabs.content"), icon: BookOpen },
-    { id: "featured-models", label: t("tabs.featuredModels"), icon: Star },
-    { id: "notifications", label: t("tabs.notifications"), icon: Mail },
-    { id: "activity", label: t("tabs.activity"), icon: Activity },
-    { id: "settings", label: t("tabs.settings"), icon: Settings },
+    { id: "analytics",     label: t("tabs.analytics"),      icon: BarChart3 },
+    { id: "users",         label: t("tabs.users"),           icon: Users },
+    { id: "content",       label: t("tabs.content"),         icon: BookOpen },
+    { id: "messages",      label: t("tabs.messages"),        icon: MessageSquare },
+    { id: "notifications", label: t("tabs.notifications"),   icon: Mail },
+    { id: "activity",      label: t("tabs.activity"),        icon: Activity },
+    { id: "settings",      label: t("tabs.settings"),        icon: Settings },
   ]
 
   return (
-    <div className="flex items-center gap-1 rounded-full bg-background/40 border border-border/60 px-2 py-1.5 md:px-3 md:py-2 overflow-x-auto mb-6">
+    <div className="flex items-center gap-0.5 rounded-2xl border border-gray-800 bg-gray-900/60 backdrop-blur-sm px-2 py-2 overflow-x-auto mb-6 scrollbar-none">
       {tabs.map((tab) => {
         const Icon = tab.icon
         const isActive = activeTab === tab.id
@@ -25,15 +24,14 @@ const AdminNav = ({ activeTab, onTabChange }) => {
           <button
             key={tab.id}
             onClick={() => onTabChange(tab.id)}
-            className={cn(
-              "inline-flex items-center gap-1 rounded-full px-3.5 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-medium transition-colors",
-              "shrink-0",
+            className={[
+              "inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-semibold transition-all duration-150 shrink-0",
               isActive
-                ? "bg-primary/10 text-primary border border-primary/40"
-                : "text-muted-foreground hover:text-foreground hover:bg-muted/60"
-            )}
+                ? "bg-indigo-600/20 text-indigo-300 border border-indigo-500/30"
+                : "text-gray-500 hover:text-gray-300 hover:bg-gray-800/60"
+            ].join(" ")}
           >
-            <Icon size={16} />
+            <Icon size={14} />
             <span>{tab.label}</span>
           </button>
         )

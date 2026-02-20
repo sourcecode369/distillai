@@ -1501,6 +1501,24 @@ export const dbHelpers = {
     return { data, error };
   },
 
+  getContactSubmissions: async () => {
+    const { data, error } = await supabase
+      .from("contact_submissions")
+      .select("*")
+      .order("created_at", { ascending: false });
+    return { data, error };
+  },
+
+  markContactRead: async (id) => {
+    const { data, error } = await supabase
+      .from("contact_submissions")
+      .update({ is_read: true })
+      .eq("id", id)
+      .select()
+      .single();
+    return { data, error };
+  },
+
   saveContactSubmission: async ({ name, email, subject, message }) => {
     const { data, error } = await supabase
       .from("contact_submissions")

@@ -1,82 +1,49 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { TrendingUp } from "lucide-react";
-import { cn } from "@/lib/utils";
 
-/**
- * StatCard Component
- * 
- * Displays a metric card with icon, title, value, and optional trend indicator.
- * Used in the admin dashboard analytics section to show key performance indicators.
- * 
- * @param {Object} props
- * @param {string} props.title - The metric title/label
- * @param {string|number} props.value - The metric value to display
- * @param {React.ComponentType} props.icon - Icon component from lucide-react
- * @param {string} props.gradient - Tailwind gradient classes (e.g., "from-indigo-500 to-indigo-600")
- * @param {string|null} props.trend - Optional trend text to display (e.g., "+10 this week")
- */
+const GRADIENT_COLORS = {
+  indigo:  { bg: "bg-indigo-600/10 border-indigo-500/20",   icon: "bg-indigo-600/20 border-indigo-500/30 text-indigo-400", text: "text-indigo-400" },
+  violet:  { bg: "bg-violet-600/10 border-violet-500/20",   icon: "bg-violet-600/20 border-violet-500/30 text-violet-400", text: "text-violet-400" },
+  teal:    { bg: "bg-teal-600/10 border-teal-500/20",       icon: "bg-teal-600/20 border-teal-500/30 text-teal-400",       text: "text-teal-400" },
+  pink:    { bg: "bg-pink-600/10 border-pink-500/20",       icon: "bg-pink-600/20 border-pink-500/30 text-pink-400",       text: "text-pink-400" },
+  purple:  { bg: "bg-purple-600/10 border-purple-500/20",   icon: "bg-purple-600/20 border-purple-500/30 text-purple-400", text: "text-purple-400" },
+  rose:    { bg: "bg-rose-600/10 border-rose-500/20",       icon: "bg-rose-600/20 border-rose-500/30 text-rose-400",       text: "text-rose-400" },
+  amber:   { bg: "bg-amber-600/10 border-amber-500/20",     icon: "bg-amber-600/20 border-amber-500/30 text-amber-400",    text: "text-amber-400" },
+  cyan:    { bg: "bg-cyan-600/10 border-cyan-500/20",       icon: "bg-cyan-600/20 border-cyan-500/30 text-cyan-400",       text: "text-cyan-400" },
+  emerald: { bg: "bg-emerald-600/10 border-emerald-500/20", icon: "bg-emerald-600/20 border-emerald-500/30 text-emerald-400", text: "text-emerald-400" },
+};
+
+const getColorKey = (gradient) => {
+  for (const key of Object.keys(GRADIENT_COLORS)) {
+    if (gradient.includes(key)) return key;
+  }
+  return "indigo";
+};
+
 const StatCard = ({ title, value, icon: Icon, gradient, trend }) => {
-  /**
-   * Determines icon color based on gradient type
-   * Maps gradient colors to corresponding text color classes
-   * @returns {string} Tailwind text color classes
-   */
-  const getIconColor = () => {
-    if (gradient.includes('indigo')) return 'text-indigo-600 dark:text-indigo-400';
-    if (gradient.includes('violet')) return 'text-violet-600 dark:text-violet-400';
-    if (gradient.includes('teal')) return 'text-teal-600 dark:text-teal-400';
-    if (gradient.includes('pink')) return 'text-pink-600 dark:text-pink-400';
-    if (gradient.includes('purple')) return 'text-purple-600 dark:text-purple-400';
-    if (gradient.includes('rose')) return 'text-rose-600 dark:text-rose-400';
-    if (gradient.includes('amber')) return 'text-amber-600 dark:text-amber-400';
-    if (gradient.includes('cyan')) return 'text-cyan-600 dark:text-cyan-400';
-    if (gradient.includes('emerald')) return 'text-emerald-600 dark:text-emerald-400';
-    return 'text-indigo-600 dark:text-indigo-400';
-  };
+  const colors = GRADIENT_COLORS[getColorKey(gradient)];
 
   return (
-    <Card className={cn(
-      "group relative overflow-hidden h-full flex flex-col",
-      "border-border/60",
-      "bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-background via-muted/20 to-background",
-      "shadow-[0_4px_20px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)]",
-      "rounded-2xl",
-      "transition-all duration-300",
-      "hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)]",
-      "hover:border-indigo-500/40 dark:hover:border-indigo-500/40"
-    )}>
-      <CardContent className="p-6 flex flex-col h-full">
-        <div className="flex items-start justify-between mb-4">
-          <div className={cn(
-            "p-3 rounded-xl",
-            `bg-gradient-to-br ${gradient}`,
-            "bg-opacity-10 dark:bg-opacity-20",
-            "backdrop-blur-sm",
-            "border border-border/40",
-            "transition-all duration-300",
-            "group-hover:scale-110 group-hover:shadow-lg",
-            "shadow-sm"
-          )}>
-            {Icon && <Icon size={20} className={cn(getIconColor(), "drop-shadow-sm")} />}
-          </div>
-          {trend && (
-            <Badge variant="secondary" className="flex items-center gap-1.5 text-xs font-semibold">
-              <TrendingUp size={12} />
-              <span>{trend}</span>
-            </Badge>
-          )}
+    <div className={`group relative overflow-hidden rounded-2xl border ${colors.bg} bg-gray-900/60 backdrop-blur-sm p-5 transition-all duration-200 hover:brightness-110`}>
+      <div className="flex items-start justify-between mb-4">
+        <div className={`flex items-center justify-center h-10 w-10 rounded-xl border ${colors.icon} flex-shrink-0 transition-transform duration-200 group-hover:scale-110`}>
+          {Icon && <Icon size={18} strokeWidth={2} />}
         </div>
-        <h3 className="text-xs font-semibold text-muted-foreground mb-3 tracking-wider uppercase">
-          {title}
-        </h3>
-        <p className="text-3xl font-semibold text-foreground tracking-tight mt-auto">
-          {value}
-        </p>
-      </CardContent>
-    </Card>
+        {trend && (
+          <span className="flex items-center gap-1 text-[10px] font-bold text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 rounded-full px-2 py-0.5">
+            <TrendingUp size={10} />
+            {trend}
+          </span>
+        )}
+      </div>
+      <p className="text-3xl font-extrabold text-gray-100 tracking-tight leading-none mb-1.5">
+        {value}
+      </p>
+      <p className={`text-[11px] font-semibold uppercase tracking-widest ${colors.text}`}>
+        {title}
+      </p>
+    </div>
   );
 };
 
@@ -89,4 +56,3 @@ StatCard.propTypes = {
 };
 
 export default StatCard;
-

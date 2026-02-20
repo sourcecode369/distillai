@@ -75,7 +75,7 @@ import ContentPage from "../components/admin/content/content-page";
 import NotificationsPage from "../components/admin/notifications/notifications-page";
 import ActivityPage from "../components/admin/activity/activity-page";
 import SettingsPage from "../components/admin/settings/settings-page";
-import FeaturedModelsPage from "../components/admin/featured-models/featured-models-page";
+import MessagesPage from "../components/admin/messages/messages-page";
 import UserDetailsModal from "../components/admin/UserDetailsModal";
 import { useAdminData } from "../hooks/useAdminData";
 // Lazy load heavy admin components - TopicModal is large and only needed when editing topics
@@ -477,12 +477,10 @@ const AdminDashboard = () => {
 
   if (!user) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-900 dark:to-slate-800">
-        <div className="text-center p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-xl">
-          <Shield className="mx-auto mb-4 text-gray-400" size={48} />
-          <p className="text-lg font-semibold text-gray-600 dark:text-gray-400">
-            {t("errors.loginRequired")}
-          </p>
+      <div className="min-h-screen flex items-center justify-center bg-gray-950">
+        <div className="text-center p-8 bg-gray-900/60 border border-gray-800 rounded-2xl">
+          <Shield className="mx-auto mb-4 text-gray-600" size={40} />
+          <p className="text-sm font-semibold text-gray-400">{t("errors.loginRequired")}</p>
         </div>
       </div>
     );
@@ -490,12 +488,10 @@ const AdminDashboard = () => {
 
   if (!isAdmin) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-900 dark:to-slate-800">
-        <div className="text-center p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-xl">
-          <XCircle className="mx-auto mb-4 text-red-500" size={48} />
-          <p className="text-lg font-semibold text-red-600 dark:text-red-400">
-            {t("errors.accessDenied")}
-          </p>
+      <div className="min-h-screen flex items-center justify-center bg-gray-950">
+        <div className="text-center p-8 bg-gray-900/60 border border-red-900/30 rounded-2xl">
+          <XCircle className="mx-auto mb-4 text-red-500/70" size={40} />
+          <p className="text-sm font-semibold text-red-400">{t("errors.accessDenied")}</p>
         </div>
       </div>
     );
@@ -594,9 +590,9 @@ const AdminDashboard = () => {
               <SettingsPage exportData={exportData} />
             )}
 
-            {/* Featured Models Tab */}
-            {activeTab === "featured-models" && (
-              <FeaturedModelsPage showToast={showToast} />
+            {/* Messages Tab */}
+            {activeTab === "messages" && (
+              <MessagesPage />
             )}
           </>
         )}

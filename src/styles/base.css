@@ -6,6 +6,22 @@
     --primary-hover: 67 56 202; /* Indigo-700 */
     --background: 249 250 251; /* Gray-50 */
     --foreground: 17 24 39; /* Gray-900 */
+    --muted: 243 244 246; /* Gray-100 */
+    --muted-foreground: 107 114 128; /* Gray-500 */
+    --border: 229 231 235; /* Gray-200 */
+    --card: 255 255 255; /* White */
+    --card-foreground: 17 24 39; /* Gray-900 */
+  }
+
+  /* Dark mode CSS variable overrides */
+  .dark {
+    --background: 3 7 18; /* Gray-950 */
+    --foreground: 243 244 246; /* Gray-100 */
+    --muted: 17 24 39; /* Gray-900 */
+    --muted-foreground: 107 114 128; /* Gray-500 */
+    --border: 31 41 55; /* Gray-800 */
+    --card: 17 24 39; /* Gray-900 */
+    --card-foreground: 243 244 246; /* Gray-100 */
   }
 
   /* Reset and prevent white overscroll background */
