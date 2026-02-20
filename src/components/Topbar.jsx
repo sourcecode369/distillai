@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
-import { Search, Github, Bookmark, Globe, User, TrendingUp, Shield, LogOut, LogIn, Loader2, LayoutDashboard, BookOpen } from "lucide-react";
+import { Search, Github, Bookmark, Globe, User, TrendingUp, Shield, LogOut, LogIn, Loader2, LayoutDashboard, BookOpen, Menu, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link, NavLink, useNavigate, useSearchParams } from "react-router-dom";
 import { useApp } from "../context/AppContext";
@@ -32,6 +32,7 @@ const Topbar = () => {
   const [showBookmarkDropdown, setShowBookmarkDropdown] = useState(false);
   const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
   const [showUserDropdown, setShowUserDropdown] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [isSigningOut, setIsSigningOut] = useState(false);
 
   const searchRef = useRef(null);
@@ -80,6 +81,7 @@ const Topbar = () => {
     setShowBookmarkDropdown(false);
     setShowLanguageDropdown(false);
     setShowUserDropdown(false);
+    setShowMobileMenu(false);
   };
 
   const handleSearch = useCallback((query) => {
@@ -103,12 +105,22 @@ const Topbar = () => {
 
 
   return (
+    <>
     <header
       className="sticky top-0 z-40 bg-gray-950/90 backdrop-blur-xl border-b border-gray-800/60 h-16 shadow-lg"
     >
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/4 via-transparent to-violet-500/4 pointer-events-none" />
 
       <div className="relative h-full max-w-screen-2xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
+
+        {/* ── MOBILE: Hamburger ─────────────────────────────────────── */}
+        <button
+          onClick={() => setShowMobileMenu(p => !p)}
+          className="md:hidden flex items-center justify-center h-9 w-9 rounded-xl border border-gray-700/50 bg-gray-800/50 text-gray-400 hover:text-gray-200 hover:border-gray-600 transition-all duration-200 shrink-0"
+          aria-label="Menu"
+        >
+          {showMobileMenu ? <X size={18} /> : <Menu size={18} />}
+        </button>
 
         {/* ── LEFT: Logo ───────────────────────────────────────────────── */}
         <Link to="/" className="flex items-center gap-2.5 shrink-0 group">
@@ -337,6 +349,47 @@ const Topbar = () => {
         </div>
       </div>
     </header>
+
+    {/* ── MOBILE MENU DRAWER ──────────────────────────────────────────── */}
+    {showMobileMenu && (
+      <div className="md:hidden fixed inset-0 z-30 top-16" onClick={closeAll}>
+        <div className="absolute inset-0 bg-gray-950/60 backdrop-blur-sm" />
+        <div className="relative border-b border-gray-800/60 bg-gray-950 shadow-xl px-4 py-4 space-y-1.5" onClick={e => e.stopPropagation()}>
+          {user && (
+            <NavLink to="/" end onClick={closeAll}>
+              {({ isActive }) => (
+                <span className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
+                  isActive ? "bg-indigo-600/15 border border-indigo-500/25 text-indigo-300" : "text-gray-400 hover:text-gray-200 hover:bg-gray-800/60"
+                }`}>
+                  <LayoutDashboard size={15} />
+                  Dashboard
+                </span>
+              )}
+            </NavLink>
+          )}
+          <NavLink to="/handbooks" onClick={closeAll}>
+            {({ isActive }) => (
+              <span className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
+                isActive ? "bg-indigo-600/15 border border-indigo-500/25 text-indigo-300" : "text-gray-400 hover:text-gray-200 hover:bg-gray-800/60"
+              }`}>
+                <BookOpen size={15} />
+                Handbooks
+              </span>
+            )}
+          </NavLink>
+          {!user && (
+            <button
+              onClick={() => { closeAll(); setIsLoginModalOpen(true); }}
+              className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-indigo-300 hover:bg-indigo-600/15 transition-colors"
+            >
+              <LogIn size={15} />
+              Login / Signup
+            </button>
+          )}
+        </div>
+      </div>
+    )}
+  </>
   );
 };
 
