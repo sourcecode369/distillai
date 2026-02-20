@@ -65,15 +65,15 @@ const DemoPage = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.querySelectorAll(".hiw-line, .hiw-dot").forEach((el) => el.classList.add("visible"));
+            entry.target.querySelectorAll(".hiw-line, .hiw-dot, .hiw-node").forEach((el) => el.classList.add("visible"));
             entry.target.querySelectorAll(".hiw-card").forEach((el, i) => {
-              setTimeout(() => el.classList.add("visible"), i * 180);
+              setTimeout(() => el.classList.add("visible"), i * 200);
             });
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.08 }
     );
 
     observer.observe(section);
@@ -293,73 +293,230 @@ const DemoPage = () => {
 
         {/* ── HOW IT WORKS ── */}
         <section className="relative">
-          <div className="pointer-events-none absolute top-1/2 left-0 -translate-y-1/2 -translate-x-[40%] -z-10 opacity-30" aria-hidden="true">
-            <img className="max-w-none" src="/images/blurred-shape.svg" width={760} height={668} alt="" />
-          </div>
-
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <div className="border-t py-12 md:py-20" style={{ borderImage: "linear-gradient(to right, transparent, rgba(148,163,184,0.25), transparent) 1" }}>
+            <div className="border-t py-16 md:py-24" style={{ borderImage: "linear-gradient(to right, transparent, rgba(148,163,184,0.25), transparent) 1" }}>
 
-              {/* Header */}
-              <div className="text-center mb-14">
-                <div className="inline-flex items-center gap-3 pb-3 before:h-px before:w-8 before:bg-gradient-to-r before:from-transparent before:to-indigo-200/50 after:h-px after:w-8 after:bg-gradient-to-l after:from-transparent after:to-indigo-200/50">
-                  <span className="inline-flex bg-gradient-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent text-sm font-medium">
-                    How It Works
+              {/* Header — bold, editorial */}
+              <div className="text-center mb-16 md:mb-20">
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-indigo-400/70 mb-5">How It Works</p>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white mb-5 leading-[1.05]">
+                  Three steps.<br />
+                  <span className="bg-gradient-to-r from-indigo-400 via-violet-300 to-indigo-400 bg-clip-text text-transparent animate-[gradient_5s_linear_infinite] bg-[length:200%_auto]">
+                    Zero guesswork.
                   </span>
-                </div>
-                <h2 className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,theme(colors.gray.200),theme(colors.indigo.200),theme(colors.gray.50),theme(colors.indigo.300),theme(colors.gray.200))] bg-[length:200%_auto] bg-clip-text font-extrabold text-3xl text-transparent md:text-4xl mt-2">
-                  From zero to production-ready
                 </h2>
-                <p className="mt-4 text-lg text-indigo-200/65 max-w-xl mx-auto">
-                  Three simple steps. No scattered tutorials, no guesswork.
+                <p className="text-gray-500 text-base md:text-lg max-w-md mx-auto">
+                  The full learning loop in one place — no scattered tutorials, no dead ends.
                 </p>
               </div>
 
               {/* Steps */}
-              <div ref={hiwSectionRef} className="relative grid gap-6 md:grid-cols-3 mb-16">
+              <div ref={hiwSectionRef} className="relative grid gap-5 md:grid-cols-3">
 
-                {/* Connector: dim base + bright glow overlay + traveling dot */}
-                <div className="hidden md:block absolute top-[52px] left-[calc(16.67%+2rem)] right-[calc(16.67%+2rem)]" style={{ height: "1px" }}>
-                  <div className="hiw-line absolute inset-0 bg-gradient-to-r from-indigo-500/15 via-violet-500/15 to-indigo-500/15 origin-left" />
-                  <div className="hiw-line absolute inset-0 bg-gradient-to-r from-indigo-500/50 via-violet-400/70 to-indigo-500/50 origin-left blur-[1px]" style={{ transitionDelay: "0.05s" }} />
-                  <div className="hiw-dot absolute top-1/2 h-2.5 w-2.5 -translate-y-1/2 rounded-full bg-indigo-400 shadow-[0_0_10px_3px_rgba(99,102,241,0.7),0_0_20px_6px_rgba(139,92,246,0.4)]" />
+                {/* Connector row — nodes + animated line */}
+                <div className="hidden md:flex absolute -top-8 left-0 right-0 items-center justify-between px-[16.5%] pointer-events-none">
+                  {[0,1,2].map(i => (
+                    <div key={i} className="relative flex items-center flex-1">
+                      <div className={`hiw-node h-3 w-3 rounded-full border-2 border-indigo-500/60 bg-indigo-500/20 flex-shrink-0 ${i > 0 ? 'ml-auto' : ''}`} />
+                      {i < 2 && (
+                        <div className="absolute left-3 right-3 h-px">
+                          <div className="hiw-line absolute inset-0 bg-gradient-to-r from-indigo-500/20 via-violet-500/20 to-indigo-500/20 origin-left" />
+                          <div className="hiw-line absolute inset-0 bg-gradient-to-r from-indigo-400/60 via-violet-400/80 to-indigo-400/60 origin-left blur-[0.5px]" />
+                          <div className="hiw-dot absolute top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_8px_2px_rgba(139,92,246,0.9),0_0_16px_4px_rgba(99,102,241,0.5)]" />
+                        </div>
+                      )}
+                    </div>
+                  ))}
                 </div>
 
-                {[
-                  { step: "01", Icon: Brain,        title: "Pick your specialization", desc: "Browse 20 AI fields — from Core ML and Deep Learning to MLOps and Trustworthy AI. Start wherever you are.", tag: "20 fields covered" },
-                  { step: "02", Icon: BookOpen,      title: "Read the handbook",         desc: "Expert-written, code-level guides. Each handbook breaks a complex topic down into clear, structured sections.", tag: "150+ handbooks" },
-                  { step: "03", Icon: GraduationCap, title: "Test what you know",         desc: "Every topic ends with a quiz to reinforce your understanding and flag gaps before you move on.",              tag: "Per-topic quizzes" },
-                ].map(({ step, Icon, title, desc, tag }, i) => (
-                  <div key={i} className="hiw-card group relative flex flex-col rounded-2xl border border-gray-800/60 bg-gray-900/50 p-8 overflow-hidden hover:border-indigo-500/30 cursor-default">
+                {/* ── Card 01: Field Selector ── */}
+                <div className="hiw-card group relative flex flex-col rounded-3xl border border-gray-800/60 bg-[#0a0d16] overflow-hidden cursor-default">
+                  {/* Top accent */}
+                  <div className="hiw-accent absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/70 to-transparent origin-left" />
+                  {/* Ambient glow */}
+                  <div className="hiw-ambient pointer-events-none absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-indigo-600/8 to-transparent" />
 
-                    {/* Ambient radial glow — fades in on .visible */}
-                    <div className="hiw-ambient pointer-events-none absolute -top-10 -left-10 h-40 w-40 rounded-full bg-indigo-600/12 blur-2xl" />
-
-                    {/* Top accent line — scaleX reveal */}
-                    <div className="hiw-accent absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-indigo-400/60 to-transparent origin-left" />
-
-                    {/* Decorative step number */}
-                    <div className="hiw-step-num mb-6 text-6xl font-black leading-none select-none tabular-nums bg-gradient-to-br from-indigo-400/50 to-violet-500/30 bg-clip-text text-transparent">
-                      {step}
-                    </div>
-
-                    {/* Icon */}
-                    <div className="hiw-icon mb-5 flex h-13 w-13 items-center justify-center rounded-2xl border border-indigo-500/25 bg-gradient-to-br from-indigo-600/20 to-violet-600/10 text-indigo-400 group-hover:text-indigo-300 group-hover:border-indigo-400/40 transition-colors duration-300" style={{ width: 52, height: 52 }}>
-                      <Icon size={22} strokeWidth={2} />
-                    </div>
-
-                    {/* Content */}
-                    <div className="hiw-content flex flex-col flex-1">
-                      <h3 className="font-bold text-[17px] text-gray-100 mb-2 leading-snug">{title}</h3>
-                      <p className="text-sm text-gray-500 leading-relaxed flex-1">{desc}</p>
-                      <div className="mt-6 inline-flex w-fit items-center gap-1.5 rounded-full border border-indigo-500/20 bg-indigo-500/8 px-3 py-1 text-xs font-semibold text-indigo-400">
-                        <span className="h-1.5 w-1.5 rounded-full bg-indigo-400 animate-pulse" />
-                        {tag}
+                  {/* Product UI: Field selection grid */}
+                  <div className="relative p-5 pb-0">
+                    <div className="rounded-2xl border border-gray-700/30 bg-gray-900/60 overflow-hidden">
+                      {/* Browser chrome */}
+                      <div className="flex items-center gap-1.5 px-3 py-2.5 border-b border-gray-700/30 bg-gray-800/40">
+                        <span className="h-2 w-2 rounded-full bg-gray-700" />
+                        <span className="h-2 w-2 rounded-full bg-gray-700" />
+                        <span className="h-2 w-2 rounded-full bg-gray-700" />
+                        <span className="mx-auto text-[10px] text-gray-600 font-medium">distillai.dev/handbooks</span>
+                      </div>
+                      {/* Field grid */}
+                      <div className="p-3 grid grid-cols-2 gap-1.5">
+                        {[
+                          { label: "Machine Learning", color: "indigo",  active: true  },
+                          { label: "Deep Learning",    color: "violet",  active: false },
+                          { label: "NLP",              color: "blue",    active: false },
+                          { label: "MLOps",            color: "cyan",    active: false },
+                          { label: "Computer Vision",  color: "purple",  active: false },
+                          { label: "Generative AI",    color: "indigo",  active: false },
+                        ].map(({ label, color, active }, j) => (
+                          <div key={j} className={`hiw-field-${j} flex items-center gap-1.5 rounded-xl px-2.5 py-2 border text-[10px] font-semibold transition-all duration-500 ${
+                            active
+                              ? `bg-indigo-600/20 border-indigo-500/40 text-indigo-300`
+                              : `bg-gray-800/40 border-gray-700/30 text-gray-500`
+                          }`}>
+                            <span className={`h-1.5 w-1.5 rounded-full flex-shrink-0 ${active ? 'bg-indigo-400' : 'bg-gray-600'}`} />
+                            {label}
+                          </div>
+                        ))}
                       </div>
                     </div>
-
                   </div>
-                ))}
+
+                  {/* Card body */}
+                  <div className="p-5 pt-5 flex flex-col flex-1">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="hiw-icon flex h-10 w-10 items-center justify-center rounded-xl border border-indigo-500/25 bg-indigo-600/15 text-indigo-400">
+                        <Brain size={18} strokeWidth={2} />
+                      </div>
+                      <span className="hiw-step-num text-[80px] font-black leading-none select-none text-white/[0.04] tabular-nums -mt-2">01</span>
+                    </div>
+                    <div className="hiw-content">
+                      <p className="text-[10px] font-bold text-indigo-400/60 uppercase tracking-widest mb-1.5">Step 01</p>
+                      <h3 className="font-bold text-[17px] text-gray-100 mb-2 leading-snug">Pick your specialization</h3>
+                      <p className="text-sm text-gray-500 leading-relaxed">Browse 20 AI fields — from Core ML to MLOps. Start wherever you are, go wherever you want.</p>
+                      <div className="mt-5 inline-flex items-center gap-1.5 rounded-full border border-indigo-500/20 bg-indigo-500/8 px-3 py-1 text-xs font-semibold text-indigo-400">
+                        <span className="h-1.5 w-1.5 rounded-full bg-indigo-400 animate-pulse" />
+                        20 AI fields
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ── Card 02: Handbook Reader ── */}
+                <div className="hiw-card group relative flex flex-col rounded-3xl border border-gray-800/60 bg-[#0a0d16] overflow-hidden cursor-default">
+                  <div className="hiw-accent absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-500/70 to-transparent origin-left" />
+                  <div className="hiw-ambient pointer-events-none absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-violet-600/8 to-transparent" />
+
+                  {/* Product UI: Handbook page */}
+                  <div className="relative p-5 pb-0">
+                    <div className="rounded-2xl border border-gray-700/30 bg-gray-900/60 overflow-hidden">
+                      <div className="flex items-center gap-1.5 px-3 py-2.5 border-b border-gray-700/30 bg-gray-800/40">
+                        <span className="h-2 w-2 rounded-full bg-gray-700" />
+                        <span className="h-2 w-2 rounded-full bg-gray-700" />
+                        <span className="h-2 w-2 rounded-full bg-gray-700" />
+                        <span className="mx-auto text-[10px] text-gray-600 font-medium">Transformer Architecture</span>
+                        {/* Progress bar */}
+                        <div className="flex items-center gap-1">
+                          <span className="text-[9px] text-gray-600">38%</span>
+                          <div className="w-12 h-1 rounded-full bg-gray-700 overflow-hidden">
+                            <div className="hiw-progress-bar h-full bg-gradient-to-r from-violet-500 to-indigo-500 rounded-full" style={{ width: "38%" }} />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="p-3 space-y-2">
+                        {/* Section heading */}
+                        <div className="h-2 w-2/5 rounded-full bg-violet-400/50" />
+                        {/* Text lines */}
+                        <div className="h-1.5 w-full rounded-full bg-gray-700/60" />
+                        <div className="h-1.5 w-[90%] rounded-full bg-gray-700/60" />
+                        <div className="h-1.5 w-4/5 rounded-full bg-gray-700/60" />
+                        {/* Code block */}
+                        <div className="rounded-lg bg-[#060912] border border-gray-700/40 p-2 mt-1 space-y-1">
+                          <div className="flex gap-2">
+                            <div className="h-1.5 w-8 rounded-full bg-indigo-400/50" />
+                            <div className="h-1.5 w-16 rounded-full bg-violet-400/40" />
+                            <div className="h-1.5 w-6 rounded-full bg-gray-600/60" />
+                          </div>
+                          <div className="flex gap-2 pl-2">
+                            <div className="h-1.5 w-12 rounded-full bg-emerald-400/30" />
+                            <div className="h-1.5 w-10 rounded-full bg-gray-600/50" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-5 pt-5 flex flex-col flex-1">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="hiw-icon flex h-10 w-10 items-center justify-center rounded-xl border border-violet-500/25 bg-violet-600/15 text-violet-400">
+                        <BookOpen size={18} strokeWidth={2} />
+                      </div>
+                      <span className="hiw-step-num text-[80px] font-black leading-none select-none text-white/[0.04] tabular-nums -mt-2">02</span>
+                    </div>
+                    <div className="hiw-content">
+                      <p className="text-[10px] font-bold text-violet-400/60 uppercase tracking-widest mb-1.5">Step 02</p>
+                      <h3 className="font-bold text-[17px] text-gray-100 mb-2 leading-snug">Read the handbook</h3>
+                      <p className="text-sm text-gray-500 leading-relaxed">Expert-written, code-level guides broken into clear sections. Built for engineers who need depth, not surface-level summaries.</p>
+                      <div className="mt-5 inline-flex items-center gap-1.5 rounded-full border border-violet-500/20 bg-violet-500/8 px-3 py-1 text-xs font-semibold text-violet-400">
+                        <span className="h-1.5 w-1.5 rounded-full bg-violet-400 animate-pulse" />
+                        150+ handbooks
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ── Card 03: Quiz ── */}
+                <div className="hiw-card group relative flex flex-col rounded-3xl border border-gray-800/60 bg-[#0a0d16] overflow-hidden cursor-default">
+                  <div className="hiw-accent absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-400/70 to-transparent origin-left" />
+                  <div className="hiw-ambient pointer-events-none absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-indigo-600/8 to-transparent" />
+
+                  {/* Product UI: Quiz */}
+                  <div className="relative p-5 pb-0">
+                    <div className="rounded-2xl border border-gray-700/30 bg-gray-900/60 overflow-hidden">
+                      <div className="flex items-center gap-1.5 px-3 py-2.5 border-b border-gray-700/30 bg-gray-800/40">
+                        <span className="h-2 w-2 rounded-full bg-gray-700" />
+                        <span className="h-2 w-2 rounded-full bg-gray-700" />
+                        <span className="h-2 w-2 rounded-full bg-gray-700" />
+                        <span className="mx-auto text-[10px] text-gray-600 font-medium">Quiz · 3 of 8</span>
+                        <div className="flex gap-0.5">
+                          {[1,1,1,0,0,0,0,0].map((done, j) => (
+                            <div key={j} className={`h-1.5 w-2 rounded-full ${done ? 'bg-emerald-400' : 'bg-gray-700'}`} />
+                          ))}
+                        </div>
+                      </div>
+                      <div className="p-3">
+                        {/* Question */}
+                        <div className="space-y-1 mb-3">
+                          <div className="h-1.5 w-full rounded-full bg-gray-600/60" />
+                          <div className="h-1.5 w-4/5 rounded-full bg-gray-600/60" />
+                        </div>
+                        {/* Options */}
+                        {[
+                          { text: "w-20", correct: false },
+                          { text: "w-24", correct: true  },
+                          { text: "w-16", correct: false },
+                          { text: "w-20", correct: false },
+                        ].map(({ text, correct }, j) => (
+                          <div key={j} className={`flex items-center gap-2 rounded-lg px-2.5 py-1.5 mb-1 border transition-all ${
+                            correct
+                              ? "bg-emerald-500/12 border-emerald-500/30"
+                              : "bg-gray-800/30 border-gray-700/20"
+                          }`}>
+                            <div className={`h-3 w-3 rounded-full border flex-shrink-0 flex items-center justify-center ${correct ? "border-emerald-400 bg-emerald-500/30" : "border-gray-600"}`}>
+                              {correct && <span className="text-[7px] text-emerald-300 font-black leading-none">✓</span>}
+                            </div>
+                            <div className={`h-1.5 ${text} rounded-full ${correct ? "bg-emerald-400/50" : "bg-gray-600/50"}`} />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-5 pt-5 flex flex-col flex-1">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="hiw-icon flex h-10 w-10 items-center justify-center rounded-xl border border-indigo-500/25 bg-indigo-600/15 text-indigo-400">
+                        <GraduationCap size={18} strokeWidth={2} />
+                      </div>
+                      <span className="hiw-step-num text-[80px] font-black leading-none select-none text-white/[0.04] tabular-nums -mt-2">03</span>
+                    </div>
+                    <div className="hiw-content">
+                      <p className="text-[10px] font-bold text-indigo-400/60 uppercase tracking-widest mb-1.5">Step 03</p>
+                      <h3 className="font-bold text-[17px] text-gray-100 mb-2 leading-snug">Test what you know</h3>
+                      <p className="text-sm text-gray-500 leading-relaxed">Every handbook ends with a quiz. Reinforce concepts, track your score, and see exactly where to improve.</p>
+                      <div className="mt-5 inline-flex items-center gap-1.5 rounded-full border border-indigo-500/20 bg-indigo-500/8 px-3 py-1 text-xs font-semibold text-indigo-400">
+                        <span className="h-1.5 w-1.5 rounded-full bg-indigo-400 animate-pulse" />
+                        Per-topic quizzes
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* Testimonials */}
