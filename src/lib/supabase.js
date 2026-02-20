@@ -1,17 +1,15 @@
-import { createClient } from "@supabase/supabase-js";
+/**
+ * Supabase helpers — auth + database
+ *
+ * The raw client lives in ./client.js (single instance, importable anywhere).
+ * This file re-exports the client and provides authHelpers / dbHelpers.
+ *
+ * All consumers should continue importing from this file — no breaking changes.
+ */
+export { supabase, isSupabaseConfigured } from "./client";
+import { supabase } from "./client";
 
-// These will be set via environment variables
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || "";
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || "";
-
-if (!supabaseUrl || !supabaseAnonKey) {
-}
-
-// Create client with fallback empty strings to prevent errors
-export const supabase = createClient(
-  supabaseUrl || "https://placeholder.supabase.co",
-  supabaseAnonKey || "placeholder-key"
-);
 
 // Helper functions for common operations
 export const authHelpers = {

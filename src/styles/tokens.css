@@ -1,0 +1,136 @@
+/*
+ * Design System Tokens — Distill AI
+ * ─────────────────────────────────────────────────────────────────────────────
+ *
+ * This file documents the single source of truth for all design decisions.
+ * CSS custom properties here drive both Tailwind semantic colors and any
+ * non-Tailwind CSS.  Light/dark variants are set in base.css @layer base.
+ *
+ * Usage in JSX:   className="bg-primary-600 text-primary-foreground"
+ * Usage in CSS:   color: rgb(var(--primary));
+ *
+ * ─────────────────────────────────────────────────────────────────────────────
+ * COLOR PALETTE
+ * ─────────────────────────────────────────────────────────────────────────────
+ *
+ * Brand
+ *   --primary            79 70 229   indigo-600   CTA buttons, active states
+ *   --primary-hover      67 56 202   indigo-700   Hover on CTA
+ *   --secondary          124 58 237  violet-600   Secondary actions, accents
+ *   --accent             236 72 153  pink-500     Highlights, badges
+ *
+ * Neutral (dark mode values — this app is always dark)
+ *   --background         3 7 18      gray-950     Page canvas
+ *   --foreground         243 244 246 gray-100     Body text
+ *   --muted              17 24 39    gray-900     Card backgrounds
+ *   --muted-foreground   107 114 128 gray-500     Secondary text, placeholders
+ *   --border             31 41 55    gray-800     Dividers, borders
+ *   --card               17 24 39    gray-900     Card/panel background
+ *   --card-foreground    243 244 246 gray-100     Text on cards
+ *
+ * ─────────────────────────────────────────────────────────────────────────────
+ * TYPOGRAPHY
+ * ─────────────────────────────────────────────────────────────────────────────
+ *
+ * Font family  Inter → system-ui → sans-serif
+ * Base size    16px  (WCAG AA minimum for body copy)
+ *
+ * Scale (tailwind aliases → px):
+ *   text-xs    12px   Labels, captions, timestamps
+ *   text-sm    14px   Secondary body, helper text
+ *   text-base  16px   ← Body copy MINIMUM
+ *   text-lg    18px   Lead text, card descriptions
+ *   text-xl    20px   Section sub-headings
+ *   text-2xl   24px   Card headings
+ *   text-3xl   30px   Section headings
+ *   text-4xl   36px   Page titles
+ *   text-5xl   48px   Hero headings
+ *   text-6xl   60px   Display headings
+ *
+ * ─────────────────────────────────────────────────────────────────────────────
+ * SPACING  (8px grid)
+ * ─────────────────────────────────────────────────────────────────────────────
+ *
+ * Tailwind default (4px) × 2 = 8px base unit:
+ *   gap-1  →   4px    (tight inline spacing)
+ *   gap-2  →   8px    (default inline gap)
+ *   gap-3  →  12px
+ *   gap-4  →  16px    (card internal padding — compact)
+ *   gap-5  →  20px    (card gap)
+ *   gap-6  →  24px    (standard section gap)
+ *   gap-8  →  32px    (large section gap)
+ *   gap-12 →  48px    (page section gap)
+ *   gap-16 →  64px    (hero/section breathing room)
+ *
+ * Touch targets (WCAG 2.5.5)
+ *   touch-sm  40px   — minimum small
+ *   touch     44px   — WCAG required minimum
+ *   touch-lg  48px   — comfortable
+ *
+ * ─────────────────────────────────────────────────────────────────────────────
+ * BORDER RADIUS
+ * ─────────────────────────────────────────────────────────────────────────────
+ *
+ *   rounded-lg    8px    Buttons, badges, inputs
+ *   rounded-xl   12px    Small cards, dropdowns
+ *   rounded-2xl  16px    Standard cards
+ *   rounded-3xl  24px    Large panels, modals
+ *   rounded-card-sm  12px  } semantic aliases
+ *   rounded-card     16px  } in tailwind.config.js
+ *   rounded-card-lg  20px  }
+ *   rounded-card-xl  24px  }
+ *
+ * ─────────────────────────────────────────────────────────────────────────────
+ * Z-INDEX SCALE
+ * ─────────────────────────────────────────────────────────────────────────────
+ *
+ *   z-base      0    Normal document flow
+ *   z-raised   10    Raised cards, floating elements
+ *   z-overlay  20    Dimmed overlays
+ *   z-drawer   30    Mobile nav drawer
+ *   z-sticky   40    Topbar (position: sticky)
+ *   z-dropdown 50    All dropdowns
+ *   z-modal    60    Modal dialogs
+ *   z-toast    70    Toast notifications
+ *   z-tooltip  80    Tooltips (highest visible layer)
+ *
+ * ─────────────────────────────────────────────────────────────────────────────
+ * SHADOW SYSTEM
+ * ─────────────────────────────────────────────────────────────────────────────
+ *
+ *   shadow-card          Resting card elevation (dark mode)
+ *   shadow-card-hover    Hover card elevation
+ *   shadow-glow-sm       Subtle indigo focus ring
+ *   shadow-glow          Standard indigo glow (interactive states)
+ *   shadow-glow-lg       Prominent glow (active modals, CTAs)
+ *
+ * ─────────────────────────────────────────────────────────────────────────────
+ * ANIMATION
+ * ─────────────────────────────────────────────────────────────────────────────
+ *
+ *   Easing:
+ *     cubic-bezier(0.16, 1, 0.3, 1)   — spring (fast-out)
+ *     cubic-bezier(0.34, 1.56, 0.64, 1) — spring with overshoot
+ *
+ *   Durations (tailwind aliases):
+ *     duration-fast    150ms   Micro interactions (hover color)
+ *     duration-base    200ms   Standard UI transitions
+ *     duration-slow    300ms   Page-level transitions
+ *     duration-slower  500ms   Complex animations
+ *
+ * ─────────────────────────────────────────────────────────────────────────────
+ * BREAKPOINTS  (mobile-first)
+ * ─────────────────────────────────────────────────────────────────────────────
+ *
+ *   Default Tailwind breakpoints (not overridden):
+ *     sm  640px   Large phones / small tablets
+ *     md  768px   Tablets
+ *     lg  1024px  Small desktops / landscape tablets
+ *     xl  1280px  Desktops
+ *    2xl  1536px  Large desktops
+ *
+ *   Design intent:
+ *     < sm   Single column, full-width elements, mobile nav drawer
+ *     sm–md  Hybrid, some 2-column grids
+ *     md+    Desktop nav visible, multi-column layouts
+ */

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useRef } from 'react'
+import React, { createContext, useContext, useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { authHelpers, dbHelpers } from '../lib/supabase'
 
 const AuthContext = createContext()
@@ -98,7 +98,7 @@ export const AuthProvider = ({ children }) => {
     }
   }, [])
 
-  const checkAdminStatus = async (userId, retryCount = 0) => {
+  const checkAdminStatus = useCallback(async (userId, retryCount = 0) => {
     // Prevent concurrent checks for the same user
     if (isCheckingAdminRef.current && retryCount === 0) {
       return
@@ -152,9 +152,10 @@ export const AuthProvider = ({ children }) => {
     } finally {
       isCheckingAdminRef.current = false
     }
-  }
+  // All dependencies are stable refs or state setters — empty dep array is correct
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const signUp = async (email, password, fullName = '') => {
+  const signUp = useCallback(async (email, password, fullName = '') => {
     setLoading(true)
     try {
       const { data, error } = await authHelpers.signUp(email, password, {
@@ -167,9 +168,9 @@ export const AuthProvider = ({ children }) => {
     } finally {
       setLoading(false)
     }
-  }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const signIn = async (email, password) => {
+  const signIn = useCallback(async (email, password) => {
     setLoading(true)
     try {
       const { data, error } = await authHelpers.signIn(email, password)
@@ -190,9 +191,9 @@ export const AuthProvider = ({ children }) => {
       // Always reset loading state
       setLoading(false)
     }
-  }
+  }, [checkAdminStatus]);
 
-  const signOut = async () => {
+  const signOut = useCallback(async () => {
     setLoading(true)
     try {
       // Clear local state first
@@ -250,9 +251,9 @@ export const AuthProvider = ({ children }) => {
     } finally {
       setLoading(false)
     }
-  }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const signInWithOAuth = async (provider) => {
+  const signInWithOAuth = useCallback(async (provider) => {
     setLoading(true)
     try {
       const { data, error } = await authHelpers.signInWithOAuth(provider)
@@ -271,9 +272,11 @@ export const AuthProvider = ({ children }) => {
       // Don't reset loading immediately for OAuth as it redirects
       setTimeout(() => setLoading(false), 1000)
     }
-  }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const value = {
+  // Memoize context value — prevents all useAuth() consumers from re-rendering
+  // whenever an unrelated state in this provider changes.
+  const value = useMemo(() => ({
     user,
     loading,
     isAdmin,
@@ -281,7 +284,7 @@ export const AuthProvider = ({ children }) => {
     signIn,
     signOut,
     signInWithOAuth,
-  }
+  }), [user, loading, isAdmin, signUp, signIn, signOut, signInWithOAuth]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
