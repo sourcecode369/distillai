@@ -85,27 +85,25 @@ const NotificationDropdown = ({ onClose, onMarkAllRead }) => {
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-500/20 via-violet-500/20 to-pink-500/20 opacity-50 blur-xl pointer-events-none" />
 
       {/* Header */}
-      <div className="relative px-4 pt-4 pb-3 border-b border-slate-800/50 bg-gradient-to-r from-indigo-900/30 via-violet-900/20 to-transparent">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="p-1.5 rounded-lg bg-gradient-to-br from-indigo-500/20 to-violet-500/20 border border-indigo-500/30" aria-hidden="true">
-              <Bell size={15} className="text-indigo-400" />
-            </div>
-            <h3 className="text-sm font-bold text-slate-100">{t('dropdown.title')}</h3>
-            {unreadNotifications.length > 0 && (
-              <span className="px-2 py-0.5 bg-gradient-to-r from-indigo-500 to-violet-500 text-white text-[10px] font-bold rounded-full">
-                {unreadNotifications.length}
-              </span>
-            )}
+      <div className="relative px-4 py-3 border-b border-slate-800/50 bg-gradient-to-r from-indigo-900/30 via-violet-900/20 to-transparent flex items-center justify-between">
+        <div className="flex items-center gap-2.5">
+          <div className="p-1.5 rounded-lg bg-gradient-to-br from-indigo-500/20 to-violet-500/20 border border-indigo-500/30" aria-hidden="true">
+            <Bell size={15} className="text-indigo-400" />
           </div>
+          <h3 className="text-sm font-bold text-slate-100">{t('dropdown.title')}</h3>
+          {unreadNotifications.length > 0 && (
+            <span className="px-2 py-0.5 bg-gradient-to-r from-indigo-500 to-violet-500 text-white text-[10px] font-bold rounded-full">
+              {unreadNotifications.length}
+            </span>
+          )}
         </div>
         {unreadNotifications.length > 0 && (
           <button
             onClick={handleMarkAllAsRead}
-            className="mt-2 -mx-4 flex items-center justify-center gap-1.5 text-xs text-indigo-400 hover:text-indigo-300 font-semibold py-2 hover:bg-slate-800/50 transition-all border-t border-slate-800/40"
+            title={t('dropdown.markAllRead')}
+            className="p-1.5 rounded-lg text-indigo-400 hover:text-indigo-300 hover:bg-slate-800/60 transition-all"
           >
-            <CheckCheck size={13} aria-hidden="true" />
-            {t('dropdown.markAllRead')}
+            <CheckCheck size={15} />
           </button>
         )}
       </div>
