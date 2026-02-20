@@ -313,20 +313,20 @@ const DemoPage = () => {
               {/* Steps */}
               <div ref={hiwSectionRef} className="relative grid gap-5 md:grid-cols-3">
 
-                {/* Connector row — nodes + animated line */}
-                <div className="hidden md:flex absolute -top-8 left-0 right-0 items-center justify-between px-[16.5%] pointer-events-none">
-                  {[0,1,2].map(i => (
-                    <div key={i} className="relative flex items-center flex-1">
-                      <div className={`hiw-node h-3 w-3 rounded-full border-2 border-indigo-500/60 bg-indigo-500/20 flex-shrink-0 ${i > 0 ? 'ml-auto' : ''}`} />
-                      {i < 2 && (
-                        <div className="absolute left-3 right-3 h-px">
-                          <div className="hiw-line absolute inset-0 bg-gradient-to-r from-indigo-500/20 via-violet-500/20 to-indigo-500/20 origin-left" />
-                          <div className="hiw-line absolute inset-0 bg-gradient-to-r from-indigo-400/60 via-violet-400/80 to-indigo-400/60 origin-left blur-[0.5px]" />
-                          <div className="hiw-dot absolute top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_8px_2px_rgba(139,92,246,0.9),0_0_16px_4px_rgba(99,102,241,0.5)]" />
-                        </div>
-                      )}
-                    </div>
-                  ))}
+                {/* Connector — single continuous line + 3 nodes at each card center */}
+                <div className="hidden md:block absolute -top-5 left-0 right-0 h-5 pointer-events-none">
+                  {/* Line: spans card-center 1 → card-center 3 */}
+                  <div className="absolute top-[9px] left-[16.67%] right-[16.67%]">
+                    <div className="hiw-line absolute inset-0 h-px bg-gradient-to-r from-indigo-500/20 via-violet-400/30 to-indigo-500/20 origin-left" />
+                    <div className="hiw-line absolute inset-0 h-px bg-gradient-to-r from-indigo-400/55 via-violet-400/75 to-indigo-400/55 origin-left" style={{ filter: "blur(0.5px)" }} />
+                    <div className="hiw-dot absolute top-1/2 -translate-y-1/2 h-2 w-2 rounded-full bg-white left-0" style={{ boxShadow: "0 0 8px 2px rgba(139,92,246,0.9), 0 0 16px 4px rgba(99,102,241,0.5)" }} />
+                  </div>
+                  {/* Node: card 1 center */}
+                  <div className="hiw-node absolute top-1/2 -translate-y-1/2 -translate-x-1/2 h-3 w-3 rounded-full border-2 border-indigo-500/60 bg-gray-950" style={{ left: "16.67%" }} />
+                  {/* Node: card 2 center */}
+                  <div className="hiw-node absolute top-1/2 -translate-y-1/2 -translate-x-1/2 h-3 w-3 rounded-full border-2 border-indigo-500/60 bg-gray-950" style={{ left: "50%" }} />
+                  {/* Node: card 3 center */}
+                  <div className="hiw-node absolute top-1/2 -translate-y-1/2 -translate-x-1/2 h-3 w-3 rounded-full border-2 border-indigo-500/60 bg-gray-950" style={{ left: "83.33%" }} />
                 </div>
 
                 {/* ── Card 01: Field Selector ── */}
@@ -337,7 +337,7 @@ const DemoPage = () => {
                   <div className="hiw-ambient pointer-events-none absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-indigo-600/8 to-transparent" />
 
                   {/* Product UI: Field selection grid */}
-                  <div className="relative p-5 pb-0">
+                  <div className="relative p-5 pb-0 h-[168px] overflow-hidden">
                     <div className="rounded-2xl border border-gray-700/30 bg-gray-900/60 overflow-hidden">
                       {/* Browser chrome */}
                       <div className="flex items-center gap-1.5 px-3 py-2.5 border-b border-gray-700/30 bg-gray-800/40">
@@ -395,7 +395,7 @@ const DemoPage = () => {
                   <div className="hiw-ambient pointer-events-none absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-violet-600/8 to-transparent" />
 
                   {/* Product UI: Handbook page */}
-                  <div className="relative p-5 pb-0">
+                  <div className="relative p-5 pb-0 h-[168px] overflow-hidden">
                     <div className="rounded-2xl border border-gray-700/30 bg-gray-900/60 overflow-hidden">
                       <div className="flex items-center gap-1.5 px-3 py-2.5 border-b border-gray-700/30 bg-gray-800/40">
                         <span className="h-2 w-2 rounded-full bg-gray-700" />
@@ -458,7 +458,7 @@ const DemoPage = () => {
                   <div className="hiw-ambient pointer-events-none absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-indigo-600/8 to-transparent" />
 
                   {/* Product UI: Quiz */}
-                  <div className="relative p-5 pb-0">
+                  <div className="relative p-5 pb-0 h-[168px] overflow-hidden">
                     <div className="rounded-2xl border border-gray-700/30 bg-gray-900/60 overflow-hidden">
                       <div className="flex items-center gap-1.5 px-3 py-2.5 border-b border-gray-700/30 bg-gray-800/40">
                         <span className="h-2 w-2 rounded-full bg-gray-700" />
@@ -520,6 +520,7 @@ const DemoPage = () => {
               </div>
 
               {/* Testimonials */}
+              <div className="mt-14" />
               <div className="grid gap-5 md:grid-cols-3">
                 {testimonials.map((t, i) => (
                   <div key={i} className="rounded-2xl border border-gray-800/60 bg-gray-900/40 p-6 backdrop-blur-sm">
