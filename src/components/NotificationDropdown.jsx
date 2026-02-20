@@ -85,24 +85,26 @@ const NotificationDropdown = ({ onClose, onMarkAllRead }) => {
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-500/20 via-violet-500/20 to-pink-500/20 opacity-50 blur-xl pointer-events-none" />
 
       {/* Header */}
-      <div className="relative p-5 border-b border-slate-800/50 bg-gradient-to-r from-indigo-900/30 via-violet-900/20 to-transparent flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="p-2 rounded-xl bg-gradient-to-br from-indigo-500/20 to-violet-500/20 shadow-lg shadow-indigo-500/20 border border-indigo-500/30" aria-hidden="true">
-            <Bell size={18} className="text-indigo-400" />
+      <div className="relative px-4 pt-4 pb-3 border-b border-slate-800/50 bg-gradient-to-r from-indigo-900/30 via-violet-900/20 to-transparent">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2.5">
+            <div className="p-1.5 rounded-lg bg-gradient-to-br from-indigo-500/20 to-violet-500/20 border border-indigo-500/30" aria-hidden="true">
+              <Bell size={15} className="text-indigo-400" />
+            </div>
+            <h3 className="text-sm font-bold text-slate-100">{t('dropdown.title')}</h3>
+            {unreadNotifications.length > 0 && (
+              <span className="px-2 py-0.5 bg-gradient-to-r from-indigo-500 to-violet-500 text-white text-[10px] font-bold rounded-full">
+                {unreadNotifications.length}
+              </span>
+            )}
           </div>
-          <h3 className="text-base font-bold text-slate-100">{t('dropdown.title')}</h3>
-          {unreadNotifications.length > 0 && (
-            <span className="px-2.5 py-1 bg-gradient-to-r from-indigo-500 to-violet-500 text-white text-xs font-bold rounded-full shadow-md shadow-indigo-500/30">
-              {unreadNotifications.length}
-            </span>
-          )}
         </div>
         {unreadNotifications.length > 0 && (
           <button
             onClick={handleMarkAllAsRead}
-            className="text-xs text-indigo-400 hover:text-indigo-300 font-semibold flex items-center gap-1.5 transition-all hover:scale-105 px-2 py-1 rounded-lg hover:bg-slate-800/50"
+            className="mt-2 w-full flex items-center justify-center gap-1.5 text-xs text-indigo-400 hover:text-indigo-300 font-semibold py-1.5 rounded-lg hover:bg-slate-800/50 transition-all border border-transparent hover:border-indigo-800/40"
           >
-            <CheckCheck size={14} aria-hidden="true" />
+            <CheckCheck size={13} aria-hidden="true" />
             {t('dropdown.markAllRead')}
           </button>
         )}
