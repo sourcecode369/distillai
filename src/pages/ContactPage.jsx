@@ -4,6 +4,9 @@ import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 import { ArrowRight, Mail, Send, MessageSquare, Github, Twitter, Linkedin, CheckCircle2, Clock, ArrowUpRight, Sparkles } from "lucide-react";
 import Hero from "../components/Hero";
+import { dbHelpers } from "../lib/supabase";
+
+const CONTACT_EMAIL = "sourcecode369@gmail.com";
 
 const ContactPage = () => {
   const { t } = useTranslation('common');
@@ -15,10 +18,25 @@ const ContactPage = () => {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [focusedField, setFocusedField] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitting(true);
+    try {
+      await dbHelpers.saveContactSubmission(formData);
+    } catch {
+      // DB unavailable — fall back to mailto so the message isn't lost
+      const params = new URLSearchParams({
+        subject: `[Distill AI] ${formData.subject}`,
+        body: `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`,
+      });
+      window.location.href = `mailto:${CONTACT_EMAIL}?${params.toString()}`;
+      setSubmitting(false);
+      return;
+    }
+    setSubmitting(false);
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
@@ -292,13 +310,19 @@ const ContactPage = () => {
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-full relative flex items-center justify-center gap-2.5 px-6 py-4 bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold text-base rounded-xl hover:from-indigo-700 hover:to-violet-700 shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 group overflow-hidden"
+                    disabled={submitting}
+                    className="w-full relative flex items-center justify-center gap-2.5 px-6 py-4 bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold text-base rounded-xl hover:from-indigo-700 hover:to-violet-700 shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 group overflow-hidden disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
                   >
-                    {/* Button shine effect */}
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-
-                    <Send size={18} className="relative z-10" strokeWidth={2.5} />
-                    <span className="relative z-10">{t('contact.sendMessage.send')}</span>
+                    {submitting ? (
+                      <svg className="relative z-10 animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                      </svg>
+                    ) : (
+                      <Send size={18} className="relative z-10" strokeWidth={2.5} />
+                    )}
+                    <span className="relative z-10">{submitting ? "Sending…" : t('contact.sendMessage.send')}</span>
                   </button>
                 </div>
               </form>

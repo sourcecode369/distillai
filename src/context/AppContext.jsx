@@ -216,7 +216,6 @@ export const AppProvider = ({ children }) => {
     const uid = userId || currentUserIdRef.current;
 
     if (!uid || !supabaseUrl || !supabaseAnonKey) {
-      // User not signed in or Supabase not configured, don't add to history
       return;
     }
 
@@ -232,9 +231,7 @@ export const AppProvider = ({ children }) => {
 
     // Update local state - remove duplicates and keep most recent
     setReadingHistory((prev) => {
-      // Remove any existing item with the same id
       const filtered = prev.filter((h) => h.id !== historyItem.id);
-      // Add new item at the beginning and limit to 5
       return [historyItem, ...filtered].slice(0, 5);
     });
 
@@ -247,9 +244,33 @@ export const AppProvider = ({ children }) => {
         categoryTitle: historyItem.categoryTitle,
         progressPercentage: item.progressPercentage || 0,
       });
+
+      // Check reading milestones and fire notifications
+      const { data: allHistory } = await dbHelpers.getReadingHistory(uid, 200);
+      const totalRead = allHistory?.length || 0;
+
+      const MILESTONES = {
+        1:  { title: "First handbook read!",    body: "You've started your AI learning journey on Distill AI. Keep going!" },
+        5:  { title: "5 handbooks read!",        body: "Great momentum — you've explored 5 topics. You're building real knowledge." },
+        10: { title: "10 handbooks read!",       body: "Double digits! You're making serious progress on Distill AI." },
+        20: { title: "20 handbooks read!",       body: "Impressive! 20 handbooks read. You're on a roll." },
+        50: { title: "50 handbooks read!",       body: "50 handbooks — that's serious dedication. You're an AI expert in the making." },
+      };
+
+      let notified;
+      try { notified = new Set(JSON.parse(localStorage.getItem("readingMilestones") || "[]")); }
+      catch { notified = new Set(); }
+
+      for (const [milestone, msg] of Object.entries(MILESTONES)) {
+        const m = Number(milestone);
+        if (totalRead >= m && !notified.has(m)) {
+          notified.add(m);
+          localStorage.setItem("readingMilestones", JSON.stringify([...notified]));
+          dbHelpers.createNotification({ userId: uid, title: msg.title, body: msg.body }).catch(() => {});
+        }
+      }
     } catch (error) {
       console.error("Error adding to history in database:", error);
-      // Continue with localStorage fallback
     }
   }, []);
 
@@ -262,6 +283,7 @@ export const AppProvider = ({ children }) => {
     setReadingHistory([]);
     localStorage.removeItem("bookmarks");
     localStorage.removeItem("readingHistory");
+    localStorage.removeItem("readingMilestones");
     currentUserIdRef.current = null;
 
   }, []);

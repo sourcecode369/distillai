@@ -1500,6 +1500,15 @@ export const dbHelpers = {
       .lt('featured_until', new Date().toISOString());
     return { data, error };
   },
+
+  saveContactSubmission: async ({ name, email, subject, message }) => {
+    const { data, error } = await supabase
+      .from("contact_submissions")
+      .insert({ name, email, subject, message })
+      .select()
+      .single();
+    return { data, error };
+  },
 };
 
 // Storage helpers for file uploads

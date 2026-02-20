@@ -179,7 +179,7 @@ const Footer = () => {
                 <li>
                   <a
                     className="flex items-center justify-center text-indigo-500 transition hover:text-indigo-400"
-                    href="https://linkedin.com/company/distillai"
+                    href="https://linkedin.com/in/rhtsingh"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
