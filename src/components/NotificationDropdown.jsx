@@ -102,7 +102,7 @@ const NotificationDropdown = ({ onClose, onMarkAllRead }) => {
         {unreadNotifications.length > 0 && (
           <button
             onClick={handleMarkAllAsRead}
-            className="mt-2 w-full flex items-center justify-center gap-1.5 text-xs text-indigo-400 hover:text-indigo-300 font-semibold py-1.5 rounded-lg hover:bg-slate-800/50 transition-all border border-transparent hover:border-indigo-800/40"
+            className="mt-2 -mx-4 flex items-center justify-center gap-1.5 text-xs text-indigo-400 hover:text-indigo-300 font-semibold py-2 hover:bg-slate-800/50 transition-all border-t border-slate-800/40"
           >
             <CheckCheck size={13} aria-hidden="true" />
             {t('dropdown.markAllRead')}
