@@ -6,7 +6,7 @@ export default {
     extend: {
       // ── Typography ─────────────────────────────────────────────────────
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        sans: ['Manrope', 'Manrope Placeholder', 'system-ui', '-apple-system', 'sans-serif'],
       },
       fontSize: {
         // Minimum body 16px for WCAG AA readability

@@ -10,8 +10,6 @@ import {
   TrendingUp,
   Sparkles,
   CheckCircle2,
-  User,
-  GraduationCap,
   Cpu,
   Database,
   BarChart2,
@@ -52,6 +50,121 @@ const AI_FIELDS = [
   { label: "Advanced Frameworks",    Icon: FlaskConical },
 ];
 
+const NetworkCanvas = () => {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let animId;
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    resize();
+    window.addEventListener('resize', resize);
+
+    const COLORS = [
+      [99, 102, 241],
+      [139, 92, 246],
+      [79, 70, 229],
+      [167, 139, 250],
+    ];
+
+    const spawnParticle = (w, h) => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.28,
+      vy: (Math.random() - 0.5) * 0.28,
+      r: 0.8 + Math.random() * 1.8,
+      c: COLORS[Math.floor(Math.random() * COLORS.length)],
+      a: 0.3 + Math.random() * 0.5,
+      // lifecycle: life goes 0→1→0, fadeSpeed varies per particle
+      life: Math.random(),         // start at random phase
+      lifeDir: Math.random() > 0.5 ? 1 : -1,
+      fadeSpeed: 0.008 + Math.random() * 0.014,
+    });
+
+    const pts = Array.from({ length: 70 }, () =>
+      spawnParticle(canvas.width, canvas.height)
+    );
+
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      pts.forEach(p => {
+        // update lifecycle
+        p.life += p.lifeDir * p.fadeSpeed;
+        if (p.life >= 1) { p.life = 1; p.lifeDir = -1; }
+        if (p.life <= 0) {
+          // respawn at new position
+          Object.assign(p, spawnParticle(canvas.width, canvas.height));
+          p.life = 0;
+          p.lifeDir = 1;
+        }
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+      });
+
+      for (let i = 0; i < pts.length; i++) {
+        for (let j = i + 1; j < pts.length; j++) {
+          const dx = pts[i].x - pts[j].x;
+          const dy = pts[i].y - pts[j].y;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          if (d < 155) {
+            const t = 1 - d / 155;
+            // connection alpha factors in both endpoints' life
+            const connAlpha = t * 0.2 * pts[i].life * pts[j].life;
+            ctx.beginPath();
+            ctx.moveTo(pts[i].x, pts[i].y);
+            ctx.lineTo(pts[j].x, pts[j].y);
+            ctx.strokeStyle = `rgba(99, 102, 241, ${connAlpha})`;
+            ctx.lineWidth = t * 0.7;
+            ctx.stroke();
+          }
+        }
+      }
+
+      pts.forEach(p => {
+        const alpha = p.a * p.life;
+        if (alpha < 0.01) return;
+        const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 5);
+        grd.addColorStop(0, `rgba(${p.c[0]}, ${p.c[1]}, ${p.c[2]}, ${alpha * 0.45})`);
+        grd.addColorStop(1, `rgba(${p.c[0]}, ${p.c[1]}, ${p.c[2]}, 0)`);
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 5, 0, Math.PI * 2);
+        ctx.fillStyle = grd;
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${p.c[0]}, ${p.c[1]}, ${p.c[2]}, ${alpha})`;
+        ctx.fill();
+      });
+
+      animId = requestAnimationFrame(draw);
+    };
+
+    draw();
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener('resize', resize);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="pointer-events-none absolute inset-0 w-full h-full"
+      aria-hidden="true"
+    />
+  );
+};
+
 const DemoPage = () => {
   const navigate = useNavigate();
   const [isAnnual, setIsAnnual] = useState(true);
@@ -78,24 +191,6 @@ const DemoPage = () => {
     observer.observe(section);
     return () => observer.disconnect();
   }, []);
-
-  const testimonials = [
-    {
-      text: "Finally a single resource that covers everything from core ML to MLOps. The handbooks are incredibly well structured.",
-      name: "Sarah Chen",
-      role: "Machine Learning Engineer",
-    },
-    {
-      text: "I've tried dozens of tutorials but nothing compares to the depth here. Passed my ML interview in 3 weeks.",
-      name: "Marcus Rodriguez",
-      role: "Data Scientist",
-    },
-    {
-      text: "The multi-language support is incredible. I can switch between English and Spanish mid-learning.",
-      name: "Priya Sharma",
-      role: "AI Research Intern",
-    },
-  ];
 
   const benefits = [
     {
@@ -146,6 +241,9 @@ const DemoPage = () => {
 
         {/* ── HERO ── */}
         <section className="relative">
+          {/* Network particles — hero only */}
+          <NetworkCanvas />
+
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
             <div className="pt-16 pb-12 md:pt-24 md:pb-16 text-center">
 
@@ -173,43 +271,46 @@ const DemoPage = () => {
               </p>
 
               {/* CTAs */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <button
                   onClick={() => navigate('/handbooks')}
-                  className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-8 py-4 text-base font-semibold text-white shadow-2xl shadow-indigo-500/40 hover:shadow-indigo-500/60 hover:scale-[1.03] active:scale-[0.97] transition-all duration-300 overflow-hidden"
+                  className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 px-8 py-4 text-base font-semibold text-white shadow-2xl shadow-indigo-500/40 hover:shadow-indigo-500/60 hover:scale-[1.03] active:scale-[0.97] transition-all duration-300 overflow-hidden"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <BookOpen size={18} />
+                  <span className="absolute inset-0 -translate-x-full" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.09), transparent)', animation: 'btnShimmer 3.5s ease-in-out 1.5s infinite' }} />
+                  <BookOpen size={18} className="relative" />
                   <span className="relative">Start Learning — It&apos;s Free</span>
                   <ArrowRight size={16} className="relative transition-transform duration-300 group-hover:translate-x-1" />
                 </button>
                 <button
                   onClick={() => navigate('/about')}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-gray-700/60 bg-gray-900/60 px-8 py-4 text-base font-semibold text-gray-300 backdrop-blur-sm hover:border-indigo-500/50 hover:text-indigo-300 hover:bg-gray-900/80 transition-all duration-300"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-gray-700/60 bg-gray-900/60 px-8 py-4 text-base font-semibold text-gray-300 backdrop-blur-sm hover:border-indigo-500/50 hover:text-indigo-300 hover:bg-gray-900/80 transition-all duration-300"
                 >
                   Learn More
                 </button>
               </div>
 
-              {/* Stat bar */}
-              <div className="inline-flex flex-wrap items-center justify-center gap-x-8 gap-y-3 rounded-2xl border border-gray-800/60 bg-gray-900/40 backdrop-blur-sm px-8 py-4 text-sm">
-                {[
-                  { value: "150+", label: "Handbooks" },
-                  { value: "20",   label: "AI Fields"  },
-                  { value: "150+", label: "Quizzes"    },
-                  { value: "Free", label: "Forever"    },
-                ].map((s, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    {i > 0 && <span className="hidden sm:block h-4 w-px bg-gray-700" />}
-                    <span className="font-extrabold text-xl text-gray-100">{s.value}</span>
-                    <span className="text-gray-500 font-medium">{s.label}</span>
-                  </div>
-                ))}
-              </div>
-
             </div>
           </div>
+
         </section>
+
+        <style>{`
+          @keyframes btnShimmer {
+            0% { transform: translateX(-100%); }
+            35%, 100% { transform: translateX(220%); }
+          }
+          @keyframes scrollBounce {
+            0%, 100% { transform: translateY(0); opacity: 0.5; }
+            50% { transform: translateY(6px); opacity: 1; }
+          }
+          @keyframes proBorderShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+          }
+          .reviews-scroll { animation: reviewsScroll 40s linear infinite; will-change: transform; }
+          .reviews-marquee:hover .reviews-scroll { animation-play-state: paused; }
+        `}</style>
 
         {/* ── WHAT'S COVERED ── */}
         <section className="relative">
@@ -235,46 +336,61 @@ const DemoPage = () => {
               </div>
 
               {/* Marquee rows */}
-              <div
-                className="relative overflow-hidden space-y-3 py-1"
-                style={{
-                  maskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
-                  WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
-                }}
-              >
-                {[
-                  { fields: AI_FIELDS.slice(0, 7),   dir: 'left',  speed: '28s' },
-                  { fields: AI_FIELDS.slice(7, 14),  dir: 'right', speed: '34s' },
-                  { fields: AI_FIELDS.slice(13, 20), dir: 'left',  speed: '25s' },
-                ].map((row, rowIdx) => (
-                  <div
-                    key={rowIdx}
-                    className="flex gap-3 w-max"
-                    style={{
-                      animation: `${row.dir === 'left' ? 'marquee' : 'marquee-reverse'} ${row.speed} linear infinite`,
-                    }}
-                  >
-                    {[...row.fields, ...row.fields, ...row.fields].map(({ label, Icon }, i) => (
-                      <button
-                        key={i}
-                        onClick={() => navigate('/handbooks')}
-                        className="group flex-shrink-0 flex items-center gap-3 rounded-2xl border border-gray-700/50 bg-gray-900/60 px-5 py-3.5 backdrop-blur-sm transition-all duration-300 hover:border-indigo-500/60 hover:bg-indigo-950/50 hover:shadow-lg hover:shadow-indigo-500/10 hover:scale-[1.03] active:scale-[0.97]"
-                      >
-                        <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-indigo-500/10 text-indigo-400 transition-all duration-300 group-hover:bg-indigo-500/20 group-hover:text-indigo-300">
-                          <Icon size={15} strokeWidth={2} />
-                        </div>
-                        <span className="whitespace-nowrap text-sm font-medium text-gray-300 group-hover:text-indigo-200 transition-colors duration-300">
-                          {label}
-                        </span>
-                      </button>
-                    ))}
-                  </div>
-                ))}
+              <div className="relative">
+                {/* Background radial glow behind the marquee */}
+                <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center" aria-hidden="true">
+                  <div className="w-[600px] h-[200px] rounded-full bg-indigo-600/10 blur-[80px]" />
+                </div>
 
-                <style>{`
-                  @keyframes marquee         { 0%{transform:translateX(0)}    100%{transform:translateX(-33.33%)} }
-                  @keyframes marquee-reverse { 0%{transform:translateX(-33.33%)} 100%{transform:translateX(0)} }
-                `}</style>
+                <div
+                  className="relative overflow-hidden space-y-3 py-2"
+                  style={{
+                    maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
+                  }}
+                >
+                  {[
+                    { fields: AI_FIELDS.slice(0, 7),   dir: 'left',  speed: '28s', depth: 0 },
+                    { fields: AI_FIELDS.slice(7, 14),  dir: 'right', speed: '34s', depth: 1 },
+                    { fields: AI_FIELDS.slice(13, 20), dir: 'left',  speed: '25s', depth: 2 },
+                  ].map((row, rowIdx) => (
+                    <div
+                      key={rowIdx}
+                      className="flex gap-3 w-max"
+                      style={{
+                        animation: `${row.dir === 'left' ? 'marquee' : 'marquee-reverse'} ${row.speed} linear infinite`,
+                        willChange: 'transform',
+                        opacity: 1 - row.depth * 0.22,
+                        filter: row.depth > 0 ? `blur(${row.depth * 0.4}px)` : 'none',
+                      }}
+                    >
+                      {[...row.fields, ...row.fields, ...row.fields].map(({ label, Icon }, i) => (
+                        <button
+                          key={i}
+                          onClick={() => navigate('/handbooks')}
+                          className="group flex-shrink-0 flex items-center gap-3 rounded-2xl border border-gray-700/40 bg-gray-900/70 px-5 py-3.5 backdrop-blur-sm transition-all duration-300 hover:border-indigo-500/70 hover:bg-indigo-950/60 hover:shadow-xl hover:shadow-indigo-500/15 hover:scale-[1.04] active:scale-[0.97] relative overflow-hidden"
+                        >
+                          {/* Shine sweep on hover */}
+                          <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none" />
+
+                          {/* Icon with gradient bg */}
+                          <div className="relative flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500/20 to-violet-500/10 text-indigo-400 border border-indigo-500/20 transition-all duration-300 group-hover:from-indigo-500/30 group-hover:to-violet-500/20 group-hover:text-indigo-300 group-hover:border-indigo-400/40 group-hover:shadow-lg group-hover:shadow-indigo-500/20">
+                            <Icon size={15} strokeWidth={2} />
+                          </div>
+
+                          <span className="whitespace-nowrap text-sm font-semibold text-gray-400 group-hover:text-indigo-200 transition-colors duration-300">
+                            {label}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  ))}
+
+                  <style>{`
+                    @keyframes marquee         { 0%{transform:translateX(0)}    100%{transform:translateX(-33.33%)} }
+                    @keyframes marquee-reverse { 0%{transform:translateX(-33.33%)} 100%{transform:translateX(0)} }
+                  `}</style>
+                </div>
               </div>
 
               <div className="mt-10 text-center">
@@ -290,7 +406,7 @@ const DemoPage = () => {
           </div>
         </section>
 
-        {/* ── HOW IT WORKS ── */}
+        {/* ── HOW TO GET STARTED ── */}
         <section className="relative">
           <div className="pointer-events-none absolute top-1/2 left-0 -translate-y-1/2 -translate-x-[40%] -z-10 opacity-30" aria-hidden="true">
             <img className="max-w-none" src="/images/blurred-shape.svg" width={760} height={668} alt="" />
@@ -299,116 +415,186 @@ const DemoPage = () => {
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <div className="border-t py-12 md:py-20" style={{ borderImage: "linear-gradient(to right, transparent, rgba(148,163,184,0.25), transparent) 1" }}>
 
-              {/* Header — matches app style */}
+              {/* Header */}
               <div className="text-center mb-14">
                 <div className="inline-flex items-center gap-3 pb-3 before:h-px before:w-8 before:bg-gradient-to-r before:from-transparent before:to-indigo-200/50 after:h-px after:w-8 after:bg-gradient-to-l after:from-transparent after:to-indigo-200/50">
                   <span className="inline-flex bg-gradient-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent text-sm font-medium">
-                    How It Works
+                    How to Get Started
                   </span>
                 </div>
-                <h2 className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,theme(colors.gray.200),theme(colors.indigo.200),theme(colors.gray.50),theme(colors.indigo.300),theme(colors.gray.200))] bg-[length:200%_auto] bg-clip-text font-extrabold text-3xl text-transparent md:text-4xl mt-2">
-                  From zero to production-ready
+                <h2 className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,theme(colors.gray.200),theme(colors.indigo.200),theme(colors.gray.50),theme(colors.indigo.300),theme(colors.gray.200))] bg-[length:200%_auto] bg-clip-text font-extrabold tracking-tight text-3xl text-transparent md:text-4xl mt-2">
+                  The endless stream of tutorials <em className="not-italic text-indigo-300">stops here.</em>
                 </h2>
                 <p className="mt-4 text-lg text-indigo-200/65 max-w-xl mx-auto">
-                  Three steps. No scattered tutorials, no guesswork.
+                  Three steps to go from scattered learner to confident AI engineer.
                 </p>
               </div>
 
               {/* Steps */}
-              <div ref={hiwSectionRef} className="grid gap-6 md:grid-cols-3 mb-16">
+              <div ref={hiwSectionRef} className="grid gap-5 md:grid-cols-3">
                 {[
                   {
-                    step: "01",
-                    Icon: Brain,
-                    title: "Pick your specialization",
-                    desc: "Browse 20 AI fields — from Core ML and Deep Learning to MLOps and Trustworthy AI. Start wherever you are.",
-                    tag: "20 fields covered",
-                    accent: "indigo",
+                    num: "1",
+                    title: "Find your path",
+                    desc: "Browse 20 AI specializations — from Core ML and Deep Learning to MLOps and Trustworthy AI. Start wherever you are.",
                   },
                   {
-                    step: "02",
-                    Icon: BookOpen,
-                    title: "Read the handbook",
-                    desc: "Expert-written, code-level guides. Each handbook breaks a complex topic into clear, structured sections — built for engineers.",
-                    tag: "150+ handbooks",
-                    accent: "violet",
+                    num: "2",
+                    title: "Start learning",
+                    desc: "Skip the tutorials. Read expert-written handbooks with code-level explanations, structured from first principles to production.",
                   },
                   {
-                    step: "03",
-                    Icon: GraduationCap,
-                    title: "Test what you know",
-                    desc: "Every handbook ends with a quiz. Reinforce your understanding, track your score, and see exactly where to go deeper.",
-                    tag: "Per-topic quizzes",
-                    accent: "indigo",
+                    num: "3",
+                    title: "Prove what you know",
+                    desc: "Every handbook ends with a quiz. Track your progress, earn certificates, and know exactly where to go deeper.",
                   },
-                ].map(({ step, Icon, title, desc, tag, accent }, i) => (
+                ].map(({ num, title, desc }, i) => (
                   <div
                     key={i}
-                    className={`hiw-card group relative flex flex-col rounded-2xl border border-gray-800/60 bg-gray-900/50 p-7 backdrop-blur-sm
-                      hover:-translate-y-1.5 hover:border-indigo-500/30 hover:bg-gray-900/70
-                      hover:shadow-[0_0_0_1px_rgba(99,102,241,0.12),0_12px_40px_rgba(99,102,241,0.08)]
-                      transition-all duration-300`}
+                    className="hiw-card group relative flex flex-col items-center text-center rounded-2xl border border-gray-800/60 bg-gray-900/50 p-8 backdrop-blur-sm hover:-translate-y-1 hover:border-indigo-500/30 hover:bg-gray-900/70 hover:shadow-[0_0_0_1px_rgba(99,102,241,0.1),0_16px_40px_rgba(99,102,241,0.08)] transition-all duration-300"
                   >
-                    {/* Top accent line */}
-                    <div className={`hiw-accent absolute top-0 left-8 right-8 h-px origin-left
-                      bg-gradient-to-r from-transparent ${accent === 'violet' ? 'via-violet-400/55' : 'via-indigo-400/55'} to-transparent`} />
+                    {/* Subtle top glow line */}
+                    <div className="absolute top-0 left-12 right-12 h-px bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent" />
 
-                    {/* Ambient inner glow */}
-                    <div className={`hiw-ambient pointer-events-none absolute inset-0 rounded-2xl
-                      bg-gradient-to-br ${accent === 'violet' ? 'from-violet-600/5' : 'from-indigo-600/5'} to-transparent`} />
-
-                    {/* Icon + step number row */}
-                    <div className="relative flex items-start justify-between mb-6">
-                      {/* Large icon box */}
-                      <div className={`hiw-icon flex h-14 w-14 items-center justify-center rounded-2xl border
-                        ${accent === 'violet'
-                          ? 'border-violet-500/25 bg-gradient-to-br from-violet-600/20 to-indigo-600/10 text-violet-400 group-hover:border-violet-400/40 group-hover:text-violet-300'
-                          : 'border-indigo-500/25 bg-gradient-to-br from-indigo-600/20 to-violet-600/10 text-indigo-400 group-hover:border-indigo-400/40 group-hover:text-indigo-300'}
-                        group-hover:scale-110 transition-all duration-300`}>
-                        <Icon size={24} strokeWidth={2} />
-                      </div>
-                      {/* Watermark step number */}
-                      <span className="hiw-step-num text-[72px] font-black leading-none select-none text-white/[0.04] tabular-nums translate-y-[-8px]">
-                        {step}
-                      </span>
+                    {/* Number circle */}
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 text-white text-xl font-extrabold shadow-lg shadow-indigo-500/30 mb-6 group-hover:scale-105 group-hover:shadow-indigo-500/50 transition-all duration-300">
+                      {num}
                     </div>
 
-                    {/* Text content */}
-                    <div className="hiw-content flex flex-col flex-1">
-                      <p className={`text-[10px] font-bold uppercase tracking-[0.18em] mb-2
-                        ${accent === 'violet' ? 'text-violet-400/60' : 'text-indigo-400/60'}`}>
-                        Step {step}
-                      </p>
-                      <h3 className="font-bold text-lg text-gray-100 mb-3 leading-snug">{title}</h3>
-                      <p className="text-sm text-gray-500 leading-relaxed flex-1">{desc}</p>
-                      <div className={`mt-5 inline-flex w-fit items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold
-                        ${accent === 'violet'
-                          ? 'border-violet-500/20 bg-violet-500/8 text-violet-400'
-                          : 'border-indigo-500/20 bg-indigo-500/8 text-indigo-400'}`}>
-                        <span className={`h-1.5 w-1.5 rounded-full animate-pulse ${accent === 'violet' ? 'bg-violet-400' : 'bg-indigo-400'}`} />
-                        {tag}
-                      </div>
-                    </div>
+                    <h3 className="font-bold text-xl text-gray-100 mb-3 leading-snug">{title}</h3>
+                    <p className="text-sm text-gray-500 leading-relaxed group-hover:text-gray-400 transition-colors duration-300">{desc}</p>
                   </div>
                 ))}
               </div>
 
-              {/* Testimonials */}
-              <div className="grid gap-5 md:grid-cols-3">
-                {testimonials.map((t, i) => (
-                  <div key={i} className="rounded-2xl border border-gray-800/60 bg-gray-900/40 p-6 backdrop-blur-sm">
-                    <p className="text-sm text-gray-400 leading-relaxed italic mb-5">"{t.text}"</p>
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-violet-600">
-                        <User size={14} className="text-white" />
-                      </div>
-                      <div>
-                        <div className="text-sm font-semibold text-gray-200">{t.name}</div>
-                        <div className="text-xs text-gray-500">{t.role}</div>
-                      </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── REVIEWS ── */}
+        <section className="relative">
+          <div className="pointer-events-none absolute bottom-0 right-0 -z-10 opacity-25" aria-hidden="true">
+            <img className="max-w-none" src="/images/blurred-shape.svg" width={760} height={668} alt="" />
+          </div>
+
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="border-t py-12 md:py-20" style={{ borderImage: "linear-gradient(to right, transparent, rgba(148,163,184,0.25), transparent) 1" }}>
+
+              {/* Header */}
+              <div className="text-center mb-14">
+                <div className="inline-flex items-center gap-3 pb-3 before:h-px before:w-8 before:bg-gradient-to-r before:from-transparent before:to-indigo-200/50 after:h-px after:w-8 after:bg-gradient-to-l after:from-transparent after:to-indigo-200/50">
+                  <span className="inline-flex bg-gradient-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent text-sm font-medium">
+                    Reviews
+                  </span>
+                </div>
+                <h2 className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,theme(colors.gray.200),theme(colors.indigo.200),theme(colors.gray.50),theme(colors.indigo.300),theme(colors.gray.200))] bg-[length:200%_auto] bg-clip-text font-extrabold tracking-tight text-3xl text-transparent md:text-4xl mt-2">
+                  Join engineers already on the fast-track
+                </h2>
+                <p className="mt-4 text-lg text-indigo-200/65 max-w-xl mx-auto">
+                  Don&apos;t take our word for it — here&apos;s what engineers building with AI have to say.
+                </p>
+              </div>
+
+              {/* Marquee container */}
+              <div
+                className="reviews-marquee relative overflow-hidden"
+                style={{
+                  maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
+                  WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
+                }}
+              >
+                {(() => {
+                  const reviews = [
+                    {
+                      initials: "SC",
+                      name: "Sarah Chen",
+                      role: "ML Engineer",
+                      stars: 5,
+                      text: "Finally a single resource that covers everything from core ML to MLOps. The handbooks are incredibly well structured and I landed my dream role within 2 months.",
+                      color: "from-indigo-500 to-violet-600",
+                    },
+                    {
+                      initials: "MR",
+                      name: "Marcus Rodriguez",
+                      role: "Data Scientist",
+                      stars: 5,
+                      text: "I've tried dozens of tutorials but nothing compares to the depth here. The structure is logical, the examples are real-world, and the quizzes keep you honest. Passed my ML interview in 3 weeks.",
+                      color: "from-violet-500 to-purple-600",
+                    },
+                    {
+                      initials: "PS",
+                      name: "Priya Sharma",
+                      role: "AI Research Intern",
+                      stars: 5,
+                      text: "If you're motivated and have a real goal in mind, go for it. You don't need to be an expert to start. For me, it's been one of the most valuable learning experiences I've had.",
+                      color: "from-indigo-400 to-blue-600",
+                    },
+                    {
+                      initials: "JK",
+                      name: "James Kim",
+                      role: "Software Engineer",
+                      stars: 4,
+                      text: "Instead of searching YouTube for hours, this provides all the necessary resources right here. If you're considering starting, it's completely worth it.",
+                      color: "from-violet-500 to-indigo-600",
+                    },
+                    {
+                      initials: "AL",
+                      name: "Aisha Lawson",
+                      role: "AI Product Manager",
+                      stars: 5,
+                      text: "The breadth is unreal — 20 specializations in one place. I use it to stay current with ML trends and prep for technical discussions with my engineering team.",
+                      color: "from-indigo-500 to-blue-500",
+                    },
+                    {
+                      initials: "TN",
+                      name: "Tom Nguyen",
+                      role: "Backend Engineer",
+                      stars: 5,
+                      text: "Transitioned into ML from backend in 4 months. The structured handbooks made it feel achievable instead of overwhelming. Quizzes are brutally effective.",
+                      color: "from-purple-500 to-violet-600",
+                    },
+                  ];
+                  const tripled = [...reviews, ...reviews, ...reviews];
+                  return (
+                    <div className="reviews-scroll flex gap-4 w-max">
+                      {tripled.map(({ initials, name, role, stars, text, color }, i) => (
+                        <div
+                          key={i}
+                          className="flex-shrink-0 w-72 flex flex-col rounded-2xl border border-gray-800/60 bg-gray-900/50 p-6 backdrop-blur-sm hover:border-indigo-500/25 hover:bg-gray-900/70 transition-all duration-300"
+                        >
+                          {/* Avatar */}
+                          <div className={`flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br ${color} text-white text-sm font-bold mb-4 shadow-lg`}>
+                            {initials}
+                          </div>
+
+                          {/* Stars */}
+                          <div className="flex gap-0.5 mb-4">
+                            {Array.from({ length: 5 }).map((_, si) => (
+                              <svg key={si} className={`w-4 h-4 ${si < stars ? 'text-amber-400' : 'text-gray-700'}`} fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                              </svg>
+                            ))}
+                          </div>
+
+                          {/* Review text */}
+                          <p className="text-sm text-gray-400 leading-relaxed flex-1 mb-6">{text}</p>
+
+                          {/* Author */}
+                          <div className="border-t border-gray-800/60 pt-4">
+                            <div className="font-semibold text-sm text-gray-200">{name}</div>
+                            <div className="text-xs text-gray-500 mt-0.5">{role}</div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                  </div>
-                ))}
+                  );
+                })()}
+                <style>{`
+                  @keyframes reviewsScroll {
+                    0%   { transform: translateX(0); }
+                    100% { transform: translateX(-33.33%); }
+                  }
+                `}</style>
               </div>
 
             </div>
@@ -429,7 +615,7 @@ const DemoPage = () => {
                 <div className="inline-flex items-center gap-3 pb-3 before:h-px before:w-8 before:bg-gradient-to-r before:from-transparent before:to-indigo-200/50 after:h-px after:w-8 after:bg-gradient-to-l after:from-transparent after:to-indigo-200/50">
                   <span className="inline-flex bg-gradient-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent text-sm font-medium">Pricing</span>
                 </div>
-                <h2 className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,theme(colors.gray.200),theme(colors.indigo.200),theme(colors.gray.50),theme(colors.indigo.300),theme(colors.gray.200))] bg-[length:200%_auto] bg-clip-text font-extrabold text-3xl text-transparent md:text-4xl mt-2 mb-3">
+                <h2 className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,theme(colors.gray.200),theme(colors.indigo.200),theme(colors.gray.50),theme(colors.indigo.300),theme(colors.gray.200))] bg-[length:200%_auto] bg-clip-text font-extrabold tracking-tight text-3xl text-transparent md:text-4xl mt-2 mb-3">
                   Start free. Go deeper when you&apos;re ready.
                 </h2>
                 <p className="text-gray-500 text-sm mb-8">No credit card required · Cancel anytime · Downgrade anytime</p>
@@ -468,7 +654,7 @@ const DemoPage = () => {
 
                   <button
                     onClick={() => navigate('/handbooks')}
-                    className="w-full rounded-xl border border-gray-700 bg-gray-800/60 px-4 py-3 text-sm font-semibold text-gray-200 hover:bg-gray-800 hover:border-gray-600 transition-all duration-200 mb-7"
+                    className="w-full rounded-full border border-gray-700 bg-gray-800/60 px-4 py-3 text-sm font-semibold text-gray-200 hover:bg-gray-800 hover:border-gray-600 transition-all duration-200 mb-7"
                   >
                     Get Started Free
                   </button>
@@ -492,7 +678,7 @@ const DemoPage = () => {
                 </div>
 
                 {/* Pro — featured */}
-                <div className="relative flex flex-col rounded-2xl p-px bg-gradient-to-b from-indigo-500/60 via-violet-500/40 to-indigo-500/20 shadow-2xl shadow-indigo-500/20 lg:-mt-4">
+                <div className="relative flex flex-col rounded-2xl shadow-2xl shadow-indigo-500/30 lg:-mt-4" style={{ padding: '1px', background: 'linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa, #6366f1)', backgroundSize: '300% 300%', animation: 'proBorderShift 4s ease infinite' }}>
                   <div className="flex flex-col h-full rounded-[15px] bg-gray-950 p-7">
                     {/* Badge */}
                     <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
@@ -517,7 +703,7 @@ const DemoPage = () => {
 
                     <button
                       onClick={() => navigate('/handbooks')}
-                      className="group relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/40 hover:shadow-indigo-500/60 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 mb-7"
+                      className="group relative w-full overflow-hidden rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/40 hover:shadow-indigo-500/60 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 mb-7"
                     >
                       <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       Start Free Trial
@@ -556,7 +742,7 @@ const DemoPage = () => {
 
                   <button
                     onClick={() => navigate('/contact')}
-                    className="w-full rounded-xl border border-gray-700 bg-gray-800/60 px-4 py-3 text-sm font-semibold text-gray-200 hover:bg-gray-800 hover:border-gray-600 transition-all duration-200 mb-7"
+                    className="w-full rounded-full border border-gray-700 bg-gray-800/60 px-4 py-3 text-sm font-semibold text-gray-200 hover:bg-gray-800 hover:border-gray-600 transition-all duration-200 mb-7"
                   >
                     Contact Sales
                   </button>
@@ -604,12 +790,18 @@ const DemoPage = () => {
                 </h2>
               </div>
 
-              <div className="mx-auto grid max-w-sm gap-8 sm:max-w-none sm:grid-cols-2 md:gap-x-12 md:gap-y-12 lg:grid-cols-4">
+              <div className="mx-auto grid max-w-sm gap-5 sm:max-w-none sm:grid-cols-2 lg:grid-cols-4">
                 {benefits.map((b, i) => (
-                  <article key={i} className="group cursor-default">
-                    <div className="mb-3 text-indigo-500 transition-all duration-300 group-hover:scale-110 group-hover:text-indigo-400">{b.icon}</div>
-                    <h3 className="mb-1 font-semibold text-base text-gray-200 group-hover:text-white transition-colors duration-300">{b.title}</h3>
-                    <p className="text-sm text-indigo-200/65 group-hover:text-indigo-200/80 transition-colors duration-300">{b.description}</p>
+                  <article
+                    key={i}
+                    className="group relative flex flex-col rounded-2xl border border-gray-800/60 bg-gray-900/50 p-6 backdrop-blur-sm hover:-translate-y-1 hover:border-indigo-500/30 hover:bg-gray-900/70 hover:shadow-[0_0_0_1px_rgba(99,102,241,0.08),0_12px_32px_rgba(99,102,241,0.07)] transition-all duration-300 cursor-default"
+                  >
+                    <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-indigo-500/25 to-transparent" />
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500/20 to-violet-500/10 border border-indigo-500/20 text-indigo-400 mb-4 group-hover:from-indigo-500/30 group-hover:border-indigo-400/35 group-hover:text-indigo-300 group-hover:shadow-lg group-hover:shadow-indigo-500/15 transition-all duration-300">
+                      {b.icon}
+                    </div>
+                    <h3 className="font-bold text-base text-gray-200 mb-2 group-hover:text-white transition-colors duration-300">{b.title}</h3>
+                    <p className="text-sm text-indigo-200/60 leading-relaxed group-hover:text-indigo-200/75 transition-colors duration-300">{b.description}</p>
                   </article>
                 ))}
               </div>
@@ -618,34 +810,42 @@ const DemoPage = () => {
         </section>
 
         {/* ── CTA ── */}
-        <section className="relative overflow-hidden bg-slate-900 py-8 md:py-12">
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-violet-500/5" aria-hidden="true" />
-          <div className="pointer-events-none absolute -left-48 top-1/2 -translate-y-1/2 opacity-60" aria-hidden="true">
-            <div className="h-96 w-96 rounded-full bg-indigo-500 blur-[120px]" />
-          </div>
-          <div className="pointer-events-none absolute -right-48 top-1/2 -translate-y-1/2 opacity-60" aria-hidden="true">
-            <div className="h-96 w-96 rounded-full bg-violet-500 blur-[120px]" />
-          </div>
+        <section className="relative">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="border-t py-12 md:py-20" style={{ borderImage: "linear-gradient(to right, transparent, rgba(148,163,184,0.25), transparent) 1" }}>
+              <div className="relative rounded-3xl border border-indigo-500/20 bg-gradient-to-br from-indigo-950/70 via-gray-900/80 to-violet-950/50 p-12 md:p-16 text-center overflow-hidden backdrop-blur-sm shadow-2xl shadow-indigo-500/10">
+                {/* Inner glow orbs */}
+                <div className="pointer-events-none absolute -left-24 top-1/2 -translate-y-1/2 opacity-35" aria-hidden="true">
+                  <div className="h-72 w-72 rounded-full bg-indigo-600 blur-[80px]" />
+                </div>
+                <div className="pointer-events-none absolute -right-24 top-1/2 -translate-y-1/2 opacity-25" aria-hidden="true">
+                  <div className="h-72 w-72 rounded-full bg-violet-600 blur-[80px]" />
+                </div>
+                {/* Top glow line */}
+                <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-indigo-400/60 to-transparent" />
 
-          <div className="relative z-10 mx-auto max-w-3xl px-4 text-center sm:px-6">
-            <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-violet-500">
-              <Rocket className="h-8 w-8 text-white" />
+                <div className="relative">
+                  <div className="inline-flex items-center gap-3 pb-3 before:h-px before:w-8 before:bg-gradient-to-r before:from-transparent before:to-indigo-200/50 after:h-px after:w-8 after:bg-gradient-to-l after:from-transparent after:to-indigo-200/50 mb-2">
+                    <span className="inline-flex bg-gradient-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent text-sm font-medium">Get Started</span>
+                  </div>
+                  <h2 className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,theme(colors.gray.200),theme(colors.indigo.200),theme(colors.gray.50),theme(colors.indigo.300),theme(colors.gray.200))] bg-[length:200%_auto] bg-clip-text font-extrabold tracking-tight text-3xl md:text-4xl text-transparent mb-4">
+                    Ready to start your AI journey?
+                  </h2>
+                  <p className="text-lg text-indigo-200/65 max-w-xl mx-auto mb-8">
+                    Join engineers mastering AI & ML with 150+ structured handbooks across 20 specializations.
+                  </p>
+                  <button
+                    onClick={() => navigate('/handbooks')}
+                    className="group relative inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 px-8 py-4 text-base font-semibold text-white shadow-2xl shadow-indigo-500/40 hover:shadow-indigo-500/60 hover:scale-[1.03] active:scale-[0.97] transition-all duration-300 overflow-hidden"
+                  >
+                    <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <BookOpen size={18} className="relative" />
+                    <span className="relative">Browse All Handbooks</span>
+                    <ArrowRight size={16} className="relative transition-transform duration-300 group-hover:translate-x-1" />
+                  </button>
+                </div>
+              </div>
             </div>
-            <h2 className="mb-4 font-extrabold text-3xl text-gray-200 md:text-4xl">
-              Ready to start your AI journey?
-            </h2>
-            <p className="mb-8 text-lg text-indigo-200/65">
-              Join learners mastering AI & ML with 150+ structured handbooks across 20 specializations.
-            </p>
-            <button
-              onClick={() => navigate('/handbooks')}
-              className="group bg-gradient-to-t from-indigo-600 to-indigo-500 hover:from-indigo-700 hover:to-indigo-600 text-white shadow-[inset_0px_1px_0px_0px_rgba(255,255,255,0.16)] inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all px-6 py-3"
-            >
-              <span className="relative inline-flex items-center">
-                Browse All Handbooks
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </span>
-            </button>
           </div>
         </section>
       </div>
